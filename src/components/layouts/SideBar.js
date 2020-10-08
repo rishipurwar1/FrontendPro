@@ -11,7 +11,7 @@ const Navbar = () => {
     return (
     <nav className="flex relative">
         <div className="w-64 bg-white fixed h-full">
-            <h2 className="text-navItem uppercase text-center m-4 mb-8 font-medium text-2xl">CodingSpace</h2>
+            <h2 className="text-navItem uppercase text-center m-4 mb-8 font-medium text-2xl"><i className="fas fa-rocket mr-1"></i>CodingSpace</h2>
             <ul>
                 <li className="text-left cursor-pointer">
                     <NavLink className="block m-3 p-3 px-8 rounded-md hover:bg-blue-100 text-navItem hover:text-blue-900 text-xl" to="/">

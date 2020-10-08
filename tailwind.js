@@ -219,6 +219,9 @@ module.exports = {
       inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
       none: 'none',
+      boxFirst: '10px 10px 4px #f56565, 0 2px 8px rgba(0, 0, 0, 0.4)',
+      boxSecond: '10px 10px 4px #718096, 0 2px 8px rgba(0, 0, 0, 0.4)',
+      boxThird: '10px 10px 4px #0068FF, 0 2px 8px rgba(0, 0, 0, 0.4)',
     },
     container: {},
     cursor: {

@@ -15,25 +15,25 @@ const Navbar = () => {
             <ul>
                 <li className="text-left cursor-pointer">
                     <NavLink className="block m-3 p-3 px-8 rounded-md hover:bg-blue-100 text-navItem hover:text-blue-900 text-xl" to="/challenges">
-                        <i class="fas fa-code mr-3"></i>
+                        <i className="fas fa-code mr-3"></i>
                         Challenges
                     </NavLink>
                 </li>
                 <li className="text-left cursor-pointer">
                     <NavLink className="block m-3 p-3 px-8 rounded-md hover:bg-blue-100 text-navItem hover:text-blue-900 text-xl" to="/resources">
-                        <i class="fas fa-chalkboard-teacher mr-3"></i>
+                        <i className="fas fa-chalkboard-teacher mr-3"></i>
                         Resources
                     </NavLink>
                 </li>
                 <li className="text-left cursor-pointer">
                     <NavLink className="block m-3 p-3 px-8 rounded-md hover:bg-blue-100 text-navItem hover:text-blue-900 text-xl" to="/solutions">
-                        <i class="fas fa-laptop-code mr-3"></i>
+                        <i className="fas fa-laptop-code mr-3"></i>
                         Solutions
                     </NavLink>
                 </li>
                 <li className="text-left cursor-pointer">
                     <NavLink className="block m-3 p-3 px-8 rounded-md hover:bg-blue-100 text-navItem hover:text-blue-900 text-xl" to="/roadmaps">
-                        <i class="fas fa-map-signs mr-3"></i>
+                        <i className="fas fa-map-signs mr-3"></i>
                         Roadmaps
                     </NavLink>
                 </li>

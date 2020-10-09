@@ -8,9 +8,9 @@ const Footer = () => {
             <small className="text-blue-900">© 2020 CODINGSPACE. All right reserved</small>
             <div className="social flex items-center">
                 <small className="text-base pr-2">Follow us on </small>
-                <Link to="#" className="text-blue-900 fa-2x"><i class="fab fa-twitter"></i></Link>
-                <Link to="#" className="text-blue-900 fa-2x mx-2"><i class="fab fa-facebook"></i></Link>
-                <Link to="#" className="text-blue-900 fa-2x"><i class="fab fa-discord"></i></Link>
+                <Link to="#" className="text-blue-900 fa-2x"><i className="fab fa-twitter"></i></Link>
+                <Link to="#" className="text-blue-900 fa-2x mx-2"><i className="fab fa-facebook"></i></Link>
+                <Link to="#" className="text-blue-900 fa-2x"><i className="fab fa-discord"></i></Link>
             </div>
         </footer>
     )

@@ -11,7 +11,7 @@ import Roadmaps from './components/roadmaps/Roadmaps';
 import Solutions from './components/roadmaps/Solutions';
 import ChallengeDetails from './components/challenges/ChallengeDetails';
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
         <div className="relative">

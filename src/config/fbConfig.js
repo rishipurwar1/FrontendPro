@@ -15,5 +15,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const challengeFirestore = firebase.firestore();
+// const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 export { challengeFirestore };

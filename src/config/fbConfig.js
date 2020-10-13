@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+import "firebase/firestore";
+import "firebase/auth";
 
 var firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -15,6 +15,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const challengeFirestore = firebase.firestore();
-// const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+const auth = firebase.auth;
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
-export { challengeFirestore };
+export { challengeFirestore, auth, timestamp };

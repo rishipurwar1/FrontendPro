@@ -1,7 +1,7 @@
 import React from 'react'
 import useFirestore from '../../hooks/useFirestore';
 
-import Heading from './Heading'
+import Heading from '../dashboard/Heading'
 import ChallengeCard from './ChallengeCard'
 
 const Challenges = () => {

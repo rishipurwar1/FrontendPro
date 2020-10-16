@@ -19,7 +19,7 @@ const SignedInLinks = ({profile}) => {
         setLoading(false)
     }
     return (
-        <div className="mr-3 mt-4 absolute top-0 right-0">
+        <div className="mr-3 mt-4 absolute top-0 right-0 z-10">
             <button onClick={() => setIsOpen(!isOpen)} className="block h-10 w-10 rounded-full overflow-hidden border-2 focus:outline-none">
                 <img className=" h-full w-full object-cover cursor-pointer" src={profile} alt="Avatar"/>
             </button>

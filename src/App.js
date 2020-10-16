@@ -16,21 +16,21 @@ import { AuthProvider } from './context/AuthContext';
 const App = () => {
   return (
     <BrowserRouter>
-      <AuthProvider>
-          <div className="relative">
-            <SideBar />
-            <Switch >
-              <Route exact path="/" component={Dashboard} />
-              <Route path="/challenges" component={ ChallengesList } />
-              <Route path='/challenge/:id' component={ChallengeDetails} />
-              <Route path="/resources" component={ Resources } />
-              <Route path="/roadmaps" component={ Roadmaps } />
-              <Route path="/solutions" component={ Solutions } />
-              <Route path="/create" component={ CreateChallenge } />
-            </Switch>
-          </div>
-      </AuthProvider>
-      </BrowserRouter>
+        <AuthProvider>
+            <div className="relative">
+              <SideBar />
+              <Switch >
+                <Route exact path="/" component={Dashboard} />
+                <Route path="/challenges" component={ ChallengesList } />
+                <Route path='/challenge/:id' component={ChallengeDetails} />
+                <Route path="/resources" component={ Resources } />
+                <Route path="/roadmaps" component={ Roadmaps } />
+                <Route path="/solutions" component={ Solutions } />
+                <Route path="/create" component={ CreateChallenge } />
+              </Switch>
+            </div>
+        </AuthProvider>
+    </BrowserRouter>
   );
 }
 

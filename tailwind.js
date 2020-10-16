@@ -157,6 +157,7 @@ module.exports = {
       '48': '12rem',
       '56': '14rem',
       '64': '16rem',
+      'xs': '0.125rem'
     },
     backgroundColor: theme => theme('colors'),
     backgroundImage: {
@@ -301,10 +302,13 @@ module.exports = {
       ...theme('spacing'),
       full: '100%',
       screen: '100vh',
+      carouselHeight: '500px'
     }),
     inset: {
       '0': '0',
       auto: 'auto',
+      '1/2': '50%',
+      '8': '0.50rem'
     },
     letterSpacing: {
       tighter: '-0.05em',
@@ -652,6 +656,7 @@ module.exports = {
       ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
       pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       bounce: 'bounce 1s infinite',
+      fade: 'fade 1.5s'
     },
     keyframes: {
       spin: {
@@ -673,6 +678,14 @@ module.exports = {
           animationTimingFunction: 'cubic-bezier(0,0,0.2,1)',
         },
       },
+      fade: {
+        '0%': {
+          opacity: '0.4'
+        },
+        '100%': {
+          opacity: '1'
+        }
+      }
     },
   },
   variants: {

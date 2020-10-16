@@ -5,3 +5,11 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+
+@layer utilities {
+    .active {
+        background-color: #ebf8ff;
+        color: #2a4365;
+    }
+}

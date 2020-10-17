@@ -24,7 +24,7 @@ const HowItWorks = () => {
                     number="2"
                     image="fas fa-code text-6xl text-gray-600"
                     color="gray-600"
-                    margin="mt-6"
+                    margin="mt-0"
                     shadow="shadow-boxSecond"
                 />
                 <Card 
@@ -33,7 +33,7 @@ const HowItWorks = () => {
                     number="3"
                     image="fas fa-share-alt"
                     color="secondary"
-                    margin="mt-12"
+                    margin="mt-0"
                     shadow="shadow-boxThird"
                 />
             </div>

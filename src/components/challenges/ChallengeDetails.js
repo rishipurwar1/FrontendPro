@@ -2,6 +2,7 @@ import React from 'react'
 import useFirestore from '../../hooks/useFirestore'
 import Tag from '../smallComponents/Tag';
 import Carousel from './Carousel';
+import { Link } from 'react-router-dom'
 
 const ChallengeDetails = (props) => {
     const {docs} = useFirestore("challenges");
@@ -16,10 +17,10 @@ const ChallengeDetails = (props) => {
                     <div className="mx-2">
                         <h1 className="leading-snug text-5xl text-blue-900 font-bold">{challengeDetails[0].title}</h1>
                         <div>
-                            {challengeDetails[0].tags.map(tag => <Tag tag={tag} />)}
+                            {challengeDetails[0].tags.map(tag => <Tag key={tag} tag={tag} />)}
                         </div>
                         <p className="text-lg mt-2 text-blue-900">{challengeDetails[0].description}</p>
-                        <button className="bg-secondary text-white font-bold py-3 px-5 rounded text-2xl focus:outline-none mt-3"><i className="animate-bounce fas fa-arrow-down mr-2"></i>Download</button>
+                            <a className="bg-secondary text-white font-bold py-3 px-5 rounded text-2xl focus:outline-none mt-3 block w-48" href="https://res.cloudinary.com/di5hmgowi/raw/upload/v1602933977/images/sample_zmazlz.rar" type="_self" rel="noopener noreferrer" download ><i className="animate-bounce fas fa-arrow-down mr-2"></i>Download</a>
                     </div>
                 </main>
                 <section className="pl-3 mt-12 mb-2 grid grid-cols-2">

@@ -14,8 +14,8 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-const challengeFirestore = firebase.firestore();
+const firestore = firebase.firestore();
 const auth = firebase.auth;
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
-export { challengeFirestore, auth, timestamp };
+export { firestore, auth, timestamp };

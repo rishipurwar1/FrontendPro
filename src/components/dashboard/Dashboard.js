@@ -10,7 +10,8 @@ import Footer from './Footer';
 
 const Dashboard = () => {
     const {currentUser} = useAuth();
-    console.log(currentUser.uid);
+    // console.log(currentUser.providerData[0].displayName);
+    // console.log(JSON.stringify(currentUser));
     
     return (
         <div>

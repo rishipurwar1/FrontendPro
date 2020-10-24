@@ -1,21 +1,13 @@
 import { useState, useEffect } from 'react';
-import { challengeFirestore } from '../config/fbConfig';
+import { firestore } from '../config/fbConfig';
 
 const useFirestore = (collection) => {
     const [docs, setDocs] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const addChallenge = (newChallenge) => {
-      challengeFirestore.collection(collection)
-        .doc(newChallenge.id)
-        .set(newChallenge)
-        .catch((err) => {
-          console.error(err);
-        });
-    }  
-
+    // getting realtime data from the firebase for challenges and solutions
     useEffect(() => {
-        console.log('ran')
-        challengeFirestore.collection(collection)
+        firestore.collection(collection)
         // .orderBy('createdAt', 'desc')
         .onSnapshot((querySnapshot) => {
           const items = [];
@@ -23,10 +15,27 @@ const useFirestore = (collection) => {
             items.push({...doc.data(), id: doc.id});
           });
           setDocs(items);
+          setLoading(false);
         });
       }, []);
+
+      //add solution to the firebase
+      const addSolution = (solution) => {
+        firestore.collection(collection)
+        .doc()
+        .set(solution)
+        .catch(err => console.log(err));
+      }
+
+      //delete a solution from the firestore db
+      const deleteSolution = (solution) => {
+        firestore.collection(collection)
+        .doc(solution.id)
+        .delete()
+        .catch(err => console.log(err))
+      }
   
-    return { docs, addChallenge };
+    return { docs, loading, addSolution, deleteSolution };
 }
 
 export default useFirestore;

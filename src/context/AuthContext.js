@@ -1,7 +1,12 @@
-import React, { useState,useContext } from 'react'
-import { createContext } from 'react';
-import { useEffect } from 'react';
-import {auth} from '../config/fbConfig'
+import React, {
+    useState,
+    useContext,
+    createContext,
+    useEffect
+} from 'react'
+import {
+    auth
+} from '../config/fbConfig'
 
 const AuthContext = createContext();
 
@@ -9,7 +14,9 @@ export const useAuth = () => {
     return useContext(AuthContext);
 }
 
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({
+    children
+}) => {
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true);
 
@@ -27,7 +34,7 @@ export const AuthProvider = ({children}) => {
             setCurrentUser(user);
             setLoading(false);
         })
-        return unsubscribe
+        return unsubscribe;
     }, [])
 
     const value = {
@@ -36,10 +43,11 @@ export const AuthProvider = ({children}) => {
         githubSignOut
     }
 
-    return (
-        <AuthContext.Provider value={value}>
-            {!loading && children}
-        </AuthContext.Provider>
+    return ( 
+        <AuthContext.Provider value = {
+            value
+        } > {
+            !loading && children
+        } </AuthContext.Provider>
     )
 }
-

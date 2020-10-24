@@ -8,10 +8,11 @@ import ChallengesList from './components/challenges/ChallengesList'
 import Dashboard from './components/dashboard/Dashboard';
 import Resources from './components/resources/Resources'
 import Roadmaps from './components/roadmaps/Roadmaps';
-import Solutions from './components/roadmaps/Solutions';
 import ChallengeDetails from './components/challenges/ChallengeDetails';
 import CreateChallenge from './components/form/CreateChallenge';
 import { AuthProvider } from './context/AuthContext';
+import SolutionForm from './components/solutions/SolutionForm';
+import SolutionList from './components/solutions/SolutionList';
 
 const App = () => {
   return (
@@ -25,8 +26,9 @@ const App = () => {
                 <Route path='/challenge/:id' component={ChallengeDetails} />
                 <Route path="/resources" component={ Resources } />
                 <Route path="/roadmaps" component={ Roadmaps } />
-                <Route path="/solutions" component={ Solutions } />
-                <Route path="/create" component={ CreateChallenge } />
+                <Route path="/solutions" component={ SolutionList } />
+                {/* <Route path="/create" component={ CreateChallenge } /> */}
+                <Route path="/create" component={ SolutionForm } />
               </Switch>
             </div>
         </AuthProvider>

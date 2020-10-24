@@ -1,11 +1,13 @@
 import React from 'react'
+import { useAuth } from '../../context/AuthContext';
 import useFirestore from '../../hooks/useFirestore'
 import Tag from '../smallComponents/Tag';
 import Carousel from './Carousel';
-import { Link } from 'react-router-dom'
+
 
 const ChallengeDetails = (props) => {
     const {docs} = useFirestore("challenges");
+    const {currentUser} = useAuth();
     const id = props.match.params.id;
     const challengeDetails = docs && docs.filter(doc => doc.id === id);
     

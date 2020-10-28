@@ -6,7 +6,6 @@ import Heading from '../dashboard/Heading'
 
 const ChallengesList = () => {
     const { docs } = useFirestore('challenges');
-
     return (
         <div className="ml-64 pt-12">
             <Heading text="All Challenges" />

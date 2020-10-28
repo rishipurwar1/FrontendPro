@@ -1,16 +1,15 @@
 import React from 'react'
-import { useAuth } from '../../context/AuthContext';
 import useFirestore from '../../hooks/useFirestore'
+import DownloadButton from '../smallComponents/DownloadButton';
 import Tag from '../smallComponents/Tag';
 import Carousel from './Carousel';
 
 
 const ChallengeDetails = (props) => {
     const {docs} = useFirestore("challenges");
-    const {currentUser} = useAuth();
     const id = props.match.params.id;
     const challengeDetails = docs && docs.filter(doc => doc.id === id);
-    
+
     if(challengeDetails.length > 0) {
         return (
             <div className="ml-64">
@@ -22,7 +21,8 @@ const ChallengeDetails = (props) => {
                             {challengeDetails[0].tags.map(tag => <Tag key={tag} tag={tag} />)}
                         </div>
                         <p className="text-lg mt-2 text-blue-900">{challengeDetails[0].description}</p>
-                            <a className="bg-secondary text-white font-bold py-3 px-5 rounded text-2xl focus:outline-none mt-3 block w-48" href="https://res.cloudinary.com/di5hmgowi/raw/upload/v1602933977/images/sample_zmazlz.rar" type="_self" rel="noopener noreferrer" download ><i className="animate-bounce fas fa-arrow-down mr-2"></i>Download</a>
+                            {/* <a className="bg-secondary text-white font-bold py-3 px-5 rounded text-2xl focus:outline-none mt-3 block w-48" href="https://res.cloudinary.com/di5hmgowi/raw/upload/v1602933977/images/sample_zmazlz.rar"><i className="animate-bounce fas fa-arrow-down mr-2"></i>Download</a> */}
+                            <DownloadButton />
                     </div>
                 </main>
                 <section className="pl-3 mt-12 mb-2 grid grid-cols-2">

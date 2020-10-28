@@ -3,16 +3,22 @@ import {useState} from 'react'
 import { useAuth } from '../../context/AuthContext'
 import useFirestore from '../../hooks/useFirestore'
 import { Redirect } from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 const SolutionForm = () => {
     //getting the addSolution function
     const { addSolution } = useFirestore('solutions');
+
+    //checking user is logged in or not
+    const {currentUser} = useAuth();
+
+    const history = useHistory();
     // Initial state
     const initialState = {
         title: '',
         github_url: '',
         live_website_url: '',
-        feedback: ''
+        feedback: '',
     }
     
     //setting the solution form values
@@ -31,11 +37,11 @@ const SolutionForm = () => {
         e.preventDefault();
         // console.log(values);
         addSolution(values);
+        history.push("/solutions");
         setValues(initialState);
     }
     
-    //checking user is logged in or not
-    const {currentUser} = useAuth();
+
     //if not redirect to homepage
     if (!currentUser) return <Redirect to='/' />
 

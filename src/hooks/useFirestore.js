@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import { firestore } from '../config/fbConfig';
+import { useAuth } from '../context/AuthContext';
 
 const useFirestore = (collection) => {
     const [docs, setDocs] = useState([]);
     const [loading, setLoading] = useState(true);
+    const {currentUser} = useAuth();
 
     // getting realtime data from the firebase for challenges and solutions
     useEffect(() => {
-        firestore.collection(collection)
+        let unsubscribe = firestore.collection(collection)
         // .orderBy('createdAt', 'desc')
         .onSnapshot((querySnapshot) => {
           const items = [];
@@ -17,13 +19,19 @@ const useFirestore = (collection) => {
           setDocs(items);
           setLoading(false);
         });
-      }, []);
+        return unsubscribe;
+      }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
       //add solution to the firebase
       const addSolution = (solution) => {
         firestore.collection(collection)
-        .doc()
-        .set(solution)
+        .add({
+          ...solution,
+          author: currentUser.displayName,
+          id: currentUser.id,
+          photoURL: currentUser.photoURL,
+          createdAt: new Date()
+        })
         .catch(err => console.log(err));
       }
 

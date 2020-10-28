@@ -1,16 +1,16 @@
 // library components
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext'
 
 // custom components
-import { useAuth } from '../../context/AuthContext'
-import SignedOutLinks from '../layouts/SignedOutLinks'
-import SignedInLinks from '../layouts/SignedInLinks'
+import SignedInLinks from './SignedInLinks'
+import SignedOutLinks from './SignedOutLinks'
 
-const Navbar = () => {
-    const {currentUser} = useAuth();
-    console.log(currentUser);
-    const links = currentUser && currentUser.uid ? <SignedInLinks profile={currentUser.photoURL} /> : <SignedOutLinks />;
+const Sidebar = () => {
+    const { currentUser, githubSignOut } = useAuth();
+    const links = currentUser ? <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut}  /> : <SignedOutLinks />;
+    
     return (
         <div className="container">
             {links}
@@ -49,4 +49,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Sidebar

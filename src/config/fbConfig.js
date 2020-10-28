@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/auth";
+// import { useAuth } from '../context/AuthContext';
 
 var firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -13,6 +14,30 @@ var firebaseConfig = {
   };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+// creating user profile
+export const createUserProfileDocument = async (userAuth) => {
+  if(!userAuth) return;
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+  const snapShot = await userRef.get();
+
+  if(!snapShot.exists){
+    const { email, photoURL, providerData } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await userRef.set({
+        email,
+        photoURL,
+        createdAt,
+        displayName: providerData[0].displayName
+      })
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+  return userRef;
+}
 
 const firestore = firebase.firestore();
 const auth = firebase.auth;

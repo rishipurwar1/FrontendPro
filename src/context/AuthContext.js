@@ -5,7 +5,7 @@ import React, {
     useEffect
 } from 'react'
 import {
-    auth
+    auth, createUserProfileDocument
 } from '../config/fbConfig'
 
 const AuthContext = createContext();
@@ -17,7 +17,7 @@ export const useAuth = () => {
 export const AuthProvider = ({
     children
 }) => {
-    const [currentUser, setCurrentUser] = useState();
+    const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const provider = new auth.GithubAuthProvider();
@@ -30,8 +30,20 @@ export const AuthProvider = ({
     }
 
     useEffect(() => {
-        const unsubscribe = auth().onAuthStateChanged(user => {
-            setCurrentUser(user);
+        const unsubscribe = auth().onAuthStateChanged(async userAuth => {
+            // setCurrentUser(user);
+            if(userAuth) {
+                const useRef = await createUserProfileDocument(userAuth);
+                useRef.onSnapshot(snapShot => {
+                    // console.log(snapShot.data());
+                    setCurrentUser({
+                        id: snapShot.id,
+                        ...snapShot.data()
+                    })
+                })
+            } else {
+                setCurrentUser(userAuth);
+            }
             setLoading(false);
         })
         return unsubscribe;

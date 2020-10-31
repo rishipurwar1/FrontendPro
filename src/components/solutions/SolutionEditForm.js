@@ -1,10 +1,8 @@
-import React from 'react'
-import {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useAuth } from '../../context/AuthContext'
 import useFirestore from '../../hooks/useFirestore'
 import { Redirect } from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
-import { useEffect } from 'react'
 import { firestore } from '../../config/fbConfig'
 
 const SolutionEditForm = (props) => {
@@ -37,7 +35,8 @@ const SolutionEditForm = (props) => {
     //handling submit event
     const handleSubmit = (e) => {
         e.preventDefault();
-        updateSolution(values)
+        updateSolution(values, id)
+        console.log(values);
         history.push("/solutions");
         setValues(initialState);
     }
@@ -48,8 +47,10 @@ const SolutionEditForm = (props) => {
         .onSnapshot( snapshot => {
             if ( !snapshot.exists ) {
                 setValues(null);
+                console.log(null);
             } else {
                 setValues(snapshot.data());
+                console.log(snapshot.data());
             }
         });
         return unsubscribe;

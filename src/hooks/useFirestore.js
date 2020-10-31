@@ -45,9 +45,9 @@ const useFirestore = (collection) => {
       }
 
       //update solution
-      const updateSolution = (updatedSolution) => {
+      const updateSolution = (updatedSolution, id) => {
         firestore.collection(collection)
-        .doc(updatedSolution.id)
+        .doc(id)
         .update(updatedSolution)
         .catch(err => console.log(err))
       }

@@ -18,6 +18,7 @@ const useFirestore = (collection) => {
           });
           setDocs(items);
           setLoading(false);
+          console.log('run useEffect');
         });
         return unsubscribe;
       }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -42,8 +43,16 @@ const useFirestore = (collection) => {
         .delete()
         .catch(err => console.log(err))
       }
+
+      //update solution
+      const updateSolution = (updatedSolution) => {
+        firestore.collection(collection)
+        .doc(updatedSolution.id)
+        .update(updatedSolution)
+        .catch(err => console.log(err))
+      }
   
-    return { docs, loading, addSolution, deleteSolution };
+    return { docs, loading, addSolution, deleteSolution, updateSolution };
 }
 
 export default useFirestore;

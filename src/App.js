@@ -13,7 +13,7 @@ import { AuthProvider } from './context/AuthContext';
 import SolutionForm from './components/solutions/SolutionForm';
 import SolutionList from './components/solutions/SolutionList';
 import SolutionDetails from './components/solutions/SolutionDetails';
-import SolutionEdit from './components/solutions/SolutionEdit';
+import SolutionEditForm from './components/solutions/SolutionEditForm';
 
 const App = () => {
   return (
@@ -29,7 +29,7 @@ const App = () => {
                 <Route path="/roadmaps" component={ Roadmaps } />
                 <Route path="/solutions" component={ SolutionList } />
                 <Route exact path="/solution/:id" component={ SolutionDetails } />
-                <Route path="/solution/:id/edit" component={ SolutionEdit } />
+                <Route path="/solution/:id/edit" component={ SolutionEditForm } />
                 <Route path="/create" component={ SolutionForm } />
               </Switch>
             </div>

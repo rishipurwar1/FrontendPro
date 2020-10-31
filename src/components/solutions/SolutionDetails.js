@@ -2,6 +2,7 @@ import React from 'react'
 import useFirestore from '../../hooks/useFirestore';
 import moment from 'moment';
 import ShowWebsite from './ShowWebsite';
+import { Link } from 'react-router-dom';
 
 const SolutionDetails = (props) => {
     const {docs, deleteSolution} = useFirestore("solutions");
@@ -21,7 +22,7 @@ const SolutionDetails = (props) => {
                         </div>
                     </div>
                     <div>
-                        <span className="text-secondary cursor-pointer pr-3"><i className="far fa-edit text-2xl"></i></span>
+                        <Link to={`/solution/${solutionDetails[0].id}/edit`} className="text-secondary cursor-pointer pr-3"><i className="far fa-edit text-2xl"></i></Link>
                         <span className="text-red-700 cursor-pointer" onClick={() => deleteSolution(solutionDetails[0])}><i className="far fa-trash-alt text-2xl"></i></span>
                     </div>
                 </div>

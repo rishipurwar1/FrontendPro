@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { useAuth } from '../../context/AuthContext'
 import useFirestore from '../../hooks/useFirestore'
-import { Redirect } from 'react-router-dom'
-import {useHistory} from 'react-router-dom'
-import { firestore } from '../../config/fbConfig'
+import { Redirect, useHistory } from 'react-router-dom'
 
 const SolutionEditForm = (props) => {
     //getting the addSolution function
-    const { updateSolution } = useFirestore('solutions');
     const id = props.match.params.id;
+    const { docs, updateSolution } = useFirestore('solutions', id);
     //checking user is logged in or not
     const {currentUser} = useAuth();
 
@@ -36,25 +34,18 @@ const SolutionEditForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         updateSolution(values, id)
-        console.log(values);
         history.push("/solutions");
         setValues(initialState);
     }
 
     useEffect(() => {
         //Depending on useFirestore code
-       const unsubscribe = firestore.collection('solutions').doc(id)
-        .onSnapshot( snapshot => {
-            if ( !snapshot.exists ) {
-                setValues(null);
-                console.log(null);
-            } else {
-                setValues(snapshot.data());
-                console.log(snapshot.data());
-            }
-        });
-        return unsubscribe;
-    }, [id]);
+        if (docs.length > 0) {
+            setValues(docs[0])
+        } else {
+            console.log('nothing found in db');
+        }
+    }, [docs]);
 
     //if not redirect to homepage
     if (!currentUser) return <Redirect to='/' />

@@ -37,7 +37,6 @@ const SolutionForm = () => {
         e.preventDefault();
         // console.log(values);
         addSolution(values);
-        history.push("/solutions");
         setValues(initialState);
     }
     

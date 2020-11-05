@@ -5,7 +5,7 @@ import DifficultyBar from './DifficultyBar'
 import {Image, Placeholder} from 'cloudinary-react';
 
 const ChallengeCard = ({challenge}) => {
-    console.log(challenge);
+    // console.log(challenge);
     return (
         <div className="max-w-xs rounded shadow-2xl mb-4 overflow-hidden">
             <Image cloudName="di5hmgowi" public-id={challenge.image[0]}>

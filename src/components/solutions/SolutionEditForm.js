@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import { useAuth } from '../../context/AuthContext'
-import useFirestore from '../../hooks/useFirestore'
+import useFirestore, { useSolution } from '../../hooks/useFirestore'
 import { Redirect, useHistory } from 'react-router-dom'
 
 const SolutionEditForm = (props) => {
     //getting the addSolution function
     const id = props.match.params.id;
-    const { docs, updateSolution } = useFirestore('solutions', id);
+    const { docs } = useFirestore('solutions', id);
+    const { updateSolution } = useSolution("solutions")
     //checking user is logged in or not
     const {currentUser} = useAuth();
 

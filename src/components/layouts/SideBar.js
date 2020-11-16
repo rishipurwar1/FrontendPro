@@ -1,19 +1,11 @@
 // library components
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { useAuth } from '../../context/AuthContext'
 
-// custom components
-import SignedInLinks from './SignedInLinks'
-import SignedOutLinks from './SignedOutLinks'
 
 const Sidebar = () => {
-    const { currentUser, githubSignOut } = useAuth();
-    const links = currentUser ? <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut}  /> : <SignedOutLinks />;
-    
     return (
         <div className="container">
-            {links}
             <nav className="flex relative">
                 <div className="w-64 bg-white fixed h-full">
                     <Link to="/" className="text-navItem uppercase text-center block m-4 mb-8 font-medium text-2xl"><i className="fas fa-rocket mr-1"></i>CodingSpace</Link>

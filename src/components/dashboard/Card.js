@@ -1,16 +1,11 @@
 import React from 'react'
 
-const Card = ({name, info, number,image, color, margin, shadow}) => {
+const Card = ({name, info, image, gradient, color}) => {
     return (
-        <div className={`max-w-xs rounded ${shadow} ${margin}`}>
-            <div className="flex items-center justify-between -mt-12 px-5">
-                <h3 className={`text-6xl font-bold text-${color}`}>{number}</h3>
-                <i className={`text-6xl text-secondary ${image}`}></i>
-            </div>
-            <div className="p-4">
-                <div className="font-bold text-xl mb-2">{name}</div>
-                <p className="text-gray-700 text-base">{info}</p>
-            </div>
+        <div className={`${gradient} rounded-xl shadow-2xl text-center p-5`}>
+            <i class={`${image} fa-5x ${color}`}></i>
+            <h4 className="py-3 text-xl text-white font-semibold font-heading">{name}</h4>
+            <p className="text-white">{info}</p>
         </div>
     )
 }

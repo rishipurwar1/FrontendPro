@@ -14,6 +14,8 @@ import SolutionForm from './components/solutions/SolutionForm';
 import SolutionList from './components/solutions/SolutionList';
 import SolutionDetails from './components/solutions/SolutionDetails';
 import SolutionEditForm from './components/solutions/SolutionEditForm';
+import Navbar from './components/layouts/Navbar';
+import Footer from './components/layouts/Footer';
 
 const App = () => {
   return (
@@ -21,6 +23,7 @@ const App = () => {
         <AuthProvider>
             <div className="relative">
               <SideBar />
+              <Navbar />
               <Switch >
                 <Route exact path="/" component={Dashboard} />
                 <Route path="/challenges" component={ ChallengesList } />
@@ -32,6 +35,7 @@ const App = () => {
                 <Route path="/solution/:id/edit" component={ SolutionEditForm } />
                 <Route path="/create" component={ SolutionForm } />
               </Switch>
+              <Footer />
             </div>
         </AuthProvider>
     </BrowserRouter>

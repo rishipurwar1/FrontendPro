@@ -4,17 +4,13 @@ import React from 'react';
 import Hero from './Hero';
 import HowItWorks from './HowItWorks';
 import Challenges from '../challenges/Challenges'
-import Footer from './Footer';
-import Navbar from '../layouts/Navbar';
 
 const Dashboard = () => {
     return (
-        <div>
-            <Navbar />
+        <div className="ml-60 px-5">
             <Hero />
             <HowItWorks />
             <Challenges />
-            <Footer />
         </div>
     )
 }

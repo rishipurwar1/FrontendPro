@@ -1,18 +1,23 @@
 import React from 'react'
 
 // custom components
-import heroImage from '../../assets/illustrations/web.svg'
+import hero from '../../assets/illustrations/main.svg'
+import SignUpButton from '../smallComponents/SignUpButton'
 
 const Hero = () => {
     return (
-        <div className="mt-20 ml-64 pl-5 flex flex-wrap items-center">
-            <div className="w-5/12">
-                <h1 className="text-4xl font-semibold text-blue-900 leading-10 pb-2">Are you ready to improve your Web Dev skills by building real world projects?</h1>
-                <p className="italic  text-blue-900">We help frontend and backend developers to improve their coding skills by providing real world coding challenges. This platform is for everyone, from beginner to expert.</p>
-            </div>
-            <div className="w-7/12 overflow-hidden">
-                <img className="ml-8" src={heroImage} alt=""/>
-            </div>
+        <div className="mt-2 mb-8">
+            <p className="font-heading text-lg font-medium text-white">Hello Coder,</p>
+            <h2 className="font-heading text-3xl font-bold text-white">Welcome To Coding Space <span role="img" aria-label="Hello">👋</span></h2>
+            <header className="mt-4 flex bg-gradient-to-br from-purple-500 to-indigo-500 rounded-3xl px-8 h-72 items-center justify-between shadow-2xl">
+                <div className="w-1/3">
+                    <h1 className="text-white text-2xl font-semibold font-heading pb-3">Master Web and Mobile Development by building real world projects</h1>
+                    <SignUpButton color="bg-gray-900" />
+                </div>
+                <div className="w-96">
+                    <img className="w-full" src={hero} alt="Hero"/>
+                </div>
+            </header>
         </div>
     )
 }

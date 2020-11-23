@@ -2,39 +2,33 @@ import React from 'react'
 
 // custom components
 import Card from './Card'
-import Heading from './Heading'
 
 const HowItWorks = () => {
     return (
-        <div className="ml-64 pt-12">
-        <Heading text="How it works?" />
-            <div className="flex justify-around mb-10 pt-5">
+        <div className="pt-12">
+            <h2 className="pb-2 text-4xl text-center text-white font-semibold">How it works?</h2>
+            <p className="text-center text-text-secondary text-base w-2/5 mx-auto">Codingspace can help you to improve your web and mobile development skills</p>
+            <div className="grid grid-cols-3 gap-6 mt-8">
                 <Card
-                    name="Sign In with GitHub" 
-                    info="Connect your GitHub account using sign in button . You'll instantly gain excess to our all the challenges."
-                    number="1"
-                    image="fas fa-user-lock text-6xl text-red-500"
-                    color="red-500"
-                    margin="mt-0"
-                    shadow="shadow-boxFirst"
+                    name="Sign up for free in 30 seconds" 
+                    info="Connect your GitHub account using sign in button . You'll instantly gain excess to our all the challenges"
+                    image="fas fa-user-lock"
+                    gradient="bg-gradient-to-br from-lightBlue-400 to-indigo-500"
+                    color="text-lightBlue-200"
                 />
                 <Card 
                     name="Find the right challenge" 
-                    info="Choose the right challenge for you according to your skill set and start turning the design into a real world website/web app."
-                    number="2"
-                    image="fas fa-code text-6xl text-gray-600"
-                    color="gray-600"
-                    margin="mt-0"
-                    shadow="shadow-boxSecond"
+                    info="Choose the right challenge for you and start turning the design into a live website or mobile application"
+                    image="fas fa-code"
+                    gradient="bg-gradient-to-br from-yellow-400 to-orange-500"
+                    color="text-yellow-200"
                 />
                 <Card 
                     name="Share your solution" 
                     info="After completing the challenge, you can share your work with the world."
-                    number="3"
                     image="fas fa-share-alt"
-                    color="secondary"
-                    margin="mt-0"
-                    shadow="shadow-boxThird"
+                    gradient="bg-gradient-to-br from-purple-500 to-indigo-500"
+                    color="text-purple-200"
                 />
             </div>
         </div>

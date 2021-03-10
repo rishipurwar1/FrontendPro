@@ -1,7 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;500;600;700&display=swap');
 
-@import "tailwindcss/base";
+@tailwind base;
 
-@import "tailwindcss/components";
+@tailwind components;
 
-@import "tailwindcss/utilities";
+@tailwind utilities;
+
+.active {
+  @apply bg-gradient-to-br from-purple-500 to-indigo-500 text-white;
+}

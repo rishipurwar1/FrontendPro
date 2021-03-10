@@ -3,20 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@glidejs/glide": "^3.4.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "cloudinary-react": "^1.6.7",
+    "firebase": "^7.23.0",
+    "moment": "^2.29.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-lottie": "^1.2.3",
+    "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "uuid": "^8.3.1"
   },
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
-    "build": "npm run build:css && react-scripts build",
+    "build": "npm run watch:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
     "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
   },
   "eslintConfig": {
@@ -35,8 +43,9 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
-    "postcss-cli": "^8.0.0",
-    "tailwindcss": "^1.8.10"
+    "autoprefixer": "^10.0.2",
+    "postcss": "^8.1.8",
+    "postcss-cli": "^8.3.0",
+    "tailwindcss": "^2.0.1"
   }
 }

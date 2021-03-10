@@ -9,17 +9,17 @@ const SolutionDetails = (props) => {
     const id = props.match.params.id;
     const { docs } = useFirestore("solutions", id);
     const { deleteSolution } = useSolution('solutions');
-    
-    if(docs.length === 0) return <p className="ml-64">Loading project...</p>
+
+    if (docs.length === 0) return <p className="ml-64">Loading project...</p>
     return (
-        <div className="ml-64">
-            <h1 className="text-center text-5xl font-semibold text-blue-900 mt-8">{docs[0].title}</h1>
-            <div className="flex justify-between items-center px-5">
+        <div className="ml-56 px-2 mb-4">
+            <h1 className="text-center text-5xl font-semibold font-heading text-purple-500 mt-8">{docs[0].title}</h1>
+            <div className="flex justify-between items-center px-2">
                 <div className="flex items-center mt-4">
-                    <img className="rounded-full mr-1 w-12" src={docs[0].photoURL} alt="Profile"/>
+                    <img className="rounded-full mr-1 w-12 border-purple-500 border-2" src={docs[0].photoURL} alt="Profile" />
                     <div className="flex flex-col pl-1">
-                        <span className="text-navItem">{docs[0].author}</span>
-                        <span className="text-navItem">{moment(docs[0].createdAt.toDate()).startOf('day').fromNow()}</span>
+                        <span className="text-navItem text-sm text-gray-300">{docs[0].author}</span>
+                        <span className="text-navItem text-xs text-gray-400">{moment(docs[0].createdAt.toDate()).startOf('day').fromNow()}</span>
                     </div>
                 </div>
                 <div>

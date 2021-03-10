@@ -1,21 +1,42 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
+import Lottie from 'react-lottie';
 
 // custom components
-import hero from '../../assets/illustrations/main.svg'
-import SignUpButton from '../smallComponents/SignUpButton'
+import { useAuth } from '../../context/AuthContext'
+import Button from '../smallComponents/Button'
+import SignedOutLinks from '../layouts/SignedOutLinks';
 
-const Hero = () => {
+const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route }) => {
+    const { currentUser } = useAuth();
+    const displayName = currentUser ? currentUser.displayName.split(' ')[0] : 'Coder';
+    const history = useHistory();
+
+    // Lottie options
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: mainImg,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        }
+    };
+
     return (
         <div className="mt-2 mb-8">
-            <p className="font-heading text-lg font-medium text-white">Hello Coder,</p>
-            <h2 className="font-heading text-3xl font-bold text-white">Welcome To Coding Space <span role="img" aria-label="Hello">👋</span></h2>
-            <header className="mt-4 flex bg-gradient-to-br from-purple-500 to-indigo-500 rounded-3xl px-8 h-72 items-center justify-between shadow-2xl">
-                <div className="w-1/3">
-                    <h1 className="text-white text-2xl font-semibold font-heading pb-3">Master Web and Mobile Development by building real world projects</h1>
-                    <SignUpButton color="bg-gray-900" />
+            <p className={`font-heading ${homepage ? "text-lg font-normal" : "text-3xl font-bold"} text-white`}>{`Hello ${displayName} 👋,`}</p>
+            <p className={`font-heading ${homepage ? "text-3xl font-bold" : "text-lg font-normal"} text-white`}>{subTitle}</p>
+            <header className="mt-4 flex items-center justify-between bg-gradient-to-br from-purple-500 to-indigo-500 rounded-3xl px-8 h-72 shadow-2xl">
+                <div className="w-2/6">
+                    <h1 className="text-white text-2xl font-semibold font-heading pb-3">{title}</h1>
+                    {currentUser ? <Button name={btnTitle} logo={logoTitle} bgColor="bg-gray-900" handleClick={() => history.push(route)} /> : <SignedOutLinks bgColor="bg-gray-900" />}
                 </div>
-                <div className="w-96">
-                    <img className="w-full" src={hero} alt="Hero"/>
+                <div>
+                    {homepage ?
+                        <Lottie options={defaultOptions}
+                            height={320}
+                            width={400}
+                        /> : <img className="h-64" src={mainImg} alt="Hero" />}
                 </div>
             </header>
         </div>

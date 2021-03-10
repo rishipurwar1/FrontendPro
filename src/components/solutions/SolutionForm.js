@@ -1,5 +1,5 @@
 import React from 'react'
-import {useState} from 'react'
+import { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { Redirect } from 'react-router-dom'
 import { useSolution } from '../../hooks/useFirestore'
@@ -10,7 +10,7 @@ const SolutionForm = () => {
 
     //checking user is logged in or not
     const { currentUser } = useAuth();
-    
+
     // Initial state
     const initialState = {
         title: '',
@@ -18,7 +18,7 @@ const SolutionForm = () => {
         live_website_url: '',
         feedback: '',
     }
-    
+
     //setting the solution form values
     const [values, setValues] = useState(initialState);
 
@@ -37,7 +37,7 @@ const SolutionForm = () => {
         addSolution(values)
         setValues(initialState);
     }
-    
+
 
     //if not redirect to homepage
     if (!currentUser) return <Redirect to='/' />
@@ -80,7 +80,7 @@ const SolutionForm = () => {
                     </button>
                 </div>
             </form>
-    </div>
+        </div>
     )
 }
 

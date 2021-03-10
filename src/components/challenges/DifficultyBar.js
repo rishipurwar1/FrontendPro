@@ -1,51 +1,28 @@
 import React from 'react'
+import Badge from '../smallComponents/Badge';
 
-const DifficultyBar = () => {
+const DifficultyBar = ({ difficultyLevel }) => {
+    // const level = 'Hard'
+    let middleColor = 'gray';
+    let lastColor = 'gray';
+    let badgeColor = 'green'
+    if (difficultyLevel === 'Intermediate') {
+        middleColor = 'orange';
+        badgeColor = 'orange';
+    } else if (difficultyLevel === 'Hard') {
+        middleColor = 'orange';
+        lastColor = 'red';
+        badgeColor = 'red';
+    }
     return (
-        <div className="max-w-xl mx-4 my-2">
-        <p className="pb-2 px-2 text-gray-300 font-bold">Beginner</p>	
-        <div className="flex pb-3">
-            <div className="flex-1 z-10">
-                <div className="w-6 h-6 bg-purple-500 mx-0 rounded-full border-2 border-purple-500">
-                </div>
+        <div className="relative mx-4">
+            <Badge badgeColor={badgeColor} name={difficultyLevel} />
+            <div className="overflow-hidden h-2 mb-4 text-xs flex bg-transparent">
+                <div style={{ width: "33%" }} className="shadow-none flex flex-col text-center whitespace-nowrap rounded justify-center bg-green-500"></div>
+                <div style={{ width: "33%" }} className={`shadow-none flex flex-col text-center rounded whitespace-nowrap justify-center bg-${middleColor}-500 mx-1`}></div>
+                <div style={{ width: "34%" }} className={`shadow-none flex flex-col text-center rounded whitespace-nowrap justify-center bg-${lastColor}-500`}></div>
             </div>
-    
-    
-            <div className="w-full align-center items-center align-middle content-center flex">
-            <div className="w-full items-center align-middle align-center flex-1">
-                    <div className="bg-transparent border-2 -ml-2 rounded-full border-purple-500 py-xs w-full"></div>
-                </div>
-            </div>
-        
-            
-            <div className="flex-1 z-10">
-                <div className="w-6 h-6 bg-white -ml-4 rounded-full border-2 border-purple-500">
-                </div>
-            </div>
-        
-            <div className="w-full align-center items-center align-middle content-center flex">
-            <div className="w-full items-center align-middle align-center flex-1">
-                     <div className="bg-white border-2 -ml-2 rounded-full border-purple-500 py-xs w-full"></div>
-                </div>
-            </div>
-        
-            <div className="flex-1 z-10">
-                <div className="w-6 h-6 bg-white -ml-4 rounded-full border-2 border-purple-500">
-                </div>
-            </div>
-        
-        
-            <div className="w-full align-center items-center align-middle content-center flex">
-                <div className="w-full items-center align-middle align-center flex-1">
-                     <div className="bg-white border-2 -ml-2 rounded-full border-purple-500 py-xs w-full"></div>
-                </div>
-            </div>
-            <div className="flex-1 z-10">
-                <div className="w-6 h-6 bg-white border-2 border-purple-500 -ml-4 rounded-full">
-                </div>
-            </div>	
-        </div>
-    </div>
+        </div >
     )
 }
 

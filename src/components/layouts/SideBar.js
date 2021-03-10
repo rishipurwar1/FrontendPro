@@ -8,8 +8,8 @@ const Sidebar = () => {
     return (
         <div className="container">
             <nav className="flex relative">
-                <div className="w-60 border-r border-gray-800 fixed h-full z-10">
-                    <Link to="/" className="text-white font-heading uppercase text-center block m-4 mb-8 font-semibold text-2xl"><i className="fas fa-rocket mr-1"></i>CodingSpace</Link>
+                <div className="w-56 border-r border-gray-800 fixed h-full z-10">
+                    <Link to="/" className="text-white font-heading uppercase text-center block m-4 mb-8 font-semibold text-xl"><i className="fas fa-rocket mr-1"></i>CodingSpace</Link>
                     <ul>
                         <NavItem item="dashboard" icon="fas fa-laptop-house"/>
                         <NavItem item="challenges" icon="fas fa-code mr-3"/>

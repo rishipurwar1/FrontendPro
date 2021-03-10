@@ -20,24 +20,26 @@ import Footer from './components/layouts/Footer';
 const App = () => {
   return (
     <BrowserRouter>
-        <AuthProvider>
-            <div className="relative">
-              <SideBar />
-              <Navbar />
-              <Switch >
-                <Route exact path="/" component={Dashboard} />
-                <Route path="/challenges" component={ ChallengesList } />
-                <Route path='/challenge/:id' component={ChallengeDetails} />
-                <Route path="/resources" component={ Resources } />
-                <Route path="/roadmaps" component={ Roadmaps } />
-                <Route path="/solutions" component={ SolutionList } />
-                <Route exact path="/solution/:id" component={ SolutionDetails } />
-                <Route path="/solution/:id/edit" component={ SolutionEditForm } />
-                <Route path="/create" component={ SolutionForm } />
-              </Switch>
-              <Footer />
-            </div>
-        </AuthProvider>
+      <AuthProvider>
+        <div className="relative">
+          <SideBar />
+          <Navbar />
+          <Switch >
+            <Route exact path="/" component={Dashboard} />
+            <Route path="/challenges" component={ChallengesList} />
+            <Route path='/challenge/:id' component={ChallengeDetails} />
+            <Route path="/resources" component={Resources} />
+            <Route path="/roadmaps" component={Roadmaps} />
+            <Route path="/solutions" component={SolutionList} />
+            <Route exact path="/solution/:id" component={SolutionDetails} />
+            <Route path="/solution/:id/edit" component={SolutionEditForm} />
+            <Route path="/solution/:id/edit" component={SolutionEditForm} />
+            <Route path="/create" component={SolutionForm} />
+            <Route path="/mysolution" component={MySolutions} />
+          </Switch>
+          <Footer />
+        </div>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

@@ -11,7 +11,7 @@ const HowItWorks = () => {
             <div className="grid grid-cols-3 gap-6 mt-8">
                 <Card
                     name="Sign up for free in 30 seconds" 
-                    info="Connect your GitHub account using sign in button . You'll instantly gain excess to our all the challenges"
+                    info="Connect your GitHub account using Sign Up button. You'll instantly gain excess to our all the challenges"
                     image="fas fa-user-lock"
                     gradient="bg-gradient-to-br from-lightBlue-400 to-indigo-500"
                     color="text-lightBlue-200"
@@ -25,7 +25,7 @@ const HowItWorks = () => {
                 />
                 <Card 
                     name="Share your solution" 
-                    info="After completing the challenge, you can share your work with the world."
+                    info="After completing the challenge, you can share your work with the world and get feedback from the community members"
                     image="fas fa-share-alt"
                     gradient="bg-gradient-to-br from-purple-500 to-indigo-500"
                     color="text-purple-200"

@@ -1,23 +1,44 @@
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 import Spinner from '../smallComponents/Spinner';
 
-const ShowWebsite = ({url, title, github}) => {
+const ShowWebsite = ({ url, title, github }) => {
+    const siteView = ['w-96 mx-auto', 'w-full'];
     const [loading, setLoading] = useState(true);
+    const [view, setView] = useState(1);
     const onLoad = () => {
         setLoading(false)
     }
     const onError = () => {
         console.log('error');
     }
-     return (
-        <div className="mx-2">
-            <div className="mb-3 mt-5">
-                <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" href={github} target="_blank" rel="noopener noreferrer"><i className="fas fa-chevron-left pr-1"></i><i className="fas fa-chevron-right pr-1"></i>Code</a>
-                <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href={url} target="_blank" rel="noopener noreferrer">Live Website</a>
+    return (
+        <div className={`px-2 pt-4 ${siteView[view]}`}>
+            {/* <div className="mb-3 mt-5">
+                <a className="transition duration-500 ease-in-out bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded mr-2" href={github} target="_blank" rel="noopener noreferrer"><i className="fas fa-chevron-left pr-1"></i><i className="fas fa-chevron-right pr-1"></i>Code</a>
+                <a className="transition duration-500 ease-in-out bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded" href={url} target="_blank" rel="noopener noreferrer">Live Website</a>
+            </div> */}
+            <div className="h-12 w-full bg-purple-500 flex items-center justify-between rounded-t">
+                <div className="w-15">
+                    <span className="w-3 h-3 rounded-full inline-block bg-red-500 ml-2"></span>
+                    <span className="w-3 h-3 rounded-full bg-yellow-400 inline-block mx-2"></span>
+                    <span className="w-3 h-3 rounded-full inline-block bg-green-500"></span>
+                </div>
+                <div>
+                    <i class="fas fa-desktop pr-4 text-white text-3xl cursor-pointer" onClick={() => setView(1)}></i>
+                    <i class="fas fa-mobile-alt text-white text-3xl cursor-pointer" onClick={() => setView(0)}></i>
+                </div>
+                <div>
+                    <a href={github} target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-code text-white pr-4 text-2xl cursor-pointer"></i>
+                    </a>
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt pr-2 text-white text-2xl cursor-pointer"></i>
+                    </a>
+                </div>
             </div>
-            <div className="relative">
+            <div className="relative border-solid border-4 border-purple-500">
                 {loading ? <Spinner /> : null}
-                <iframe className="absolute top-0 left-0 w-full h-screen overflow-y-scroll border-solid border-2 border-gray-300" src={url} onLoad={() => onLoad()} onError={() => onError()} title={title} height="700px"></iframe>
+                <iframe className="w-full h-screen overflow-y-scroll" src={url} onLoad={() => onLoad()} onError={() => onError()} title={title} height="700px"></iframe>
             </div>
         </div>
     )

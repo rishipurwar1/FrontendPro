@@ -16,6 +16,7 @@ import SolutionDetails from './components/solutions/SolutionDetails';
 import SolutionEditForm from './components/solutions/SolutionEditForm';
 import Navbar from './components/layouts/Navbar';
 import Footer from './components/layouts/Footer';
+import MySolutions from './components/MySolutions/MySolutions';
 
 const App = () => {
   return (
@@ -34,8 +35,8 @@ const App = () => {
             <Route exact path="/solution/:id" component={SolutionDetails} />
             <Route path="/solution/:id/edit" component={SolutionEditForm} />
             <Route path="/solution/:id/edit" component={SolutionEditForm} />
-            <Route path="/create" component={SolutionForm} />
-            <Route path="/mysolution" component={MySolutions} />
+            <Route path="/submit/:id" component={SolutionForm} />
+            <Route path="/mysolutions" component={MySolutions} />
           </Switch>
           <Footer />
         </div>

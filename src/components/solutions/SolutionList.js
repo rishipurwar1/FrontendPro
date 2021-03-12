@@ -7,7 +7,7 @@ import SolutionSummary from './SolutionSummary'
 import challengeSVG from '../../assets/illustrations/web.svg'
 
 const ShowSolutions = () => {
-    const { docs } = useFirestore('solutions');
+    const { docs } = useFirestore('solutions', null, null, null, true);
     return (
         <div className="ml-56 px-5">
             <Hero

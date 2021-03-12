@@ -21,7 +21,7 @@ const ChallengesList = () => {
             <div className="grid gap-4 grid-cols-3">
                 {docs && docs.map(challenge => {
                     return (
-                        <ChallengeCard key={challenge.id} challenge={challenge} />
+                        <ChallengeCard key={challenge.id} challenge={challenge} challengelist btnTitle="View Challenge" />
                     )
                 })}
             </div>

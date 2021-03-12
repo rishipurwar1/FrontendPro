@@ -11,6 +11,8 @@ import Badge from '../smallComponents/Badge';
 const ChallengeHeader = ({ docs }) => {
     const { currentUser } = useAuth();
     const displayName = currentUser ? currentUser.displayName.split(' ')[0] : 'Coder';
+
+    const solutionDetails = docs.map(({ id, ...r }) => r);
     return docs.length ?
         (
             <div className="mt-2 mb-8">
@@ -23,7 +25,7 @@ const ChallengeHeader = ({ docs }) => {
                             {docs[0].tags.map(tag => <Badge key={tag} name={tag} badgeColor="gray" challengeDetails />)}
                         </div>
                         <p className="text-base pb-2 text-gray-200">{docs[0].description}</p>
-                        <DownloadButton color="bg-gray-900" />
+                        <DownloadButton challengeDetails={solutionDetails} color="bg-gray-900" />
                     </div>
                     <div className="w-96 p-5 px-6">
                         <Image className="rounded-3xl" cloudName="di5hmgowi" public-id={docs[0].image[0]}>

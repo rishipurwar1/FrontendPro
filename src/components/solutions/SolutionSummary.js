@@ -5,8 +5,8 @@ import { Image, Placeholder } from 'cloudinary-react';
 
 const SolutionSummary = ({ solution }) => {
     return (
-        <div className="w-72 h-auto rounded overflow-hidden shadow-2xl">
-            <Image cloudName="di5hmgowi" loading="lazy" height="270" public-id="challenges/61c52224321080992995b4a1f79158ef_r4rkpg">
+        <div className="max-w-sm h-auto rounded overflow-hidden shadow-2xl">
+            <Image cloudName="di5hmgowi" loading="lazy" height="270" public-id="challenges/61c52224321080992995b4a1f79158ef_r4rkpg" alt="solution">
                 <Placeholder type="pixelate" />
             </Image>
             <div className="solution-card flex flex-col justify-between bg-gray-800">

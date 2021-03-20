@@ -16,7 +16,7 @@ const useFirestore = (collection, docId, userID, openTab, completed) => {
     if (docId) {
       subject = subject.doc(docId);
     } else if (userID) {
-      openTab === 1 ? subject = subject.where('completed', '==', false) : subject = subject.where('completed', '==', true);
+      openTab === 1 ? subject = subject.where('userID', '==', userID).where('completed', '==', false) : subject = subject.where('userID', '==', userID).where('completed', '==', true);
     } else if (completed) {
       subject = subject.where('completed', '==', true);
     }

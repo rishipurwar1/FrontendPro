@@ -39,7 +39,7 @@ const Tabs = ({ userID }) => {
                                     (openTab === 2
                                         ? "text-white bg-gradient-to-br from-purple-500 to-indigo-500"
                                         : "text-purple-500 bg-white")
-                                } bg-gradient-to-br from-purple-500 to-indigo-500
+                                }
                                 onClick={e => {
                                     e.preventDefault();
                                     setOpenTab(2);
@@ -57,7 +57,7 @@ const Tabs = ({ userID }) => {
                             <div className="px-4 py-5 flex-auto">
                                 <div className="tab-content tab-space">
                                     <div className={openTab === 1 ? "block" : "hidden"} id="link1">
-                                        <div className="grid gap-4 grid-cols-3">
+                                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
                                             {docs && docs.map(challenge => {
                                                 return (
                                                     <ChallengeCard key={challenge.id} challenge={challenge} btnTitle="Submit Solution"
@@ -66,7 +66,7 @@ const Tabs = ({ userID }) => {
                                         </div>
                                     </div>
                                     <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                                        <div className="grid gap-4 grid-cols-3">
+                                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-centernpm i selenium-webdriver">
                                             {docs && docs.map(challenge => {
                                                 return (
                                                     <ChallengeCard key={challenge.id} challenge={challenge} btnTitle="Submit Solution"

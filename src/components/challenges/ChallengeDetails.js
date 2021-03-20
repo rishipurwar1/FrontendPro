@@ -16,7 +16,7 @@ const ChallengeDetails = (props) => {
         <div className="ml-56 px-4">
             <ChallengeHeader docs={docs} />
             <div className="overflow-hidden relative">
-                <iframe className="iframe-embed border-gray-50 w-full -mb-10" src={'https://www.figma.com/embed?embed_host=share&url=' + figmaURLs[figmaURL]} title={`screen-${figmaURL}`} allowFullScreen></iframe>
+                <iframe className="iframe-embed border-gray-50 w-full -mb-12" src={'https://www.figma.com/embed?embed_host=share&url=' + figmaURLs[figmaURL]} title={`screen-${figmaURL}`} allowFullScreen></iframe>
                 <DropDown setFigmaURL={(index) => setFigmaURL(index)} />
             </div>
             <div className="flex pt-4">

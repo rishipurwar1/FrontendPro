@@ -1,9 +1,14 @@
 const colors = require("tailwindcss/colors");
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: {
+      'xs': '300px',
+      ...defaultTheme.screens,
+    },
     extend: {
       colors: {
         'primary': '#21242D',
@@ -26,7 +31,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      gridColumn: ['last'],
+    },
   },
   plugins: [],
 }

@@ -13,10 +13,6 @@ const ShowWebsite = ({ url, title, github }) => {
     }
     return (
         <div className={`px-2 pt-4 ${siteView[view]}`}>
-            {/* <div className="mb-3 mt-5">
-                <a className="transition duration-500 ease-in-out bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded mr-2" href={github} target="_blank" rel="noopener noreferrer"><i className="fas fa-chevron-left pr-1"></i><i className="fas fa-chevron-right pr-1"></i>Code</a>
-                <a className="transition duration-500 ease-in-out bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded" href={url} target="_blank" rel="noopener noreferrer">Live Website</a>
-            </div> */}
             <div className="h-12 w-full bg-purple-500 flex items-center justify-between rounded-t">
                 <div className="w-15">
                     <span className="w-3 h-3 rounded-full inline-block bg-red-500 ml-2"></span>
@@ -24,15 +20,15 @@ const ShowWebsite = ({ url, title, github }) => {
                     <span className="w-3 h-3 rounded-full inline-block bg-green-500"></span>
                 </div>
                 <div>
-                    <i class="fas fa-desktop pr-4 text-white text-3xl cursor-pointer" onClick={() => setView(1)}></i>
-                    <i class="fas fa-mobile-alt text-white text-3xl cursor-pointer" onClick={() => setView(0)}></i>
+                    <i className="fas fa-desktop pr-4 text-white text-3xl cursor-pointer" onClick={() => setView(1)}></i>
+                    <i className="fas fa-mobile-alt text-white text-3xl cursor-pointer" onClick={() => setView(0)}></i>
                 </div>
                 <div>
                     <a href={github} target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-code text-white pr-4 text-2xl cursor-pointer"></i>
+                        <i className="fas fa-code text-white pr-4 text-2xl cursor-pointer" title="Github URL"></i>
                     </a>
                     <a href={url} target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-external-link-alt pr-2 text-white text-2xl cursor-pointer"></i>
+                        <i className="fas fa-external-link-alt pr-2 text-white text-2xl cursor-pointer" title="Live Website"></i>
                     </a>
                 </div>
             </div>

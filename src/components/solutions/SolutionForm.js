@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { Redirect } from 'react-router-dom'
 import { useSolution } from '../../hooks/useFirestore'
-import mainImg from '../../assets/illustrations/main.svg'
+import mainImg from '../../assets/animated_illustrations/solution_animation.json'
 import Hero from '../dashboard/Hero'
 
 const SolutionForm = (props) => {
@@ -55,6 +55,7 @@ const SolutionForm = (props) => {
                 btnTitle="Explore Solutions "
                 logoTitle="fas fa-arrow-right"
                 route="/solutions"
+                lottie
             />
             <div className="w-full mx-auto mt-8">
                 <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>

@@ -13,7 +13,7 @@ const Tabs = ({ userID }) => {
                         className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row"
                         role="tablist"
                     >
-                        <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <li className="-mb-px xs:mb-4 sm:mr-2 last:mr-0 flex-auto text-center">
                             <a
                                 className={
                                     "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
@@ -57,7 +57,7 @@ const Tabs = ({ userID }) => {
                             <div className="px-4 py-5 flex-auto">
                                 <div className="tab-content tab-space">
                                     <div className={openTab === 1 ? "block" : "hidden"} id="link1">
-                                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
+                                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center items-center">
                                             {docs && docs.map(challenge => {
                                                 return (
                                                     <ChallengeCard key={challenge.id} challenge={challenge} btnTitle="Submit Solution"

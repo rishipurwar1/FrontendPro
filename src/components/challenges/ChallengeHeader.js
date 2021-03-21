@@ -21,13 +21,13 @@ const ChallengeHeader = ({ docs, button }) => {
             <div className="mt-2 mb-8">
                 <h2 className="font-heading text-3xl font-bold text-white">Hello {displayName} <span role="img" aria-label="Hello">👋</span>,</h2>
                 <p className="font-heading text-lg font-normal text-white">Today is a great day to start this challenge <span role="img" aria-label="welcome">😊</span></p>
-                <header className="mt-4 flex items-center justify-between  bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl max-h-96 shadow-2xl px-8 py-4">
-                    <div>
-                        <h2 className="leading-snug text-5xl text-white font-semibold font-heading">{docs[0].title}</h2>
+                <header className="mt-4 flex items-center xs:justify-center sm:justify-between bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl shadow-2xl xs:px-5 md:px-8 py-4 xs:h-full sm:max-h-96 xs:flex-wrap-reverse sm:flex-nowrap">
+                    <div className="xs:w-full sm:w-1/2">
+                        <h2 className="leading-snug xs:text-3xl lg:text-5xl text-white font-semibold font-heading">{docs[0].title}</h2>
                         <div className="py-2">
                             {docs[0].tags.map(tag => <Badge key={tag} name={tag} badgeColor="gray" challengeDetails />)}
                         </div>
-                        <p className="text-base mb-4 w-1/2 text-gray-200">{docs[0].description}</p>
+                        <p className="text-base mb-4 xs:w-full sm:w-4/5 lg:w-3/5 text-gray-200">{docs[0].description}</p>
                         {button ? <Button
                             name="Explore Solutions "
                             logo="fas fa-arrow-right"
@@ -37,8 +37,8 @@ const ChallengeHeader = ({ docs, button }) => {
                             challengeDetails={solutionDetails} color="bg-gray-900"
                         />}
                     </div>
-                    <div>
-                        <Image className="rounded-xl max-h-80 max-w-lg" cloudName="di5hmgowi" public-id={docs[0].image[0]}>
+                    <div className="">
+                        <Image className="rounded-xl xs:h-auto xs:w-full sm:w-auto sm:h-64 md:h-72 lg:h-80 xs:mb-4 sm:mb-0" cloudName="di5hmgowi" public-id={docs[0].image[0]}>
                             <Placeholder type="pixelate" />
                             <Transformation crop="fill" />
                         </Image>

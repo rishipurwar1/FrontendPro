@@ -23,9 +23,6 @@ const Navbar = () => {
     // }
     const links = currentUser ? <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut} /> : <SignedOutLinks bgColor="bg-gray-800" />;
 
-    // const history = useHistory();
-    // console.log(history)
-
     return (
         <nav className="ml-60 p-4">
             <button className="p-1 -ml-1 mr-5 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple" aria-label="Menu"><i className="fas fa-bars"></i></button>

@@ -7,7 +7,7 @@ import Badge from '../smallComponents/Badge';
 const ChallengeCard = ({ challenge, challengelist, btnTitle }) => {
     const link = challengelist ? '/challenge/' + challenge.id : '/submit/' + challenge.id;
     return (
-        <div className="flex flex-col max-w-sm rounded-md shadow-2xl bg-gray-800 mb-4 overflow-hidden">
+        <div className="flex flex-col max-w-sm rounded-md shadow-2xl bg-gray-800 overflow-hidden">
             <div className="h-auto">
                 <Image className="w-full h-full" cloudName="di5hmgowi" alt="challenge design" loading="lazy" public-id={challenge.image[0]}>
                     <Placeholder type="pixelate" />

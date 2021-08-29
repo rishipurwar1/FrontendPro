@@ -55,7 +55,7 @@ export const AuthProvider = ({
         githubSignOut
     }
 
-    if (loading) return <h1 className="text-white text-center text-xl">Loading...</h1>
+    // if (loading) return <h1 className="text-white text-center text-xl">Loading...</h1>
 
     return (
         <AuthContext.Provider value={

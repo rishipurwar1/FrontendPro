@@ -6,7 +6,12 @@ import { useSolution } from '../../hooks/useFirestore'
 import mainImg from '../../assets/animated_illustrations/solution_animation.json'
 import Hero from '../dashboard/Hero'
 
+import Confetti from 'react-dom-confetti';
+
+
 const SolutionForm = (props) => {
+    const [confetti, setConfetti] = useState(false);
+
     const id = props.match.params.id;
     //getting the addSolution function
     const { updateSolution } = useSolution("solutions")
@@ -37,8 +42,8 @@ const SolutionForm = (props) => {
     //handling submit event
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(values)
         updateSolution(values, id)
+        setConfetti(!confetti)
         setValues(initialState);
     }
 
@@ -63,35 +68,36 @@ const SolutionForm = (props) => {
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
                             Challenge Title
-                    </label>
+                        </label>
                         <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" onChange={handleInputChange} type="text" value={values.title} placeholder="Enter Title" />
                     </div>
                     {/* challenge github url */}
                     <div className="mb-6">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="github_url">
                             Github Repository URL
-                    </label>
+                        </label>
                         <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="github_url" onChange={handleInputChange} type="text" value={values.github_url} placeholder="Github Repository URL" />
                     </div>
                     {/* live website url */}
                     <div className="mb-6">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="live_website_url">
                             Live Website URL
-                    </label>
+                        </label>
                         <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="live_website_url" onChange={handleInputChange} type="text" value={values.live_website_url} placeholder="Live Website URL" />
                     </div>
                     {/* feedback */}
                     <div className="mb-6">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="feedback">
                             Ask for feedback
-                    </label>
+                        </label>
                         <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="feedback" onChange={handleInputChange} type="text" value={values.feedback} placeholder="Ask for feedback from the community." />
                     </div>
                     {/* submit button */}
+                    <Confetti active={confetti} />
                     <div className="flex items-center justify-between">
                         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                             Submit Solution
-                    </button>
+                        </button>
                     </div>
                 </form>
             </div>

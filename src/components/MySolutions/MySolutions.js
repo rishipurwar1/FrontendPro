@@ -10,6 +10,7 @@ const MySolutions = () => {
         <div className="sm:ml-0 md:ml-20 xl:ml-56 px-5 text-purple-50 min-h-screen">
             <Hero
                 title="Here you can find all the solutions and ongoing challenges details."
+                subTitle="Welcome To Coding Space 😊"
                 mainImg={mainImg}
                 btnTitle="Explore Challenges "
                 logoTitle="fas fa-arrow-right"

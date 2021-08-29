@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useFirestore from '../../hooks/useFirestore'
 import ChallengeCard from "../challenges/ChallengeCard";
+import SolutionSummary from "../solutions/SolutionSummary";
 
 const Tabs = ({ userID }) => {
     const [openTab, setOpenTab] = useState(1);
@@ -66,11 +67,11 @@ const Tabs = ({ userID }) => {
                                         </div>
                                     </div>
                                     <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-centernpm i selenium-webdriver">
-                                            {docs && docs.map(challenge => {
+                                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
+                                            {docs && docs.map(solution => {
                                                 return (
-                                                    <ChallengeCard key={challenge.id} challenge={challenge} btnTitle="Submit Solution"
-                                                    />)
+                                                    <SolutionSummary key={solution.id} solution={solution} />
+                                                )
                                             })}
                                         </div>
                                     </div>

@@ -8,7 +8,7 @@ const NavItem = ({ item, icon }) => {
                 <i className={`mr-3 ${icon} text-xl xl:text-base`}></i>
                 <span className="hidden xl:inline-block">{item.charAt(0).toUpperCase() + item.slice(1)}</span>
             </NavLink>
-        </li>
+        </li >
     )
 }
 

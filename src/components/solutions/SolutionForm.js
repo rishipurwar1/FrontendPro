@@ -5,12 +5,13 @@ import { Redirect } from 'react-router-dom'
 import { useSolution } from '../../hooks/useFirestore'
 import mainImg from '../../assets/animated_illustrations/solution_animation.json'
 import Hero from '../dashboard/Hero'
-
 import Confetti from 'react-dom-confetti';
 
+import Modal from '../smallComponents/Modal'
 
 const SolutionForm = (props) => {
     const [confetti, setConfetti] = useState(false);
+    const [submitModal, setSubmitModal] = useState(false)
 
     const id = props.match.params.id;
     //getting the addSolution function
@@ -43,7 +44,8 @@ const SolutionForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         updateSolution(values, id)
-        setConfetti(!confetti)
+        setSubmitModal(true);
+        setConfetti(!confetti);
         setValues(initialState);
     }
 
@@ -93,11 +95,14 @@ const SolutionForm = (props) => {
                         <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="feedback" onChange={handleInputChange} type="text" value={values.feedback} placeholder="Ask for feedback from the community." />
                     </div>
                     {/* submit button */}
-                    <Confetti active={confetti} />
-                    <div className="flex items-center justify-between">
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    <div className="flex justify-center">
+                        <Confetti className="z-50" active={confetti} />
+                    </div>
+                    <div className="">
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block w-full">
                             Submit Solution
                         </button>
+                        {submitModal && <Modal setShowModal={setSubmitModal} auth confetti={confetti} title="Thank You for submitting your solution." emoji="🙏" />}
                     </div>
                 </form>
             </div>

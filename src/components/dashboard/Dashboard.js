@@ -7,7 +7,7 @@ import heroImg from '../../assets/animated_illustrations/Blogging.json'
 
 const Dashboard = () => {
     return (
-        <div className="ml-56 px-5">
+        <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
             <Hero
                 title="Master Web and Mobile Development by building real world projects"
                 subTitle="Welcome To Coding Space 😊"
@@ -16,6 +16,7 @@ const Dashboard = () => {
                 logoTitle="fas fa-arrow-right"
                 homepage
                 route="/challenges"
+                lottie
             />
             <HowItWorks />
             <Challenges />

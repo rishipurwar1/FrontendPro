@@ -3,25 +3,13 @@
 }
 
 .card {
-  height: calc(100% - 270px);
+  max-height: 900px;
 }
 
-.solution-card {
-  height: calc(100% - 270px);
+.card img {
+  height: 290px;
 }
 
-/* .nav-item::before {
-  content: '';
-  width: 0;
-  height: 10px;
-  background: black; 
-  position: absolute; 
-  top: 100%; 
-  left: 0; 
-  transition: .5s;
+.card-section {
+  height: calc(100% - 290px);
 }
-
-.nav-item:hover::before {
-  width: 50%; 
-  transform: translateX(100%);
-} */

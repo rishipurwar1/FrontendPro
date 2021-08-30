@@ -1,9 +1,14 @@
 const colors = require("tailwindcss/colors");
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: {
+      'xs': '300px',
+      ...defaultTheme.screens,
+    },
     extend: {
       colors: {
         'primary': '#21242D',
@@ -22,11 +27,20 @@ module.exports = {
       fontFamily: {
         'heading': ['Poppins', 'sans serif'],
         'body': ['Inter', 'sans serif'],
+      },
+      gridTemplateColumns: {
+        "layout-desktop": '200px 1fr',
+        "layout-tablet": '55px 1fr'
+      },
+      gridTemplateRows: {
+        "layout-desktop": "80px 1fr 80px",
       }
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      gridColumn: ['last'],
+    },
   },
   plugins: [],
 }

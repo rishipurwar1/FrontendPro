@@ -4,28 +4,31 @@ import React from 'react'
 import useFirestore from '../../hooks/useFirestore'
 import Hero from '../dashboard/Hero';
 import SolutionSummary from './SolutionSummary'
-import challengeSVG from '../../assets/illustrations/web.svg'
+import solutionLottie from '../../assets/animated_illustrations/solution_animation.json'
 
 const ShowSolutions = () => {
-    const { docs } = useFirestore('solutions');
+    const { docs } = useFirestore('solutions', null, null, null, true);
     return (
-        <div className="ml-56 px-5">
+        <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
             <Hero
                 title="Master Web and Mobile Development by building real world projects"
                 subTitle="Welcome To Coding Space 😊"
-                mainImg={challengeSVG}
+                mainImg={solutionLottie}
                 btnTitle="My Solutions "
                 logoTitle="fas fa-arrow-right"
-                route="/challenges"
+                route="/mysolutions"
+                lottie
             />
-            <h1 className="text-5xl heading text-center p-5 font-semibold text-white pb-7">Solutions</h1>
-            <div className="grid grid-cols-3 gap-4">
-                {docs && docs.map(solution => {
-                    return (
-                        <SolutionSummary key={solution.id} solution={solution} />
-                    )
-                })}
-            </div>
+            <main>
+                <h1 className="text-5xl heading text-center p-5 font-semibold text-white pb-7">Solutions</h1>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">
+                    {docs && docs.map(solution => {
+                        return (
+                            <SolutionSummary key={solution.id} solution={solution} />
+                        )
+                    })}
+                </div>
+            </main>
         </div>
     )
 }

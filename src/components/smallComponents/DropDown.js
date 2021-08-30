@@ -25,11 +25,11 @@ const DropDown = ({ setFigmaURL }) => {
               <button onClick={() => {
                 setFigmaURL(0);
                 setActive(!isActive);
-              }} className="block text-left pl-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full focus:outline-none" role="menuitem"><i class="fas fa-desktop pr-2"></i>Desktop</button>
+              }} className="block text-left pl-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full focus:outline-none" role="menuitem"><i className="fas fa-desktop pr-2"></i>Desktop</button>
               <button onClick={() => {
                 setFigmaURL(1);
                 setActive(!isActive);
-              }} className="block text-left pl-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full focus:outline-none" role="menuitem"><i class="fas fa-mobile-alt pr-2"></i>Mobile</button>
+              }} className="block text-left pl-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full focus:outline-none" role="menuitem"><i className="fas fa-mobile-alt pr-2"></i>Mobile</button>
             </div>
           </div>
         ) : null}

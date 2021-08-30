@@ -32,7 +32,7 @@ export const AuthProvider = ({
     useEffect(() => {
         const unsubscribe = auth().onAuthStateChanged(async userAuth => {
             // setCurrentUser(user);
-            if(userAuth) {
+            if (userAuth) {
                 const useRef = await createUserProfileDocument(userAuth);
                 useRef.onSnapshot(snapShot => {
                     // console.log(snapShot.data());
@@ -55,11 +55,13 @@ export const AuthProvider = ({
         githubSignOut
     }
 
-    return ( 
-        <AuthContext.Provider value = {
+    // if (loading) return <h1 className="text-white text-center text-xl">Loading...</h1>
+
+    return (
+        <AuthContext.Provider value={
             value
         } > {
-            !loading && children
-        } </AuthContext.Provider>
+                children
+            } </AuthContext.Provider>
     )
 }

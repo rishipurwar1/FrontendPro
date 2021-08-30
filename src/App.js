@@ -16,14 +16,15 @@ import SolutionDetails from './components/solutions/SolutionDetails';
 import SolutionEditForm from './components/solutions/SolutionEditForm';
 import Navbar from './components/layouts/Navbar';
 import Footer from './components/layouts/Footer';
+import MySolutions from './components/MySolutions/MySolutions';
 
 const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <div className="relative">
-          <SideBar />
+        <div className="relative grid md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6">
           <Navbar />
+          <SideBar />
           <Switch >
             <Route exact path="/" component={Dashboard} />
             <Route path="/challenges" component={ChallengesList} />
@@ -31,11 +32,11 @@ const App = () => {
             <Route path="/resources" component={Resources} />
             <Route path="/roadmaps" component={Roadmaps} />
             <Route path="/solutions" component={SolutionList} />
-            <Route exact path="/solution/:id" component={SolutionDetails} />
+            <Route path="/solution/:id" component={SolutionDetails} />
             <Route path="/solution/:id/edit" component={SolutionEditForm} />
             <Route path="/solution/:id/edit" component={SolutionEditForm} />
-            <Route path="/create" component={SolutionForm} />
-            <Route path="/mysolution" component={MySolutions} />
+            <Route path="/submit/:id" component={SolutionForm} />
+            <Route path="/mysolutions" component={MySolutions} />
           </Switch>
           <Footer />
         </div>

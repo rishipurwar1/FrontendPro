@@ -11,8 +11,8 @@ const SignedOutLinks = ({ bgColor }) => {
             await githubSignIn();
             // history.push("/");
             setLoading(false);
-        } catch {
-            console.log('error in signing in');
+        } catch (e) {
+            console.log(e);
         }
     }
     return (

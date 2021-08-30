@@ -4,35 +4,48 @@ import React from 'react'
 // import hero from '../../assets/illustrations/main.svg'
 import DownloadButton from '../smallComponents/DownloadButton';
 // import Tag from '../smallComponents/Tag';
-import { useAuth } from '../../context/AuthContext'
-import { Image, Placeholder } from 'cloudinary-react';
-import Badge from '../smallComponents/Badge';
+import { useHistory } from 'react-router-dom'
 
-const ChallengeHeader = ({ docs }) => {
+import { useAuth } from '../../context/AuthContext'
+import { Image, Placeholder, Transformation } from 'cloudinary-react';
+import Badge from '../smallComponents/Badge';
+import Button from '../smallComponents/Button';
+
+const ChallengeHeader = ({ docs, button }) => {
     const { currentUser } = useAuth();
     const displayName = currentUser ? currentUser.displayName.split(' ')[0] : 'Coder';
+    const history = useHistory();
+    const solutionDetails = docs.map(({ id, ...r }) => r);
     return docs.length ?
         (
             <div className="mt-2 mb-8">
                 <h2 className="font-heading text-3xl font-bold text-white">Hello {displayName} <span role="img" aria-label="Hello">👋</span>,</h2>
                 <p className="font-heading text-lg font-normal text-white">Today is a great day to start this challenge <span role="img" aria-label="welcome">😊</span></p>
-                <header className="mt-4 flex bg-gradient-to-br from-purple-500 to-indigo-500 rounded-3xl h-72 items-center justify-between shadow-2xl">
-                    <div className="w-1/3 p-5 pl-6">
-                        <h2 className="leading-snug text-3xl text-white font-bold">{docs[0].title}</h2>
+                <header className="mt-4 flex items-center xs:justify-center sm:justify-between bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl shadow-2xl xs:px-5 md:px-8 py-4 xs:h-full sm:max-h-96 xs:flex-wrap-reverse sm:flex-nowrap">
+                    <div className="xs:w-full sm:w-1/2">
+                        <h2 className="leading-snug xs:text-3xl lg:text-5xl text-white font-semibold font-heading">{docs[0].title}</h2>
                         <div className="py-2">
                             {docs[0].tags.map(tag => <Badge key={tag} name={tag} badgeColor="gray" challengeDetails />)}
                         </div>
-                        <p className="text-base pb-2 text-gray-200">{docs[0].description}</p>
-                        <DownloadButton color="bg-gray-900" />
+                        <p className="text-base mb-4 xs:w-full sm:w-4/5 lg:w-3/5 text-gray-200">{docs[0].description}</p>
+                        {button ? <Button
+                            name="Explore Solutions "
+                            logo="fas fa-arrow-right"
+                            bgColor="bg-gray-900"
+                            handleClick={() => history.push('/solutions')}
+                        /> : <DownloadButton
+                            challengeDetails={solutionDetails} color="bg-gray-900"
+                        />}
                     </div>
-                    <div className="w-96 p-5 px-6">
-                        <Image className="rounded-3xl" cloudName="di5hmgowi" public-id={docs[0].image[0]}>
+                    <div className="">
+                        <Image className="rounded-xl xs:h-auto xs:w-full sm:w-auto sm:h-64 md:h-72 lg:h-80 xs:mb-4 sm:mb-0" cloudName="di5hmgowi" public-id={docs[0].image[0]}>
                             <Placeholder type="pixelate" />
+                            <Transformation crop="fill" />
                         </Image>
                     </div>
                 </header>
             </div>
-        ) : null;
+        ) : <h1 className="ml-56 text-white">Loading...</h1>;
 }
 
 export default ChallengeHeader

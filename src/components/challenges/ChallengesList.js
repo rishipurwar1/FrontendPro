@@ -9,7 +9,7 @@ import challengeLottie from '../../assets/animated_illustrations/challenge.json'
 const ChallengesList = () => {
     const { docs } = useFirestore('challenges');
     return (
-        <main className="sm:ml-0 md:ml-20 xl:ml-56 px-5">
+        <main className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
             <Hero
                 title="Here are some handcrafted challenges for you. Keep Cooding! 👨‍💻"
                 subTitle="Today is a great day to start a new challenge 🧑‍💻" mainImg={challengeLottie}

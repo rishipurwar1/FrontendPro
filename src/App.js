@@ -22,9 +22,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <div className="relative">
-          <SideBar />
+        <div className="relative grid md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6">
           <Navbar />
+          <SideBar />
           <Switch >
             <Route exact path="/" component={Dashboard} />
             <Route path="/challenges" component={ChallengesList} />

@@ -12,7 +12,6 @@ const useFirestore = (collection, docId, userID, openTab, completed) => {
   useEffect(() => {
     let subject = firestore.collection(collection);
 
-
     if (docId) {
       subject = subject.doc(docId);
     } else if (userID) {
@@ -21,7 +20,7 @@ const useFirestore = (collection, docId, userID, openTab, completed) => {
       subject = subject.where('completed', '==', true);
     }
     let unsubscribe = subject
-      // .orderBy('createdAt', 'desc')
+      .orderBy('createdAt', 'desc')
       .onSnapshot(snapshot => {
         const items = docId ? [getDoc(snapshot)] : snapshot.docs.map(getDoc);
         setDocs(items);
@@ -49,7 +48,6 @@ export const useSolution = (collection) => {
           completed: false,
           createdAt: new Date()
         })
-      console.log('solution added in onprogress')
       // history.push("/solutions");
     } catch (error) {
       console.log(error);

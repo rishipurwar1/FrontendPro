@@ -12,9 +12,9 @@ const SolutionDetails = (props) => {
     const { docs } = useFirestore("solutions", id);
     const { currentUser } = useAuth();
     const [modal, setModal] = useState(false);
-    if (docs.length === 0) return <p className="ml-64">Loading project...</p>
+    if (docs.length === 0) return <p className="text-white text-center">Loading project...</p>
     return (
-        <div className="ml-56 px-2 mb-4">
+        <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3 mb-4">
             <ChallengeHeader docs={docs} button />
             {modal ? <ConfirmationModal setModal={setModal} docs={docs} /> : null}
             {/* <h1 className="text-center text-5xl font-semibold font-heading text-purple-500 mt-8">{docs[0].title}</h1> */}

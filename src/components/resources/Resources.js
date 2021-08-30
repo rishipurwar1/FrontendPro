@@ -9,7 +9,7 @@ import ResourceCard from './ResourceCard';
 const Resources = () => {
     const { docs } = useFirestore('resources');
     return (
-        <div className="ml-56 px-5">
+        <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
             <Hero
                 title="Here you can find all the frontend and backend development resources."
                 subTitle="Welcome To Coding Space 😊"

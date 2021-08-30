@@ -27,6 +27,13 @@ module.exports = {
       fontFamily: {
         'heading': ['Poppins', 'sans serif'],
         'body': ['Inter', 'sans serif'],
+      },
+      gridTemplateColumns: {
+        "layout-desktop": '200px 1fr',
+        "layout-tablet": '55px 1fr'
+      },
+      gridTemplateRows: {
+        "layout-desktop": "80px 1fr 80px",
       }
     },
   },

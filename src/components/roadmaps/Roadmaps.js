@@ -15,7 +15,7 @@ const Roadmaps = () => {
     };
     return (
         <div className="m-auto">
-            <p className="text-center text-white text-4xl">We're building!👷‍♂️</p>
+            <p className="text-center text-white text-4xl">We're building!<span role="img" aria-label="building-emoji">👷‍♂️</span></p>
             <Lottie
                 height={420}
                 width={420}

@@ -11,9 +11,9 @@ const ChallengeDetails = (props) => {
     const figmaURLs = ['https://www.figma.com/file/8VcQNbVQuqp4k70YqNQQjc/github-jobs-api', 'https://www.figma.com/file/8VcQNbVQuqp4k70YqNQQjc/github-jobs-api?node-id=102%3A4'];
     console.log(docs)
     const [figmaURL, setFigmaURL] = useState(0);
-    if (docs.length === 0) return <p className="ml-64">Loading project...</p>
+    if (docs.length === 0) return <p className="text-white text-center">Loading project...</p>
     return (
-        <div className="sm:ml-0 md:ml-20 xl:ml-56 px-4">
+        <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
             <ChallengeHeader docs={docs} />
             <div className="overflow-hidden relative">
                 <iframe className="iframe-embed border-gray-50 w-full -mb-12" src={'https://www.figma.com/embed?embed_host=share&url=' + figmaURLs[figmaURL]} title={`screen-${figmaURL}`} allowFullScreen></iframe>

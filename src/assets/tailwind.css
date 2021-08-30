@@ -6,6 +6,6 @@
 
 @tailwind utilities;
 
-/* .active {
+.active {
   @apply bg-gradient-to-br from-purple-500 to-indigo-500 text-white;
-} */
+}

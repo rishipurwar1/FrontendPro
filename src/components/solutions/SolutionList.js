@@ -9,7 +9,7 @@ import solutionLottie from '../../assets/animated_illustrations/solution_animati
 const ShowSolutions = () => {
     const { docs } = useFirestore('solutions', null, null, null, true);
     return (
-        <div className="sm:ml-0 md:ml-20 xl:ml-56 px-5">
+        <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
             <Hero
                 title="Master Web and Mobile Development by building real world projects"
                 subTitle="Welcome To Coding Space 😊"

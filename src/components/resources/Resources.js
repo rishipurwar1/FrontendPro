@@ -5,6 +5,7 @@ import useFirestore from '../../hooks/useFirestore';
 import Hero from '../dashboard/Hero'
 import ResourcesIll from '../../assets/animated_illustrations/resources.json'
 import ResourceCard from './ResourceCard';
+import SkeletonCard from '../skeletons/SkeletonCard';
 
 const Resources = () => {
     const { docs } = useFirestore('resources');
@@ -19,13 +20,13 @@ const Resources = () => {
                 lottie
             />
             <h2 className="text-5xl text-center text-white font-bold  font-heading">Resources</h2>
-            {docs && <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">
-                {docs.map(resource => {
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">
+                {docs.length ? docs.map(resource => {
                     return (
                         <ResourceCard key={resource.id} resource={resource} />
                     )
-                })}
-            </div>}
+                }) : [1, 2, 3, 4, 5, 6].map(n => <SkeletonCard key={n} />)}
+            </div>
         </div>
     )
 }

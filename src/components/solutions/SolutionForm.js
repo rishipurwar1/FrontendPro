@@ -54,7 +54,7 @@ const SolutionForm = (props) => {
     if (!currentUser) return <Redirect to='/' />
 
     return (
-        <div className="ml-56 px-5">
+        <div className="px-5">
             <Hero
                 title="Master Web and Mobile Development by building real world projects"
                 subTitle="Time to submit your solution and show it to the world 👍"

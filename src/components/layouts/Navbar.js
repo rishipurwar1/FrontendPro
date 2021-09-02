@@ -11,7 +11,7 @@ import SignedOutLinks from './SignedOutLinks';
 const Navbar = () => {
     const { currentUser, githubSignOut } = useAuth();
     // const [loading, setLoading] = useState(false);
-    const links = currentUser ? <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut} /> : <SignedOutLinks bgColor="bg-gray-900" />;
+    const links = currentUser ? <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut} /> : <SignedOutLinks bgColor="bg-gray-800" />;
 
     return (
         <nav className="p-5 py-8 hidden md:block md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2">

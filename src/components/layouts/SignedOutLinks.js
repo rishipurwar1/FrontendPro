@@ -16,7 +16,7 @@ const SignedOutLinks = ({ bgColor }) => {
         }
     }
     return (
-        <Button bgColor={bgColor} handleClick={handleSubmit} disabled={loading} name="Sign up with GitHub" logo="fab fa-github ml-2" />
+        <Button bgColor={bgColor} handleClick={handleSubmit} disabled={loading} name="Sign Up with Github" logo="fab fa-github ml-2" />
     )
 }
 

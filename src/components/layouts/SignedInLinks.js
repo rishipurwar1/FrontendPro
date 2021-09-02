@@ -17,19 +17,19 @@ const SignedInLinks = ({ profile, githubSignOut }) => {
         setLoading(false)
     }
     return (
-        <div className="relative">
+        <div className="relative block">
             <button onClick={() => setIsOpen(!isOpen)} className="block h-10 w-10 rounded-full overflow-hidden border-2 border-purple-500 focus:outline-none">
                 <img className=" h-full w-full object-cover cursor-pointer" src={profile} alt="Avatar" />
             </button>
             {isOpen &&
-                (<ul className="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700" aria-label="sub-menu">
+                (<ul className="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-300 bg-gray-800 rounded-md shadow-md" aria-label="sub-menu">
                     <li>
-                        <Link to="/mysolutions" className="block px-4 py-1 text-black"><i className="fas fa-user mr-1"></i>My Solutions
-                            </Link>
+                        <Link to="/mysolutions" className="block px-4 py-1 "><i className="fas fa-user mr-2"></i>My Solutions
+                        </Link>
                     </li>
                     <li>
-                        <button disabled={loading} onClick={logout} className="block px-4 py-1 text-black"><i className="fas fa-sign-out-alt mr-1"></i>Logout
-                            </button>
+                        <button disabled={loading} onClick={logout} className="block px-4 py-1"><i className="fas fa-sign-out-alt mr-2"></i>Logout
+                        </button>
                     </li>
                 </ul>)
             }

@@ -11,7 +11,7 @@ const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { currentUser, githubSignOut } = useAuth();
     // const [loading, setLoading] = useState(false);
-    const links = currentUser ? <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut} /> : <SignedOutLinks bgColor="bg-gray-800" />;
+    const links = currentUser ? <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut} /> : <SignedOutLinks bgColor="bg-gray-900" />;
     return (
         <div className="col-start-1 col-end-3 md:col-end-2 row-start-1 row-end-2">
             <div className="relative min-h-screen md:flex">

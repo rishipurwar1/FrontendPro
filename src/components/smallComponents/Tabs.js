@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import useFirestore from '../../hooks/useFirestore'
 import ChallengeCard from "../challenges/ChallengeCard";
 import SolutionSummary from "../solutions/SolutionSummary";
+import SkeletonCard from '../skeletons/SkeletonCard';
+
 
 const Tabs = ({ userID }) => {
     const [openTab, setOpenTab] = useState(1);
-    const { docs } = useFirestore('solutions', null, userID, openTab);
+    const { docs = [] } = useFirestore('solutions', null, userID, openTab);
     return (
         <>
             <div className="flex flex-wrap">
@@ -53,31 +55,30 @@ const Tabs = ({ userID }) => {
                             </a>
                         </li>
                     </ul>
-                    {docs ?
-                        <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded">
-                            <div className="px-4 py-5 flex-auto">
-                                <div className="tab-content tab-space">
-                                    <div className={openTab === 1 ? "block" : "hidden"} id="link1">
-                                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center items-center">
-                                            {docs && docs.map(challenge => {
-                                                return (
-                                                    <ChallengeCard key={challenge.id} challenge={challenge} btnTitle="Submit Solution"
-                                                    />)
-                                            })}
-                                        </div>
+                    <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded">
+                        <div className="px-4 py-5 flex-auto">
+                            <div className="tab-content tab-space">
+                                <div className={openTab === 1 ? "block" : "hidden"} id="link1">
+                                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center items-center">
+                                        {docs.length ? docs.map(challenge => {
+                                            return (
+                                                <ChallengeCard key={challenge.id} challenge={challenge} btnTitle="Submit Solution"
+                                                />)
+                                        }) : [1, 2, 3, 4, 5, 6].map(n => <SkeletonCard key={n} />)}
                                     </div>
-                                    <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
-                                            {docs && docs.map(solution => {
-                                                return (
-                                                    <SolutionSummary key={solution.id} solution={solution} />
-                                                )
-                                            })}
-                                        </div>
+                                </div>
+                                <div className={openTab === 2 ? "block" : "hidden"} id="link2">
+                                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
+                                        {docs.length ? docs.map(solution => {
+                                            return (
+                                                <SolutionSummary key={solution.id} solution={solution} />
+                                            )
+                                        }) : [1, 2, 3, 4, 5, 6].map(n => <SkeletonCard key={n} />)}
                                     </div>
                                 </div>
                             </div>
-                        </div> : <p>Loading...</p>}
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

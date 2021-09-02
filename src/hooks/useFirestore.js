@@ -20,7 +20,6 @@ const useFirestore = (collection, docId, userID, openTab, completed) => {
       subject = subject.where('completed', '==', true);
     }
     let unsubscribe = subject
-      .orderBy('createdAt', 'desc')
       .onSnapshot(snapshot => {
         const items = docId ? [getDoc(snapshot)] : snapshot.docs.map(getDoc);
         setDocs(items);

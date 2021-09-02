@@ -9,7 +9,6 @@ const ChallengeDetails = (props) => {
     const id = props.match.params.id;
     const { docs } = useFirestore("challenges", id);
     const figmaURLs = ['https://www.figma.com/file/8VcQNbVQuqp4k70YqNQQjc/github-jobs-api', 'https://www.figma.com/file/8VcQNbVQuqp4k70YqNQQjc/github-jobs-api?node-id=102%3A4'];
-    console.log(docs)
     const [figmaURL, setFigmaURL] = useState(0);
     if (docs.length === 0) return <p className="text-white text-center">Loading project...</p>
     return (

@@ -18,7 +18,6 @@ export const AuthProvider = ({
     children
 }) => {
     const [currentUser, setCurrentUser] = useState(null);
-    const [loading, setLoading] = useState(true);
 
     const provider = new auth.GithubAuthProvider();
     const githubSignIn = () => {
@@ -44,7 +43,6 @@ export const AuthProvider = ({
             } else {
                 setCurrentUser(userAuth);
             }
-            setLoading(false);
         })
         return unsubscribe;
     }, [])
@@ -54,8 +52,6 @@ export const AuthProvider = ({
         githubSignIn,
         githubSignOut
     }
-
-    // if (loading) return <h1 className="text-white text-center text-xl">Loading...</h1>
 
     return (
         <AuthContext.Provider value={

@@ -6,7 +6,6 @@ import SkeletonCard from '../skeletons/SkeletonCard';
 
 const Challenges = () => {
     const { docs = [] } = useFirestore('challenges');
-    console.log(docs)
     return (
         <main className="mt-16">
             <h2 className="text-5xl text-center text-white font-bold font-heading">Latest Challenges</h2>

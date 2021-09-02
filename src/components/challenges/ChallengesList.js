@@ -9,7 +9,6 @@ import SkeletonCard from '../skeletons/SkeletonCard';
 
 const ChallengesList = () => {
     const { docs = [] } = useFirestore('challenges');
-    console.log(docs ? console.log(true) : console.log(false))
     return (
         <main className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
             <Hero

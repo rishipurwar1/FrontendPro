@@ -4,7 +4,6 @@ import React from 'react'
 import Card from './Card'
 
 const HowItWorks = () => {
-    console.log('how it works?')
     return (
         <div className="mt-16">
             <h2 className="pb-2 text-5xl text-center text-white font-bold font-heading">How it works?</h2>

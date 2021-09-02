@@ -11,11 +11,10 @@ import SignedOutLinks from './SignedOutLinks';
 const Navbar = () => {
     const { currentUser, githubSignOut } = useAuth();
     // const [loading, setLoading] = useState(false);
-    const links = currentUser ? <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut} /> : <SignedOutLinks bgColor="bg-gray-800" />;
+    const links = currentUser ? <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut} /> : <SignedOutLinks bgColor="bg-gray-900" />;
 
     return (
-        <nav className="p-5 py-8 col-start-2 col-end-3 row-start-1 row-end-2">
-            <button className="p-1 -ml-1 mr-5 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple" aria-label="Menu"><i className="fas fa-bars"></i></button>
+        <nav className="p-5 py-8 hidden md:block md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2">
             <ul className="flex justify-end">
                 <li>
                     {links}

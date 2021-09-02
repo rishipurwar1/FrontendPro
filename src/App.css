@@ -1,15 +1,3 @@
 .iframe-embed {
   height: 600px;
 }
-
-.card {
-  max-height: 900px;
-}
-
-.card img {
-  height: 290px;
-}
-
-.card-section {
-  height: calc(100% - 290px);
-}

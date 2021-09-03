@@ -10,7 +10,7 @@ const DownloadButton = ({ color, challengeDetails }) => {
     const { addSolution } = useSolution('solutions');
     const downloadAssets = async () => {
         if (currentUser) {
-            window.open("https://res.cloudinary.com/di5hmgowi/raw/upload/v1615289132/challenges/random_quote_generator_p3lgcv.zip", '_blank', 'noopener,noreferrer');
+            window.open(challengeDetails[0].challengeAssets, '_blank', 'noopener,noreferrer');
             await addSolution(...challengeDetails);
             setDownloadingModal(true);
         } else {

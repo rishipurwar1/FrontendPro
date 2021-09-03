@@ -23,8 +23,8 @@ const ChallengeDetails = (props) => {
                     <p className="text-gray-300">{docs[0].description}</p>
                     <h3 className="text-2xl font-semibold pt-4 pb-2 text-purple-500">Requirements:</h3>
                     <ul className="text-gray-300 list-disc pl-5">
-                        {docs[0].requirements.map(requirement => (
-                            <li>{requirement}</li>
+                        {docs[0].requirements.map((requirement, index) => (
+                            <li key={index}>{requirement}</li>
                         ))}
                     </ul>
                 </div>

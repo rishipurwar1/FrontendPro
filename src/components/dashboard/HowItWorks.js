@@ -7,7 +7,6 @@ const HowItWorks = () => {
     return (
         <div className="mt-16">
             <h2 className="pb-2 text-5xl text-center text-white font-bold font-heading">How it works?</h2>
-            {/* <p className="text-center text-text-secondary text-base w-2/5 mx-auto">Codingspace can help you to improve your web and mobile development skills</p> */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-8">
                 <Card
                     name="Sign up for free in 30 seconds"

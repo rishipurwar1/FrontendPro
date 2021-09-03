@@ -25,10 +25,10 @@ const SolutionDetails = (props) => {
                         <span className="text-navItem text-xs text-gray-400">{moment(docs[0].createdAt.toDate()).startOf('day').fromNow()}</span>
                     </div>
                 </div>
-                {currentUser.id === docs[0].userID && <div>
+                {currentUser && currentUser.id === docs[0].userID ? <div>
                     <Link to={`/solution/${docs[0].id}/edit`} className="text-secondary cursor-pointer pr-3"><i className="far fa-edit text-2xl"></i></Link>
                     <span className="text-red-700 cursor-pointer" onClick={() => setModal(!modal)}><i className="far fa-trash-alt text-2xl"></i></span>
-                </div>}
+                </div> : null}
 
             </div>
             {/* <span className="text-red-700 cursor-pointer" onClick={() => deleteSolution(docs[0])}><i className="far fa-trash-alt text-2xl"></i></span> */}

@@ -38,7 +38,7 @@ const ChallengeHeader = ({ docs, button }) => {
                         />}
                     </div>
                     <div className="">
-                        <Image className="rounded-xl xs:h-auto xs:w-full sm:w-auto sm:h-64 md:h-72 lg:h-80 xs:mb-4 sm:mb-0" cloudName="di5hmgowi" public-id={docs[0].image[0]}>
+                        <Image className="rounded-xl xs:h-auto xs:w-full sm:w-auto sm:h-64 md:h-72 lg:h-80 xs:mb-4 sm:mb-0" cloudName="di5hmgowi" public-id={docs[0].images.cover}>
                             <Placeholder type="pixelate" />
                             <Transformation crop="fill" />
                         </Image>

@@ -33,7 +33,7 @@ const Sidebar = () => {
                 </div>
 
                 {/* <!-- sidebar --> */}
-                <div className={`${isOpen ? null : "-translate-x-full"} bg-gray-900 text-white xs:w-full md:w-20 xl:w-56 space-y-6 xs:py-4 md:py-8 px-2 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out border-r border-gray-800 z-50`}>
+                <div className={`${isOpen ? null : "-translate-x-full"} bg-gray-900 text-white xs:w-full md:w-20 xl:w-56 space-y-6 xs:py-4 md:py-8 px-2 absolute inset-y-0 left-0 transform md:fixed md:translate-x-0 transition duration-200 ease-in-out border-r border-gray-800 z-50`}>
 
                     {/* <!-- logo --> */}
                     <div className="flex justify-between items-center">
@@ -44,7 +44,7 @@ const Sidebar = () => {
                         <button className="md:hidden p-4 focus:outline-none focus:bg-gray-700" onClick={() => {
                             setIsOpen(!isOpen)
                         }}>
-                            <i class="fas fa-times fa-2x"></i>
+                            <i className="fas fa-times fa-2x"></i>
                         </button>
                     </div>
 

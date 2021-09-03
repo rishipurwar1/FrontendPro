@@ -23,7 +23,7 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route, 
     };
 
     return (
-        <div className="mt-2 mb-8">
+        <div className="mt-6 md:mt-2 mb-8">
             <p className={`font-heading ${homepage ? "text-lg font-normal" : "text-3xl font-bold"} text-white`}>{`Hello ${displayName} 👋,`}</p>
             <p className={`font-heading ${homepage ? "text-3xl font-bold" : "text-lg font-normal"} text-white`}>{subTitle}</p>
             <header className="mt-4 flex items-center xs:justify-center sm:justify-between bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl xs:px-5 md:px-8 py-4 xs:max-h-screen sm:max-h-96 shadow-md xs:flex-wrap-reverse sm:flex-nowrap">

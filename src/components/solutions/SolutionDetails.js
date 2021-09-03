@@ -17,7 +17,6 @@ const SolutionDetails = (props) => {
         <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3 mb-4">
             <ChallengeHeader docs={docs} button />
             {modal ? <ConfirmationModal setModal={setModal} docs={docs} /> : null}
-            {/* <h1 className="text-center text-5xl font-semibold font-heading text-purple-500 mt-8">{docs[0].title}</h1> */}
             <div className="flex justify-between items-center px-2">
                 <div className="flex items-center mt-4">
                     <img className="rounded-full mr-1 w-12 border-purple-500 border-2" src={docs[0].photoURL} alt="Profile" />
@@ -33,7 +32,7 @@ const SolutionDetails = (props) => {
 
             </div>
             {/* <span className="text-red-700 cursor-pointer" onClick={() => deleteSolution(docs[0])}><i className="far fa-trash-alt text-2xl"></i></span> */}
-            <ShowWebsite url={docs[0].live_website_url} github={docs[0].github_url} title={docs[0].title} />
+            <ShowWebsite url={docs[0].liveWebsiteUrl} github={docs[0].githubUrl} title={docs[0].title} />
         </div>
     )
 }

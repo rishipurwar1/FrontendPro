@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import useFirestore from '../../hooks/useFirestore'
 import DownloadButton from '../smallComponents/DownloadButton';
-// import DownloadButton from '../smallComponents/DownloadButton';
 import DropDown from '../smallComponents/DropDown';
 import ChallengeHeader from './ChallengeHeader';
 

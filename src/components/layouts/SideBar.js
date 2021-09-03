@@ -14,7 +14,7 @@ const Sidebar = () => {
     const links = currentUser ? <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut} /> : <SignedOutLinks bgColor="bg-gray-900" />;
     return (
         <div className="col-start-1 col-end-3 md:col-end-2 row-start-1 row-end-2">
-            <div className="relative min-h-screen md:flex">
+            <div className="relative md:flex">
 
                 {/* <!-- mobile menu bar --> */}
                 <div className="bg-gray-800 text-gray-100 flex justify-between items-center md:hidden">
@@ -25,15 +25,15 @@ const Sidebar = () => {
                         <i className="fas fa-bars fa-2x"></i>
                     </button>
                     {/*logo*/}
-                    <Link to="/" className="block text-white font-heading uppercase p-4 font-semibold text-xl">
+                    {/* <Link to="/" className="block text-white font-heading uppercase p-4 font-semibold text-xl">
                         <i className="fas fa-rocket mr-2"></i>
                         <span className="xs:hidden xl:inline-block">CodingSpace</span>
-                    </Link>
+                    </Link> */}
                     <div className="p-4">{links}</div>
                 </div>
 
                 {/* <!-- sidebar --> */}
-                <div className={`${isOpen ? null : "-translate-x-full"} bg-gray-900 text-white xs:w-full md:w-20 xl:w-56 space-y-6 xs:py-4 md:py-8 px-2 absolute inset-y-0 left-0 transform md:fixed md:translate-x-0 transition duration-200 ease-in-out border-r border-gray-800 z-50`}>
+                <div className={`${isOpen ? null : "-translate-x-full"} bg-gray-900 text-white xs:w-full md:w-20 xl:w-56 space-y-6 xs:py-4 md:py-8 px-2 absolute inset-y-0 left-0 transform md:fixed md:translate-x-0 transition duration-200 ease-in-out border-r border-gray-800 z-50 min-h-screen`}>
 
                     {/* <!-- logo --> */}
                     <div className="flex justify-between items-center">

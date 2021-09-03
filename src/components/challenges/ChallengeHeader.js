@@ -1,9 +1,7 @@
 import React from 'react'
 
 // custom components
-// import hero from '../../assets/illustrations/main.svg'
 import DownloadButton from '../smallComponents/DownloadButton';
-// import Tag from '../smallComponents/Tag';
 import { useHistory } from 'react-router-dom'
 
 import { useAuth } from '../../context/AuthContext'
@@ -23,7 +21,7 @@ const ChallengeHeader = ({ docs, button }) => {
                 <p className="font-heading text-lg font-normal text-white">Today is a great day to start this challenge <span role="img" aria-label="welcome">😊</span></p>
                 <header className="mt-4 flex items-center xs:justify-center sm:justify-between bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl shadow-md xs:px-5 md:px-8 py-4 xs:h-full sm:max-h-96 xs:flex-wrap-reverse sm:flex-nowrap">
                     <div className="xs:w-full sm:w-1/2">
-                        <h2 className="leading-snug xs:text-3xl lg:text-5xl text-white font-semibold font-heading">{docs[0].title}</h2>
+                        <h2 className="leading-snug xs:text-3xl lg:text-5xl text-white font-semibold font-heading pb-2">{docs[0].title}</h2>
                         <div className="py-2">
                             {docs[0].tags.map(tag => <Badge key={tag} name={tag} badgeColor="gray" challengeDetails />)}
                         </div>

@@ -6,7 +6,6 @@ import Badge from '../smallComponents/Badge';
 
 const ChallengeCard = ({ challenge, challengelist, btnTitle }) => {
     const link = challengelist ? '/challenge/' + challenge.id : '/submit/' + challenge.id;
-    console.log(challenge)
     return (
         <div className="bg-gray-800 shadow-2xl overflow-hidden rounded-md max-w-sm">
             <Image cloudName="di5hmgowi" alt="challenge design" loading="lazy" public-id={challenge.images.cover}>

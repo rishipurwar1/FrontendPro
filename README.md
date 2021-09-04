@@ -2,7 +2,7 @@
 
 CodingSpace is the platform where we aim to provide lots of different real-world UI-based challenges that can help developers to improve their web and mobile development skills.
 
-![Coding space](https://i.imgur.com/H7B5H9W.png)
+![Coding space](https://i.imgur.com/EPPICCO.gif)
 
 ## 👨‍💻 Demo 
 <a href="https://github.com/rishipurwar1/coding-space" target="blank">

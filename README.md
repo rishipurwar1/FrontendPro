@@ -86,7 +86,7 @@ Rishi Purwar - [@thefierycoder](https://twitter.com/thefierycoder)
 Project Link: [https://github.com/rishipurwar1/coding-space](https://github.com/rishipurwar1/coding-space)
 
 ## Code of Conduct
-We follow the [Code of Conduct](CODE_OF_CONDUCT.md) of the [CodingSpace](https://circuitverse.org) Community.
+We follow the [Code of Conduct](CODE_OF_CONDUCT.md) of the [CodingSpace](https://www.codingspace.codes) Community.
 
 ## License
 This project is licensed under the [MIT License](LICENSE).

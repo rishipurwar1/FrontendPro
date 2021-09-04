@@ -85,5 +85,8 @@ Rishi Purwar - [@thefierycoder](https://twitter.com/thefierycoder)
 
 Project Link: [https://github.com/rishipurwar1/coding-space](https://github.com/rishipurwar1/coding-space)
 
+## Contributing
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for more information on contributing to CodingSpace.
+
 ## License
 This project is licensed under the [MIT License](LICENSE).

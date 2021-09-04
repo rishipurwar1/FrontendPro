@@ -84,3 +84,6 @@ Contributions are what make the open source community such an amazing place to l
 Rishi Purwar - [@thefierycoder](https://twitter.com/thefierycoder)
 
 Project Link: [https://github.com/rishipurwar1/coding-space](https://github.com/rishipurwar1/coding-space)
+
+## License
+This project is licensed under the [MIT License](LICENSE).

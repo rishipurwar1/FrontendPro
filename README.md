@@ -1,68 +1,96 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CODINGSPACE
 
-## Available Scripts
+CodingSpace is the platform where we aim to provide lots of different real-world UI-based challenges that can help developers to improve their web and mobile development skills.
 
-In the project directory, you can run:
+![Coding space](https://i.imgur.com/H7B5H9W.png)
 
-### `npm start`
+## 🚀 Demo 
+<a href="https://github.com/rishipurwar1/coding-space" target="blank">
+<img src="https://img.shields.io/website?url=https://www.codingspace.codes&logo=github&style=flat-square" />
+</a>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Try out the website : [CodingSpace](https://www.codingspace.codes)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Tech Stack
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Before installation, please make sure you have installed following tools:
+- [NodeJs](https://nodejs.org/en/download/)
+- [Git](https://git-scm.com/downloads)
 
-### `npm run build`
+You also need to create a Firebase Project.
+You can do so by following [this guide](https://firebase.google.com/docs/web/setup). After creating a Firebase project, store the config info somewhere.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+1. Get a free API Key at [https://example.com](https://example.com)
+2. Clone the repo
+   ```sh
+   git clone https://github.com/your_username_/Project-Name.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Enter your API in `config.js`
+   ```JS
+   const API_KEY = 'ENTER YOUR API';
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠️ Installation Steps
 
-### `npm run eject`
+1. Clone the repository
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+git clone https://github.com/rishipurwar1/coding-space.git
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Change the working directory
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+cd coding-space
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Create a `.env` file at the root of the project folder
+```bash
+touch .env
+```
 
-## Learn More
+4. Enter your Firebase Config in `.env`
+```bash
+REACT_APP_API_KEY="YOUR_FIREBASE_API_KEY"
+REACT_APP_AUTH_DOMAIN="YOUR_FIREBASE_AUTH_DOMAIN"
+REACT_APP_PROJECT_ID="YOUR_FIREBASE_PROJECT_ID"
+REACT_APP_STORAGE_BUCKET="YOUR_FIREBASE_STORAGE_BUCKET"
+REACT_APP_MESSAGING_SENDER_ID="YOUR_FIREBASE_MESSAGING_SENDER_ID"
+REACT_APP_APP_ID="YOUR_FIREBASE_APP_ID"
+REACT_APP_MEASUREMENT_ID = "YOUR_FIREBASE_MEASUREMENT_ID"
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Install dependencies
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm install
+```
 
-### Code Splitting
+4. Run the app
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```bash
+npm start
+```
 
-### Analyzing the Bundle Size
+🌟 You are all set!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Contributing
 
-### Making a Progressive Web App
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature`)
+5. Open a Pull Request

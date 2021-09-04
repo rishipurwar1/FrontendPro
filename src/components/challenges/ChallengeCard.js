@@ -8,7 +8,7 @@ const ChallengeCard = ({ challenge, challengelist, btnTitle }) => {
     const link = challengelist ? '/challenge/' + challenge.id : '/submit/' + challenge.id;
     return (
         <div className="bg-gray-800 shadow-2xl overflow-hidden rounded-md max-w-sm">
-            <Image cloudName="di5hmgowi" alt="challenge design" loading="lazy" public-id={challenge.images.cover}>
+            <Image className="max-h-50" cloudName="di5hmgowi" alt="challenge design" loading="lazy" public-id={challenge.images.cover}>
                 <Placeholder type="pixelate" />
             </Image>
             <div className="p-4 pb-2">

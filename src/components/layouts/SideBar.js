@@ -24,11 +24,6 @@ const Sidebar = () => {
                     }}>
                         <i className="fas fa-bars fa-2x"></i>
                     </button>
-                    {/*logo*/}
-                    {/* <Link to="/" className="block text-white font-heading uppercase p-4 font-semibold text-xl">
-                        <i className="fas fa-rocket mr-2"></i>
-                        <span className="xs:hidden xl:inline-block">CodingSpace</span>
-                    </Link> */}
                     <div className="p-4">{links}</div>
                 </div>
 

@@ -4,6 +4,7 @@ import Hero from './Hero';
 import HowItWorks from './HowItWorks';
 import Challenges from '../challenges/Challenges'
 import heroImg from '../../assets/animated_illustrations/Blogging.json'
+import Newsletter from '../newsletter/Newsletter';
 
 const Dashboard = () => {
     return (
@@ -20,6 +21,7 @@ const Dashboard = () => {
             />
             <HowItWorks />
             <Challenges />
+            <Newsletter />
         </div>
     )
 }

@@ -17,7 +17,6 @@ const Dashboard = () => {
                 logoTitle="fas fa-arrow-right"
                 homepage
                 route="/challenges"
-                lottie
             />
             <HowItWorks />
             <Challenges />

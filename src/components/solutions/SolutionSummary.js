@@ -6,7 +6,7 @@ import { Image, Placeholder } from 'cloudinary-react';
 const SolutionSummary = ({ solution }) => {
     return (
         <div className="max-w-sm h-auto rounded overflow-hidden shadow-2xl">
-            <Image cloudName="di5hmgowi" loading="lazy" height="270" public-id={solution.images.cover} alt="solution">
+            <Image cloudName="di5hmgowi" loading="lazy" height="270" public-id={solution.images.cover} alt={`${solution.title}`}>
                 <Placeholder type="pixelate" />
             </Image>
             <div className="solution-card flex flex-col justify-between bg-gray-800">
@@ -21,10 +21,10 @@ const SolutionSummary = ({ solution }) => {
                             <span className="text-navItem text-xs text-gray-400">{moment(solution.createdAt.toDate()).startOf('day').fromNow()}</span>
                         </div>
                     </div>
-                    <Link to={'/solution/' + solution.id} className="block rounded-t-none w-full bg-secondary text-white text-lg text-center px-5 py-4">View Solution</Link>
+                    <Link to={'/solution/' + solution.id} className="block rounded-t-none w-full bg-secondary text-white text-lg text-center px-5 py-4" aria-label={`${solution.title} website details page`} title={`Link to ${solution.title} details page`}>View Solution</Link>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

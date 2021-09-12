@@ -19,12 +19,12 @@ const SignedInLinks = ({ profile, githubSignOut }) => {
     return (
         <div className="relative block">
             <button onClick={() => setIsOpen(!isOpen)} className="block h-10 w-10 rounded-full overflow-hidden border-2 border-purple-500 focus:outline-none">
-                <img className=" h-full w-full object-cover cursor-pointer" src={profile} alt="Avatar" />
+                <img className=" h-full w-full object-cover cursor-pointer" src={profile} alt="user profile" />
             </button>
             {isOpen &&
                 (<ul className="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-300 bg-gray-800 rounded-md shadow-md" aria-label="sub-menu">
                     <li>
-                        <Link to="/mysolutions" className="block px-4 py-1 "><i className="fas fa-user mr-2"></i>My Solutions
+                        <Link to="/mysolutions" className="block px-4 py-1 " aria-label="my solutions" title="this is a link to my solutions page"><i className="fas fa-user mr-2"></i>My Solutions
                         </Link>
                     </li>
                     <li>

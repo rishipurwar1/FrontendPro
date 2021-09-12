@@ -17,7 +17,6 @@ const Resources = () => {
                 mainImg={ResourcesIll}
                 btnTitle="Explore Challenges "
                 logoTitle="fas fa-arrow-right"
-                lottie
             />
             <h2 className="text-5xl text-center text-white font-bold  font-heading">Resources</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">

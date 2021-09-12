@@ -32,7 +32,7 @@ const Sidebar = () => {
 
                     {/* <!-- logo --> */}
                     <div className="flex justify-between items-center">
-                        <Link to="/" className="text-white flex items-center space-x-2 font-heading uppercase text-center px-4 font-semibold text-xl">
+                        <Link to="/" className="text-white flex items-center space-x-2 font-heading uppercase text-center px-4 font-semibold text-xl" aria-label="codingspace logo" title="This is a link to codingspace homepage">
                             <i className="fas fa-rocket mr-1"></i>
                             <span className="xs:inline-block md:hidden xl:inline-block">CodingSpace</span>
                         </Link>

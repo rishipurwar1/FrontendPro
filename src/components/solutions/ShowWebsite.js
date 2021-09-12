@@ -24,11 +24,11 @@ const ShowWebsite = ({ url, title, github }) => {
                     <i className="fas fa-mobile-alt text-white text-3xl cursor-pointer" onClick={() => setView(0)}></i>
                 </div>
                 <div>
-                    <a href={github} target="_blank" rel="noopener noreferrer">
-                        <i className="fas fa-code text-white pr-4 text-2xl cursor-pointer" title="Github URL"></i>
+                    <a href={github} target="_blank" rel="noopener noreferrer" aria-label={`${title} solution github repository`} title={`Link to ${title} solution github repository`}>
+                        <i className="fas fa-code text-white pr-4 text-2xl cursor-pointer"></i>
                     </a>
-                    <a href={url} target="_blank" rel="noopener noreferrer">
-                        <i className="fas fa-external-link-alt pr-2 text-white text-2xl cursor-pointer" title="Live Website"></i>
+                    <a href={url} target="_blank" rel="noopener noreferrer" aria-label={`${title} website`} title={`Link to ${title} website`}>
+                        <i className="fas fa-external-link-alt pr-2 text-white text-2xl cursor-pointer"></i>
                     </a>
                 </div>
             </div>

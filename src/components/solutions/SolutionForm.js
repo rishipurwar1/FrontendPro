@@ -53,7 +53,7 @@ const SolutionForm = (props) => {
                         <label className="block text-gray-400 text-base  font-bold mb-2" htmlFor="githubUrl">
                             Github Repository URL
                         </label>
-                        <input className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="githubUrl" type="text" placeholder="Github Repository URL" {...register("githubUrl", { required: true })} />
+                        <input className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="githubUrl" type="text" placeholder="Github Repository URL" {...register("githubUrl")} />
                         {errors.githubUrl?.type === 'required' && <span className="text-red-500 text-xs">Github Repository URL is required</span>}
                     </div>
                     {/* live website url */}

@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
@@ -9,7 +9,7 @@ var firebaseConfig = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID
+  // measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -29,14 +29,14 @@ export const createUserProfileDocument = async (userAuth) => {
         email,
         photoURL,
         createdAt,
-        displayName: providerData[0].displayName
-      })
+        displayName: providerData[0].displayName,
+      });
     } catch (error) {
       console.log(error.message);
     }
   }
   return userRef;
-}
+};
 
 const firestore = firebase.firestore();
 const auth = firebase.auth;

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 
@@ -8,6 +8,9 @@
 
 .active {
   @apply bg-gradient-to-br from-purple-500 to-indigo-500 text-white;
+}
+.card-button {
+  @apply block rounded-t-none mt-4 w-full bg-gradient-to-br from-purple-500 to-indigo-500 text-purple-200   font-semibold font-heading text-lg text-center px-5 py-5;
 }
 
 .card-content {

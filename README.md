@@ -79,6 +79,9 @@ Contributions are what make the open source community such an amazing place to l
 4. Push to the Branch (`git push origin feature`)
 5. Open a Pull Request
 
+## 👉 Join our Discord Community
+You can join our Discord Community, here is the [invite link](https://discord.gg/FYSQUEw6xP).
+
 ## 📇 Contact
 
 Rishi Purwar - [@thefierycoder](https://twitter.com/thefierycoder)

@@ -1,7 +1,7 @@
 // library components
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import React, {useState} from "react";
+import {Link} from "react-router-dom";
+import {useAuth} from "../../context/AuthContext";
 import NavItem from "./NavItem";
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";

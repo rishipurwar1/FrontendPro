@@ -1,7 +1,7 @@
 // library components
-import React, {useState} from "react";
-import {Link} from "react-router-dom";
-import {useAuth} from "../../context/AuthContext";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import NavItem from "./NavItem";
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
@@ -74,7 +74,10 @@ const Sidebar = () => {
 
           <button className="bg-blue-500 flex items-center justify-center p-3 w-full rounded transition-all  duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500 hover:text-white text-base xs:text-left md:text-center lg:text-left relative">
             <i class="fab fa-discord text-2xl mr-1 xs:mr-3 md:mr-0 xl:mr-3 xl:text-base text-center"></i>
-            <a href="https://discord.com/invite/FYSQUEw6xP" className="xs:inline-block md:hidden xl:inline-block">
+            <a
+              href="https://discord.com/invite/FYSQUEw6xP"
+              className="xs:inline-block md:hidden xl:inline-block"
+            >
               Join Discord Community
             </a>
           </button>

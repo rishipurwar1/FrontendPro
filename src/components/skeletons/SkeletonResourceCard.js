@@ -1,9 +1,8 @@
 import React from 'react'
 import SkeletonElement from './SkeletonElement'
-import SkeletonBadge from '../skeletons/SkeletonBadge'
-import SkeletonDifficultyBar from '../skeletons/SkeletonDifficultyBar'
+import SkeletonBadge from './SkeletonBadge'
 
-const SkeletonChallengeCard = () => {
+const SkeletonResourceCard = () => {
     return (
         <div className="shadow rounded-md max-w-sm w-full mx-auto">
             <div className="animate-pulse bg-gray-800">
@@ -13,20 +12,17 @@ const SkeletonChallengeCard = () => {
                      <SkeletonBadge type="small"/>
                   </div>
                 <div className="space-y-4 px-3 py-1">
-                    <div className="card-content space-y-2 mb-4">
+                    <div className="card-content">
                         <SkeletonElement type="text" />
-                        <SkeletonElement type="title" />
                         <SkeletonElement type="subtitle" />
                         <SkeletonElement type="subtitle" />
-                        <SkeletonElement type="title" />
-                        <SkeletonElement type="title" />
+                        <SkeletonElement type="subtitle" />
                     </div>
                 </div>
-               <SkeletonDifficultyBar />
-               <div className="block mt-4 rounded-b w-full bg-gradient-to-br bg-gray-400 px-5 py-5">&emsp;</div>
+               <div className="block rounded-b w-full bg-gradient-to-br bg-gray-400 px-5 py-5">&emsp;</div>
             </div>
         </div>
     )
 }
 
-export default SkeletonChallengeCard
+export default SkeletonResourceCard

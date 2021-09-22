@@ -5,7 +5,7 @@ import useFirestore from '../../hooks/useFirestore'
 import Hero from '../dashboard/Hero';
 import SolutionSummary from './SolutionSummary'
 import solutionLottie from '../../assets/animated_illustrations/solution_animation.json'
-import SkeletonSolutionSummary from '../skeletons/SkeletonSolutionSummary';
+import SkeletonSolutionSummaryCard from '../skeletons/SkeletonSolutionSummaryCard';
 
 const ShowSolutions = () => {
     const { docs = [] } = useFirestore('solutions', null, null, null, true);
@@ -27,7 +27,7 @@ const ShowSolutions = () => {
                         return (
                             <SolutionSummary key={solution.id} solution={solution} />
                         )
-                    }) : [1, 2, 3, 4, 5, 6].map(n => <SkeletonSolutionSummary key={n} />)}
+                    }) : [1, 2, 3, 4, 5, 6].map(n => <SkeletonSolutionSummaryCard key={n} />)}
                 </div>
             </main>
         </div>

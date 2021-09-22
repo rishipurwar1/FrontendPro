@@ -1,13 +1,13 @@
 import React from 'react'
 import SkeletonElement from './SkeletonElement'
 
-const SkeletonSolutionSummary = () => {
+const SkeletonSolutionSummaryCard = () => {
     return (
          <div className="shadow rounded-md max-w-sm w-full mx-auto">
-            <div className="animate-pulse flex flex-col">
+            <div className="animate-pulse flex flex-col bg-gray-800">
                <SkeletonElement type="thumbnail" />
 
-               <div className="solution-card flex flex-col justify-between bg-gray-800">
+               <div className="solution-card flex flex-col justify-between">
                   <div className="px-6 py-3">
                      <SkeletonElement type="subtitle" />
                   </div>
@@ -27,4 +27,4 @@ const SkeletonSolutionSummary = () => {
     )
 }
 
-export default SkeletonSolutionSummary
+export default SkeletonSolutionSummaryCard

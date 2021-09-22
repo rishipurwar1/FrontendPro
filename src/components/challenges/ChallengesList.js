@@ -5,7 +5,7 @@ import useFirestore from '../../hooks/useFirestore';
 import Hero from '../dashboard/Hero';
 import ChallengeCard from './ChallengeCard'
 import challengeLottie from '../../assets/animated_illustrations/challenge.json'
-import SkeletonCard from '../skeletons/SkeletonCard';
+import SkeletonChallengeCard from '../skeletons/SkeletonChallengeCard';
 
 const ChallengesList = () => {
     const { docs = [] } = useFirestore('challenges');
@@ -26,7 +26,7 @@ const ChallengesList = () => {
                     return (
                         <ChallengeCard key={challenge.id} challenge={challenge} challengelist btnTitle="View Challenge" />
                     )
-                }) : [1, 2, 3, 4, 5, 6].map(n => <SkeletonCard key={n} />)}
+                }) : [1, 2, 3, 4, 5, 6].map(n => <SkeletonChallengeCard key={n} />)}
             </div>
         </main>
     )

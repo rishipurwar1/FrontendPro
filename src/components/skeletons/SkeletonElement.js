@@ -3,21 +3,25 @@ import React from 'react'
 const SkeletonElement = ({ type }) => {
     let tailwindClass = '';
     switch (type) {
-        case 'text':
-            tailwindClass = 'h-4 my-2 bg-gray-400 rounded';
-            break;
-        case 'subtitle':
-            tailwindClass = 'h-4 my-2 bg-gray-400 rounded w-5/6';
-            break;
-        case 'title':
-            tailwindClass = 'h-4 my-2 bg-gray-400 rounded w-3/4';
-            break;
-        case 'avatar':
-            tailwindClass = 'w-12 h-12 rounded-full';
-            break;
-        case 'thumbnail':
-            tailwindClass = 'max-w-sm h-60';
-            break;
+      case 'text':
+         tailwindClass = 'h-4 my-2 bg-gray-400 rounded';
+         break;
+      case 'subtitle':
+         tailwindClass = 'h-4 my-2 bg-gray-400 rounded w-5/6';
+         break;
+      case 'title':
+         tailwindClass = 'h-4 my-2 bg-gray-400 rounded w-3/4';
+         break;
+      case 'userInfo':
+         tailwindClass = 'h-4 my-1 bg-gray-400 rounded w-3/5';
+         break;
+      case 'avatar':
+         tailwindClass = 'w-12 h-12 rounded-full';
+         break;
+      case 'thumbnail':
+         tailwindClass = 'max-w-sm h-60';
+         break;
+        
         default:
         // code block
     }

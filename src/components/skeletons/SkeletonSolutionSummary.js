@@ -14,9 +14,9 @@ const SkeletonSolutionSummary = () => {
                   <div>
                      <div className="flex items-center px-6 pb-3">
                            <SkeletonElement type="avatar"/>
-                           <div className="flex flex-col pl-1">
-                              <span className="text-navItem text-sm text-gray-300">author</span>
-                              <span className="text-navItem text-xs text-gray-400">22</span>
+                           <div className="flex flex-col pl-1 flex-grow">
+                              <SkeletonElement type="userInfo" />
+                              <SkeletonElement type="userInfo" />
                            </div>
                      </div>
                      <div className="block rounded-b w-full bg-gradient-to-br bg-gray-400 px-5 py-5">&emsp;</div>

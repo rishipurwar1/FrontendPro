@@ -24,8 +24,7 @@ const SkeletonChallengeCard = () => {
                     </div>
                 </div>
                <SkeletonDifficultyBar />
-               <div 
-                  className="block mt-4 rounded-b w-full bg-gradient-to-br bg-gray-400 px-5 py-5">&emsp;</div>
+               <div className="block mt-4 rounded-b w-full bg-gradient-to-br bg-gray-400 px-5 py-5">&emsp;</div>
             </div>
         </div>
     )

@@ -1,23 +1,20 @@
 // library components
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
-import NavItem from "./NavItem";
-import SignedInLinks from "./SignedInLinks";
-import SignedOutLinks from "./SignedOutLinks";
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
+import { useAuth } from "../../context/AuthContext"
+import NavItem from "./NavItem"
+import SignedInLinks from "./SignedInLinks"
+import SignedOutLinks from "./SignedOutLinks"
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { currentUser, githubSignOut } = useAuth();
+  const [isOpen, setIsOpen] = useState(false)
+  const { currentUser, githubSignOut } = useAuth()
   // const [loading, setLoading] = useState(false);
   const links = currentUser ? (
-    <SignedInLinks
-      profile={currentUser.photoURL}
-      githubSignOut={githubSignOut}
-    />
+    <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut} />
   ) : (
     <SignedOutLinks bgColor="bg-gray-900" />
-  );
+  )
   return (
     <div className="col-start-1 col-end-3 md:col-end-2 row-start-1 row-end-2">
       <div className="relative md:flex">
@@ -27,7 +24,7 @@ const Sidebar = () => {
           <button
             className="p-4 focus:outline-none focus:bg-gray-700"
             onClick={() => {
-              setIsOpen(!isOpen);
+              setIsOpen(!isOpen)
             }}
           >
             <i className="fas fa-bars fa-2x"></i>
@@ -57,7 +54,7 @@ const Sidebar = () => {
             <button
               className="md:hidden p-4 focus:outline-none focus:bg-gray-700"
               onClick={() => {
-                setIsOpen(!isOpen);
+                setIsOpen(!isOpen)
               }}
             >
               <i className="fas fa-times fa-2x"></i>
@@ -89,7 +86,7 @@ const Sidebar = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Sidebar;

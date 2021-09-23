@@ -14,8 +14,8 @@ const ChallengeDetails = (props) => {
         <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
             <ChallengeHeader docs={docs} />
             <div className="overflow-hidden relative">
-                <iframe className="iframe-embed border-gray-50 w-full -mb-12" src={`https://www.figma.com/embed?embed_host=share&url=${figmaURL === 0 ? docs[0].figmaURLs.desktop : docs[0].figmaURLs.mobile}`} title={`screen-${figmaURL}`} allowFullScreen></iframe>
-                <DropDown setFigmaURL={(index) => setFigmaURL(index)} />
+                <iframe className="iframe-embed border-gray-50 w-full -mb-12" src={`https://www.figma.com/embed?embed_host=share&url=${figmaURL === 0 ? (docs[0].figmaURLs.desktop || docs[0].figmaURLs.mobile) : docs[0].figmaURLs.mobile}`} title={`screen-${figmaURL}`} allowFullScreen></iframe>
+                {docs[0].figmaURLs.desktop && <DropDown setFigmaURL={(index) => setFigmaURL(index)} /> }
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 mt-6">
                 <div className="text-white">

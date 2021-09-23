@@ -17,12 +17,8 @@
     "react-ga": "^3.3.0",
     "react-hook-form": "^7.14.2",
     "react-lottie": "^1.2.3",
-    "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
-    "uuid": "^8.3.1"
+    "react-scripts": "3.4.3"
   },
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
@@ -48,8 +44,16 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.0.2",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "postcss": "^8.1.8",
     "postcss-cli": "^8.3.0",
+    "prettier": "^2.4.1",
     "tailwindcss": "^2.0.1"
   }
 }

@@ -72,12 +72,20 @@ const Sidebar = () => {
             <NavItem item="roadmaps" icon="fas fa-map-signs" />
           </aside>
 
-          <button className="bg-blue-500 flex items-center justify-center p-3 w-full rounded transition-all  duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500 hover:text-white text-base xs:text-left md:text-center lg:text-left relative">
-            <i class="fab fa-discord text-2xl mr-1 xs:mr-3 md:mr-0 xl:mr-3 xl:text-base text-center"></i>
-            <a href="https://discord.com/invite/FYSQUEw6xP" className="xs:inline-block md:hidden xl:inline-block">
-              Join Discord Community
-            </a>
-          </button>
+          {/* <!-- discord buton --> */}
+          <div className="absolute bottom-10 w-full flex justify-center pr-4">
+            <button className="bg-blue-500 flex items-center justify-center p-3 xl:px-6 rounded transition-all duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500 hover:text-white text-base xs:text-left md:text-center lg:text-left">
+              <i class="fab fa-discord text-2xl mr-1 xs:mr-3 md:mr-0 xl:mr-3 xl:text-base text-center"></i>
+              <a
+                href="https://discord.com/invite/FYSQUEw6xP"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="xs:inline-block md:hidden xl:inline-block"
+              >
+                Join Discord
+              </a>
+            </button>
+          </div>
         </div>
       </div>
     </div>

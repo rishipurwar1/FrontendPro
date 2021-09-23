@@ -5,7 +5,7 @@ import useFirestore from "../../hooks/useFirestore"
 import Hero from "../dashboard/Hero"
 import ResourcesIll from "../../assets/animated_illustrations/resources.json"
 import ResourceCard from "./ResourceCard"
-import SkeletonCard from "../skeletons/SkeletonCard"
+import SkeletonResourceCard from '../skeletons/SkeletonResourceCard';
 
 const Resources = () => {
   const { docs } = useFirestore("resources")
@@ -26,7 +26,7 @@ const Resources = () => {
           ? docs.map((resource) => {
               return <ResourceCard key={resource.id} resource={resource} />
             })
-          : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard key={n} />)}
+          : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonResourceCard key={n} />)}
       </div>
     </div>
   )

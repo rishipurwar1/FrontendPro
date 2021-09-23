@@ -1,0 +1,10 @@
+node_modules
+src/assets/animated_illustrations
+src/assets/illustrations
+src/assets/icons
+src/assets/main.css
+tailwind.js
+package-lock.json
+CODE_OF_CONDUCT.md
+degub.log
+LICENSE

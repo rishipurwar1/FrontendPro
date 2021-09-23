@@ -4,7 +4,8 @@ CodingSpace is the platform where we aim to provide lots of different real-world
 
 ![Coding space](https://i.imgur.com/EPPICCO.gif)
 
-## 👨‍💻 Demo 
+## 👨‍💻 Demo
+
 <a href="https://github.com/rishipurwar1/coding-space" target="blank">
 <img src="https://img.shields.io/website?url=https://www.codingspace.codes&logo=github&style=flat-square" />
 </a>
@@ -12,6 +13,7 @@ CodingSpace is the platform where we aim to provide lots of different real-world
 Try out the website : [CodingSpace](https://www.codingspace.codes)
 
 ## 👨‍🔧 Tech Stack
+
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
@@ -19,6 +21,7 @@ Try out the website : [CodingSpace](https://www.codingspace.codes)
 ### 👇 Prerequisites
 
 Before installation, please make sure you have already installed following tools:
+
 - [NodeJs](https://nodejs.org/en/download/)
 - [Git](https://git-scm.com/downloads)
 
@@ -40,11 +43,13 @@ cd coding-space
 ```
 
 3. Create a `.env` file at the root of the project folder
+
 ```bash
 touch .env
 ```
 
 4. Enter your Firebase Config in `.env` like this
+
 ```bash
 REACT_APP_API_KEY="YOUR_FIREBASE_API_KEY"
 REACT_APP_AUTH_DOMAIN="YOUR_FIREBASE_AUTH_DOMAIN"
@@ -80,6 +85,7 @@ Contributions are what make the open source community such an amazing place to l
 5. Open a Pull Request
 
 ## 👉 Join our Discord Community
+
 You can join our Discord Community, here is the [invite link](https://discord.gg/FYSQUEw6xP).
 
 ## 📇 Contact
@@ -89,7 +95,9 @@ Rishi Purwar - [@thefierycoder](https://twitter.com/thefierycoder)
 Project Link: [https://github.com/rishipurwar1/coding-space](https://github.com/rishipurwar1/coding-space)
 
 ## Code of Conduct
+
 We follow the [Code of Conduct](CODE_OF_CONDUCT.md) of the [CodingSpace](https://www.codingspace.codes) Community.
 
 ## License
+
 This project is licensed under the [MIT License](LICENSE).

@@ -3,14 +3,21 @@ import useFirestore from "../../hooks/useFirestore"
 import DownloadButton from "../smallComponents/DownloadButton"
 import DropDown from "../smallComponents/DropDown"
 import ChallengeHeader from "./ChallengeHeader"
+import Spinner from "../smallComponents/Spinner"
 
 const ChallengeDetails = (props) => {
   const id = props.match.params.id
   const { docs } = useFirestore("challenges", id)
   const [figmaURL, setFigmaURL] = useState(0)
   const solutionDetails = docs.map(({ id, ...r }) => r)
+
   if (docs.length === 0)
-    return <p className="text-white text-center">Loading project...</p>
+    return (
+      <p className="text-white text-center">
+        <Spinner />
+      </p>
+    )
+
   return (
     <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <ChallengeHeader docs={docs} />

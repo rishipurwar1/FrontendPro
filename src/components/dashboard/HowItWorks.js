@@ -12,7 +12,7 @@ const HowItWorks = () => {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-8">
         <Card
           name="Sign up for free in 30 seconds"
-          info="Connect your GitHub account using Sign Up button. You'll instantly gain excess to our all the challenges"
+          info="Connect your GitHub account using Sign Up button. You'll instantly gain access to our all the challenges"
           image="fas fa-user-lock"
           gradient="bg-gradient-to-br from-lightBlue-400 to-indigo-500"
           color="text-lightBlue-200"

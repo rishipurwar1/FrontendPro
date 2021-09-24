@@ -3,7 +3,8 @@ import useFirestore from "../../hooks/useFirestore"
 import DownloadButton from "../smallComponents/DownloadButton"
 import DropDown from "../smallComponents/DropDown"
 import ChallengeHeader from "./ChallengeHeader"
-import Spinner from "../smallComponents/Spinner"
+import { LottieAnimation } from "../smallComponents/LottieAnimation"
+import rocketLoader from "../../assets/animated_illustrations/loader.json"
 
 const ChallengeDetails = (props) => {
   const id = props.match.params.id
@@ -13,9 +14,9 @@ const ChallengeDetails = (props) => {
 
   if (docs.length === 0)
     return (
-      <p className="text-white text-center">
-        <Spinner />
-      </p>
+      <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3">
+        <LottieAnimation animationDataFile={rocketLoader} height={100} width={100} />
+      </div>
     )
 
   return (

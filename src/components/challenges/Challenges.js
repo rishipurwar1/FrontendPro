@@ -2,7 +2,7 @@ import React from "react"
 import useFirestore from "../../hooks/useFirestore"
 
 import ChallengeCard from "./ChallengeCard"
-import SkeletonChallengeCard from '../skeletons/SkeletonChallengeCard';
+import SkeletonChallengeCard from "../skeletons/SkeletonChallengeCard"
 
 const Challenges = () => {
   const { docs = [] } = useFirestore("challenges")

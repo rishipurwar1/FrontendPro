@@ -29,7 +29,7 @@ const useFirestore = (collection, docId, userID, openTab, completed) => {
       setLoading(false)
     })
     return unsubscribe
-  }, [collection, docId, openTab]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [collection, docId, openTab, loading]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return { docs, loading }
 }

@@ -2,7 +2,7 @@ import React from "react"
 import useFirestore from "../../hooks/useFirestore"
 
 import ChallengeCard from "./ChallengeCard"
-import SkeletonCard from "../skeletons/SkeletonCard"
+import SkeletonChallengeCard from "../skeletons/SkeletonChallengeCard"
 
 const Challenges = () => {
   const { docs = [] } = useFirestore("challenges")
@@ -24,7 +24,7 @@ const Challenges = () => {
                   />
                 )
               })
-            : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard key={n} />)}
+            : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonChallengeCard key={n} />)}
         </div>
       )}
     </main>

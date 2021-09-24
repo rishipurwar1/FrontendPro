@@ -2,11 +2,11 @@ import React, { useState } from "react"
 import useFirestore from "../../hooks/useFirestore"
 import ChallengeCard from "../challenges/ChallengeCard"
 import SolutionSummary from "../solutions/SolutionSummary"
-import SkeletonCard from "../skeletons/SkeletonCard"
+import SkeletonSolutionSummaryCard from "../skeletons/SkeletonSolutionSummaryCard"
 
 const Tabs = ({ userID }) => {
   const [openTab, setOpenTab] = useState(1)
-  const { docs = [] } = useFirestore("solutions", null, userID, openTab)
+  const { docs = [], loading } = useFirestore("solutions", null, userID, openTab)
   return (
     <>
       <div className="flex flex-wrap">
@@ -56,8 +56,9 @@ const Tabs = ({ userID }) => {
               <div className="tab-content tab-space">
                 <div className={openTab === 1 ? "block" : "hidden"} id="link1">
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center items-center">
-                    {docs.length
-                      ? docs.map((challenge) => {
+                    {!loading ? (
+                      docs.length ? (
+                        docs.map((challenge) => {
                           return (
                             <ChallengeCard
                               key={challenge.id}
@@ -66,16 +67,41 @@ const Tabs = ({ userID }) => {
                             />
                           )
                         })
-                      : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard key={n} />)}
+                      ) : (
+                        <h1 className="text-center sm:col-span-2 lg:col-span-3 text-white text-lg">
+                          You haven&apos;t started any challenge
+                          <span className="ml-1" role="img" aria-label="sad">
+                            😔
+                          </span>
+                        </h1>
+                      )
+                    ) : (
+                      [1, 2, 3, 4, 5, 6].map((n) => (
+                        <SkeletonSolutionSummaryCard key={n} />
+                      ))
+                    )}
                   </div>
                 </div>
                 <div className={openTab === 2 ? "block" : "hidden"} id="link2">
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
-                    {docs.length
-                      ? docs.map((solution) => {
+                    {!loading ? (
+                      docs.length ? (
+                        docs.map((solution) => {
                           return <SolutionSummary key={solution.id} solution={solution} />
                         })
-                      : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard key={n} />)}
+                      ) : (
+                        <h1 className="text-center sm:col-span-2 lg:col-span-3 text-white text-lg">
+                          You haven&apos;t submitted any solution
+                          <span className="ml-1" role="img" aria-label="sad">
+                            😔
+                          </span>
+                        </h1>
+                      )
+                    ) : (
+                      [1, 2, 3, 4, 5, 6].map((n) => (
+                        <SkeletonSolutionSummaryCard key={n} />
+                      ))
+                    )}
                   </div>
                 </div>
               </div>

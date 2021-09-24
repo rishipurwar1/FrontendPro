@@ -13,12 +13,12 @@ const SkeletonResourceCard = () => {
         </div>
         <div className="space-y-4 px-3 py-1">
           <div className="card-content">
-            <SkeletonElement type="text" />
             <SkeletonElement type="title" />
-            <SkeletonElement type="title" />
+            <SkeletonElement type="text-lg" />
+            <SkeletonElement type="text-md" />
           </div>
         </div>
-        <div className="block rounded-b w-full bg-gradient-to-br bg-gray-400 px-5 py-5">
+        <div className="block rounded-b-md w-full bg-gradient-to-br bg-gray-400 px-5 py-5">
           &emsp;
         </div>
       </div>

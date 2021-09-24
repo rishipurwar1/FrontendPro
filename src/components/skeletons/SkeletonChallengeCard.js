@@ -14,14 +14,14 @@ const SkeletonChallengeCard = () => {
         </div>
         <div className="space-y-4 px-3 py-1">
           <div className="card-content space-y-2 mb-4">
+            <SkeletonElement type="title" />
+            <SkeletonElement type="text-lg" />
+            <SkeletonElement type="text-md" />
             <SkeletonElement type="text" />
-            <SkeletonElement type="title" />
-            <SkeletonElement type="title" />
-            <SkeletonElement type="title" />
           </div>
         </div>
         <SkeletonDifficultyBar />
-        <div className="block mt-4 rounded-b w-full bg-gradient-to-br bg-gray-400 px-5 py-5">
+        <div className="block mt-4 rounded-b-md w-full bg-gradient-to-br bg-gray-400 px-5 py-5">
           &emsp;
         </div>
       </div>

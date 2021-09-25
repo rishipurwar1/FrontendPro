@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true
   },
   "extends": ["plugin:react/recommended", "standard", "prettier"],
   "parserOptions": {
@@ -14,6 +15,7 @@
   "plugins": ["react", "react-hooks"],
   "rules": {
     "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off"
     "no-unused-vars": "warn"
   }
 }

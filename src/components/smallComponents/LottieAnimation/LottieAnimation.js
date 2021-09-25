@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Lottie from "react-lottie"
 import PropTypes from "prop-types"
-import { generateLottieOptions } from "../../utils"
+import { generateLottieOptions } from "../../../utils"
 
 export const LottieAnimation = React.memo(
   ({ animationDataFile, height = 420, width = 420 }) => {
@@ -18,7 +18,7 @@ export const LottieAnimation = React.memo(
 )
 
 LottieAnimation.propTypes = {
-  animationDataFile: PropTypes.object.isRequired,
+  animationDataFile: PropTypes.object,
   height: PropTypes.number,
   weight: PropTypes.number,
 }

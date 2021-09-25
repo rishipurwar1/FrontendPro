@@ -3,14 +3,22 @@ import useFirestore from "../../hooks/useFirestore"
 import DownloadButton from "../smallComponents/DownloadButton"
 import DropDown from "../smallComponents/DropDown"
 import ChallengeHeader from "./ChallengeHeader"
+import LottieAnimation from "../smallComponents/LottieAnimation/"
+import rocketLoader from "../../assets/animated_illustrations/loader.json"
 
 const ChallengeDetails = (props) => {
   const id = props.match.params.id
   const { docs } = useFirestore("challenges", id)
   const [figmaURL, setFigmaURL] = useState(0)
   const solutionDetails = docs.map(({ id, ...r }) => r)
+
   if (docs.length === 0)
-    return <p className="text-white text-center">Loading project...</p>
+    return (
+      <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3">
+        <LottieAnimation animationDataFile={rocketLoader} height={100} width={100} />
+      </div>
+    )
+
   return (
     <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <ChallengeHeader docs={docs} />

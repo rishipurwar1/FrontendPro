@@ -6,14 +6,22 @@ import { Link } from "react-router-dom"
 import ChallengeHeader from "../challenges/ChallengeHeader"
 import ConfirmationModal from "../smallComponents/ConfirmationModal"
 import { useAuth } from "../../context/AuthContext"
+import LottieAnimation from "../smallComponents/LottieAnimation"
+import rocketLoader from "../../assets/animated_illustrations/loader.json"
 
 const SolutionDetails = (props) => {
   const id = props.match.params.id
   const { docs } = useFirestore("solutions", id)
   const { currentUser } = useAuth()
   const [modal, setModal] = useState(false)
+
   if (docs.length === 0)
-    return <p className="text-white text-center">Loading project...</p>
+    return (
+      <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3">
+        <LottieAnimation animationDataFile={rocketLoader} height={100} width={100} />
+      </div>
+    )
+
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3 mb-4">
       <ChallengeHeader docs={docs} button />

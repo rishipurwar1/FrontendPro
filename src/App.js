@@ -30,7 +30,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <div className="relative grid md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6">
+        <div className="relative grid min-w-full md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6">
           <Navbar />
           <SideBar />
           <Switch>

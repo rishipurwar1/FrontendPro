@@ -67,6 +67,22 @@ const ChallengeDetails = (props) => {
             color="bg-gradient-to-br from-purple-500 to-indigo-500"
             challengeDetails={solutionDetails}
           />
+          <h2 className="text-2xl font-semibold pb-1 text-purple-500 mt-5">
+            Contributed By:
+          </h2>
+          <div className="flex flex-row items-center mt-3 ">
+            <div className="w-14 mr-4">
+              <img
+                src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-1-800x800.jpg"
+                alt="..."
+                className="shadow rounded-full max-w-full h-auto border-none"
+              />
+            </div>
+            <div className="flex flex-col">
+              <p className="text-lg text-white">Corey Siphron</p>
+              <p className="text-sm text-gray-300">UI/UX Designer</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -7,9 +7,10 @@ import { useAuth } from "../../context/AuthContext"
 const MySolutions = () => {
   const { currentUser } = useAuth()
   return (
-    <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3 text-purple-50 min-h-screen">
+    <div className="sm:ml-0 transition cursor-pointer  px-5 row-start-2 row-end-3 col-start-2 col-end-3 text-purple-50 min-h-screen">
       <Hero
-        title="Here you can find all the solutions and ongoing challenges details."
+        title="All the solutions and details of ongoing challenges can be found"
+        span="here 📚"
         subTitle="Welcome To Coding Space 😊"
         mainImg={mainImg}
         btnTitle="Explore Challenges "

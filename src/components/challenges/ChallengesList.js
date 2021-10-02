@@ -12,7 +12,8 @@ const ChallengesList = () => {
   return (
     <main className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Hero
-        title="Here are some handcrafted challenges for you. Keep Coding! 👨‍💻"
+        title="Handpick challenges just for you ⚡️"
+        subtitle="Check them out here"
         subTitle="Today is a great day to start a new challenge 🧑‍💻"
         mainImg={challengeLottie}
         btnTitle="Explore Challenges "

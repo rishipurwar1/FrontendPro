@@ -7,7 +7,17 @@ import { useAuth } from "../../context/AuthContext"
 import Button from "../smallComponents/Button"
 import SignedOutLinks from "../layouts/SignedOutLinks"
 
-const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route }) => {
+const Hero = ({
+  homepage,
+  title,
+  subTitle,
+  mainImg,
+  btnTitle,
+  logoTitle,
+  route,
+  span,
+  subtitle,
+}) => {
   const { currentUser } = useAuth()
   const displayName = currentUser
     ? currentUser.displayName !== null
@@ -27,7 +37,7 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route }
   }
 
   return (
-    <div className="mt-6 md:mt-2 mb-8">
+    <div className="mt-6 md:mt-2 mb-8 ">
       <p
         className={`font-heading ${
           homepage ? "text-lg font-normal" : "text-3xl font-bold"
@@ -40,11 +50,18 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route }
       >
         {subTitle}
       </p>
-      <header className="mt-4 flex items-center xs:justify-center sm:justify-between bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl xs:px-5 md:px-8 py-4 xs:max-h-screen sm:max-h-96 shadow-md xs:flex-wrap-reverse sm:flex-nowrap">
+      <header className="  mt-4 flex items-center xs:justify-center sm:justify-between bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl xs:px-5 md:px-8 py-4 xs:max-h-screen sm:max-h-96 shadow-md xs:flex-wrap-reverse sm:flex-nowrap">
         <div>
-          <h1 className="text-white xs:text-2xl sm:text-xl md:text-2xl lg:text-4xl font-semibold font-heading py-4 sm:max-w-xs max-w-sm">
-            {title}
-          </h1>
+          <div className=" ">
+            <h1 className="text-white xs:text-2xl sm:text-xl md:text-2xl lg:text-4xl font-semibold font-heading py-4 sm:max-w-xs max-w-sm ">
+              {title}
+              <span className="text-black ml-2">{span}</span>
+            </h1>
+            <h3 className="align-center text-start font-semibold  ml-2 mb-1 ">
+              {subtitle}
+            </h3>
+          </div>
+
           {currentUser ? (
             <Button
               name={btnTitle}

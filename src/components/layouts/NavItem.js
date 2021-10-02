@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 const NavItem = ({ item, icon }) => {
   return (
     <NavLink
-      className="block p-3 mb-3 rounded transition-all  duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500 hover:text-white text-base xs:text-left md:text-center lg:text-left relative"
+      className="block p-3 mb-3 rounded transition-all  duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500 hover:text-white text-base xs:text-left md:text-center lg:text-center relative"
       to={`/${item}`}
       aria-label={item}
       title={`This is a link to ${item}`}

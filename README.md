@@ -30,25 +30,27 @@ You can do so by following [this guide](https://firebase.google.com/docs/web/set
 
 ## 🛠️ Installation Steps
 
-1. Clone the repository
+1. Fork [this](https://github.com/rishipurwar1/coding-space) repository.
+
+2. Clone your forked copy of the project.
 
 ```bash
-git clone https://github.com/rishipurwar1/coding-space.git
+git clone https://github.com/<your-github-username>/coding-space.git
 ```
 
-2. Change the working directory
+3. Change the working directory
 
 ```bash
 cd coding-space
 ```
 
-3. Create a `.env` file at the root of the project folder
+4. Create a `.env` file at the root of the project folder
 
 ```bash
 touch .env
 ```
 
-4. Enter your Firebase Config in `.env` like this
+5. Enter your Firebase Config in `.env` like this
 
 ```bash
 REACT_APP_API_KEY="YOUR_FIREBASE_API_KEY"
@@ -60,13 +62,13 @@ REACT_APP_APP_ID="YOUR_FIREBASE_APP_ID"
 REACT_APP_MEASUREMENT_ID = "YOUR_FIREBASE_MEASUREMENT_ID"
 ```
 
-5. Install dependencies
+6. Install dependencies
 
 ```bash
 npm install
 ```
 
-6. Run the app
+7. Run the app
 
 ```bash
 npm start

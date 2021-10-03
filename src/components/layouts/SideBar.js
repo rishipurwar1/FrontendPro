@@ -63,10 +63,14 @@ const Sidebar = () => {
 
           {/* <!-- nav --> */}
           <aside className="xs:pt-4 md:pt-8 bg-gray-900">
-            <NavItem item="challenges" icon="fas fa-code" />
-            <NavItem item="solutions" icon="fas fa-laptop-code" />
-            <NavItem item="resources" icon="fas fa-chalkboard-teacher " />
-            <NavItem item="roadmaps" icon="fas fa-map-signs" />
+            <NavItem item="challenges" icon="fas fa-code" setIsOpen={setIsOpen} />
+            <NavItem item="solutions" icon="fas fa-laptop-code" setIsOpen={setIsOpen} />
+            <NavItem
+              item="resources"
+              icon="fas fa-chalkboard-teacher "
+              setIsOpen={setIsOpen}
+            />
+            <NavItem item="roadmaps" icon="fas fa-map-signs" setIsOpen={setIsOpen} />
           </aside>
 
           {/* <!-- discord buton --> */}
@@ -78,7 +82,9 @@ const Sidebar = () => {
               className="bg-blue-500 flex items-center justify-center p-3 rounded transition-all duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500 hover:text-white text-base w-full xl:mx-3"
             >
               <i className="fab fa-discord text-2xl mr-1 xs:mr-3 md:mr-0 xl:mr-3 xl:text-base text-center"></i>
-              <span className="xs:inline-block md:hidden xl:inline-block">Join Discord</span>
+              <span className="xs:inline-block md:hidden xl:inline-block">
+                Join Discord
+              </span>
             </a>
           </div>
         </div>

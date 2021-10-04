@@ -30,7 +30,7 @@ const DropDown = ({ setFigmaURL }) => {
                   setFigmaURL(0)
                   setActive(!isActive)
                 }}
-                className="block text-left pl-3 py-2 text-sm text-gray-300 hover:bg-gray-100 hover:text-gray-900 w-full focus:outline-none"
+                className="block text-left pl-3 py-2 text-sm text-gray-300 hover:bg-purple-500 hover:text-white w-full focus:outline-none"
                 role="menuitem"
               >
                 <i className="fas fa-desktop pr-2"></i>Desktop
@@ -40,7 +40,7 @@ const DropDown = ({ setFigmaURL }) => {
                   setFigmaURL(1)
                   setActive(!isActive)
                 }}
-                className="block text-left pl-3 py-2 text-sm text-gray-300  w-full focus:outline-none"
+                className="block text-left pl-3 py-2 text-sm text-gray-300 hover:bg-purple-500 hover:text-white w-full focus:outline-none"
                 role="menuitem"
               >
                 <i className="fas fa-mobile-alt pr-2"></i>Mobile

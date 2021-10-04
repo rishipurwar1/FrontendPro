@@ -18,7 +18,12 @@ const ContributorProfile = (props) => {
         </Image>
       </div>
       <div className="flex flex-col">
-        <a href={socialLink} className="hover:underline">
+        <a
+          href={socialLink}
+          className="hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <p className="text-base sm:text-lg">{name}</p>
         </a>
         <p className="text-xs sm:text-sm text-gray-300">{title}</p>

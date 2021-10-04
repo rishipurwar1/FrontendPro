@@ -12,7 +12,6 @@ const ChallengeDetails = (props) => {
   const { docs } = useFirestore("challenges", id)
   const [figmaURL, setFigmaURL] = useState(0)
   const solutionDetails = docs.map(({ id, ...r }) => r)
-  const [showContributor, setShowContributor] = useState(false)
 
   if (docs.length === 0)
     return (
@@ -69,12 +68,12 @@ const ChallengeDetails = (props) => {
             color="bg-gradient-to-br from-purple-500 to-indigo-500"
             challengeDetails={solutionDetails}
           />
-          {!showContributor && (
+          {docs[0].contributor && (
             <>
               <h2 className="text-2xl font-semibold pb-1 text-purple-500 mt-5">
                 Contributed By:
               </h2>
-              <ContributorProfile />
+              <ContributorProfile contributor={docs[0].contributor} />
             </>
           )}
         </div>

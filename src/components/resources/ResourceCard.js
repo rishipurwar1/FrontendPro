@@ -17,7 +17,7 @@ const ResourceCard = ({ resource }) => {
           <Placeholder type="pixelate" />
         </Image>
       </div>
-      <div className="flex flex-col justify-between rounded-bl-md rounded-br-md">
+      <div className="flex flex-col flex-1 justify-between rounded-bl-md rounded-br-md">
         <div className="px-4 pt-4">
           {resource.tags.map((tag) => (
             <Badge key={tag} name={tag} badgeColor="purple" />

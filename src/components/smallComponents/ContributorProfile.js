@@ -1,7 +1,7 @@
 import React from "react"
 import { Image, Placeholder, Transformation } from "cloudinary-react"
 
-function ContributorProfile(props) {
+const ContributorProfile = (props) => {
   const { name, profilePhoto, title } = props.contributor
 
   return (

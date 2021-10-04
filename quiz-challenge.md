@@ -19,10 +19,10 @@ Your task is to create an interactive quiz app with a timer, progress bar, and s
 - Finally, there will be a result page that displays the user's score.
 
 ### Quiz Page:
-<img src="https://github.com/RuchikaSuryawanshi7/Webgenix/blob/main/images/Thumbnail.png">
+<img src="https://github.com/RuchikaSuryawanshi7/Webgenix/blob/main/images/Quiz.png">
 
 ### Quiz Result:
-<img src="https://github.com/RuchikaSuryawanshi7/Webgenix/blob/main/images/Group%20136.png">
+<img src="https://github.com/RuchikaSuryawanshi7/Webgenix/blob/main/images/Result.png">
 
 ## Figma Design : [Design link](https://www.figma.com/file/crbw4vyTR0jUkf4Ix4mWBM/Javascript-Quiz-App?node-id=12%3A4) 
 

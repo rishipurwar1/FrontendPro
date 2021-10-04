@@ -2,7 +2,7 @@ import React from "react"
 import { Image, Placeholder, Transformation } from "cloudinary-react"
 
 const ContributorProfile = (props) => {
-  const { name, profilePhoto, title } = props.contributor
+  const { name, profilePhoto, title, socialLink } = props.contributor
 
   return (
     <div className="flex flex-row items-center mt-3 ">
@@ -18,7 +18,9 @@ const ContributorProfile = (props) => {
         </Image>
       </div>
       <div className="flex flex-col">
-        <p className="text-base sm:text-lg text-white">{name}</p>
+        <a href={socialLink} className="hover:underline">
+          <p className="text-base sm:text-lg">{name}</p>
+        </a>
         <p className="text-xs sm:text-sm text-gray-300">{title}</p>
       </div>
     </div>

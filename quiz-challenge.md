@@ -20,7 +20,7 @@ Your task is to create an interactive quiz app with a timer, progress bar, and s
 
 ### Quiz Page:
 <img src="https://github.com/RuchikaSuryawanshi7/Webgenix/blob/main/images/Quiz.png">
-
+ 
 ### Quiz Result:
 <img src="https://github.com/RuchikaSuryawanshi7/Webgenix/blob/main/images/Result.png">
 
@@ -34,6 +34,4 @@ If you need any help, reach out to us on our Discord server. Here is the [invite
 
 ### 🌟You are all set!🌟
 Are you ready to work on this issue? Go ahead! We are accepting as many challenges as the community can create. One note, quality over quantity.
-
-
 

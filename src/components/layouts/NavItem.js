@@ -2,10 +2,16 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 
 const NavItem = ({ item, icon, setIsOpen }) => {
+  const toPath =
+    item === "github"
+      ? { pathname: "https://github.com/rishipurwar1/coding-space" }
+      : `/${item}`
+  const target = item === "github" ? "_blank" : ""
   return (
     <NavLink
       className="block p-3 mb-3 rounded transition-all  duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500 hover:text-white text-base xs:text-left md:text-center xl:text-left relative"
-      to={`/${item}`}
+      to={toPath}
+      target={target}
       aria-label={item}
       title={`This is a link to ${item}`}
       onClick={() => setIsOpen(false)}

@@ -41,6 +41,7 @@ module.exports = {
     extend: {
       gridColumn: ["last"],
     },
+    animation: ["responsive", "hover", "focus"],
   },
   plugins: [],
 }

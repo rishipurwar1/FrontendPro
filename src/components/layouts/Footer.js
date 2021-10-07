@@ -19,7 +19,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i className="fab fa-github"></i>
+          <i className="fab fa-github hover:text-purple-500"></i>
         </a>
         <a
           href="https://twitter.com/thefierycoder"
@@ -29,7 +29,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i className="fab fa-twitter"></i>
+          <i className="fab fa-twitter hover:text-purple-500"></i>
         </a>
       </div>
     </footer>

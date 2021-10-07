@@ -5,10 +5,11 @@ import useFirestore from "../../hooks/useFirestore"
 import Hero from "../dashboard/Hero"
 import ResourcesIll from "../../assets/animated_illustrations/resources.json"
 import ResourceCard from "./ResourceCard"
-import SkeletonResourceCard from '../skeletons/SkeletonResourceCard';
+import SkeletonResourceCard from "../skeletons/SkeletonResourceCard"
 
 const Resources = () => {
   const { docs } = useFirestore("resources")
+
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Hero

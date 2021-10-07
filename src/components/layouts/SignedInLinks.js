@@ -20,10 +20,10 @@ const SignedInLinks = ({ profile, githubSignOut }) => {
     <div className="relative block">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="block h-10 w-10 rounded-full overflow-hidden border-2 border-purple-500 focus:outline-none"
+        className="block h-12 w-12 rounded-full overflow-hidden border-2 border-purple-500 focus:outline-none"
       >
         <img
-          className=" h-full w-full object-cover cursor-pointer"
+          className=" h-full w-full object-cover cursor-pointer hover:animate-pulse"
           src={profile}
           alt="user profile"
         />

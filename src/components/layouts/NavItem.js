@@ -15,6 +15,7 @@ const NavItem = ({ item, icon, setIsOpen }) => {
       aria-label={item}
       title={`This is a link to ${item}`}
       onClick={() => setIsOpen(false)}
+      rel="noopener noreferrer"
     >
       <i
         className={`xs:mr-3 md:mr-0 xl:mr-3 ${icon} text-xl xl:text-base text-center`}

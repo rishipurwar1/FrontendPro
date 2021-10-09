@@ -2,11 +2,11 @@ import React from "react"
 
 // custom auth context
 import { useAuth } from "../../context/AuthContext"
+import Button from "../smallComponents/Button"
 
 // custom components
 import SignedInLinks from "./SignedInLinks"
 import SignedOutLinks from "./SignedOutLinks"
-import StarButton from "./StarButton"
 
 const Navbar = () => {
   const { currentUser, githubSignOut } = useAuth()
@@ -16,13 +16,24 @@ const Navbar = () => {
   ) : (
     <SignedOutLinks bgColor="bg-gray-800" />
   )
-
+  const handleClick = () => {
+    location.href = "https://github.com/rishipurwar1/coding-space"
+  }
+  const starButton = (
+    <Button
+      bgColor={
+        "bg-purple-800 transition-all  duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500"
+      }
+      handleClick={handleClick}
+      disabled={false}
+      name="Star us on Github"
+      logo="far fa-star ml-2"
+    />
+  )
   return (
     <nav className="p-5 py-8 hidden md:block md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2">
       <ul className="flex justify-end space-x-4 items-center">
-        <li className="xs:invisible xl:visible">
-          <StarButton />
-        </li>
+        <li className="xs:invisible xl:visible">{starButton}</li>
         <li>{links}</li>
       </ul>
     </nav>

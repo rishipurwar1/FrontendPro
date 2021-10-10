@@ -13,7 +13,10 @@ const ChallengeHeader = ({ docs, button }) => {
   const { currentUser } = useAuth()
   const displayName = currentUser ? currentUser.displayName.split(" ")[0] : "Coder"
   const history = useHistory()
-  const solutionDetails = docs.map(({ id, ...r }) => r)
+  const solutionDetails = docs.map(({ id, ...r }) => {
+    r.challengeID = id
+    return r
+  })
   return docs.length ? (
     <div className="mt-2 mb-8">
       <h2 className="font-heading text-3xl font-bold text-white">

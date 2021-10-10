@@ -11,7 +11,10 @@ const ChallengeDetails = (props) => {
   const id = props.match.params.id
   const { docs } = useFirestore("challenges", id)
   const [figmaURL, setFigmaURL] = useState(0)
-  const solutionDetails = docs.map(({ id, ...r }) => r)
+  const solutionDetails = docs.map(({ id, ...r }) => {
+    r.challengeID = id
+    return r
+  })
 
   if (docs.length === 0)
     return (

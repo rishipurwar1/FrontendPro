@@ -17,7 +17,12 @@ const Navbar = () => {
     <SignedOutLinks bgColor="bg-gray-800" />
   )
   const handleClick = () => {
-    location.href = "https://github.com/rishipurwar1/coding-space"
+    window.open(
+      "https://github.com/rishipurwar1/coding-space",
+      "_blank",
+      "noopener",
+      "noreferrer"
+    )
   }
   const starButton = (
     <Button

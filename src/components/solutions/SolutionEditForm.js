@@ -51,7 +51,7 @@ const SolutionEditForm = (props) => {
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Hero
-        title="Master Web and Mobile Development by building real world projects"
+        title="What's stopping you from moving forward? All the solutions you need are right here!"
         subTitle="Time to submit your solution and show it to the world 👍"
         mainImg={mainImg}
         btnTitle="Explore Solutions "

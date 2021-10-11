@@ -1,6 +1,6 @@
 # 🚀 CODINGSPACE
 
-CodingSpace is the platform where we aim to provide lots of different real-world UI-based challenges that can help developers to improve their web and mobile development skills.
+CodingSpace is the platform where we aim to provide lots of different real-world UI-based challenges that can help developers to improve their web and mobile development skills.And Develop a good mind set
 
 ![Coding space](https://i.imgur.com/EPPICCO.gif)
 

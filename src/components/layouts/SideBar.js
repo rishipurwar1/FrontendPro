@@ -72,6 +72,7 @@ const Sidebar = () => {
               setIsOpen={setIsOpen}
             />
             <NavItem item="roadmaps" icon="fas fa-map-signs" setIsOpen={setIsOpen} />
+            <NavItem item="github" icon="fab fa-github" setIsOpen={setIsOpen} />
           </aside>
 
           {/* <!-- discord buton --> */}

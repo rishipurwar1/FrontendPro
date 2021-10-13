@@ -33,7 +33,7 @@ const SignedInLinks = ({ profile, githubSignOut }) => {
           className="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-300 bg-gray-800 rounded-md shadow-md"
           aria-label="sub-menu"
         >
-          <li>
+          <li className="rounded transition-all bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500">
             <Link
               to="/mysolutions"
               className="block px-4 py-1 "
@@ -43,7 +43,7 @@ const SignedInLinks = ({ profile, githubSignOut }) => {
               <i className="fas fa-user mr-2"></i>My Solutions
             </Link>
           </li>
-          <li>
+          <li className="rounded transition-all bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500">
             <button disabled={loading} onClick={logout} className="block px-4 py-1">
               <i className="fas fa-sign-out-alt mr-2"></i>Logout
             </button>

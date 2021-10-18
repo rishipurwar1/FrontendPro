@@ -1,7 +1,8 @@
 // library components
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
+import useOnClickOutside from "../../hooks/useOnClickOutside"
 import NavItem from "./NavItem"
 import SignedInLinks from "./SignedInLinks"
 import SignedOutLinks from "./SignedOutLinks"
@@ -9,6 +10,8 @@ import SignedOutLinks from "./SignedOutLinks"
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { currentUser, githubSignOut } = useAuth()
+  const ref = useRef()
+  useOnClickOutside(ref, () => setIsOpen(false))
   // const [loading, setLoading] = useState(false);
   const links = currentUser ? (
     <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut} />
@@ -34,6 +37,7 @@ const Sidebar = () => {
 
         {/* <!-- sidebar --> */}
         <div
+          ref={ref}
           className={`${
             isOpen ? null : "-translate-x-full"
           } bg-gray-900 text-white xs:w-full md:w-20 xl:w-56 space-y-6 xs:py-4 md:py-8 px-2 absolute inset-y-0 left-0 transform md:fixed md:translate-x-0 transition duration-200 ease-in-out border-r border-gray-800 z-50 min-h-screen`}

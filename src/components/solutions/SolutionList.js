@@ -12,7 +12,7 @@ const ShowSolutions = () => {
   return (
     <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Hero
-        title="Master Web and Mobile Development by building real world projects"
+        title="What's stopping you from moving forward? All the solutions you need are right here!"
         subTitle="Welcome To Coding Space 😊"
         mainImg={solutionLottie}
         btnTitle="My Solutions "

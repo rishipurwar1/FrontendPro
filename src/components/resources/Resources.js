@@ -1,16 +1,20 @@
 import React from "react"
+import { Helmet } from "react-helmet"
 // custom firebase hook
 import useFirestore from "../../hooks/useFirestore"
 // custom components
 import Hero from "../dashboard/Hero"
 import ResourcesIll from "../../assets/animated_illustrations/resources.json"
 import ResourceCard from "./ResourceCard"
-import SkeletonResourceCard from '../skeletons/SkeletonResourceCard';
+import SkeletonResourceCard from "../skeletons/SkeletonResourceCard"
 
 const Resources = () => {
   const { docs } = useFirestore("resources")
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
+      <Helmet>
+        <title>Resources - Learn by Building Web and Mobile Apps</title>
+      </Helmet>
       <Hero
         title="Here you can find all the frontend and backend development resources."
         subTitle="Welcome To Coding Space 😊"

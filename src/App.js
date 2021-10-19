@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import "./App.css"
 import ReactGA from "react-ga"
+import { Helmet } from "react-helmet"
 
 // custom components
 import SideBar from "./components/layouts/SideBar"
@@ -29,6 +30,9 @@ const App = () => {
   }, [])
   return (
     <BrowserRouter>
+      <Helmet>
+        <title>CODINGSPACE - Learn by Building Web and Mobile Apps</title>
+      </Helmet>
       <AuthProvider>
         <div className="relative grid min-h-screen md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6">
           <Navbar />

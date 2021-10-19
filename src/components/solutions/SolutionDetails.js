@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Helmet } from "react-helmet"
 import useFirestore from "../../hooks/useFirestore"
 import moment from "moment"
 import ShowWebsite from "./ShowWebsite"
@@ -24,6 +25,9 @@ const SolutionDetails = (props) => {
 
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3 mb-4">
+      <Helmet>
+        <title>{`${docs[0].title} CODINGSPACE challenge solution by ${docs[0].author}`}</title>
+      </Helmet>
       <ChallengeHeader docs={docs} button />
       {modal ? <ConfirmationModal setModal={setModal} docs={docs} /> : null}
       <div className="flex justify-between items-center px-2">

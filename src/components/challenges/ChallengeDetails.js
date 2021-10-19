@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Helmet } from "react-helmet"
 import useFirestore from "../../hooks/useFirestore"
 import DownloadButton from "../smallComponents/DownloadButton"
 import DropDown from "../smallComponents/DropDown"
@@ -25,6 +26,9 @@ const ChallengeDetails = (props) => {
 
   return (
     <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
+      <Helmet>
+        <title>{`${docs[0].title} CODINGSPACE Challenge`}</title>
+      </Helmet>
       <ChallengeHeader docs={docs} />
       <div className="overflow-hidden relative">
         <iframe

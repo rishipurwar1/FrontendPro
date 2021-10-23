@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Hero
-        title="Master Web and Mobile Development by building real world projects"
+        title="Excel your coding career by building real world projects"
         subTitle="Welcome To Coding Space 😊"
         mainImg={heroImg}
         btnTitle="Explore Challenges "

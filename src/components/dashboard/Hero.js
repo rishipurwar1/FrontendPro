@@ -42,7 +42,7 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route }
       </p>
       <header className="mt-4 flex items-center xs:justify-center sm:justify-between bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl xs:px-5 md:px-8 py-4 xs:max-h-screen sm:max-h-96 shadow-md xs:flex-wrap-reverse sm:flex-nowrap">
         <div>
-          <h1 className="text-white xs:text-2xl sm:text-xl md:text-2xl lg:text-4xl lg:leading-10 lg:tracking-wide font-semibold font-heading py-4 sm:max-w-xs max-w-sm lg:max-w-lg hero.js">
+          <h1 className="text-white xs:text-2xl sm:text-xl md:text-2xl lg:text-4xl lg:leading-10 lg:tracking-wide font-semibold font-heading py-4 sm:max-w-xs max-w-sm lg:max-w-lg">
             {title}
           </h1>
           {currentUser ? (

@@ -1,27 +1,16 @@
 import React from "react"
-import Lottie from "react-lottie"
-
-import comingSoon from "../../assets/animated_illustrations/coming_soon.json"
+import RoadmapsHero from "./RoadmapsHero"
 
 const Roadmaps = () => {
-  // Lottie options
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: comingSoon,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  }
   return (
-    <div className="mt-5 row-start-2 row-end-3 col-start-2 col-end-3 self-center	">
-      <p className="text-center text-white text-4xl">
-        We&apos;re building!
-        <span role="img" aria-label="building-emoji">
-          👷‍♂️
-        </span>
-      </p>
-      <Lottie height={420} width={420} options={defaultOptions} />
+    <div className="mt-5 md:m-5 row-start-2 row-end-3 col-start-2 col-end-3 self-center	">
+      <RoadmapsHero />
+      <h2 className="text-5xl text-center text-white font-bold  font-heading">
+        {/* Roadmaps  Text */}
+      </h2>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">
+        {/* Roadmap Cards */}
+      </div>
     </div>
   )
 }

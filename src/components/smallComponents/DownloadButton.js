@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useAuth } from "../../context/AuthContext"
-import { useSolution } from "../../hooks/useFirestore"
+import useFirestore, { useSolution } from "../../hooks/useFirestore"
 import Modal from "./Modal"
 
 const DownloadButton = ({ color, challengeDetails }) => {
@@ -8,11 +8,21 @@ const DownloadButton = ({ color, challengeDetails }) => {
   const [downloadingModal, setDownloadingModal] = useState(false)
   const { currentUser } = useAuth()
   const { addSolution } = useSolution("solutions")
+  const { docs = [] } = useFirestore("solutions", null, null, null, false)
   const downloadAssets = async () => {
     if (currentUser) {
       window.open(challengeDetails[0].challengeAssets, "_blank", "noopener,noreferrer")
-      await addSolution(...challengeDetails)
-      setDownloadingModal(true)
+      const currentUserSolution =
+        docs.length > 0 &&
+        docs
+          .filter((doc) => doc.userID === currentUser.id)
+          .filter((solution) => solution.challengeID === challengeDetails[0].challengeID)
+      if (currentUserSolution.length > 0) {
+        setDownloadingModal(true)
+      } else {
+        setDownloadingModal(true)
+        await addSolution(...challengeDetails)
+      }
     } else {
       setShowModal(true)
     }

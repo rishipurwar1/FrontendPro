@@ -1,4 +1,5 @@
 import React from "react"
+import { Helmet } from "react-helmet"
 
 // custom components
 import useFirestore from "../../hooks/useFirestore"
@@ -11,6 +12,9 @@ const ChallengesList = () => {
   const { docs = [] } = useFirestore("challenges")
   return (
     <main className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
+      <Helmet>
+        <title>CODINGSPACE Challenges- Learn by Building Web and Mobile Apps</title>
+      </Helmet>
       <Hero
         title="Here are some handcrafted challenges for you. Keep Coding! 👨‍💻"
         subTitle="Today is a great day to start a new challenge 🧑‍💻"

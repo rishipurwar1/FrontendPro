@@ -1,16 +1,21 @@
 import React, { useState } from "react"
+import { Helmet } from "react-helmet"
 import useFirestore from "../../hooks/useFirestore"
 import DownloadButton from "../smallComponents/DownloadButton"
 import DropDown from "../smallComponents/DropDown"
 import ChallengeHeader from "./ChallengeHeader"
 import LottieAnimation from "../smallComponents/LottieAnimation/"
 import rocketLoader from "../../assets/animated_illustrations/loader.json"
+import ContributorProfile from "../smallComponents/ContributorProfile"
 
 const ChallengeDetails = (props) => {
   const id = props.match.params.id
   const { docs } = useFirestore("challenges", id)
   const [figmaURL, setFigmaURL] = useState(0)
-  const solutionDetails = docs.map(({ id, ...r }) => r)
+  const solutionDetails = docs.map(({ id, ...r }) => {
+    r.challengeID = id
+    return r
+  })
 
   if (docs.length === 0)
     return (
@@ -21,6 +26,9 @@ const ChallengeDetails = (props) => {
 
   return (
     <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
+      <Helmet>
+        <title>{`${docs[0].title} CODINGSPACE Challenge`}</title>
+      </Helmet>
       <ChallengeHeader docs={docs} />
       <div className="overflow-hidden relative">
         <iframe
@@ -67,6 +75,14 @@ const ChallengeDetails = (props) => {
             color="bg-gradient-to-br from-purple-500 to-indigo-500"
             challengeDetails={solutionDetails}
           />
+          {docs[0].contributor && (
+            <>
+              <h2 className="text-2xl font-semibold pb-1 text-purple-500 mt-5">
+                Contributed By:
+              </h2>
+              <ContributorProfile contributor={docs[0].contributor} />
+            </>
+          )}
         </div>
       </div>
     </div>

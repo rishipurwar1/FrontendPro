@@ -15,6 +15,7 @@
     "react-dom": "^16.13.1",
     "react-dom-confetti": "^0.2.0",
     "react-ga": "^3.3.0",
+    "react-helmet": "^6.1.0",
     "react-hook-form": "^7.14.2",
     "react-lottie": "^1.2.3",
     "react-router-dom": "^5.2.0",

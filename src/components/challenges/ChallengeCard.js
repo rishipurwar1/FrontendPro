@@ -7,7 +7,7 @@ import Badge from "../smallComponents/Badge"
 const ChallengeCard = ({ challenge, challengelist, btnTitle }) => {
   const link = challengelist ? "/challenge/" + challenge.id : "/submit/" + challenge.id
   return (
-    <div className="bg-gray-800 shadow-2xl overflow-hidden rounded-md max-w-sm">
+    <div className="flex flex-col bg-gray-800 shadow-2xl overflow-hidden rounded-md max-w-sm">
       <Image
         className="max-h-50"
         cloudName="di5hmgowi"
@@ -22,7 +22,7 @@ const ChallengeCard = ({ challenge, challengelist, btnTitle }) => {
           <Badge key={tag} name={tag} badgeColor="purple" />
         ))}
       </div>
-      <div className="mb-4 card-content">
+      <div className="flex-1 mb-4 card-content">
         <h3 className="font-semibold font-heading text-2xl text-white px-4 leading-6">
           {challenge.title}
         </h3>

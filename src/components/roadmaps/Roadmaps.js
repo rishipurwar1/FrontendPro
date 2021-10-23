@@ -3,7 +3,7 @@ import RoadmapsHero from "./RoadmapsHero"
 
 const Roadmaps = () => {
   return (
-    <div className="mt-5 md:m-5 row-start-2 row-end-3 col-start-2 col-end-3 self-center	">
+    <div className="mt-5 m-5 row-start-2 row-end-3 col-start-2 col-end-3 self-center	">
       <RoadmapsHero />
       <h2 className="text-5xl text-center text-white font-bold  font-heading">
         {/* Roadmaps  Text */}

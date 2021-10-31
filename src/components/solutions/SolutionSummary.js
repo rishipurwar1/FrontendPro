@@ -5,7 +5,7 @@ import { Image, Placeholder } from "cloudinary-react"
 
 const SolutionSummary = ({ solution }) => {
   return (
-    <div className="max-w-sm h-auto rounded-md overflow-hidden shadow-2xl">
+    <div className="max-w-sm h-auto rounded-md overflow-hidden shadow-2xl transform transition duration-300 ease-in-out hover:shadow-primary hover:scale-105">
       <Image
         cloudName="di5hmgowi"
         loading="lazy"

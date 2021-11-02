@@ -9,7 +9,6 @@ const SignedOutLinks = ({ bgColor }) => {
     try {
       setLoading(true)
       await githubSignIn()
-      // history.push("/");
       setLoading(false)
     } catch (e) {
       console.log(e)

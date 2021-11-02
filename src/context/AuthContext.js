@@ -25,7 +25,6 @@ export const AuthProvider = ({ children }) => {
       if (userAuth) {
         const useRef = await createUserProfileDocument(userAuth)
         useRef.onSnapshot((snapShot) => {
-          // console.log(snapShot.data());
           setCurrentUser({
             id: snapShot.id,
             ...snapShot.data(),

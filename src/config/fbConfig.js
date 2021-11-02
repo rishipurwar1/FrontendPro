@@ -1,6 +1,7 @@
 import firebase from "firebase/app"
 import "firebase/firestore"
 import "firebase/auth"
+import { getGitHubUserData } from "../utils/getGithubUserData"
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -22,18 +23,24 @@ export const createUserProfileDocument = async (userAuth) => {
 
   if (!snapShot.exists) {
     const { email, photoURL, providerData } = userAuth
-    const createdAt = new Date()
 
-    try {
-      await userRef.set({
-        email,
-        photoURL,
-        createdAt,
-        displayName: providerData[0].displayName,
+    const createdAt = new Date()
+    getGitHubUserData(providerData[0].uid)
+      .then(async (gitHubUserData) => {
+        const username = gitHubUserData.login
+        try {
+          await userRef.set({
+            email,
+            photoURL,
+            createdAt,
+            displayName: providerData[0].displayName,
+            username,
+          })
+        } catch (error) {
+          console.log(error.message)
+        }
       })
-    } catch (error) {
-      console.log(error.message)
-    }
+      .catch((err) => console.error(err))
   }
   return userRef
 }

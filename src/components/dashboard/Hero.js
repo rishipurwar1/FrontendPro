@@ -12,7 +12,7 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route }
   const displayName = currentUser
     ? currentUser.displayName !== null
       ? currentUser.displayName.split(" ")[0]
-      : "Coder"
+      : currentUser.username
     : "Coder"
   const history = useHistory()
 

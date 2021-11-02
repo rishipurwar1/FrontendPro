@@ -11,7 +11,11 @@ import Button from "../smallComponents/Button"
 
 const ChallengeHeader = ({ docs, button }) => {
   const { currentUser } = useAuth()
-  const displayName = currentUser ? currentUser.displayName.split(" ")[0] : "Coder"
+  const displayName = currentUser
+    ? currentUser.displayName !== null
+      ? currentUser.displayName.split(" ")[0]
+      : currentUser.username
+    : "Coder"
   const history = useHistory()
   const solutionDetails = docs.map(({ id, ...r }) => {
     r.challengeID = id

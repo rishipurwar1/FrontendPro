@@ -10,9 +10,9 @@ import SignedOutLinks from "../layouts/SignedOutLinks"
 const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route }) => {
   const { currentUser } = useAuth()
   const displayName = currentUser
-    ? currentUser.displayName !== null
-      ? currentUser.displayName.split(" ")[0]
-      : currentUser.username
+    ? !currentUser?.displayName
+      ? currentUser?.username
+      : currentUser?.displayName.split(" ")[0]
     : "Coder"
   const history = useHistory()
 

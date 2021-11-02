@@ -26,10 +26,10 @@ export const createUserProfileDocument = async (userAuth) => {
 
     const createdAt = new Date()
     getGitHubUserData(providerData[0].uid)
-      .then(async (gitHubUserData) => {
+      .then((gitHubUserData) => {
         const username = gitHubUserData.login
         try {
-          await userRef.set({
+          userRef.set({
             email,
             photoURL,
             createdAt,

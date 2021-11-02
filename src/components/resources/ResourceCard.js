@@ -5,7 +5,7 @@ import Badge from "../smallComponents/Badge"
 
 const ResourceCard = ({ resource }) => {
   return (
-    <div className="flex flex-col max-w-sm rounded-md shadow-3xl bg-gray-800 overflow-hidden transform transition duration-300 ease-in-out hover:shadow-primary hover:scale-105">
+    <div className="flex flex-col max-w-sm rounded-md shadow-3xl bg-gray-800 overflow-hidden transform transition duration-300 ease-in-out hover:shadow-primary hover:scale-102">
       <div className="">
         <Image
           className=""

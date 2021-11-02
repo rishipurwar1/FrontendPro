@@ -43,7 +43,10 @@ export const useSolution = (collection) => {
     try {
       firestore.collection(collection).add({
         ...solution,
-        author: currentUser.displayName,
+        author:
+          currentUser.displayName !== null
+            ? currentUser.displayName
+            : currentUser.username,
         userID: currentUser.id,
         photoURL: currentUser.photoURL,
         completed: false,

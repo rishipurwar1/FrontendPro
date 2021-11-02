@@ -5,6 +5,9 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    scale: {
+      102: "1.02",
+    },
     screens: {
       xs: "300px",
       ...defaultTheme.screens,

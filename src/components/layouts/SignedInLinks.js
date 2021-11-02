@@ -13,7 +13,7 @@ const SignedInLinks = ({ profile, githubSignOut }) => {
     try {
       setLoading(true)
       githubSignOut()
-      history.push("/solutions")
+      history.push("/")
     } catch (error) {
       console.log(error.message)
     }

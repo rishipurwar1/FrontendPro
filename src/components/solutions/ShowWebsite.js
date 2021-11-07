@@ -1,10 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import Spinner from "../smallComponents/Spinner"
+import ShareSolution from "./ShareSolution"
+import Modal from "../smallComponents/Modal"
 
 const ShowWebsite = ({ url, title, github }) => {
   const siteView = ["w-96 mx-auto", "w-full"]
   const [loading, setLoading] = useState(true)
   const [view, setView] = useState(1)
+  const [openShare, setOpenShare] = useState(false)
   const onLoad = () => {
     setLoading(false)
   }
@@ -46,8 +49,16 @@ const ShowWebsite = ({ url, title, github }) => {
             aria-label={`${title} website`}
             title={`Link to ${title} website`}
           >
-            <i className="fas fa-external-link-alt pr-2 text-white text-2xl cursor-pointer"></i>
+            <i className="fas fa-external-link-alt pr-4 text-white text-2xl cursor-pointer"></i>
           </a>
+          <span className="relative" onClick={() => setOpenShare(!openShare)}>
+            {openShare ? (
+              <Modal setShowModal={setOpenShare} header="Share your solution">
+                <ShareSolution />
+              </Modal>
+            ) : null}
+            <i className="fas fa-share-alt mr-2 py-1 px-2 text-white text-2xl cursor-pointer"></i>
+          </span>
         </div>
       </div>
       <div className="relative border-solid border-4 border-purple-500">

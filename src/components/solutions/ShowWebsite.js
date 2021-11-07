@@ -51,7 +51,11 @@ const ShowWebsite = ({ url, title, github }) => {
           >
             <i className="fas fa-external-link-alt pr-4 text-white text-2xl cursor-pointer"></i>
           </a>
-          <span className="relative" onClick={() => setOpenShare(!openShare)}>
+          <span
+            className="relative"
+            onClick={() => setOpenShare(!openShare)}
+            title={`Link to share ${title} solution`}
+          >
             {openShare ? (
               <Modal setShowModal={setOpenShare} header="Share your solution">
                 <ShareSolution />

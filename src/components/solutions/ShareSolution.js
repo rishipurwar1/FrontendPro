@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import ShareIconItem from "../smallComponents/ShareIconItem"
+import { discordInviteLink } from "../../constants"
 
 const ShareSolution = () => {
   const url = window.location.href
@@ -19,7 +20,7 @@ const ShareSolution = () => {
     {
       title: "Discord",
       iconName: "fa-discord",
-      href: `https://twitter.com/share?url=${url}`,
+      href: discordInviteLink,
       hoverColor: "text-discord",
     },
     {

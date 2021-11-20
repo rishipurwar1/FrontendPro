@@ -5,6 +5,9 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    scale: {
+      102: "1.02",
+    },
     screens: {
       xs: "300px",
       ...defaultTheme.screens,
@@ -40,6 +43,10 @@ module.exports = {
       },
       gridTemplateRows: {
         "layout-desktop": "80px 1fr 80px",
+      },
+      boxShadow: {
+        primary:
+          "0px 15px 25px rgba(148, 163, 184, 0.15), 0px 5px 10px rgba(148, 163, 184, 0.05)",
       },
       zIndex: {
         full: "9999",

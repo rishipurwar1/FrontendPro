@@ -1,43 +1,43 @@
-import React, { useEffect } from "react"
-import { BrowserRouter, Switch, Route } from "react-router-dom"
+import React, { Suspense } from "react"
+import { Switch, Route } from "react-router-dom"
 import "./App.css"
-import ReactGA from "react-ga"
 import { Helmet } from "react-helmet"
 
 // custom components
 import SideBar from "./components/layouts/SideBar"
-import ChallengesList from "./components/challenges/ChallengesList"
-import Dashboard from "./components/dashboard/Dashboard"
-import Resources from "./components/resources/Resources"
-import Roadmaps from "./components/roadmaps/Roadmaps"
-import ChallengeDetails from "./components/challenges/ChallengeDetails"
-import { AuthProvider } from "./context/AuthContext"
-import SolutionForm from "./components/solutions/SolutionForm"
-import SolutionList from "./components/solutions/SolutionList"
-import SolutionDetails from "./components/solutions/SolutionDetails"
-import SolutionEditForm from "./components/solutions/SolutionEditForm"
 import Navbar from "./components/layouts/Navbar"
 import Footer from "./components/layouts/Footer"
-import MySolutions from "./components/MySolutions/MySolutions"
 import Feedback from "./components/feedback/Feedback"
+import useGaTracker from "./hooks/useGaTracker"
+
+// lazy loading components
+const Dashboard = React.lazy(() => import("./components/dashboard/Dashboard"))
+const ChallengesList = React.lazy(() => import("./components/challenges/ChallengesList"))
+const ChallengeDetails = React.lazy(() =>
+  import("./components/challenges/ChallengeDetails")
+)
+const Resources = React.lazy(() => import("./components/resources/Resources"))
+const Roadmaps = React.lazy(() => import("./components/roadmaps/Roadmaps"))
+const SolutionList = React.lazy(() => import("./components/solutions/SolutionList"))
+const SolutionDetails = React.lazy(() => import("./components/solutions/SolutionDetails"))
+const SolutionForm = React.lazy(() => import("./components/solutions/SolutionForm"))
+const SolutionEditForm = React.lazy(() =>
+  import("./components/solutions/SolutionEditForm")
+)
+const MySolutions = React.lazy(() => import("./components/MySolutions/MySolutions"))
 
 const App = () => {
-  useEffect(() => {
-    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_KEY)
-
-    // to report page view
-    ReactGA.pageview(window.location.pathname + window.location.search)
-  }, [])
+  useGaTracker()
   return (
-    <BrowserRouter>
+    <>
       <Helmet>
         <title>CODINGSPACE - Learn by Building Web and Mobile Apps</title>
       </Helmet>
-      <AuthProvider>
-        <div className="relative grid min-h-screen md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6">
-          <Navbar />
-          <SideBar />
-          <Switch>
+      <div className="relative grid min-h-screen md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6">
+        <Navbar />
+        <SideBar />
+        <Switch>
+          <Suspense fallback={<div>Loading..</div>}>
             <Route exact path="/" component={Dashboard} />
             <Route path="/challenges" component={ChallengesList} />
             <Route path="/challenge/:id" component={ChallengeDetails} />
@@ -45,15 +45,15 @@ const App = () => {
             <Route path="/roadmaps" component={Roadmaps} />
             <Route path="/solutions" component={SolutionList} />
             <Route exact path="/solution/:id" component={SolutionDetails} />
-            <Route path="/solution/:id/edit" component={SolutionEditForm} />
             <Route path="/submit/:id" component={SolutionForm} />
+            <Route path="/solution/:id/edit" component={SolutionEditForm} />
             <Route path="/mysolutions" component={MySolutions} />
-          </Switch>
-          <Feedback />
-          <Footer />
-        </div>
-      </AuthProvider>
-    </BrowserRouter>
+          </Suspense>
+        </Switch>
+        <Feedback />
+        <Footer />
+      </div>
+    </>
   )
 }
 

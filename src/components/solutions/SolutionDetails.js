@@ -18,7 +18,7 @@ const SolutionDetails = (props) => {
 
   if (docs.length === 0)
     return (
-      <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3">
+      <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3 place-self-center">
         <LottieAnimation animationDataFile={rocketLoader} height={100} width={100} />
       </div>
     )

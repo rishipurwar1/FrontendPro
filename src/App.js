@@ -9,6 +9,10 @@ import Navbar from "./components/layouts/Navbar"
 import Footer from "./components/layouts/Footer"
 import Feedback from "./components/feedback/Feedback"
 import useGaTracker from "./hooks/useGaTracker"
+import LottieAnimation from "./components/smallComponents/LottieAnimation"
+
+// loader
+import rocketLoader from "./assets/animated_illustrations/loader.json"
 
 // lazy loading components
 const Dashboard = React.lazy(() => import("./components/dashboard/Dashboard"))
@@ -37,7 +41,17 @@ const App = () => {
         <Navbar />
         <SideBar />
         <Switch>
-          <Suspense fallback={<div>Loading..</div>}>
+          <Suspense
+            fallback={
+              <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3 place-self-center">
+                <LottieAnimation
+                  animationDataFile={rocketLoader}
+                  height={100}
+                  width={100}
+                />
+              </div>
+            }
+          >
             <Route exact path="/" component={Dashboard} />
             <Route path="/challenges" component={ChallengesList} />
             <Route path="/challenge/:id" component={ChallengeDetails} />

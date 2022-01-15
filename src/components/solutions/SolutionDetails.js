@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet"
 import useFirestore from "../../hooks/useFirestore"
 import moment from "moment"
 import ShowWebsite from "./ShowWebsite"
+import SolutionComments from "./SolutionComments"
 import { Link } from "react-router-dom"
 import ChallengeHeader from "../challenges/ChallengeHeader"
 import ConfirmationModal from "../smallComponents/ConfirmationModal"
@@ -68,6 +69,7 @@ const SolutionDetails = (props) => {
         github={docs[0].githubUrl}
         title={docs[0].title}
       />
+      <SolutionComments docs={docs} />
     </div>
   )
 }

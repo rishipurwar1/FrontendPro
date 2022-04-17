@@ -40,7 +40,7 @@ const SolutionDetails = (props) => {
           <div className="flex flex-col pl-1">
             <span className="text-navItem text-sm text-gray-300">{docs[0].author}</span>
             <span className="text-navItem text-xs text-gray-400">
-              {moment(docs[0].createdAt.toDate()).startOf("day").fromNow()}
+              {moment(docs[0].createdAt.toDate()).fromNow()}
             </span>
           </div>
         </div>

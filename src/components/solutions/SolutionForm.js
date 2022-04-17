@@ -1,11 +1,10 @@
 import React, { useState } from "react"
 import { useSolution } from "../../hooks/useFirestore"
 import { useForm } from "react-hook-form"
-
+import { useHistory } from "react-router-dom"
 import mainImg from "../../assets/animated_illustrations/solution_animation.json"
 import Hero from "../dashboard/Hero"
 import Confetti from "react-dom-confetti"
-
 import Modal from "../smallComponents/Modal"
 
 const SolutionForm = (props) => {
@@ -16,6 +15,7 @@ const SolutionForm = (props) => {
     formState: { errors },
   } = useForm()
   const id = props.match.params.id
+  const history = useHistory()
 
   // getting the addSolution function
   const { updateSolution } = useSolution("solutions")
@@ -28,6 +28,7 @@ const SolutionForm = (props) => {
     }
     updateSolution(formData, id)
     setState(true)
+    history.push(`/solution/${id}`)
   }
 
   return (

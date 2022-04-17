@@ -31,7 +31,7 @@ const SolutionSummary = ({ solution }) => {
                 {solution.author}
               </span>
               <span className="text-navItem text-xs text-gray-400">
-                {moment(solution.createdAt.toDate()).startOf("day").fromNow()}
+                {moment(solution.createdAt.toDate()).fromNow()}
               </span>
             </div>
           </div>

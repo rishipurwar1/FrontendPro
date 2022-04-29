@@ -21,6 +21,7 @@ const Resources = () => {
         mainImg={ResourcesIll}
         btnTitle="Explore Challenges "
         logoTitle="fas fa-arrow-right"
+        route="/challenges"
       />
       <h2 className="text-5xl text-center text-white font-bold  font-heading">
         Resources

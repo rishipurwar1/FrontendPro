@@ -1,21 +1,19 @@
 import React from "react"
 
-// custom auth context
-import { useAuth } from "../../context/AuthContext"
-import Button from "../smallComponents/Button"
+import { useAuthContext } from "../../hooks/useAuthContext"
+import Button from "../reusable/Button"
 
-// custom components
 import SignedInLinks from "./SignedInLinks"
 import SignedOutLinks from "./SignedOutLinks"
 
 const Navbar = () => {
-  const { currentUser, githubSignOut } = useAuth()
-  // const [loading, setLoading] = useState(false)
-  const links = currentUser ? (
-    <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut} />
+  const { user } = useAuthContext()
+  const links = user ? (
+    <SignedInLinks profile={user.photoURL} />
   ) : (
     <SignedOutLinks bgColor="bg-gray-800" />
   )
+
   const handleClick = () => {
     window.open(
       "https://github.com/rishipurwar1/coding-space",

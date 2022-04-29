@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import Spinner from "../smallComponents/Spinner"
+
+import Spinner from "../reusable/Spinner"
 
 const ShowWebsite = ({ url, title, github }) => {
   const siteView = ["w-96 mx-auto", "w-full"]

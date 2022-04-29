@@ -1,4 +1,5 @@
 import React from "react"
+
 import SignedOutLinks from "../layouts/SignedOutLinks"
 
 const Modal = ({ setShowModal, auth, emoji, title }) => {

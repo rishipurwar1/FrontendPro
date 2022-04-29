@@ -1,56 +1,58 @@
 import React, { useState } from "react"
-import { Helmet } from "react-helmet"
-import useFirestore from "../../hooks/useFirestore"
 import moment from "moment"
-import ShowWebsite from "./ShowWebsite"
-import { Link } from "react-router-dom"
-import ChallengeHeader from "../challenges/ChallengeHeader"
-import ConfirmationModal from "../smallComponents/ConfirmationModal"
-import { useAuth } from "../../context/AuthContext"
-import LottieAnimation from "../smallComponents/LottieAnimation"
-import rocketLoader from "../../assets/animated_illustrations/loader.json"
+import { Helmet } from "react-helmet"
+import { Link, useParams } from "react-router-dom"
 
-const SolutionDetails = (props) => {
-  const id = props.match.params.id
-  const { docs } = useFirestore("solutions", id)
-  const { currentUser } = useAuth()
+import rocketLoader from "../../assets/animated_illustrations/loader.json"
+// Auth Context Imports
+import { useAuthContext } from "../../hooks/useAuthContext"
+import { useDocument } from "../../hooks/useDocument"
+import ChallengeHeader from "../challenges/ChallengeHeader"
+import ConfirmationModal from "../reusable/ConfirmationModal"
+import LottieAnimation from "../reusable/LottieAnimation"
+
+import ShowWebsite from "./ShowWebsite"
+
+const SolutionDetails = () => {
+  const { id } = useParams()
+  const { document } = useDocument("solutions", id)
+  const { user } = useAuthContext()
   const [modal, setModal] = useState(false)
 
-  if (docs.length === 0)
+  if (!document)
     return (
       <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3 place-self-center">
         <LottieAnimation animationDataFile={rocketLoader} height={100} width={100} />
       </div>
     )
-
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3 mb-4">
       <Helmet>
-        <title>{`${docs[0].title} CODINGSPACE challenge solution by ${docs[0].author}`}</title>
+        <title>{`${document.title} CODINGSPACE challenge solution by ${document.author}`}</title>
       </Helmet>
-      <ChallengeHeader docs={docs} button />
-      {modal ? <ConfirmationModal setModal={setModal} docs={docs} /> : null}
+      <ChallengeHeader doc={document} button />
+      {modal ? <ConfirmationModal setModal={setModal} id={document.id} /> : null}
       <div className="flex justify-between items-center px-2">
         <div className="flex items-center mt-4">
           <img
             className="rounded-full mr-1 w-12 border-purple-500 border-2"
-            src={docs[0].photoURL}
+            src={document.photoURL}
             alt="user profile"
           />
           <div className="flex flex-col pl-1">
-            <span className="text-navItem text-sm text-gray-300">{docs[0].author}</span>
+            <span className="text-navItem text-sm text-gray-300">{document.author}</span>
             <span className="text-navItem text-xs text-gray-400">
-              {moment(docs[0].createdAt.toDate()).fromNow()}
+              {moment(document.createdAt.toDate()).fromNow()}
             </span>
           </div>
         </div>
-        {currentUser && currentUser.id === docs[0].userID ? (
+        {user && user.uid === document.userID ? (
           <div>
             <Link
-              to={`/solution/${docs[0].id}/edit`}
+              to={`/solution/${document.id}/edit`}
               className="text-secondary cursor-pointer pr-3"
-              aria-label={`${docs[0].title} edit`}
-              title={`Link to ${docs[0].title} edit page`}
+              aria-label={`${document.title} edit`}
+              title={`Link to ${document.title} edit page`}
             >
               <i className="far fa-edit text-2xl"></i>
             </Link>
@@ -64,9 +66,9 @@ const SolutionDetails = (props) => {
         ) : null}
       </div>
       <ShowWebsite
-        url={docs[0].liveWebsiteUrl}
-        github={docs[0].githubUrl}
-        title={docs[0].title}
+        url={document.liveWebsiteUrl}
+        github={document.githubUrl}
+        title={document.title}
       />
     </div>
   )

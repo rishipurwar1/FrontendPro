@@ -1,8 +1,10 @@
 import React from "react"
-import { Link } from "react-router-dom"
-import DifficultyBar from "./DifficultyBar"
 import { Image, Placeholder } from "cloudinary-react"
-import Badge from "../smallComponents/Badge"
+import { Link } from "react-router-dom"
+
+import Badge from "../reusable/Badge"
+
+import DifficultyBar from "./DifficultyBar"
 
 const ChallengeCard = ({ challenge, challengelist, btnTitle }) => {
   const link = challengelist ? "/challenge/" + challenge.id : "/submit/" + challenge.id

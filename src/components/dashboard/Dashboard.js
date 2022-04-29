@@ -1,10 +1,11 @@
 import React from "react"
-// custom components
+
+import heroImg from "../../assets/animated_illustrations/Blogging.json"
+import Challenges from "../challenges/Challenges"
+import Newsletter from "../newsletter/Newsletter"
+
 import Hero from "./Hero"
 import HowItWorks from "./HowItWorks"
-import Challenges from "../challenges/Challenges"
-import heroImg from "../../assets/animated_illustrations/Blogging.json"
-import Newsletter from "../newsletter/Newsletter"
 
 const Dashboard = () => {
   return (

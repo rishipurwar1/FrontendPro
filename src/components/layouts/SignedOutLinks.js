@@ -1,24 +1,15 @@
-import React, { useState } from "react"
-import { useAuth } from "../../context/AuthContext"
-import Button from "../smallComponents/Button"
+import React from "react"
+
+import { useSignup } from "../../hooks/useSignup"
+import Button from "../reusable/Button"
 
 const SignedOutLinks = ({ bgColor }) => {
-  const { githubSignIn } = useAuth()
-  const [loading, setLoading] = useState(false)
-  const handleSubmit = async () => {
-    try {
-      setLoading(true)
-      await githubSignIn()
-      setLoading(false)
-    } catch (e) {
-      console.log(e)
-    }
-  }
+  const { signup } = useSignup()
+
   return (
     <Button
       bgColor={bgColor}
-      handleClick={handleSubmit}
-      disabled={loading}
+      handleClick={signup}
       name="Sign Up with Github"
       logo="fab fa-github ml-2"
     />

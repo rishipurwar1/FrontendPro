@@ -1,83 +1,95 @@
-import { useState, useEffect } from "react"
-import { firestore } from "../config/fbConfig"
-import { useAuth } from "../context/AuthContext"
-import { useHistory } from "react-router-dom"
+import { useEffect, useReducer, useState } from "react"
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore"
 
-const getDoc = (doc) => ({ ...doc.data(), id: doc.id })
+import { db } from "../firebase/config"
 
-const useFirestore = (collection, docId, userID, openTab, completed) => {
-  const [docs, setDocs] = useState([])
-  const [loading, setLoading] = useState(true)
-  // getting realtime data from the firebase for challenges and solutions
-  useEffect(() => {
-    let subject = firestore.collection(collection)
-
-    if (docId) {
-      subject = subject.doc(docId)
-    } else if (userID) {
-      openTab === 1
-        ? (subject = subject
-            .where("userID", "==", userID)
-            .where("completed", "==", false))
-        : (subject = subject.where("userID", "==", userID).where("completed", "==", true))
-    } else if (completed) {
-      subject = subject.where("completed", "==", true)
-    }
-    const unsubscribe = subject.onSnapshot((snapshot) => {
-      const items = docId ? [getDoc(snapshot)] : snapshot.docs.map(getDoc)
-      setDocs(items)
-      setLoading(false)
-    })
-    return unsubscribe
-  }, [collection, docId, openTab, loading]) // eslint-disable-line react-hooks/exhaustive-deps
-
-  return { docs, loading }
+const initialState = {
+  document: null,
+  isPending: false,
+  error: null,
+  success: null,
 }
 
-export const useSolution = (collection) => {
-  const history = useHistory()
-  const { currentUser } = useAuth()
+const firestoreReducer = (state, action) => {
+  switch (action.type) {
+    case "IS_PENDING":
+      return { isPending: true, document: null, success: false, error: null }
+    case "ADDED_DOCUMENT":
+      return { isPending: false, document: action.payload, success: true, error: null }
+    case "DELETED_DOCUMENT":
+      return { isPending: false, document: null, success: true, error: null }
+    case "UPDATED_DOCUMENT":
+      return { isPending: false, document: action.payload, success: true, error: null }
+    case "ERROR":
+      return { isPending: false, document: null, success: false, error: action.payload }
+    default:
+      return state
+  }
+}
 
-  // add solution to the firebase
-  const addSolution = (solution) => {
+export const useFirestore = (c) => {
+  const [response, dispatch] = useReducer(firestoreReducer, initialState)
+  const [isCancelled, setIsCancelled] = useState(false)
+
+  // only dispatch is not cancelled
+  const dispatchIfNotCancelled = (action) => {
+    if (!isCancelled) {
+      dispatch(action)
+    }
+  }
+
+  // add a document
+  const addDocument = async (doc) => {
+    dispatch({ type: "IS_PENDING" })
+
     try {
-      firestore.collection(collection).add({
-        ...solution,
-        author:
-          currentUser.displayName !== null
-            ? currentUser.displayName
-            : currentUser.username,
-        userID: currentUser.id,
-        photoURL: currentUser.photoURL,
-        completed: false,
-        createdAt: new Date(),
+      const createdAt = serverTimestamp()
+      const addedDocument = await addDoc(collection(db, c), {
+        ...doc,
+        createdAt,
       })
-      // history.push("/solutions");
-    } catch (error) {
-      console.log(error)
+      dispatchIfNotCancelled({ type: "ADDED_DOCUMENT", payload: addedDocument })
+    } catch (err) {
+      dispatchIfNotCancelled({ type: "ERROR", payload: err.message })
     }
   }
 
-  // delete a solution from the firestore db
-  const deleteSolution = (solution) => {
+  // update a document
+  const updateDocument = async (id, updates) => {
+    dispatch({ type: "IS_PENDING" })
     try {
-      firestore.collection(collection).doc(solution.id).delete()
-      history.push("/solutions")
+      const updatedDocument = await updateDoc(doc(db, c, id), updates)
+      dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT", payload: updatedDocument })
+      return updatedDocument
     } catch (error) {
-      console.log(error)
+      dispatchIfNotCancelled({ type: "ERROR", payload: error })
+      return null
     }
   }
 
-  // update solution
-  const updateSolution = (updatedSolution, id) => {
+  // delete a document
+  const deleteDocument = async (id) => {
+    dispatch({ type: "IS_PENDING" })
+
     try {
-      firestore.collection(collection).doc(id).update(updatedSolution)
-    } catch (error) {
-      console.log(error)
+      await deleteDoc(doc(db, c, id))
+      dispatchIfNotCancelled({ type: "DELETED_DOCUMENT" })
+    } catch (err) {
+      dispatchIfNotCancelled({ type: "ERROR", payload: "could not delete" })
     }
   }
 
-  return { addSolution, deleteSolution, updateSolution }
+  useEffect(() => {
+    return () => setIsCancelled(true)
+  }, [])
+
+  // return { addDocument, deleteDocument, response }
+  return { addDocument, updateDocument, deleteDocument, response }
 }
-
-export default useFirestore

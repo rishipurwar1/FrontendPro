@@ -1,12 +1,21 @@
 import React, { useState } from "react"
-import useFirestore from "../../hooks/useFirestore"
+
+import { useCollection } from "../../hooks/useCollection"
 import ChallengeCard from "../challenges/ChallengeCard"
-import SolutionSummary from "../solutions/SolutionSummary"
 import SkeletonSolutionSummaryCard from "../skeletons/SkeletonSolutionSummaryCard"
+import SolutionSummary from "../solutions/SolutionSummary"
 
 const Tabs = ({ userID }) => {
   const [openTab, setOpenTab] = useState(1)
-  const { docs = [], loading } = useFirestore("solutions", null, userID, openTab)
+  const { documents, isLoading } = useCollection(
+    "solutions",
+    null,
+    null,
+    ["createdAt", "desc"],
+    userID,
+    openTab,
+    null
+  )
   return (
     <>
       <div className="flex flex-wrap">
@@ -56,9 +65,9 @@ const Tabs = ({ userID }) => {
               <div className="tab-content tab-space">
                 <div className={openTab === 1 ? "block" : "hidden"} id="link1">
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center items-center">
-                    {!loading ? (
-                      docs.length ? (
-                        docs.map((challenge) => {
+                    {!isLoading ? (
+                      documents.length > 0 ? (
+                        documents.map((challenge) => {
                           return (
                             <ChallengeCard
                               key={challenge.id}
@@ -84,9 +93,9 @@ const Tabs = ({ userID }) => {
                 </div>
                 <div className={openTab === 2 ? "block" : "hidden"} id="link2">
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
-                    {!loading ? (
-                      docs.length ? (
-                        docs.map((solution) => {
+                    {!isLoading ? (
+                      documents.length > 0 ? (
+                        documents.map((solution) => {
                           return <SolutionSummary key={solution.id} solution={solution} />
                         })
                       ) : (

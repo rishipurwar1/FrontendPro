@@ -1,5 +1,6 @@
 import React from "react"
-import Badge from "../smallComponents/Badge"
+
+import Badge from "../reusable/Badge"
 
 const DifficultyBar = ({ difficultyLevel }) => {
   let middleColor = "gray"

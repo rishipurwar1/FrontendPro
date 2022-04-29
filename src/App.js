@@ -1,18 +1,18 @@
 import React, { Suspense } from "react"
-import { Switch, Route } from "react-router-dom"
-import "./App.css"
-import { Helmet } from "react-helmet"
-
-// custom components
-import SideBar from "./components/layouts/SideBar"
-import Navbar from "./components/layouts/Navbar"
-import Footer from "./components/layouts/Footer"
-import Feedback from "./components/feedback/Feedback"
-import useGaTracker from "./hooks/useGaTracker"
-import LottieAnimation from "./components/smallComponents/LottieAnimation"
+import { Navigate, Route, Routes } from "react-router-dom"
 
 // loader
 import rocketLoader from "./assets/animated_illustrations/loader.json"
+import Feedback from "./components/feedback/Feedback"
+import Footer from "./components/layouts/Footer"
+import Navbar from "./components/layouts/Navbar"
+// custom components
+import SideBar from "./components/layouts/SideBar"
+import LottieAnimation from "./components/reusable/LottieAnimation"
+import { useAuthContext } from "./hooks/useAuthContext"
+import useGaTracker from "./hooks/useGaTracker"
+
+import "./App.css"
 
 // lazy loading components
 const Dashboard = React.lazy(() => import("./components/dashboard/Dashboard"))
@@ -31,43 +31,45 @@ const SolutionEditForm = React.lazy(() =>
 const MySolutions = React.lazy(() => import("./components/MySolutions/MySolutions"))
 
 const App = () => {
+  const { user } = useAuthContext()
   useGaTracker()
   return (
-    <>
-      <Helmet>
-        <title>CODINGSPACE - Learn by Building Web and Mobile Apps</title>
-      </Helmet>
-      <div className="relative grid min-h-screen md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6">
-        <Navbar />
-        <SideBar />
-        <Switch>
-          <Suspense
-            fallback={
-              <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3 place-self-center">
-                <LottieAnimation
-                  animationDataFile={rocketLoader}
-                  height={100}
-                  width={100}
-                />
-              </div>
-            }
-          >
-            <Route exact path="/" component={Dashboard} />
-            <Route path="/challenges" component={ChallengesList} />
-            <Route path="/challenge/:id" component={ChallengeDetails} />
-            <Route path="/resources" component={Resources} />
-            <Route path="/roadmaps" component={Roadmaps} />
-            <Route path="/solutions" component={SolutionList} />
-            <Route exact path="/solution/:id" component={SolutionDetails} />
-            <Route path="/submit/:id" component={SolutionForm} />
-            <Route path="/solution/:id/edit" component={SolutionEditForm} />
-            <Route path="/mysolutions" component={MySolutions} />
-          </Suspense>
-        </Switch>
-        <Feedback />
-        <Footer />
-      </div>
-    </>
+    <div className="relative grid min-h-screen md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6">
+      <Navbar />
+      <SideBar />
+      <Suspense
+        fallback={
+          <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3 place-self-center">
+            <LottieAnimation animationDataFile={rocketLoader} height={100} width={100} />
+          </div>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/challenges" element={<ChallengesList />} />
+          <Route path="/challenge/:id" element={<ChallengeDetails />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/roadmaps" element={<Roadmaps />} />
+          <Route path="/solutions" element={<SolutionList />} />
+          <Route path="/solution/:id" element={<SolutionDetails />} />
+          <Route
+            path="/submit/:id"
+            element={user ? <SolutionForm /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/solution/:id/edit"
+            element={user ? <SolutionEditForm /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/mysolutions"
+            element={user ? <MySolutions /> : <Navigate to="/" />}
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Suspense>
+      <Feedback />
+      <Footer />
+    </div>
   )
 }
 

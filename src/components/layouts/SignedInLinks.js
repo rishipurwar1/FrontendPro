@@ -1,19 +1,22 @@
 import React, { useRef, useState } from "react"
-import { Link, useHistory } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+
+import { useLogout } from "../../hooks/useLogout"
 import useOnClickOutside from "../../hooks/useOnClickOutside"
 
-const SignedInLinks = ({ profile, githubSignOut }) => {
+const SignedInLinks = ({ profile }) => {
+  const { logout } = useLogout()
   const [loading, setLoading] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-  const history = useHistory()
+  const navigate = useNavigate()
   const ref = useRef()
   useOnClickOutside(ref, () => setIsOpen(false))
 
-  const logout = () => {
+  const signOut = () => {
     try {
       setLoading(true)
-      githubSignOut()
-      history.push("/")
+      logout()
+      navigate("/")
     } catch (error) {
       console.log(error.message)
     }
@@ -50,7 +53,7 @@ const SignedInLinks = ({ profile, githubSignOut }) => {
           <li className="rounded hover:text-white transition bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500">
             <button
               disabled={loading}
-              onClick={logout}
+              onClick={signOut}
               className="w-full text-left block px-4 py-2"
             >
               <i className="fas fa-sign-out-alt mr-2"></i>Logout

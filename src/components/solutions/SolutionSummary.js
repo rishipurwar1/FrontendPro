@@ -1,7 +1,7 @@
 import React from "react"
+import { Image, Placeholder } from "cloudinary-react"
 import moment from "moment"
 import { Link } from "react-router-dom"
-import { Image, Placeholder } from "cloudinary-react"
 
 const SolutionSummary = ({ solution }) => {
   return (

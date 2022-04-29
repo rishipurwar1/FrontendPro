@@ -1,24 +1,26 @@
 import React, { useState } from "react"
-import { useSolution } from "../../hooks/useFirestore"
-import { useForm } from "react-hook-form"
-import { useHistory } from "react-router-dom"
-import mainImg from "../../assets/animated_illustrations/solution_animation.json"
-import Hero from "../dashboard/Hero"
 import Confetti from "react-dom-confetti"
-import Modal from "../smallComponents/Modal"
+import { useForm } from "react-hook-form"
+import { useNavigate, useParams } from "react-router-dom"
+
+import mainImg from "../../assets/animated_illustrations/solution_animation.json"
+import { useFirestore } from "../../hooks/useFirestore"
+import Hero from "../dashboard/Hero"
+import Modal from "../reusable/Modal"
 
 const SolutionForm = (props) => {
   const [state, setState] = useState(false)
+  const { id } = useParams()
+  const navigate = useNavigate()
+  // getting the addSolution function
+  const { updateDocument, response } = useFirestore("solutions")
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm()
-  const id = props.match.params.id
-  const history = useHistory()
-
-  // getting the addSolution function
-  const { updateSolution } = useSolution("solutions")
 
   // handle form data
   const onSubmit = (data) => {
@@ -26,9 +28,17 @@ const SolutionForm = (props) => {
       ...data,
       completed: true,
     }
-    updateSolution(formData, id)
+    updateDocument(id, formData)
     setState(true)
-    history.push(`/solution/${id}`)
+    setTimeout(() => {
+      setState(false)
+      navigate(`/solution/${id}`)
+    }, 3000)
+    if (!response.error) {
+      reset("", {
+        keepValues: false,
+      })
+    }
   }
 
   return (

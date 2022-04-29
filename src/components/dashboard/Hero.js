@@ -1,20 +1,19 @@
 import React from "react"
-import { useHistory } from "react-router-dom"
 import Lottie from "react-lottie"
+import { useNavigate } from "react-router-dom"
 
-// custom components
-import { useAuth } from "../../context/AuthContext"
-import Button from "../smallComponents/Button"
+import { useAuthContext } from "../../hooks/useAuthContext"
 import SignedOutLinks from "../layouts/SignedOutLinks"
+import Button from "../reusable/Button"
 
 const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route }) => {
-  const { currentUser } = useAuth()
-  const displayName = currentUser
-    ? !currentUser?.displayName
-      ? currentUser?.username
-      : currentUser?.displayName.split(" ")[0]
+  const { user } = useAuthContext()
+  const displayName = user
+    ? !user?.displayName
+      ? user?.reloadUserInfo.screenName
+      : user?.displayName.split(" ")[0]
     : "Coder"
-  const history = useHistory()
+  const navigate = useNavigate()
 
   // Lottie options
   const defaultOptions = {
@@ -45,12 +44,12 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route }
           <h1 className="text-white xs:text-2xl sm:text-xl md:text-2xl lg:text-4xl font-semibold font-heading pb-4 sm:max-w-xs max-w-sm">
             {title}
           </h1>
-          {currentUser ? (
+          {user ? (
             <Button
               name={btnTitle}
               logo={logoTitle}
               bgColor="bg-gray-900"
-              handleClick={() => history.push(route)}
+              handleClick={() => navigate(route)}
             />
           ) : (
             <SignedOutLinks bgColor="bg-gray-900" />

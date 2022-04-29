@@ -1,15 +1,15 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-// custom firebase hook
-import useFirestore from "../../hooks/useFirestore"
-// custom components
-import Hero from "../dashboard/Hero"
+
 import ResourcesIll from "../../assets/animated_illustrations/resources.json"
-import ResourceCard from "./ResourceCard"
+import { useCollection } from "../../hooks/useCollection"
+import Hero from "../dashboard/Hero"
 import SkeletonResourceCard from "../skeletons/SkeletonResourceCard"
 
+import ResourceCard from "./ResourceCard"
+
 const Resources = () => {
-  const { docs } = useFirestore("resources")
+  const { documents } = useCollection("resources", null, null, ["createdAt", "desc"])
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Helmet>
@@ -26,8 +26,8 @@ const Resources = () => {
         Resources
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">
-        {docs.length
-          ? docs.map((resource) => {
+        {documents
+          ? documents.map((resource) => {
               return <ResourceCard key={resource.id} resource={resource} />
             })
           : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonResourceCard key={n} />)}

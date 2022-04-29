@@ -1,6 +1,5 @@
 import React from "react"
 
-// custom components
 import Card from "./Card"
 
 const HowItWorks = () => {

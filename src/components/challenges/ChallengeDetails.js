@@ -1,23 +1,36 @@
 import React, { useState } from "react"
 import { Helmet } from "react-helmet"
-import useFirestore from "../../hooks/useFirestore"
-import DownloadButton from "../smallComponents/DownloadButton"
-import DropDown from "../smallComponents/DropDown"
-import ChallengeHeader from "./ChallengeHeader"
-import LottieAnimation from "../smallComponents/LottieAnimation/"
+import { useParams } from "react-router-dom"
+
 import rocketLoader from "../../assets/animated_illustrations/loader.json"
-import ContributorProfile from "../smallComponents/ContributorProfile"
+import { useAuthContext } from "../../hooks/useAuthContext"
+import { useDocument } from "../../hooks/useDocument"
+import ContributorProfile from "../reusable/ContributorProfile"
+import DownloadButton from "../reusable/DownloadButton"
+import DownloadButtonNotLogin from "../reusable/DownloadButtonNotLogin"
+import DropDown from "../reusable/DropDown"
+import LottieAnimation from "../reusable/LottieAnimation"
 
-const ChallengeDetails = (props) => {
-  const id = props.match.params.id
-  const { docs } = useFirestore("challenges", id)
+// Components
+import ChallengeHeader from "./ChallengeHeader"
+
+const ChallengeDetails = () => {
+  const { id } = useParams()
+  const { document } = useDocument("challenges", id)
+  const { user } = useAuthContext()
   const [figmaURL, setFigmaURL] = useState(0)
-  const solutionDetails = docs.map(({ id, ...r }) => {
-    r.challengeID = id
-    return r
-  })
 
-  if (docs.length === 0)
+  const renderButton = () =>
+    user ? (
+      <DownloadButton
+        color="bg-gradient-to-br from-purple-500 to-indigo-500"
+        document={document}
+      />
+    ) : (
+      <DownloadButtonNotLogin color="bg-gradient-to-br from-purple-500 to-indigo-500" />
+    )
+
+  if (!document)
     return (
       <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3 place-self-center">
         <LottieAnimation animationDataFile={rocketLoader} height={100} width={100} />
@@ -27,21 +40,21 @@ const ChallengeDetails = (props) => {
   return (
     <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Helmet>
-        <title>{`${docs[0].title} CODINGSPACE Challenge`}</title>
+        <title>{`${document.title} CODINGSPACE Challenge`}</title>
       </Helmet>
-      <ChallengeHeader docs={docs} />
+      <ChallengeHeader doc={document} />
       <div className="overflow-hidden relative">
         <iframe
           className="iframe-embed border-gray-50 w-full -mb-12"
           src={`https://www.figma.com/embed?embed_host=share&url=${
             figmaURL === 0
-              ? docs[0].figmaURLs.desktop || docs[0].figmaURLs.mobile
-              : docs[0].figmaURLs.mobile
+              ? document.figmaURLs.desktop || document.figmaURLs.mobile
+              : document.figmaURLs.mobile
           }`}
           title={`screen-${figmaURL}`}
           allowFullScreen
         ></iframe>
-        {docs[0].figmaURLs.desktop && (
+        {document.figmaURLs.desktop && (
           <DropDown setFigmaURL={(index) => setFigmaURL(index)} />
         )}
       </div>
@@ -50,12 +63,12 @@ const ChallengeDetails = (props) => {
           <h2 className="text-2xl font-semibold pb-1 text-purple-500">
             About the challenge
           </h2>
-          <p className="text-gray-300">{docs[0].description}</p>
+          <p className="text-gray-300">{document.description}</p>
           <h3 className="text-2xl font-semibold pt-4 pb-2 text-purple-500">
             Requirements:
           </h3>
           <ul className="text-gray-300 list-disc pl-5">
-            {docs[0].requirements.map((requirement, index) => (
+            {document.requirements.map((requirement, index) => (
               <li key={index}>{requirement}</li>
             ))}
           </ul>
@@ -64,23 +77,20 @@ const ChallengeDetails = (props) => {
           <h2 className="text-2xl font-semibold pb-1 text-purple-500">
             What you&apos;ll learn?
           </h2>
-          <p className="text-gray-300 pb-2">{`${docs[0].learning} So what are you waiting for?`}</p>
+          <p className="text-gray-300 pb-2">{`${document.learning} So what are you waiting for?`}</p>
           <p className="mb-3">
             Click on the download button to get started.{" "}
             <span role="img" aria-label="hand emoji">
               👇
             </span>
           </p>
-          <DownloadButton
-            color="bg-gradient-to-br from-purple-500 to-indigo-500"
-            challengeDetails={solutionDetails}
-          />
-          {docs[0].contributor && (
+          {renderButton()}
+          {document.contributor && (
             <>
               <h2 className="text-2xl font-semibold pb-1 text-purple-500 mt-5">
                 Contributed By:
               </h2>
-              <ContributorProfile contributor={docs[0].contributor} />
+              <ContributorProfile contributor={document.contributor} />
             </>
           )}
         </div>

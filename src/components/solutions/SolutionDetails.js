@@ -1,13 +1,14 @@
 import React, { useState } from "react"
 import moment from "moment"
 import { Helmet } from "react-helmet"
-import { Link, useParams } from "react-router-dom"
+import { Link, useLocation, useParams } from "react-router-dom"
 
 import rocketLoader from "../../assets/animated_illustrations/loader.json"
 // Auth Context Imports
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useDocument } from "../../hooks/useDocument"
 import ChallengeHeader from "../challenges/ChallengeHeader"
+import ConfettiWrapper from "../reusable/ConfettiWrapper"
 import ConfirmationModal from "../reusable/ConfirmationModal"
 import LottieAnimation from "../reusable/LottieAnimation"
 
@@ -15,6 +16,7 @@ import ShowWebsite from "./ShowWebsite"
 
 const SolutionDetails = () => {
   const { id } = useParams()
+  const { state } = useLocation()
   const { document } = useDocument("solutions", id)
   const { user } = useAuthContext()
   const [modal, setModal] = useState(false)
@@ -30,6 +32,7 @@ const SolutionDetails = () => {
       <Helmet>
         <title>{`${document.title} CODINGSPACE challenge solution by ${document.author}`}</title>
       </Helmet>
+      {state && <ConfettiWrapper />}
       <ChallengeHeader doc={document} button />
       {modal ? <ConfirmationModal setModal={setModal} id={document.id} /> : null}
       <div className="flex justify-between items-center px-2">

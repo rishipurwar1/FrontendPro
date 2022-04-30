@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import Confetti from "react-dom-confetti"
 import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from "react-router-dom"
 
@@ -29,11 +28,7 @@ const SolutionForm = (props) => {
       completed: true,
     }
     updateDocument(id, formData)
-    setState(true)
-    setTimeout(() => {
-      setState(false)
-      navigate(`/solution/${id}`)
-    }, 3000)
+    navigate(`/solution/${id}`, { state: true })
     if (!response.error) {
       reset("", {
         keepValues: false,
@@ -133,9 +128,6 @@ const SolutionForm = (props) => {
             />
           </div>
           {/* submit button */}
-          <div className="flex justify-center">
-            <Confetti className="z-50" active={state} />
-          </div>
           <div>
             <button className="bg-gradient-to-br from-purple-500 to-indigo-500 text-purple-200 font-bold text-base py-3 px-4 rounded focus:outline-none focus:shadow-outline block w-full">
               Submit Solution

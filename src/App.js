@@ -9,6 +9,7 @@ import Navbar from "./components/layouts/Navbar"
 // custom components
 import SideBar from "./components/layouts/SideBar"
 import LottieAnimation from "./components/reusable/LottieAnimation"
+import ScrollToTop from "./components/reusable/ScrollToTop"
 import { useAuthContext } from "./hooks/useAuthContext"
 import useGaTracker from "./hooks/useGaTracker"
 
@@ -44,28 +45,30 @@ const App = () => {
           </div>
         }
       >
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/challenges" element={<ChallengesList />} />
-          <Route path="/challenge/:id" element={<ChallengeDetails />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/roadmaps" element={<Roadmaps />} />
-          <Route path="/solutions" element={<SolutionList />} />
-          <Route path="/solution/:id" element={<SolutionDetails />} />
-          <Route
-            path="/submit/:id"
-            element={user ? <SolutionForm /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/solution/:id/edit"
-            element={user ? <SolutionEditForm /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/mysolutions"
-            element={user ? <MySolutions /> : <Navigate to="/" />}
-          />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/challenges" element={<ChallengesList />} />
+            <Route path="/challenge/:id" element={<ChallengeDetails />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/roadmaps" element={<Roadmaps />} />
+            <Route path="/solutions" element={<SolutionList />} />
+            <Route path="/solution/:id" element={<SolutionDetails />} />
+            <Route
+              path="/submit/:id"
+              element={user ? <SolutionForm /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/solution/:id/edit"
+              element={user ? <SolutionEditForm /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/mysolutions"
+              element={user ? <MySolutions /> : <Navigate to="/" />}
+            />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </ScrollToTop>
       </Suspense>
       <Feedback />
       <Footer />

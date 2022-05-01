@@ -45,12 +45,9 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route }
             {title}
           </h1>
           {user ? (
-            <Button
-              name={btnTitle}
-              logo={logoTitle}
-              bgColor="bg-gray-900"
-              handleClick={() => navigate(route)}
-            />
+            <Button bgColor="bg-gray-900" handleClick={() => navigate(route)}>
+              {btnTitle} <i className={logoTitle}></i>
+            </Button>
           ) : (
             <SignedOutLinks bgColor="bg-gray-900" />
           )}

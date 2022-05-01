@@ -14,8 +14,8 @@ const Dashboard = () => {
         title="Master Web and Mobile Development by building real world projects"
         subTitle="Welcome To Coding Space 😊"
         mainImg={heroImg}
-        btnTitle="Explore Challenges "
-        logoTitle="fas fa-arrow-right"
+        btnTitle="Explore Challenges"
+        logoTitle="fas fa-arrow-right ml-2"
         homepage
         route="/challenges"
       />

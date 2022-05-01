@@ -54,12 +54,9 @@ const ChallengeHeader = ({ doc, button }) => {
             {doc.description}
           </p>
           {button ? (
-            <Button
-              name="Explore Solutions "
-              logo="fas fa-arrow-right"
-              bgColor="bg-gray-900"
-              handleClick={() => navigate("/solutions")}
-            />
+            <Button bgColor="bg-gray-900" handleClick={() => navigate("/solutions")}>
+              Explore Solutions <i className="fas fa-arrow-right ml-2"></i>
+            </Button>
           ) : (
             renderButton()
           )}

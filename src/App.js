@@ -32,9 +32,9 @@ const SolutionEditForm = React.lazy(() =>
 const MySolutions = React.lazy(() => import("./components/MySolutions/MySolutions"))
 
 const App = () => {
-  const { user } = useAuthContext()
+  const { authIsReady, user } = useAuthContext()
   useGaTracker()
-  return (
+  return authIsReady ? (
     <div className="relative grid min-h-screen md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6">
       <Navbar />
       <SideBar />
@@ -72,6 +72,10 @@ const App = () => {
       </Suspense>
       <Feedback />
       <Footer />
+    </div>
+  ) : (
+    <div className="flex justify-center items-center min-h-screen">
+      <LottieAnimation animationDataFile={rocketLoader} height={100} width={100} />
     </div>
   )
 }

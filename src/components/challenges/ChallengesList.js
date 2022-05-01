@@ -19,8 +19,8 @@ const ChallengesList = () => {
         title="Here are some handcrafted challenges for you. Keep Coding! 👨‍💻"
         subTitle="Today is a great day to start a new challenge 🧑‍💻"
         mainImg={challengeLottie}
-        btnTitle="Explore Challenges "
-        logoTitle="fas fa-arrow-right"
+        btnTitle="Explore Challenges"
+        logoTitle="fas fa-arrow-right ml-2"
         route="/challenges"
         lottie
       />

@@ -1,14 +1,13 @@
 import React from "react"
 
-const Button = ({ handleClick, bgColor, disabled, name, logo }) => {
+const Button = ({ handleClick, bgColor, disabled, children }) => {
   return (
     <button
       disabled={disabled}
       onClick={handleClick}
-      className={`cursor-pointer block w-56 ${bgColor} text-white text-base p-4 font-heading font-semibold shadow-md rounded-xl focus:outline-none`}
+      className={`cursor-pointer inline-flex items-center p-4 ${bgColor} text-white text-base font-heading font-semibold shadow-md rounded-xl focus:outline-none`}
     >
-      {name}
-      {logo ? <i className={logo}></i> : null}
+      {children}
     </button>
   )
 }

@@ -18,8 +18,8 @@ const MySolutions = () => {
         title="Here you can find all the solutions and ongoing challenges details."
         subTitle="Welcome To Coding Space 😊"
         mainImg={mainImg}
-        btnTitle="Explore Challenges "
-        logoTitle="fas fa-arrow-right"
+        btnTitle="Explore Challenges"
+        logoTitle="fas fa-arrow-right ml-2"
         route="/challenges"
       />
       {user ? <Tabs userID={user.uid} /> : null}

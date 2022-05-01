@@ -19,8 +19,8 @@ const Resources = () => {
         title="Here you can find all the frontend and backend development resources."
         subTitle="Welcome To Coding Space 😊"
         mainImg={ResourcesIll}
-        btnTitle="Explore Challenges "
-        logoTitle="fas fa-arrow-right"
+        btnTitle="Explore Challenges"
+        logoTitle="fas fa-arrow-right ml-2"
         route="/challenges"
       />
       <h2 className="text-5xl text-center text-white font-bold  font-heading">

@@ -11,7 +11,10 @@ const Footer = () => {
         {`${new Date().getFullYear()}`} CODINGSPACE. All right reserved
       </small>
       <div className="social flex items-center justify-center py-3">
-        <a
+        <a href="mailto:rishipurwar007@gmail.com">
+          <i className="fas fa-inbox"></i> rishipurwar007@gmail.com
+        </a>
+        {/* <a
           href="https://github.com/rishipurwar1/coding-space"
           className="px-2"
           aria-label="codingspace github repository"
@@ -30,7 +33,7 @@ const Footer = () => {
           rel="noopener noreferrer"
         >
           <i className="fab fa-twitter"></i>
-        </a>
+        </a> */}
       </div>
     </footer>
   )

@@ -56,8 +56,22 @@ export const useFirestore = (c) => {
         createdAt,
       })
       dispatchIfNotCancelled({ type: "ADDED_DOCUMENT", payload: addedDocument })
-    } catch (err) {
-      dispatchIfNotCancelled({ type: "ERROR", payload: err.message })
+    } catch (error) {
+      dispatchIfNotCancelled({ type: "ERROR", payload: error.message })
+    }
+  }
+
+  // Add document to sub collection
+  const addSubCollectionDocument = async (docID, docData) => {
+    dispatch({ type: "IS_PENDING" })
+    try {
+      const colRef = collection(db, c, docID, "comments")
+      const addedDocument = await addDoc(colRef, docData)
+      dispatch({ type: "ADDED_DOCUMENT", payload: addedDocument })
+    } catch (error) {
+      console.log(error)
+      dispatchIfNotCancelled({ type: "ERROR", payload: error })
+      return null
     }
   }
 
@@ -74,6 +88,19 @@ export const useFirestore = (c) => {
     }
   }
 
+  const updateSubCollectionDocument = async (docID, id, updates) => {
+    dispatch({ type: "IS_PENDING" })
+    try {
+      const updatedDocument = await updateDoc(doc(db, c, docID, "comments", id), updates)
+      dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT", payload: updatedDocument })
+      return updatedDocument
+    } catch (error) {
+      console.log(error)
+      dispatchIfNotCancelled({ type: "ERROR", payload: error })
+      return null
+    }
+  }
+
   // delete a document
   const deleteDocument = async (id) => {
     dispatch({ type: "IS_PENDING" })
@@ -81,15 +108,33 @@ export const useFirestore = (c) => {
     try {
       await deleteDoc(doc(db, c, id))
       dispatchIfNotCancelled({ type: "DELETED_DOCUMENT" })
-    } catch (err) {
-      dispatchIfNotCancelled({ type: "ERROR", payload: "could not delete" })
+    } catch (error) {
+      dispatchIfNotCancelled({ type: "ERROR", payload: error })
+    }
+  }
+
+  const deleteSubCollectionDocument = async (docID, id) => {
+    dispatch({ type: "IS_PENDING" })
+
+    try {
+      await deleteDoc(doc(db, c, docID, "comments", id))
+      dispatchIfNotCancelled({ type: "DELETED_DOCUMENT" })
+    } catch (error) {
+      dispatchIfNotCancelled({ type: "ERROR", payload: error })
     }
   }
 
   useEffect(() => {
-    return () => setIsCancelled(true)
-  }, [])
+    setIsCancelled(true)
+  }, [isCancelled])
 
-  // return { addDocument, deleteDocument, response }
-  return { addDocument, updateDocument, deleteDocument, response }
+  return {
+    addDocument,
+    addSubCollectionDocument,
+    updateDocument,
+    updateSubCollectionDocument,
+    deleteDocument,
+    deleteSubCollectionDocument,
+    response,
+  }
 }

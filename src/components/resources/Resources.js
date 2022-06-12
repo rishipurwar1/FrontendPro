@@ -9,7 +9,10 @@ import SkeletonResourceCard from "../skeletons/SkeletonResourceCard"
 import ResourceCard from "./ResourceCard"
 
 const Resources = () => {
-  const { documents } = useCollection("resources", null, null, ["createdAt", "desc"])
+  const { documents, isLoading } = useCollection("resources", null, null, [
+    "createdAt",
+    "desc",
+  ])
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Helmet>
@@ -27,7 +30,7 @@ const Resources = () => {
         Resources
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">
-        {documents
+        {!isLoading
           ? documents.map((resource) => {
               return <ResourceCard key={resource.id} resource={resource} />
             })

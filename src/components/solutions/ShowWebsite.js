@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import Spinner from "../smallComponents/Spinner"
+
+import Spinner from "../reusable/Spinner"
 
 const ShowWebsite = ({ url, title, github }) => {
   const siteView = ["w-96 mx-auto", "w-full"]
@@ -12,7 +13,7 @@ const ShowWebsite = ({ url, title, github }) => {
     console.log("error")
   }
   return (
-    <div className={`px-2 pt-4 ${siteView[view]}`}>
+    <div className={`pt-4 ${siteView[view]}`}>
       <div className="h-12 w-full bg-purple-500 flex items-center justify-between rounded-t">
         <div className="w-15">
           <span className="w-3 h-3 rounded-full inline-block bg-red-500 ml-2"></span>
@@ -50,7 +51,7 @@ const ShowWebsite = ({ url, title, github }) => {
           </a>
         </div>
       </div>
-      <div className="relative border-solid border-4 border-purple-500">
+      <div className="relative border-solid border-4 border-purple-500 rounded-b">
         {loading ? <Spinner /> : null}
         <iframe
           className="w-full h-screen overflow-y-scroll"

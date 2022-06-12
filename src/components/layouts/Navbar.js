@@ -1,21 +1,19 @@
 import React from "react"
 
-// custom auth context
-import { useAuth } from "../../context/AuthContext"
-import Button from "../smallComponents/Button"
+import { useAuthContext } from "../../hooks/useAuthContext"
+import Button from "../reusable/Button"
 
-// custom components
 import SignedInLinks from "./SignedInLinks"
 import SignedOutLinks from "./SignedOutLinks"
 
 const Navbar = () => {
-  const { currentUser, githubSignOut } = useAuth()
-  // const [loading, setLoading] = useState(false)
-  const links = currentUser ? (
-    <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut} />
+  const { user } = useAuthContext()
+  const links = user ? (
+    <SignedInLinks profile={user.photoURL} />
   ) : (
-    <SignedOutLinks bgColor="bg-gray-800" />
+    <SignedOutLinks bgColor="bg-purple-800 transition-all duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500" />
   )
+
   const handleClick = () => {
     window.open(
       "https://github.com/rishipurwar1/coding-space",
@@ -27,13 +25,13 @@ const Navbar = () => {
   const starButton = (
     <Button
       bgColor={
-        "bg-purple-800 transition-all  duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500"
+        "bg-purple-800 transition-all duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500"
       }
       handleClick={handleClick}
       disabled={false}
-      name="Star us on Github"
-      logo="far fa-star ml-2"
-    />
+    >
+      <i className="far fa-star mr-2"></i> Star us on Github
+    </Button>
   )
   return (
     <nav className="p-5 py-8 hidden md:block md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2">

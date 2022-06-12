@@ -1,6 +1,8 @@
 import { render } from "@testing-library/react"
-import { LottieAnimation } from "./LottieAnimation"
+
 import rocketLoader from "../../../assets/animated_illustrations/loader.json"
+
+import { LottieAnimation } from "./LottieAnimation"
 
 describe("<LottieAnimation />", () => {
   it("should render the component properly", () => {

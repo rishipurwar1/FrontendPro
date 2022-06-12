@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
-import Lottie from "react-lottie"
 import PropTypes from "prop-types"
+import Lottie from "react-lottie"
+
 import { generateLottieOptions } from "../../../utils"
 
 export const LottieAnimation = React.memo(

@@ -1,20 +1,23 @@
 // library components
 import React, { useRef, useState } from "react"
 import { Link } from "react-router-dom"
-import { useAuth } from "../../context/AuthContext"
+
+import { useAuthContext } from "../../hooks/useAuthContext"
 import useOnClickOutside from "../../hooks/useOnClickOutside"
+
 import NavItem from "./NavItem"
 import SignedInLinks from "./SignedInLinks"
 import SignedOutLinks from "./SignedOutLinks"
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { currentUser, githubSignOut } = useAuth()
+  const { user } = useAuthContext()
+
   const ref = useRef()
   useOnClickOutside(ref, () => setIsOpen(false))
-  // const [loading, setLoading] = useState(false);
-  const links = currentUser ? (
-    <SignedInLinks profile={currentUser.photoURL} githubSignOut={githubSignOut} />
+
+  const links = user ? (
+    <SignedInLinks profile={user.photoURL} />
   ) : (
     <SignedOutLinks bgColor="bg-gray-900" />
   )

@@ -1,7 +1,7 @@
 import React from "react"
+import { Image, Placeholder } from "cloudinary-react"
 import moment from "moment"
 import { Link } from "react-router-dom"
-import { Image, Placeholder } from "cloudinary-react"
 
 const SolutionSummary = ({ solution }) => {
   return (
@@ -31,7 +31,7 @@ const SolutionSummary = ({ solution }) => {
                 {solution.author}
               </span>
               <span className="text-navItem text-xs text-gray-400">
-                {moment(solution.createdAt.toDate()).startOf("day").fromNow()}
+                {moment(solution.createdAt.toDate()).fromNow()}
               </span>
             </div>
           </div>

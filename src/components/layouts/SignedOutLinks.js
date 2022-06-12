@@ -1,27 +1,39 @@
-import React, { useState } from "react"
-import { useAuth } from "../../context/AuthContext"
-import Button from "../smallComponents/Button"
+import React from "react"
+
+import { useSignup } from "../../hooks/useSignup"
+import Button from "../reusable/Button"
 
 const SignedOutLinks = ({ bgColor }) => {
-  const { githubSignIn } = useAuth()
-  const [loading, setLoading] = useState(false)
-  const handleSubmit = async () => {
-    try {
-      setLoading(true)
-      await githubSignIn()
-      setLoading(false)
-    } catch (e) {
-      console.log(e)
-    }
-  }
+  const { signup, isPending } = useSignup()
+
   return (
-    <Button
-      bgColor={bgColor}
-      handleClick={handleSubmit}
-      disabled={loading}
-      name="Sign Up with Github"
-      logo="fab fa-github ml-2"
-    />
+    <Button bgColor={bgColor} handleClick={signup} disabled={isPending}>
+      {isPending ? (
+        <svg
+          className="animate-spin mr-2 h-5 w-5 text-white"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          ></circle>
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
+      ) : (
+        <i className="fab fa-github mr-2"></i>
+      )}
+      Sign Up with Github
+    </Button>
   )
 }
 

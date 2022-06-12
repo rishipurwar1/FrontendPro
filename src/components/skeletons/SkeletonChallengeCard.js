@@ -1,7 +1,9 @@
 import React from "react"
-import SkeletonElement from "./SkeletonElement"
+
 import SkeletonBadge from "../skeletons/SkeletonBadge"
 import SkeletonDifficultyBar from "../skeletons/SkeletonDifficultyBar"
+
+import SkeletonElement from "./SkeletonElement"
 
 const SkeletonChallengeCard = () => {
   return (

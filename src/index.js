@@ -1,11 +1,19 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import "./assets/main.css"
+import { BrowserRouter } from "react-router-dom"
+
+import { AuthContextProvider } from "./context/AuthContext"
 import App from "./App"
+
+import "./assets/main.css"
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AuthContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 )

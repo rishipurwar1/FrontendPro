@@ -1,47 +1,37 @@
-import React, { useState, useContext, createContext, useEffect } from "react"
-import { auth, createUserProfileDocument } from "../config/fbConfig"
+import { createContext, useEffect, useReducer } from "react"
+import { onAuthStateChanged } from "firebase/auth"
 
-const AuthContext = createContext()
+import { auth } from "../firebase/config"
 
-export const useAuth = () => {
-  return useContext(AuthContext)
+export const AuthContext = createContext()
+
+export const authReducer = (state, action) => {
+  switch (action.type) {
+    case "LOGIN":
+      return { ...state, user: action.payload }
+    case "LOGOUT":
+      return { ...state, user: null }
+    case "AUTH_IS_READY":
+      return { user: action.payload, authIsReady: true }
+    default:
+      return state
+  }
 }
 
-export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null)
-
-  const provider = new auth.GithubAuthProvider()
-  const githubSignIn = () => {
-    return auth().signInWithRedirect(provider)
-  }
-
-  const githubSignOut = () => {
-    return auth().signOut()
-  }
+export const AuthContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(authReducer, {
+    user: null,
+    authIsReady: false,
+  })
 
   useEffect(() => {
-    const unsubscribe = auth().onAuthStateChanged(async (userAuth) => {
-      // setCurrentUser(user);
-      if (userAuth) {
-        const useRef = await createUserProfileDocument(userAuth)
-        useRef.onSnapshot((snapShot) => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data(),
-          })
-        })
-      } else {
-        setCurrentUser(userAuth)
-      }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      dispatch({ type: "AUTH_IS_READY", payload: user })
     })
     return unsubscribe
   }, [])
 
-  const value = {
-    currentUser,
-    githubSignIn,
-    githubSignOut,
-  }
-
-  return <AuthContext.Provider value={value}> {children} </AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={{ ...state, dispatch }}>{children}</AuthContext.Provider>
+  )
 }

@@ -1,8 +1,18 @@
 import React from "react"
-import { useSolution } from "../../hooks/useFirestore"
+import { useNavigate } from "react-router-dom"
 
-const ConfirmationModal = ({ setModal, docs }) => {
-  const { deleteSolution } = useSolution("solutions")
+import { useFirestore } from "../../hooks/useFirestore"
+
+const ConfirmationModal = ({ setModal, id }) => {
+  const navigate = useNavigate()
+
+  const { deleteDocument } = useFirestore("solutions")
+  const handleDelete = () => {
+    setModal(false)
+    deleteDocument(id)
+    navigate("/")
+  }
+
   return (
     <div
       className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-gray-200 bg-opacity-10 pl-56"
@@ -20,7 +30,7 @@ const ConfirmationModal = ({ setModal, docs }) => {
               <button
                 type="button"
                 className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
-                onClick={() => deleteSolution(docs[0])}
+                onClick={handleDelete}
               >
                 Delete
               </button>

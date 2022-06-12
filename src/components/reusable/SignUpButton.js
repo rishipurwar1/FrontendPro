@@ -1,6 +1,7 @@
 import React, { useState } from "react"
-import { useAuth } from "../../context/AuthContext"
 import { useHistory } from "react-router-dom"
+
+import { useAuth } from "../../context/AuthContext"
 
 const SignUpButton = ({ color = "bg-gray-800" }) => {
   const { githubSignIn } = useAuth()

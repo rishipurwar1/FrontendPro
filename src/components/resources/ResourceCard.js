@@ -1,7 +1,7 @@
 import React from "react"
-
 import { Image, Placeholder } from "cloudinary-react"
-import Badge from "../smallComponents/Badge"
+
+import Badge from "../reusable/Badge"
 
 const ResourceCard = ({ resource }) => {
   return (

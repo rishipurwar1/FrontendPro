@@ -1,15 +1,18 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-// custom components
-import useFirestore from "../../hooks/useFirestore"
-import Hero from "../dashboard/Hero"
-import ChallengeCard from "./ChallengeCard"
 import challengeLottie from "../../assets/animated_illustrations/challenge.json"
+import { useCollection } from "../../hooks/useCollection"
+import Hero from "../dashboard/Hero"
 import SkeletonChallengeCard from "../skeletons/SkeletonChallengeCard"
 
+import ChallengeCard from "./ChallengeCard"
+
 const ChallengesList = () => {
-  const { docs = [] } = useFirestore("challenges")
+  const { documents, isLoading } = useCollection("challenges", null, null, [
+    "createdAt",
+    "desc",
+  ])
   return (
     <main className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Helmet>
@@ -19,8 +22,8 @@ const ChallengesList = () => {
         title="Here are some handcrafted challenges for you. Keep Coding! 👨‍💻"
         subTitle="Today is a great day to start a new challenge 🧑‍💻"
         mainImg={challengeLottie}
-        btnTitle="Explore Challenges "
-        logoTitle="fas fa-arrow-right"
+        btnTitle="Explore Challenges"
+        logoTitle="fas fa-arrow-right ml-2"
         route="/challenges"
         lottie
       />
@@ -28,8 +31,8 @@ const ChallengesList = () => {
         All Challenges
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">
-        {docs.length
-          ? docs.map((challenge) => {
+        {!isLoading
+          ? documents.map((challenge) => {
               return (
                 <ChallengeCard
                   key={challenge.id}

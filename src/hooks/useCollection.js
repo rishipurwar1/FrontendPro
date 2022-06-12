@@ -5,7 +5,7 @@ import { collection, limit, onSnapshot, orderBy, query, where } from "firebase/f
 import { db } from "../firebase/config"
 
 export const useCollection = (c, _q, _l, _o, userID, openTab, challengeID) => {
-  const [documents, setDocuments] = useState(null)
+  const [documents, setDocuments] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 
@@ -16,7 +16,6 @@ export const useCollection = (c, _q, _l, _o, userID, openTab, challengeID) => {
 
   useEffect(() => {
     let ref = collection(db, c)
-
     if (q) {
       ref = query(ref, where(...q))
     }
@@ -67,8 +66,8 @@ export const useCollection = (c, _q, _l, _o, userID, openTab, challengeID) => {
     })
 
     // unsubscribe on unmount
-    return () => unsubscribe()
-  }, [c, q, _l, o, isLoading, openTab, challengeID])
+    return unsubscribe
+  }, [openTab])
 
   return { documents, error, isLoading }
 }

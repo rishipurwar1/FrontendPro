@@ -1,9 +1,12 @@
 import React, { useState } from "react"
 
+import { useAuthContext } from "../../hooks/useAuthContext"
+
 import Modal from "./Modal"
 
 const DownloadButtonNotLogin = ({ color }) => {
   const [showModal, setShowModal] = useState(false)
+  const { user } = useAuthContext()
 
   return (
     <>
@@ -13,7 +16,7 @@ const DownloadButtonNotLogin = ({ color }) => {
       >
         <i className="animate-bounce fas fa-arrow-down mr-2"></i>Download
       </button>
-      {showModal ? (
+      {showModal && !user ? (
         <Modal
           setShowModal={setShowModal}
           title="Oops! Look like you aren't logged in"

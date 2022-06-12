@@ -13,6 +13,7 @@ import ConfirmationModal from "../reusable/ConfirmationModal"
 import LottieAnimation from "../reusable/LottieAnimation"
 
 import ShowWebsite from "./ShowWebsite"
+import SolutionComments from "./SolutionComments"
 
 const SolutionDetails = () => {
   const { id } = useParams()
@@ -73,6 +74,7 @@ const SolutionDetails = () => {
         github={document.githubUrl}
         title={document.title}
       />
+      <SolutionComments />
     </div>
   )
 }

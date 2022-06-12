@@ -9,10 +9,12 @@ import SkeletonSolutionSummaryCard from "../skeletons/SkeletonSolutionSummaryCar
 import SolutionSummary from "./SolutionSummary"
 
 const ShowSolutions = () => {
-  const { documents } = useCollection("solutions", ["completed", "==", true], null, [
-    "createdAt",
-    "desc",
-  ])
+  const { documents, isLoading } = useCollection(
+    "solutions",
+    ["completed", "==", true],
+    null,
+    ["createdAt", "desc"]
+  )
   return (
     <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Helmet>
@@ -32,7 +34,7 @@ const ShowSolutions = () => {
           Solutions
         </h1>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">
-          {documents
+          {!isLoading
             ? documents.map((solution) => {
                 return <SolutionSummary key={solution.id} solution={solution} />
               })

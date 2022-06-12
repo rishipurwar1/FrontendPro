@@ -6,7 +6,10 @@ import SkeletonChallengeCard from "../skeletons/SkeletonChallengeCard"
 import ChallengeCard from "./ChallengeCard"
 
 const Challenges = () => {
-  const { documents } = useCollection("challenges", null, 6, ["createdAt", "desc"])
+  const { documents, isLoading } = useCollection("challenges", null, 6, [
+    "createdAt",
+    "desc",
+  ])
 
   return (
     <main className="mt-16">
@@ -15,7 +18,7 @@ const Challenges = () => {
       </h2>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">
-        {documents
+        {!isLoading
           ? documents.map((challenge) => {
               return (
                 <ChallengeCard

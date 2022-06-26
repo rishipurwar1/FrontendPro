@@ -29,7 +29,11 @@ const ChallengeHeader = ({ doc, button }) => {
     <div className="mt-2 mb-8">
       <h2 className="font-heading text-3xl font-bold text-white">
         Hello {displayName}{" "}
-        <span role="img" aria-label="Hello">
+        <span
+          className="animate-wave inline-block origin-[70%_70%]"
+          role="img"
+          aria-label="Hello"
+        >
           👋
         </span>
         ,
@@ -47,7 +51,12 @@ const ChallengeHeader = ({ doc, button }) => {
           </h2>
           <div className="py-2">
             {doc.tags.map((tag) => (
-              <Badge key={tag} name={tag} badgeColor="gray" challengeDetails />
+              <Badge
+                key={tag}
+                name={tag}
+                badgeColor="text-gray-300 bg-gray-900"
+                challengeDetails
+              />
             ))}
           </div>
           <p className="text-base mb-4 xs:w-full sm:w-4/5 lg:w-3/5 text-gray-200">

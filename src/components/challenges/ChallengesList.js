@@ -27,7 +27,7 @@ const ChallengesList = () => {
         route="/challenges"
         lottie
       />
-      <h2 className="text-5xl text-center text-white font-bold  font-heading">
+      <h2 className="text-5xl text-center text-white font-heading font-bold">
         All Challenges
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">

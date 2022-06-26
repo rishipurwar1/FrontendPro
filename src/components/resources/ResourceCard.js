@@ -20,7 +20,7 @@ const ResourceCard = ({ resource }) => {
       <div className="flex flex-col flex-1 justify-between rounded-bl-md rounded-br-md">
         <div className="px-4 pt-4">
           {resource.tags.map((tag) => (
-            <Badge key={tag} name={tag} badgeColor="purple" />
+            <Badge key={tag} name={tag} badgeColor="text-purple-200 bg-purple-500" />
           ))}
         </div>
         <div className="card-content">

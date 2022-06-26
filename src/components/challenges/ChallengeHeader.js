@@ -47,7 +47,12 @@ const ChallengeHeader = ({ doc, button }) => {
           </h2>
           <div className="py-2">
             {doc.tags.map((tag) => (
-              <Badge key={tag} name={tag} badgeColor="gray" challengeDetails />
+              <Badge
+                key={tag}
+                name={tag}
+                badgeColor="text-gray-300 bg-gray-900"
+                challengeDetails
+              />
             ))}
           </div>
           <p className="text-base mb-4 xs:w-full sm:w-4/5 lg:w-3/5 text-gray-200">

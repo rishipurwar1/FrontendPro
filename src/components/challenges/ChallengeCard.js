@@ -21,7 +21,7 @@ const ChallengeCard = ({ challenge, challengelist, btnTitle }) => {
       </Image>
       <div className="p-4 pb-2">
         {challenge.tags.map((tag) => (
-          <Badge key={tag} name={tag} badgeColor="purple" />
+          <Badge key={tag} name={tag} badgeColor="text-purple-200 bg-purple-500" />
         ))}
       </div>
       <div className="flex-1 mb-4 card-content">

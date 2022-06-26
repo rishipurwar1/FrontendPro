@@ -30,7 +30,7 @@ const ShowSolutions = () => {
         lottie
       />
       <main>
-        <h1 className="text-5xl heading text-center p-5 font-semibold text-white pb-7">
+        <h1 className="text-5xl heading text-center p-5 font-heading font-bold text-white pb-7">
           Solutions
         </h1>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">

@@ -13,8 +13,8 @@ const HowItWorks = () => {
           name="Sign up for free in 30 seconds"
           info="Connect your GitHub account using Sign Up button. You'll instantly gain access to our all the challenges"
           image="fas fa-user-lock"
-          gradient="bg-gradient-to-br from-lightBlue-400 to-indigo-500"
-          color="text-lightBlue-200"
+          gradient="bg-gradient-to-br from-sky-400 to-indigo-500"
+          color="text-sky-200"
         />
         <Card
           name="Find the right challenge"

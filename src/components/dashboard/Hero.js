@@ -31,7 +31,17 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route }
         className={`font-heading ${
           homepage ? "text-lg font-normal" : "text-3xl font-bold"
         } text-white`}
-      >{`Hello ${displayName} 👋,`}</p>
+      >
+        {`Hello ${displayName} `}
+        <span
+          className="animate-wave inline-block origin-[70%_70%]"
+          role="img"
+          aria-label="Hello"
+        >
+          👋
+        </span>
+        ,
+      </p>
       <p
         className={`font-heading ${
           homepage ? "text-3xl font-bold" : "text-lg font-normal"

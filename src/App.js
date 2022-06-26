@@ -3,7 +3,6 @@ import { Navigate, Route, Routes } from "react-router-dom"
 
 // loader
 import rocketLoader from "./assets/animated_illustrations/loader.json"
-import Feedback from "./components/feedback/Feedback"
 import Footer from "./components/layouts/Footer"
 import Navbar from "./components/layouts/Navbar"
 // custom components
@@ -70,7 +69,6 @@ const App = () => {
           </Routes>
         </ScrollToTop>
       </Suspense>
-      <Feedback />
       <Footer />
     </div>
   ) : (

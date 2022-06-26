@@ -7,7 +7,7 @@ export const faqs = [
   {
     question: "What is the best way to get help when I'm stuck?",
     answer:
-      "We have a great community of developers that are happy to help out with your project. You can join our Discord server and chat with other developers or post questions in our #general channel.",
+      "We have a great community of developers that are happy to help out with your project. You can join our Discord server and chat with other developers or post questions in our #help channel.",
   },
   {
     question: "Can I add this project in my portfolio?",

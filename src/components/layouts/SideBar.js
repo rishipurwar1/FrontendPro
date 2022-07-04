@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import useOnClickOutside from "../../hooks/useOnClickOutside"
+import EmojiIcons from "../SvgIcons/EmojiIcons"
 
 import NavItem from "./NavItem"
 import SignedInLinks from "./SignedInLinks"
@@ -49,12 +50,11 @@ const Sidebar = () => {
           <div className="flex justify-between items-center">
             <Link
               to="/"
-              className="text-white flex items-center space-x-2 font-heading uppercase text-center px-4 font-semibold text-xl"
+              className="text-white flex items-center space-x-1 font-heading uppercase text-center px-3 font-semibold text-xl"
               aria-label="codingspace logo"
               title="This is a link to codingspace homepage"
-              onClick={() => setIsOpen(false)}
             >
-              <i className="fas fa-rocket mr-1"></i>
+              <EmojiIcons.Rocket size={32} />
               <span className="xs:inline-block md:hidden xl:inline-block">
                 CodingSpace
               </span>

@@ -15,7 +15,7 @@ const SolutionComments = () => {
   ])
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 md:mt-0">
       <CommentForm docID={id} />
       <div>
         {documents &&

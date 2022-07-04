@@ -12,6 +12,7 @@ import ConfettiWrapper from "../reusable/ConfettiWrapper"
 import ConfirmationModal from "../reusable/ConfirmationModal"
 import LottieAnimation from "../reusable/LottieAnimation"
 
+import EmojiSection from "./EmojiSection"
 import ShowWebsite from "./ShowWebsite"
 import SolutionComments from "./SolutionComments"
 
@@ -74,7 +75,10 @@ const SolutionDetails = () => {
         github={document.githubUrl}
         title={document.title}
       />
-      <SolutionComments />
+      <div className="grid grid-col-1 md:grid-cols-[1fr_160px] items-start gap-x-5 mt-10">
+        <SolutionComments />
+        <EmojiSection />
+      </div>
     </div>
   )
 }

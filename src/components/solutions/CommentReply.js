@@ -14,7 +14,7 @@ const CommentReply = ({
   setActiveComment,
   parentId = null,
 }) => {
-  const { updateSubCollectionDocument } = useFirestore("solutions")
+  const { updateSubCollectionDocument } = useFirestore("solutions", "comments")
   const { id: docID } = useParams()
 
   const { user } = useAuthContext()

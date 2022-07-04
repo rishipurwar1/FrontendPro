@@ -15,7 +15,7 @@ const Comment = ({
   setActiveComment,
   parentId = null,
 }) => {
-  const { deleteSubCollectionDocument } = useFirestore("solutions")
+  const { deleteSubCollectionDocument } = useFirestore("solutions", "comments")
   const { id: docID } = useParams()
   const { user } = useAuthContext()
 

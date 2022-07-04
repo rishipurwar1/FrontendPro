@@ -17,7 +17,7 @@ const ReplyForm = ({
   hasCancelButton = false,
 }) => {
   const [newComment, setNewComment] = useState(initialText)
-  const { updateSubCollectionDocument, response } = useFirestore("solutions")
+  const { updateSubCollectionDocument, response } = useFirestore("solutions", "comments")
   const { user } = useAuthContext()
 
   const handleSubmit = async (e) => {

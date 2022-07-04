@@ -5,6 +5,7 @@ import {
   deleteDoc,
   doc,
   serverTimestamp,
+  setDoc,
   updateDoc,
 } from "firebase/firestore"
 
@@ -34,7 +35,7 @@ const firestoreReducer = (state, action) => {
   }
 }
 
-export const useFirestore = (c) => {
+export const useFirestore = (c, subCollection) => {
   const [response, dispatch] = useReducer(firestoreReducer, initialState)
   const [isCancelled, setIsCancelled] = useState(false)
 
@@ -65,9 +66,23 @@ export const useFirestore = (c) => {
   const addSubCollectionDocument = async (docID, docData) => {
     dispatch({ type: "IS_PENDING" })
     try {
-      const colRef = collection(db, c, docID, "comments")
+      const colRef = collection(db, c, docID, subCollection)
       const addedDocument = await addDoc(colRef, docData)
       dispatch({ type: "ADDED_DOCUMENT", payload: addedDocument })
+    } catch (error) {
+      console.log(error)
+      dispatchIfNotCancelled({ type: "ERROR", payload: error })
+      return null
+    }
+  }
+
+  // Add document to sub collection with a Custom document ID
+  const addSubCollectionDocumentWithCustomID = async (docID, docData, customID) => {
+    dispatch({ type: "IS_PENDING" })
+    try {
+      const docRef = doc(db, c, docID, subCollection, customID)
+      const addedDocument = await setDoc(docRef, docData)
+      dispatchIfNotCancelled({ type: "ADDED_DOCUMENT", payload: addedDocument })
     } catch (error) {
       console.log(error)
       dispatchIfNotCancelled({ type: "ERROR", payload: error })
@@ -91,7 +106,10 @@ export const useFirestore = (c) => {
   const updateSubCollectionDocument = async (docID, id, updates) => {
     dispatch({ type: "IS_PENDING" })
     try {
-      const updatedDocument = await updateDoc(doc(db, c, docID, "comments", id), updates)
+      const updatedDocument = await updateDoc(
+        doc(db, c, docID, subCollection, id),
+        updates
+      )
       dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT", payload: updatedDocument })
       return updatedDocument
     } catch (error) {
@@ -117,7 +135,7 @@ export const useFirestore = (c) => {
     dispatch({ type: "IS_PENDING" })
 
     try {
-      await deleteDoc(doc(db, c, docID, "comments", id))
+      await deleteDoc(doc(db, c, docID, subCollection, id))
       dispatchIfNotCancelled({ type: "DELETED_DOCUMENT" })
     } catch (error) {
       dispatchIfNotCancelled({ type: "ERROR", payload: error })
@@ -131,6 +149,7 @@ export const useFirestore = (c) => {
   return {
     addDocument,
     addSubCollectionDocument,
+    addSubCollectionDocumentWithCustomID,
     updateDocument,
     updateSubCollectionDocument,
     deleteDocument,

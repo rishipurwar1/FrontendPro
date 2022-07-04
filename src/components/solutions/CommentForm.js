@@ -9,7 +9,7 @@ const CommentForm = ({ docID }) => {
   const [newComment, setNewComment] = useState("")
   const [showModal, setShowModal] = useState(false)
 
-  const { addSubCollectionDocument, response } = useFirestore("solutions")
+  const { addSubCollectionDocument, response } = useFirestore("solutions", "comments")
   const { user } = useAuthContext()
 
   const handleSubmit = async (e) => {
@@ -36,7 +36,7 @@ const CommentForm = ({ docID }) => {
     }
   }
   return (
-    <form className="my-6 flex flex-col" onSubmit={handleSubmit}>
+    <form className="flex flex-col" onSubmit={handleSubmit}>
       {showModal && !user && (
         <Modal
           setShowModal={setShowModal}
@@ -44,7 +44,7 @@ const CommentForm = ({ docID }) => {
           emoji="😌"
         />
       )}
-      <div className="flex justify-between items-center border border-gray-800 rounded p-4">
+      <div className="flex justify-between items-center bg-gray-800 border-2 border-gray-700 rounded p-4">
         <h3 htmlFor="comments" className="text-white font-bold text-2xl">
           Discussion
         </h3>
@@ -62,7 +62,7 @@ const CommentForm = ({ docID }) => {
       {user && (
         <>
           <textarea
-            className="bg-transparent text-white font-semibold border border-gray-800 rounded w-full p-4 mt-6 outline-none focus:ring-1 focus:ring-purple-500"
+            className="bg-transparent text-white font-semibold border-2 border-gray-700 rounded w-full p-4 mt-6 outline-none transition-colors focus:bg-gray-800"
             name="comments"
             id="comments"
             cols="30"

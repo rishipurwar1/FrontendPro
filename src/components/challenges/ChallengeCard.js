@@ -26,7 +26,9 @@ const ChallengeCard = ({ challenge, challengelist, btnTitle }) => {
       </div>
       <div className="flex-1 mb-4 card-content">
         <h3 className="font-semibold font-heading text-2xl text-white px-4 leading-6">
-          {challenge.title}
+          <a href={link} style={{ textDecoration: "none"}}>
+            {challenge.title}
+          </a>
         </h3>
         <p className="text-base text-gray-400 px-4 py-4">{challenge.description}</p>
       </div>

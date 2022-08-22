@@ -44,7 +44,7 @@ const Sidebar = () => {
           ref={ref}
           className={`${
             isOpen ? null : "-translate-x-full"
-          } bg-gray-900 text-white xs:w-full md:w-20 xl:w-56 space-y-6 xs:py-4 md:py-8 px-2 absolute inset-y-0 left-0 transform md:fixed md:translate-x-0 transition duration-200 ease-in-out border-r border-gray-800 z-50 min-h-screen`}
+          } bg-gray-900 text-white xs:w-full md:w-20 xl:w-56 space-y-6 xs:py-4 md:py-8 px-2 absolute inset-y-0 left-0 xxl:left-auto transform md:fixed md:translate-x-0 transition duration-200 ease-in-out border-r border-gray-800 z-50 min-h-screen`}
         >
           {/* <!-- logo --> */}
           <div className="flex justify-between items-center">

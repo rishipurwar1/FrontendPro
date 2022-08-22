@@ -34,7 +34,7 @@ const App = () => {
   const { authIsReady, user } = useAuthContext()
   useGaTracker()
   return authIsReady ? (
-    <div className="relative grid min-h-screen md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6">
+    <div className="relative grid min-h-screen md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6 xxl:max-w-screen-xxl mx-auto">
       <Navbar />
       <SideBar />
       <Suspense

@@ -7,10 +7,10 @@ CodingSpace is the platform where we aim to provide lots of different real-world
 ## 👨‍💻 Demo
 
 <a href="https://github.com/rishipurwar1/coding-space" target="blank">
-<img src="https://img.shields.io/website?url=https://coding-space.vercel.app&logo=github&style=flat-square" />
+<img src="https://img.shields.io/website?url=https://www.codingspace.codes&logo=github&style=flat-square" />
 </a>
 
-Try out the website : [CodingSpace](https://coding-space.vercel.app)
+Try out the website : [CodingSpace](https://www.codingspace.codes)
 
 ## 👨‍🔧 Tech Stack
 

@@ -36,7 +36,7 @@ const SignedInLinks = ({ profile }) => {
       </button>
       {isOpen && (
         <ul
-          className="absolute right-0 w-56 py-2 mt-4 space-y-2 text-gray-300 bg-gray-800 rounded-md shadow-md"
+          className="absolute right-0 z-10 w-56 py-2 mt-4 space-y-2 text-gray-300 bg-gray-800 rounded-md shadow-md"
           aria-label="sub-menu"
           onClick={() => setIsOpen(!isOpen)}
         >

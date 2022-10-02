@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from "react-router-dom"
 
 import mainImg from "../../assets/animated_illustrations/solution_animation.json"
+import { analytics, logEvent } from "../../firebase/config"
 import { useFirestore } from "../../hooks/useFirestore"
 import Hero from "../dashboard/Hero"
 import Modal from "../reusable/Modal"
@@ -35,6 +36,10 @@ const SolutionForm = (props) => {
       })
     }
   }
+
+  useEffect(() => {
+    logEvent(analytics, "solution_submit_page_visited")
+  }, [])
 
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">

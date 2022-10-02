@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
 import Lottie from "react-lottie"
 
 import comingSoon from "../../assets/animated_illustrations/coming_soon.json"
+import { analytics, logEvent } from "../../firebase/config"
 
 const Roadmaps = () => {
   // Lottie options
@@ -14,6 +15,11 @@ const Roadmaps = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   }
+
+  useEffect(() => {
+    logEvent(analytics, "roadmaps_page_visited")
+  }, [])
+
   return (
     <div className="mt-5 row-start-2 row-end-3 col-start-2 col-end-3 self-center	">
       <Helmet>

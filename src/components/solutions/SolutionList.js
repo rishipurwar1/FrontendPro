@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
 
 import solutionLottie from "../../assets/animated_illustrations/solution_animation.json"
+import { analytics, logEvent } from "../../firebase/config"
 import { useCollection } from "../../hooks/useCollection"
 import Hero from "../dashboard/Hero"
 import SkeletonSolutionSummaryCard from "../skeletons/SkeletonSolutionSummaryCard"
@@ -15,6 +16,10 @@ const ShowSolutions = () => {
     null,
     ["createdAt", "desc"]
   )
+
+  useEffect(() => {
+    logEvent(analytics, "solutions_page_visited")
+  }, [])
   return (
     <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Helmet>

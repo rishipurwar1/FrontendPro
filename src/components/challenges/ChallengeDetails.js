@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import { useParams } from "react-router-dom"
 
 import rocketLoader from "../../assets/animated_illustrations/loader.json"
+import { analytics, logEvent } from "../../firebase/config"
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useDocument } from "../../hooks/useDocument"
 import Accordion from "../reusable/Accordion"
@@ -30,6 +31,15 @@ const ChallengeDetails = () => {
     ) : (
       <DownloadButtonNotLogin color="bg-gradient-to-br from-purple-500 to-indigo-500" />
     )
+
+  useEffect(() => {
+    if (document) {
+      logEvent(
+        analytics,
+        `${document?.title?.replaceAll(" ", "_")}_challenge_details_page_visited`
+      )
+    }
+  }, [document])
 
   if (!document)
     return (

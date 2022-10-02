@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
 
 import ResourcesIll from "../../assets/animated_illustrations/resources.json"
+import { analytics, logEvent } from "../../firebase/config"
 import { useCollection } from "../../hooks/useCollection"
 import Hero from "../dashboard/Hero"
 import SkeletonResourceCard from "../skeletons/SkeletonResourceCard"
@@ -13,6 +14,11 @@ const Resources = () => {
     "createdAt",
     "desc",
   ])
+
+  useEffect(() => {
+    logEvent(analytics, "resources_page_visited")
+  }, [])
+
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Helmet>

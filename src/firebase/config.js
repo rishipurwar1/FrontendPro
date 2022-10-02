@@ -1,3 +1,4 @@
+import { getAnalytics, logEvent } from "firebase/analytics"
 import { initializeApp } from "firebase/app"
 import { getAuth } from "firebase/auth"
 import { getFirestore } from "firebase/firestore"
@@ -17,5 +18,7 @@ initializeApp(firebaseConfig)
 
 const db = getFirestore()
 const auth = getAuth()
+// Initialize Analytics and get a reference to the service
+const analytics = getAnalytics()
 
-export { auth, db }
+export { analytics, auth, db, logEvent }

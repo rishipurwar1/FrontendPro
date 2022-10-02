@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useEffect } from "react"
 
+import { analytics, logEvent } from "../../firebase/config"
 import { useCollection } from "../../hooks/useCollection"
 import SkeletonChallengeCard from "../skeletons/SkeletonChallengeCard"
 
@@ -10,7 +11,9 @@ const Challenges = () => {
     "createdAt",
     "desc",
   ])
-
+  useEffect(() => {
+    logEvent(analytics, "challenges_page_visited")
+  }, [])
   return (
     <main className="mt-16">
       <h2 className="text-5xl text-center text-white font-bold font-heading">

@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useEffect } from "react"
 
 import heroImg from "../../assets/animated_illustrations/Blogging.json"
+import { analytics, logEvent } from "../../firebase/config"
 import Challenges from "../challenges/Challenges"
 import Newsletter from "../newsletter/Newsletter"
 
@@ -8,6 +9,9 @@ import Hero from "./Hero"
 import HowItWorks from "./HowItWorks"
 
 const Dashboard = () => {
+  useEffect(() => {
+    logEvent(analytics, "homepage_visited")
+  }, [])
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Hero

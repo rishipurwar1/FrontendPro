@@ -10,7 +10,6 @@ import SideBar from "./components/layouts/SideBar"
 import LottieAnimation from "./components/reusable/LottieAnimation"
 import ScrollToTop from "./components/reusable/ScrollToTop"
 import { useAuthContext } from "./hooks/useAuthContext"
-import useGaTracker from "./hooks/useGaTracker"
 
 import "./App.css"
 
@@ -32,7 +31,6 @@ const MySolutions = React.lazy(() => import("./components/MySolutions/MySolution
 
 const App = () => {
   const { authIsReady, user } = useAuthContext()
-  useGaTracker()
   return authIsReady ? (
     <div className="relative grid min-h-screen md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6 xxl:max-w-screen-xxl mx-auto">
       <Navbar />

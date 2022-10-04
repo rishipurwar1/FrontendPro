@@ -97,10 +97,10 @@ const ChallengeDetails = () => {
               Taking your Project to the Next Level
             </h2>
             <ul className="text-gray-300 list-disc pl-5">
-              {document?.extraRequirements &&
-                document?.extraRequirements.map((extraRequirement, index) => (
+              {document?.bonus &&
+                document?.bonus.map((bonus, index) => (
                   <li key={index} className="mb-2">
-                    {extraRequirement}
+                    {bonus}
                   </li>
                 ))}
               <li>

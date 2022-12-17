@@ -1,18 +1,13 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 // firebase import
 import { collection, limit, onSnapshot, orderBy, query, where } from "firebase/firestore"
 
 import { db } from "../firebase/config"
 
-export const useCollection = (c, _q, _l, _o, userID, openTab, challengeID) => {
+export const useCollection = (c, q, l, o, userID, openTab, challengeID) => {
   const [documents, setDocuments] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
-
-  // if we don't use a ref --> infinite loop in useEffect
-  // _query is an array and is "different" on every function call
-  const q = useRef(_q).current
-  const o = useRef(_o).current
 
   useEffect(() => {
     let ref = collection(db, c)
@@ -22,8 +17,8 @@ export const useCollection = (c, _q, _l, _o, userID, openTab, challengeID) => {
     if (o) {
       ref = query(ref, orderBy(...o))
     }
-    if (_l) {
-      ref = query(ref, limit(_l))
+    if (l) {
+      ref = query(ref, limit(l))
     }
 
     if (userID && !openTab) {
@@ -65,8 +60,8 @@ export const useCollection = (c, _q, _l, _o, userID, openTab, challengeID) => {
       setError(null)
     })
 
-    // unsubscribe on unmount
-    return unsubscribe
+    // unsubscribe to the previous listener before running the side effect again
+    return () => unsubscribe()
   }, [openTab])
 
   return { documents, error, isLoading }

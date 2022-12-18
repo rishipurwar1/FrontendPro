@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from "react"
-import PropTypes from "prop-types"
-import Lottie from "react-lottie"
+import { useLottie } from "lottie-react"
 
-import { generateLottieOptions } from "../../../utils"
+// const style = {
+//   height: 420,
+//   width: 420,
+// }
 
-export const LottieAnimation = React.memo(
-  ({ animationDataFile, height = 420, width = 420 }) => {
-    const [options, setOptions] = useState(null)
-    useEffect(() => {
-      animationDataFile &&
-        setOptions(generateLottieOptions({ animationData: animationDataFile }))
-    }, [animationDataFile])
-
-    return (
-      <>{options ? <Lottie height={height} width={width} options={options} /> : null}</>
-    )
+export const LottieAnimation = ({
+  animationDataFile,
+  height = 320,
+  width = 420,
+  ...styles
+}) => {
+  const options = {
+    animationData: animationDataFile,
+    loop: true,
+    autoplay: true,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
   }
-)
 
-LottieAnimation.propTypes = {
-  animationDataFile: PropTypes.object,
-  height: PropTypes.number,
-  weight: PropTypes.number,
+  const { View } = useLottie(options, { height, width, ...styles })
+
+  return View
 }
-
-LottieAnimation.displayName = "LottieAnimation"

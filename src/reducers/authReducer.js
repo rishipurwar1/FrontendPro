@@ -6,7 +6,6 @@ export const authReducer = (state, action) => {
       return { ...state, user: null }
     case "AUTH_IS_READY":
       return { user: action.payload, authIsReady: true }
-    default:
-      return state
   }
+  throw Error("Unknown action: " + action.type)
 }

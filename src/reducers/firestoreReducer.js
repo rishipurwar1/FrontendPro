@@ -10,7 +10,6 @@ export const firestoreReducer = (state, action) => {
       return { isPending: false, document: action.payload, success: true, error: null }
     case "ERROR":
       return { isPending: false, document: null, success: false, error: action.payload }
-    default:
-      return state
   }
+  throw Error("Unknown action: " + action.type)
 }

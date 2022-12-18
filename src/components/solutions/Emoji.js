@@ -10,10 +10,11 @@ import Modal from "../reusable/Modal"
 const Emoji = ({ emoji }) => {
   const [showModal, setShowModal] = useState(false)
   const { user } = useAuthContext()
-  const { id } = useParams()
-  const { document: reaction } = useDocument(`solutions/${id}/reactions`, emoji.slug)
-  const { addSubCollectionDocumentWithCustomID, updateSubCollectionDocument } =
-    useFirestore("solutions", "reactions")
+  const { id: docID } = useParams()
+  const { document: reaction } = useDocument(`solutions/${docID}/reactions`, emoji.slug)
+  const { updateDocument, addSubCollectionDocumentWithCustomID } = useFirestore(
+    `solutions/${docID}/reactions`
+  )
 
   const isUserClicked = () => {
     if (!reaction) return false
@@ -40,18 +41,18 @@ const Emoji = ({ emoji }) => {
         },
       }
 
-      await addSubCollectionDocumentWithCustomID(id, newReaction, emoji.slug)
+      await addSubCollectionDocumentWithCustomID(newReaction, emoji.slug)
       return
     }
     if (reaction && reaction?.users[user.uid]) {
-      updateSubCollectionDocument(id, emoji.slug, {
+      updateDocument(emoji.slug, {
         count: reaction?.count - 1,
         users: removeValue(reaction?.users, reaction?.users[user.uid].userID),
       })
       return
     }
     if (reaction && !reaction?.users[user.uid]) {
-      updateSubCollectionDocument(id, emoji.slug, {
+      updateDocument(emoji.slug, {
         count: reaction?.count + 1,
         users: addValue(reaction?.users, user),
       })

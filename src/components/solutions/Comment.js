@@ -15,8 +15,8 @@ const Comment = ({
   setActiveComment,
   parentId = null,
 }) => {
-  const { deleteSubCollectionDocument } = useFirestore("solutions", "comments")
   const { id: docID } = useParams()
+  const { deleteDocument } = useFirestore(`solutions/${docID}/comments`)
   const { user } = useAuthContext()
 
   const isEditing =
@@ -28,7 +28,7 @@ const Comment = ({
   // handle sub collection document
   const handleDelete = async () => {
     if (window.confirm("Do you really want to delete this comment?")) {
-      await deleteSubCollectionDocument(docID, comment.id)
+      await deleteDocument(comment.id)
     }
   }
 

@@ -5,30 +5,30 @@ import Badge from "../reusable/Badge"
 const DifficultyBar = ({ difficultyLevel }) => {
   let middleColor = "bg-gray-500"
   let lastColor = "bg-gray-500"
-  let badgeColor = "text-green-200 bg-green-500"
+  let badgeColor = "text-amber-800 bg-amber-200"
   if (difficultyLevel === "Intermediate") {
-    middleColor = "bg-orange-500"
-    badgeColor = "text-orange-200 bg-orange-500"
+    middleColor = "bg-green-200"
+    badgeColor = "text-green-800 bg-green-200"
   } else if (difficultyLevel === "Hard") {
-    middleColor = "bg-orange-500"
-    lastColor = "bg-red-500"
-    badgeColor = "text-red-200 bg-red-500"
+    middleColor = "bg-green-200"
+    lastColor = "bg-red-200"
+    badgeColor = "text-fuchsia-800 bg-fuchsia-200"
   }
   return (
-    <div className="relative mx-4">
+    <div className="relative">
       <Badge badgeColor={badgeColor} name={difficultyLevel} />
-      <div className="overflow-hidden h-2 mb-4 text-xs flex bg-transparent">
+      <div className="overflow-hidden h-2 mt-4 flex bg-transparent">
         <div
           style={{ width: "33%" }}
-          className="shadow-none flex flex-col text-center whitespace-nowrap rounded justify-center bg-green-500"
+          className="flex flex-col text-center whitespace-nowrap rounded justify-center bg-amber-200"
         ></div>
         <div
           style={{ width: "33%" }}
-          className={`shadow-none flex flex-col text-center rounded whitespace-nowrap justify-center ${middleColor} mx-1`}
+          className={`flex flex-col text-center rounded whitespace-nowrap justify-center ${middleColor} mx-1`}
         ></div>
         <div
           style={{ width: "34%" }}
-          className={`shadow-none flex flex-col text-center rounded whitespace-nowrap justify-center ${lastColor}`}
+          className={`flex flex-col text-center rounded whitespace-nowrap justify-center ${lastColor}`}
         ></div>
       </div>
     </div>

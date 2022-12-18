@@ -7,6 +7,7 @@ import { db } from "../firebase/config"
 export const useDocument = (c, id) => {
   const [document, setDocument] = useState(null)
   const [error, setError] = useState(null)
+
   // realtime document data
   useEffect(() => {
     const ref = doc(db, c, id)
@@ -28,7 +29,7 @@ export const useDocument = (c, id) => {
       }
     )
 
-    // unsubscribe on unmount
+    // unsubscribe to the previous listener before running the side effect again
     return () => unsubscribe()
   }, [c, id])
 

@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { Timestamp } from "firebase/firestore"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useFirestore } from "../../hooks/useFirestore"
@@ -9,7 +8,7 @@ const CommentForm = ({ docID }) => {
   const [newComment, setNewComment] = useState("")
   const [showModal, setShowModal] = useState(false)
 
-  const { addSubCollectionDocument, response } = useFirestore("solutions", "comments")
+  const { addDocument, response } = useFirestore(`solutions/${docID}/comments`)
   const { user } = useAuthContext()
 
   const handleSubmit = async (e) => {
@@ -27,9 +26,8 @@ const CommentForm = ({ docID }) => {
           username: user.reloadUserInfo.screenName,
         },
         replies: [],
-        createdAt: Timestamp.now(),
       }
-      await addSubCollectionDocument(docID, commentToAdd)
+      await addDocument(commentToAdd)
       setNewComment("")
     } catch (error) {
       console.log(error)

@@ -3,20 +3,19 @@ import moment from "moment"
 import { Helmet } from "react-helmet"
 import { Link, useLocation, useParams } from "react-router-dom"
 
-import rocketLoader from "../../assets/animated_illustrations/loader.json"
-// Auth Context Imports
-import { useAuthContext } from "../../hooks/useAuthContext"
-import { useDocument } from "../../hooks/useDocument"
-import ChallengeHeader from "../challenges/ChallengeHeader"
-import ConfettiWrapper from "../reusable/ConfettiWrapper"
-import ConfirmationModal from "../reusable/ConfirmationModal"
-import LottieAnimation from "../reusable/LottieAnimation"
+import rocketLoader from "../assets/animated_illustrations/loader.json"
+import ChallengeHeader from "../components/challenges/ChallengeHeader"
+import ConfettiWrapper from "../components/reusable/ConfettiWrapper"
+import ConfirmationModal from "../components/reusable/ConfirmationModal"
+import LottieAnimation from "../components/reusable/LottieAnimation"
+import EmojiSection from "../components/solutions/EmojiSection"
+import ShowWebsite from "../components/solutions/ShowWebsite"
+import SolutionComments from "../components/solutions/SolutionComments"
+// custom hooks
+import { useAuthContext } from "../hooks/useAuthContext"
+import { useDocument } from "../hooks/useDocument"
 
-import EmojiSection from "./EmojiSection"
-import ShowWebsite from "./ShowWebsite"
-import SolutionComments from "./SolutionComments"
-
-const SolutionDetails = () => {
+const SolutionDetail = () => {
   const { id } = useParams()
   const { state } = useLocation()
   const { document } = useDocument("solutions", id)
@@ -83,4 +82,4 @@ const SolutionDetails = () => {
   )
 }
 
-export default SolutionDetails
+export default SolutionDetail

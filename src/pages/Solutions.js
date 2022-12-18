@@ -1,15 +1,14 @@
 import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
 
-import solutionLottie from "../../assets/animated_illustrations/solution_animation.json"
-import { analytics, logEvent } from "../../firebase/config"
-import { useCollection } from "../../hooks/useCollection"
-import Hero from "../dashboard/Hero"
-import SkeletonSolutionSummaryCard from "../skeletons/SkeletonSolutionSummaryCard"
+import solutionLottie from "../assets/animated_illustrations/solution_animation.json"
+import Hero from "../components/homepage/Hero"
+import SkeletonSolutionSummaryCard from "../components/skeletons/SkeletonSolutionSummaryCard"
+import SolutionSummary from "../components/solutions/SolutionSummary"
+import { analytics, logEvent } from "../firebase/config"
+import { useCollection } from "../hooks/useCollection"
 
-import SolutionSummary from "./SolutionSummary"
-
-const ShowSolutions = () => {
+const Solutions = () => {
   const { documents, isLoading } = useCollection(
     "solutions",
     ["completed", "==", true],
@@ -50,4 +49,4 @@ const ShowSolutions = () => {
   )
 }
 
-export default ShowSolutions
+export default Solutions

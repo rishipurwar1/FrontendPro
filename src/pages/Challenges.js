@@ -1,14 +1,13 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-import challengeLottie from "../../assets/animated_illustrations/challenge.json"
-import { useCollection } from "../../hooks/useCollection"
-import Hero from "../dashboard/Hero"
-import SkeletonChallengeCard from "../skeletons/SkeletonChallengeCard"
+import challengeLottie from "../assets/animated_illustrations/challenge.json"
+import ChallengeCard from "../components/challenges/ChallengeCard"
+import Hero from "../components/homepage/Hero"
+import SkeletonChallengeCard from "../components/skeletons/SkeletonChallengeCard"
+import { useCollection } from "../hooks/useCollection"
 
-import ChallengeCard from "./ChallengeCard"
-
-const ChallengesList = () => {
+const Challenges = () => {
   const { documents, isLoading } = useCollection("challenges", null, null, [
     "createdAt",
     "desc",
@@ -48,4 +47,4 @@ const ChallengesList = () => {
   )
 }
 
-export default ChallengesList
+export default Challenges

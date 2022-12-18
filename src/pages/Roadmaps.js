@@ -2,8 +2,8 @@ import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
 import Lottie from "react-lottie"
 
-import comingSoon from "../../assets/animated_illustrations/coming_soon.json"
-import { analytics, logEvent } from "../../firebase/config"
+import comingSoon from "../assets/animated_illustrations/coming_soon.json"
+import { analytics, logEvent } from "../firebase/config"
 
 const Roadmaps = () => {
   // Lottie options

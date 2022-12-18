@@ -1,13 +1,12 @@
 import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
 
-import ResourcesIll from "../../assets/animated_illustrations/resources.json"
-import { analytics, logEvent } from "../../firebase/config"
-import { useCollection } from "../../hooks/useCollection"
-import Hero from "../dashboard/Hero"
-import SkeletonResourceCard from "../skeletons/SkeletonResourceCard"
-
-import ResourceCard from "./ResourceCard"
+import ResourcesIll from "../assets/animated_illustrations/resources.json"
+import Hero from "../components/homepage/Hero"
+import ResourceCard from "../components/resources/ResourceCard"
+import SkeletonResourceCard from "../components/skeletons/SkeletonResourceCard"
+import { analytics, logEvent } from "../firebase/config"
+import { useCollection } from "../hooks/useCollection"
 
 const Resources = () => {
   const { documents, isLoading } = useCollection("resources", null, null, [

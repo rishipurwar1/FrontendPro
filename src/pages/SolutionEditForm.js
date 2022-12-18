@@ -2,18 +2,17 @@ import React, { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from "react-router-dom"
 
-import mainImg from "../../assets/animated_illustrations/solution_animation.json"
-import { analytics, logEvent } from "../../firebase/config"
-import { useDocument } from "../../hooks/useDocument"
-import { useFirestore } from "../../hooks/useFirestore"
-import Hero from "../dashboard/Hero"
+import mainImg from "../assets/animated_illustrations/solution_animation.json"
+import Hero from "../components/homepage/Hero"
+import { analytics, logEvent } from "../firebase/config"
+import { useDocument } from "../hooks/useDocument"
+import { useFirestore } from "../hooks/useFirestore"
 
 const SolutionEditForm = () => {
   const { id } = useParams()
   const { document } = useDocument("solutions", id)
-  const navigate = useNavigate()
-  // getting the addSolution function
   const { updateDocument, response } = useFirestore("solutions")
+  const navigate = useNavigate()
 
   const {
     register,

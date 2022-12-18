@@ -2,17 +2,16 @@ import React, { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from "react-router-dom"
 
-import mainImg from "../../assets/animated_illustrations/solution_animation.json"
-import { analytics, logEvent } from "../../firebase/config"
-import { useFirestore } from "../../hooks/useFirestore"
-import Hero from "../dashboard/Hero"
-import Modal from "../reusable/Modal"
+import mainImg from "../assets/animated_illustrations/solution_animation.json"
+import Hero from "../components/homepage/Hero"
+import Modal from "../components/reusable/Modal"
+import { analytics, logEvent } from "../firebase/config"
+import { useFirestore } from "../hooks/useFirestore"
 
-const SolutionForm = (props) => {
+const SolutionForm = () => {
   const [state, setState] = useState(false)
   const { id } = useParams()
   const navigate = useNavigate()
-  // getting the addSolution function
   const { updateDocument, response } = useFirestore("solutions")
 
   const {

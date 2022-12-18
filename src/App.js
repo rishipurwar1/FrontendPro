@@ -3,10 +3,11 @@ import { Navigate, Route, Routes } from "react-router-dom"
 
 // loader
 import rocketLoader from "./assets/animated_illustrations/loader.json"
+// layout
 import Footer from "./components/layouts/Footer"
 import Navbar from "./components/layouts/Navbar"
-// custom components
 import SideBar from "./components/layouts/SideBar"
+// custom components
 import LottieAnimation from "./components/reusable/LottieAnimation"
 import ScrollToTop from "./components/reusable/ScrollToTop"
 import { useAuthContext } from "./hooks/useAuthContext"
@@ -14,20 +15,16 @@ import { useAuthContext } from "./hooks/useAuthContext"
 import "./App.css"
 
 // lazy loading components
-const Dashboard = React.lazy(() => import("./components/dashboard/Dashboard"))
-const ChallengesList = React.lazy(() => import("./components/challenges/ChallengesList"))
-const ChallengeDetails = React.lazy(() =>
-  import("./components/challenges/ChallengeDetails")
-)
-const Resources = React.lazy(() => import("./components/resources/Resources"))
-const Roadmaps = React.lazy(() => import("./components/roadmaps/Roadmaps"))
-const SolutionList = React.lazy(() => import("./components/solutions/SolutionList"))
-const SolutionDetails = React.lazy(() => import("./components/solutions/SolutionDetails"))
-const SolutionForm = React.lazy(() => import("./components/solutions/SolutionForm"))
-const SolutionEditForm = React.lazy(() =>
-  import("./components/solutions/SolutionEditForm")
-)
-const MySolutions = React.lazy(() => import("./components/MySolutions/MySolutions"))
+const Homepage = React.lazy(() => import("./pages/Homepage"))
+const Challenges = React.lazy(() => import("./pages/Challenges"))
+const ChallengeDetail = React.lazy(() => import("./pages/ChallengeDetail"))
+const Solutions = React.lazy(() => import("./pages/Solutions"))
+const SolutionDetail = React.lazy(() => import("./pages/SolutionDetail"))
+const Resources = React.lazy(() => import("./pages/Resources"))
+const Roadmaps = React.lazy(() => import("./pages/Roadmaps"))
+const SolutionForm = React.lazy(() => import("./pages/SolutionForm"))
+const SolutionEditForm = React.lazy(() => import("./pages/SolutionEditForm"))
+const MySolutions = React.lazy(() => import("./pages/MySolutions"))
 
 const App = () => {
   const { authIsReady, user } = useAuthContext()
@@ -44,13 +41,13 @@ const App = () => {
       >
         <ScrollToTop>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/challenges" element={<ChallengesList />} />
-            <Route path="/challenge/:id" element={<ChallengeDetails />} />
+            <Route path="/" element={<Homepage />} />
+            <Route path="/challenges" element={<Challenges />} />
+            <Route path="/challenge/:id" element={<ChallengeDetail />} />
+            <Route path="/solutions" element={<Solutions />} />
+            <Route path="/solution/:id" element={<SolutionDetail />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/roadmaps" element={<Roadmaps />} />
-            <Route path="/solutions" element={<SolutionList />} />
-            <Route path="/solution/:id" element={<SolutionDetails />} />
             <Route
               path="/submit/:id"
               element={user ? <SolutionForm /> : <Navigate to="/" />}

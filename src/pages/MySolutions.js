@@ -1,11 +1,11 @@
 import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
 
-import mainImg from "../../assets/animated_illustrations/solution_animation.json"
-import { analytics, logEvent } from "../../firebase/config"
-import { useAuthContext } from "../../hooks/useAuthContext"
-import Hero from "../dashboard/Hero"
-import Tabs from "../reusable/Tabs"
+import mainImg from "../assets/animated_illustrations/solution_animation.json"
+import Hero from "../components/homepage/Hero"
+import Tabs from "../components/reusable/Tabs"
+import { analytics, logEvent } from "../firebase/config"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 const MySolutions = () => {
   const { user } = useAuthContext()

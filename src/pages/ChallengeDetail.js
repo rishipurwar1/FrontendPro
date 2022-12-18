@@ -2,21 +2,20 @@ import React, { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import { useParams } from "react-router-dom"
 
-import rocketLoader from "../../assets/animated_illustrations/loader.json"
-import { analytics, logEvent } from "../../firebase/config"
-import { useAuthContext } from "../../hooks/useAuthContext"
-import { useDocument } from "../../hooks/useDocument"
-import Accordion from "../reusable/Accordion"
-import ContributorProfile from "../reusable/ContributorProfile"
-import DownloadButton from "../reusable/DownloadButton"
-import DownloadButtonNotLogin from "../reusable/DownloadButtonNotLogin"
-import DropDown from "../reusable/DropDown"
-import LottieAnimation from "../reusable/LottieAnimation"
-
+import rocketLoader from "../assets/animated_illustrations/loader.json"
 // Components
-import ChallengeHeader from "./ChallengeHeader"
+import ChallengeHeader from "../components/challenges/ChallengeHeader"
+import Accordion from "../components/reusable/Accordion"
+import ContributorProfile from "../components/reusable/ContributorProfile"
+import DownloadButton from "../components/reusable/DownloadButton"
+import DownloadButtonNotLogin from "../components/reusable/DownloadButtonNotLogin"
+import DropDown from "../components/reusable/DropDown"
+import LottieAnimation from "../components/reusable/LottieAnimation"
+import { analytics, logEvent } from "../firebase/config"
+import { useAuthContext } from "../hooks/useAuthContext"
+import { useDocument } from "../hooks/useDocument"
 
-const ChallengeDetails = () => {
+const ChallengeDetail = () => {
   const { id } = useParams()
   const { document } = useDocument("challenges", id)
   const { user } = useAuthContext()
@@ -229,4 +228,4 @@ const ChallengeDetails = () => {
   )
 }
 
-export default ChallengeDetails
+export default ChallengeDetail

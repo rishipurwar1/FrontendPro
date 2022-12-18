@@ -1,14 +1,13 @@
 import React, { useEffect } from "react"
 
-import heroImg from "../../assets/animated_illustrations/Blogging.json"
-import { analytics, logEvent } from "../../firebase/config"
-import Challenges from "../challenges/Challenges"
-import Newsletter from "../newsletter/Newsletter"
+import heroImg from "../assets/animated_illustrations/Blogging.json"
+import Newsletter from "../components//newsletter/Newsletter"
+import Challenges from "../components/challenges/Challenges"
+import Hero from "../components/homepage/Hero"
+import HowItWorks from "../components/homepage/HowItWorks"
+import { analytics, logEvent } from "../firebase/config"
 
-import Hero from "./Hero"
-import HowItWorks from "./HowItWorks"
-
-const Dashboard = () => {
+const Homepage = () => {
   useEffect(() => {
     logEvent(analytics, "homepage_visited")
   }, [])
@@ -30,4 +29,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Homepage

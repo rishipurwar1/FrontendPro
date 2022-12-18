@@ -7,14 +7,13 @@ import { useAuthContext } from "./useAuthContext"
 export const useLogout = () => {
   const { dispatch } = useAuthContext()
 
-  const logout = () => {
-    signOut(auth)
-      .then(() => {
-        dispatch({ type: "LOGOUT" })
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
+  const logout = async () => {
+    try {
+      await signOut(auth)
+      dispatch({ type: "LOGOUT" })
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   return { logout }

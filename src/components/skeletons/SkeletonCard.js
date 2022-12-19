@@ -1,20 +1,35 @@
 import React from "react"
 
+import Icons from "../SvgIcons/Icons"
+
+import SkeletonBadge from "./SkeletonBadge"
+import SkeletonDifficultyBar from "./SkeletonDifficultyBar"
 import SkeletonElement from "./SkeletonElement"
 
-const SkeletonCard = () => {
+const SkeletonCard = ({ isSolution, isChallenge }) => {
   return (
-    <div className="shadow rounded-md max-w-sm w-full mx-auto">
-      <div className="animate-pulse flex flex-col">
-        <SkeletonElement type="thumbnail" />
-        <div className="flex-1 space-y-4 px-3 py-1">
-          <div className=""></div>
-          <div className="space-y-2">
-            <SkeletonElement type="text" />
-            <SkeletonElement type="subtitle" />
+    <div role="status" className="animate-pulse bg-gray-800 p-4 rounded-lg w-[376px]">
+      <div className="flex justify-center items-center w-full h-64 rounded-lg bg-gray-700 mb-4">
+        <Icons.PlaceholderThumbnail />
+      </div>
+      <SkeletonBadge />
+      <div>
+        <SkeletonElement type="title" />
+        <SkeletonElement type="text-lg" />
+        <SkeletonElement type="text-md" />
+        <SkeletonElement type="text" />
+      </div>
+      {isChallenge && !isSolution && <SkeletonDifficultyBar />}
+      {!isChallenge && isSolution && (
+        <div className="flex items-center space-x-4 mt-4">
+          <Icons.PlaceholderAvatar />
+          <div>
+            <SkeletonElement type="userInfo" />
+            <SkeletonElement type="text-lg" />
           </div>
         </div>
-      </div>
+      )}
+      <span className="sr-only">Loading...</span>
     </div>
   )
 }

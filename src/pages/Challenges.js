@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 import challengeLottie from "../assets/animated_illustrations/challenge.json"
 import Hero from "../components/homepage/Hero"
 import Card from "../components/reusable/Card"
-import SkeletonChallengeCard from "../components/skeletons/SkeletonChallengeCard"
+import SkeletonCard from "../components/skeletons/SkeletonCard"
 import { useCollection } from "../hooks/useCollection"
 
 const Challenges = () => {
@@ -34,7 +34,7 @@ const Challenges = () => {
                 <Card key={challenge.id} card={challenge} challengelist isChallenge />
               )
             })
-          : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonChallengeCard key={n} />)}
+          : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard isChallenge key={n} />)}
       </div>
     </main>
   )

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
 import { useCollection } from "../../hooks/useCollection"
-import SkeletonSolutionSummaryCard from "../skeletons/SkeletonSolutionSummaryCard"
+import SkeletonCard from "../skeletons/SkeletonCard"
 
 import Card from "./Card"
 
@@ -86,9 +86,7 @@ const Tabs = ({ userID }) => {
                         </h1>
                       )
                     ) : (
-                      [1, 2, 3, 4, 5, 6].map((n) => (
-                        <SkeletonSolutionSummaryCard key={n} />
-                      ))
+                      [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard key={n} />)
                     )}
                   </div>
                 </div>
@@ -108,9 +106,7 @@ const Tabs = ({ userID }) => {
                         </h1>
                       )
                     ) : (
-                      [1, 2, 3, 4, 5, 6].map((n) => (
-                        <SkeletonSolutionSummaryCard key={n} />
-                      ))
+                      [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard key={n} />)
                     )}
                   </div>
                 </div>

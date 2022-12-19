@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 import solutionLottie from "../assets/animated_illustrations/solution_animation.json"
 import Hero from "../components/homepage/Hero"
 import Card from "../components/reusable/Card"
-import SkeletonSolutionSummaryCard from "../components/skeletons/SkeletonSolutionSummaryCard"
+import SkeletonCard from "../components/skeletons/SkeletonCard"
 import { analytics, logEvent } from "../firebase/config"
 import { useCollection } from "../hooks/useCollection"
 
@@ -42,7 +42,7 @@ const Solutions = () => {
             ? documents.map((solution) => {
                 return <Card key={solution.id} card={solution} isSolution />
               })
-            : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonSolutionSummaryCard key={n} />)}
+            : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard isSolution key={n} />)}
         </div>
       </main>
     </div>

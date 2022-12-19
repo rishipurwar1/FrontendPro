@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 import { useCollection } from "../../hooks/useCollection"
 import Card from "../reusable/Card"
-import SkeletonChallengeCard from "../skeletons/SkeletonChallengeCard"
+import SkeletonCard from "../skeletons/SkeletonCard"
 
 const Challenges = () => {
   const { documents, isLoading } = useCollection("challenges", null, 6, [
@@ -23,7 +23,7 @@ const Challenges = () => {
                 <Card key={challenge.id} card={challenge} challengelist isChallenge />
               )
             })
-          : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonChallengeCard key={n} />)}
+          : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard isChallenge key={n} />)}
       </div>
       <Link
         to="/challenges"

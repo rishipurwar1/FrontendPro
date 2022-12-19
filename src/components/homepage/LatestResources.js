@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 import { useCollection } from "../../hooks/useCollection"
 import Card from "../reusable/Card"
-import SkeletonResourceCard from "../skeletons/SkeletonResourceCard"
+import SkeletonCard from "../skeletons/SkeletonCard"
 
 const LatestResources = () => {
   const { documents, isLoading } = useCollection("resources", null, 6, [
@@ -17,7 +17,7 @@ const LatestResources = () => {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center my-8">
         {!isLoading
           ? documents.map((resource) => <Card key={resource.id} card={resource} />)
-          : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonResourceCard key={n} />)}
+          : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard key={n} />)}
       </div>
       <Link
         to="/resources"

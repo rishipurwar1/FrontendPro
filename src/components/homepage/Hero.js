@@ -1,4 +1,3 @@
-import React from "react"
 import Lottie from "react-lottie"
 import { useNavigate } from "react-router-dom"
 

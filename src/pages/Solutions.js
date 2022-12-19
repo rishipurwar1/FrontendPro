@@ -3,8 +3,8 @@ import { Helmet } from "react-helmet"
 
 import solutionLottie from "../assets/animated_illustrations/solution_animation.json"
 import Hero from "../components/homepage/Hero"
+import Card from "../components/reusable/Card"
 import SkeletonSolutionSummaryCard from "../components/skeletons/SkeletonSolutionSummaryCard"
-import SolutionCard from "../components/solutions/SolutionCard"
 import { analytics, logEvent } from "../firebase/config"
 import { useCollection } from "../hooks/useCollection"
 
@@ -40,7 +40,7 @@ const Solutions = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-8">
           {!isLoading
             ? documents.map((solution) => {
-                return <SolutionCard key={solution.id} solution={solution} />
+                return <Card key={solution.id} card={solution} isSolution />
               })
             : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonSolutionSummaryCard key={n} />)}
         </div>

@@ -1,6 +1,4 @@
-import React from "react"
-
-const Card = ({ name, info, image, gradient, color, lastClass }) => {
+const FeatureCard = ({ name, info, image, gradient, color, lastClass }) => {
   return (
     <div
       className={`${gradient} rounded-xl shadow-2xl text-center px-5 py-8 max-w-sm h-96 ${
@@ -14,4 +12,4 @@ const Card = ({ name, info, image, gradient, color, lastClass }) => {
   )
 }
 
-export default Card
+export default FeatureCard

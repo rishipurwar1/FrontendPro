@@ -1,6 +1,4 @@
-import React from "react"
-
-import Card from "./Card"
+import FeatureCard from "./FeatureCard"
 
 const HowItWorks = () => {
   return (
@@ -9,21 +7,21 @@ const HowItWorks = () => {
         How it works?
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-8">
-        <Card
+        <FeatureCard
           name="Sign up for free in 30 seconds"
           info="Connect your GitHub account using Sign Up button. You'll instantly gain access to our all the challenges"
           image="fas fa-user-lock"
           gradient="bg-gradient-to-br from-sky-400 to-indigo-500"
           color="text-sky-200"
         />
-        <Card
+        <FeatureCard
           name="Find the right challenge"
           info="Choose the right challenge for you and start turning the design into a live website or mobile application"
           image="fas fa-code"
           gradient="bg-gradient-to-br from-yellow-400 to-orange-500"
           color="text-yellow-200"
         />
-        <Card
+        <FeatureCard
           name="Share your solution"
           info="After completing the challenge, you can share your work with the world and get feedback from the community members"
           image="fas fa-share-alt"

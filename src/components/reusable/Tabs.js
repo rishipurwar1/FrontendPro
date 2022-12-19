@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 
 import { useCollection } from "../../hooks/useCollection"
-import ChallengeCard from "../challenges/ChallengeCard"
 import SkeletonSolutionSummaryCard from "../skeletons/SkeletonSolutionSummaryCard"
-import SolutionSummary from "../solutions/SolutionSummary"
+
+import Card from "./Card"
 
 const Tabs = ({ userID }) => {
   const [openTab, setOpenTab] = useState(1)
@@ -69,10 +69,11 @@ const Tabs = ({ userID }) => {
                       documents.length > 0 ? (
                         documents.map((challenge) => {
                           return (
-                            <ChallengeCard
+                            <Card
                               key={challenge.id}
-                              challenge={challenge}
-                              btnTitle="Submit Solution"
+                              card={challenge}
+                              isChallenge
+                              isSolution
                             />
                           )
                         })
@@ -95,9 +96,9 @@ const Tabs = ({ userID }) => {
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
                     {!isLoading ? (
                       documents.length > 0 ? (
-                        documents.map((solution) => {
-                          return <SolutionSummary key={solution.id} solution={solution} />
-                        })
+                        documents.map((solution) => (
+                          <Card key={solution.id} card={solution} isSolution />
+                        ))
                       ) : (
                         <h1 className="text-center sm:col-span-2 lg:col-span-3 text-white text-lg">
                           You haven&apos;t submitted any solution

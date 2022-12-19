@@ -2,9 +2,11 @@ import React, { useEffect } from "react"
 
 import heroImg from "../assets/animated_illustrations/Blogging.json"
 import Newsletter from "../components//newsletter/Newsletter"
-import Challenges from "../components/challenges/Challenges"
+import LatestChallenges from "../components/challenges/LatestChallenges"
 import Hero from "../components/homepage/Hero"
 import HowItWorks from "../components/homepage/HowItWorks"
+import LatestResources from "../components/homepage/LatestResources"
+import LatestSolutions from "../components/homepage/LatestSolutions"
 import { analytics, logEvent } from "../firebase/config"
 
 const Homepage = () => {
@@ -23,7 +25,9 @@ const Homepage = () => {
         route="/challenges"
       />
       <HowItWorks />
-      <Challenges />
+      <LatestChallenges />
+      <LatestSolutions />
+      <LatestResources />
       <Newsletter />
     </div>
   )

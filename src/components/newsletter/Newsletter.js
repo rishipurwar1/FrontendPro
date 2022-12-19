@@ -6,7 +6,7 @@ const Newsletter = () => {
   return (
     <Widget
       id={process.env.REACT_APP_FORM_ID}
-      className="my-form w-full mt-16"
+      className="my-form w-full mt-20"
       height="500"
     />
   )

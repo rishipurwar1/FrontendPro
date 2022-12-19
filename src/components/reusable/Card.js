@@ -20,7 +20,7 @@ const Card = ({ card, isChallenge, isSolution }) => {
   }
 
   return (
-    <article className="bg-gray-800 shadow-md overflow-hidden rounded-lg border border-gray-700 p-4 transform transition duration-300 ease-in-out hover:shadow-primary hover:scale-102 cursor-default">
+    <article className="bg-gray-800 overflow-hidden rounded-lg border border-gray-700 p-4 shadow-sm transition hover:shadow-lg cursor-default">
       {!isChallenge && !isSolution ? (
         <a href={card.link} target="_blank" rel="noopener noreferrer">
           <Image
@@ -76,21 +76,10 @@ const Card = ({ card, isChallenge, isSolution }) => {
       {isSolution && isChallenge && (
         <Link
           to={href}
-          className="inline-flex items-center font-medium text-blue-600 hover:underline"
+          className="inline-flex items-center font-medium text-blue-600 group"
         >
           Submit Solution
-          <svg
-            className="ml-2 w-4 h-4"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
+          <i className="fas fa-arrow-right ml-2 transition group-hover:translate-x-0.5"></i>
         </Link>
       )}
     </article>

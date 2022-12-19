@@ -1,4 +1,5 @@
-const FeatureCard = ({ name, info, image, gradient, color, lastClass }) => {
+const FeatureCard = ({ feature }) => {
+  const { name, info, image, gradient, color, lastClass } = feature
   return (
     <div
       className={`${gradient} rounded-xl shadow-2xl text-center px-5 py-8 max-w-sm h-96 ${

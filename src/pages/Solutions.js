@@ -34,7 +34,7 @@ const Solutions = () => {
         lottie
       />
       <main>
-        <h1 className="text-5xl heading text-center font-heading font-bold text-white">
+        <h1 className="text-5xl heading text-center font-extrabold text-white">
           Solutions
         </h1>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-8">

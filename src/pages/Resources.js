@@ -31,9 +31,7 @@ const Resources = () => {
         logoTitle="fas fa-arrow-right ml-2"
         route="/challenges"
       />
-      <h2 className="text-5xl text-center text-white font-bold  font-heading">
-        Resources
-      </h2>
+      <h2 className="text-5xl text-center text-white font-extrabold">Resources</h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-8">
         {!isLoading
           ? documents.map((resource) => {

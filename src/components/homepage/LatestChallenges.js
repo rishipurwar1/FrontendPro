@@ -26,8 +26,8 @@ const Challenges = () => {
           : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonChallengeCard key={n} />)}
       </div>
       <Link
-        to="/solutions"
-        className="inline-flex items-center justify-center self-center px-4 py-2 text-base font-medium text-center border rounded-lg text-white border-gray-700 hover:bg-gray-800"
+        to="/challenges"
+        className="inline-flex items-center justify-center self-center px-4 py-2 text-base font-medium text-center border rounded-lg text-white transition-colors border-gray-700 hover:bg-gray-800"
       >
         View more
         <i className="fas fa-arrow-right ml-2"></i>

@@ -88,7 +88,7 @@ const Sidebar = () => {
               href="https://discord.com/invite/FYSQUEw6xP"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-blue-500 flex items-center justify-center p-3 rounded transition-all duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500 hover:text-white text-base w-full xl:mx-3"
+              className="inline-flex items-center justify-center self-center px-5 py-3 text-base font-medium text-center border rounded-lg text-white transition-colors border-gray-700 hover:bg-gray-800"
             >
               <i className="fab fa-discord text-2xl mr-1 xs:mr-3 md:mr-0 xl:mr-3 xl:text-base text-center"></i>
               <span className="xs:inline-block md:hidden xl:inline-block">

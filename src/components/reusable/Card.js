@@ -20,11 +20,17 @@ const Card = ({ card, isChallenge, isSolution }) => {
   }
 
   return (
-    <article className="bg-gray-800 overflow-hidden rounded-lg border border-gray-700 p-4 shadow-sm transition hover:shadow-lg cursor-default">
+    <article className="bg-gray-800 overflow-hidden rounded-lg border border-gray-700 p-4 shadow-sm transition hover:shadow-primary cursor-default">
+      {/* resource card link */}
       {!isChallenge && !isSolution ? (
-        <a href={card.link} target="_blank" rel="noopener noreferrer">
+        <a
+          href={card.link}
+          className="block overflow-hidden group mb-4 rounded-lg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Image
-            className="rounded-lg mb-4"
+            className="rounded-lg h-64 transition duration-500 group-hover:scale-105"
             cloudName="di5hmgowi"
             alt={`${card.title} website`}
             loading="lazy"
@@ -34,9 +40,9 @@ const Card = ({ card, isChallenge, isSolution }) => {
           </Image>
         </a>
       ) : (
-        <Link to={href}>
+        <Link to={href} className="block overflow-hidden group mb-4 rounded-lg">
           <Image
-            className="mb-4 rounded-lg"
+            className="rounded-lg h-64 transition duration-500 group-hover:scale-105"
             cloudName="di5hmgowi"
             alt={`${card.title} Challenge`}
             loading="lazy"
@@ -51,7 +57,8 @@ const Card = ({ card, isChallenge, isSolution }) => {
           <Badge key={tag} name={tag} badgeColor="text-indigo-800 bg-indigo-200" />
         ))}
       </div>
-      <h3 className="font-bold text-2xl text-white tracking-tight my-2">
+      <h3 className="font-bold text-2xl text-white tracking-tight my-2 transition duration-500 hover:underline hover:underline-offset-4">
+        {/* resource card link */}
         {!isChallenge && !isSolution ? (
           <a href={card.link} target="_blank" rel="noopener noreferrer">
             {card.title}
@@ -61,7 +68,9 @@ const Card = ({ card, isChallenge, isSolution }) => {
         )}
       </h3>
       <p className="font-light text-gray-400 mb-4">{trimString(card.description, 130)}</p>
+      {/* Challenge card */}
       {isChallenge && !isSolution && <DifficultyBar difficultyLevel={card.difficulty} />}
+      {/* Solution card */}
       {!isChallenge && isSolution && (
         <div className="flex items-center">
           <img className="rounded-full w-10 h-10" src={card.photoURL} alt="Profile" />
@@ -73,6 +82,7 @@ const Card = ({ card, isChallenge, isSolution }) => {
           </div>
         </div>
       )}
+      {/* Solution submit card */}
       {isSolution && isChallenge && (
         <Link
           to={href}

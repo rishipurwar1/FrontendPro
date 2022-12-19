@@ -5,7 +5,7 @@ const Button = ({ handleClick, bgColor, disabled, children }) => {
     <button
       disabled={disabled}
       onClick={handleClick}
-      className={`cursor-pointer inline-flex items-center p-4 ${bgColor} text-white text-base font-heading font-semibold shadow-md rounded-xl focus:outline-none`}
+      className={`cursor-pointer inline-flex items-center p-4 ${bgColor} text-white text-base font-heading font-semibold shadow-md rounded-lg focus:outline-none`}
     >
       {children}
     </button>

@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 import solutionLottie from "../assets/animated_illustrations/solution_animation.json"
 import Hero from "../components/homepage/Hero"
 import SkeletonSolutionSummaryCard from "../components/skeletons/SkeletonSolutionSummaryCard"
-import SolutionSummary from "../components/solutions/SolutionSummary"
+import SolutionCard from "../components/solutions/SolutionCard"
 import { analytics, logEvent } from "../firebase/config"
 import { useCollection } from "../hooks/useCollection"
 
@@ -34,13 +34,13 @@ const Solutions = () => {
         lottie
       />
       <main>
-        <h1 className="text-5xl heading text-center p-5 font-heading font-bold text-white pb-7">
+        <h1 className="text-5xl heading text-center font-heading font-bold text-white">
           Solutions
         </h1>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-8">
           {!isLoading
             ? documents.map((solution) => {
-                return <SolutionSummary key={solution.id} solution={solution} />
+                return <SolutionCard key={solution.id} solution={solution} />
               })
             : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonSolutionSummaryCard key={n} />)}
         </div>

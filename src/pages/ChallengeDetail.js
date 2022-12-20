@@ -71,7 +71,7 @@ const ChallengeDetail = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 mt-10 gap-x-12">
         <div className="text-white">
           <div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold pb-2 text-purple-500">
+            <h2 className="text-3xl md:text-4xl font-extrabold pb-2 text-purple-500">
               About the Challenge
             </h2>
             <p className="text-gray-300">{document.description}</p>
@@ -80,7 +80,7 @@ const ChallengeDetail = () => {
               you&apos;d like. If you&apos;re trying to learn something new, this might be
               a great way to push yourself.
             </p>
-            <h3 className="text-xl md:text-2xl font-heading font-bold pt-4 pb-2 text-purple-500">
+            <h3 className="text-xl md:text-2xl font-extrabold pt-4 pb-2 text-purple-500">
               Users should be able to:
             </h3>
             <ul className="text-gray-300 list-disc pl-5">
@@ -92,7 +92,7 @@ const ChallengeDetail = () => {
             </ul>
           </div>
           <div className="mt-10">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold pb-2 text-purple-500">
+            <h2 className="text-3xl md:text-4xl font-extrabold pb-2 text-purple-500">
               Taking your Project to the Next Level
             </h2>
             <ul className="text-gray-300 list-disc pl-5">
@@ -110,7 +110,7 @@ const ChallengeDetail = () => {
           </div>
           {document?.resources && (
             <div className="mt-10">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold pb-2 text-purple-500">
+              <h2 className="text-3xl md:text-4xl font-extrabold pb-2 text-purple-500">
                 Resources
               </h2>
               <ul className="text-gray-300 list-disc pl-5">
@@ -132,12 +132,12 @@ const ChallengeDetail = () => {
           )}
         </div>
         <div className="text-white xs:mt-10 md:mt-0">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold pb-1 text-purple-500">
+          <h2 className="text-3xl md:text-4xl font-extrabold pb-1 text-purple-500">
             What you&apos;ll Learn?
           </h2>
           <p className="text-gray-300 pb-2">{`${document.learning} So what are you waiting for?`}</p>
           <div className="mt-10">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold pb-2 text-purple-500">
+            <h2 className="text-3xl md:text-4xl font-bold pb-2 text-purple-500">
               Getting Started
             </h2>
             <ul className="text-gray-300 list-decimal pl-5">
@@ -188,7 +188,7 @@ const ChallengeDetail = () => {
             </ul>
           </div>
           <div className="mt-10">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold pb-2 text-purple-500">
+            <h2 className="text-3xl md:text-4xl font-bold pb-2 text-purple-500">
               Get Involved with the Community
             </h2>
             <p className="text-gray-300 pb-2">
@@ -215,7 +215,7 @@ const ChallengeDetail = () => {
           {renderButton()}
           {document.contributor && (
             <div className="mt-10">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold pb-2 text-purple-500">
+              <h2 className="text-3xl md:text-4xl font-bold pb-2 text-purple-500">
                 Contributed By:
               </h2>
               <ContributorProfile contributor={document.contributor} />

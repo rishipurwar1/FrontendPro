@@ -37,7 +37,7 @@ const Tabs = ({ userID }) => {
                 href="#link1"
                 role="tablist"
               >
-                <i className="fas fa-rocket text-base mr-1"></i> In-Progress Projects
+                <i className="fas fa-rocket text-base mr-1"></i> In-Progress Challenges
               </a>
             </li>
             <li className="-mb-px last:mr-0 flex-auto text-center">
@@ -56,7 +56,7 @@ const Tabs = ({ userID }) => {
                 href="#link2"
                 role="tablist"
               >
-                <i className="fas fa-briefcase text-base mr-1"></i> Completed Projects
+                <i className="fas fa-briefcase text-base mr-1"></i> Completed Challenges
               </a>
             </li>
           </ul>

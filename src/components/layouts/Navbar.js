@@ -9,7 +9,7 @@ import SignedOutLinks from "./SignedOutLinks"
 const Navbar = () => {
   const { user } = useAuthContext()
   const links = user ? (
-    <SignedInLinks profile={user.photoURL} />
+    <SignedInLinks profile={user} />
   ) : (
     <SignedOutLinks bgColor="bg-purple-800 transition-all duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500" />
   )

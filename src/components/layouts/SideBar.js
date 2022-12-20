@@ -18,7 +18,7 @@ const Sidebar = () => {
   useOnClickOutside(ref, () => setIsOpen(false))
 
   const links = user ? (
-    <SignedInLinks profile={user.photoURL} />
+    <SignedInLinks profile={user} />
   ) : (
     <SignedOutLinks bgColor="bg-gray-900" />
   )

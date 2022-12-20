@@ -27,7 +27,7 @@ const ChallengeHeader = ({ doc, button }) => {
 
   return (
     <div className="mt-2 mb-8">
-      <h2 className="font-heading text-3xl font-bold text-white">
+      <h2 className="text-3xl font-extrabold text-white">
         Hello {displayName}{" "}
         <span
           className="animate-wave inline-block origin-[70%_70%]"
@@ -38,7 +38,7 @@ const ChallengeHeader = ({ doc, button }) => {
         </span>
         ,
       </h2>
-      <p className="font-heading text-lg font-normal text-white">
+      <p className="text-lg font-normal text-white">
         Today is a great day to start this challenge{" "}
         <span role="img" aria-label="welcome">
           😊
@@ -46,17 +46,12 @@ const ChallengeHeader = ({ doc, button }) => {
       </p>
       <header className="mt-4 flex items-center xs:justify-center sm:justify-between bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl shadow-md xs:px-5 md:px-8 py-4 xs:h-full sm:max-h-96 xs:flex-wrap-reverse sm:flex-nowrap">
         <div className="xs:w-full sm:w-1/2">
-          <h2 className="leading-snug xs:text-3xl lg:text-5xl text-white font-semibold font-heading pb-2">
+          <h2 className="leading-snug xs:text-3xl lg:text-5xl text-white font-bold pb-2">
             {doc.title}
           </h2>
           <div className="py-2">
             {doc.tags.map((tag) => (
-              <Badge
-                key={tag}
-                name={tag}
-                badgeColor="text-gray-300 bg-gray-900"
-                challengeDetails
-              />
+              <Badge key={tag} name={tag} badgeColor="text-gray-300 bg-gray-900" />
             ))}
           </div>
           <p className="text-base mb-4 xs:w-full sm:w-4/5 lg:w-3/5 text-gray-200">

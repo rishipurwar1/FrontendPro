@@ -23,7 +23,7 @@ const ConfirmationModal = ({ setModal, id }) => {
           <div className="flex h-full flex-col justify-between">
             <i className="fas fa-trash-alt text-gray-300"></i>
             <p className="text-gray-300 text-xl font-bold mt-4">Remove solution</p>
-            <p className="text-gray-400 text-lg font-heading leading-relaxed text-center py-2 px-6">
+            <p className="text-gray-400 text-lg leading-relaxed text-center py-2 px-6">
               Are you sure you want to delete this solution ?
             </p>
             <div className="flex items-center justify-between gap-4 w-full mt-8">

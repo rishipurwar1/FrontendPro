@@ -25,7 +25,7 @@ const Roadmaps = () => {
       <Helmet>
         <title>CODINGSPACE Roadmaps - Learn by Building Web and Mobile Apps</title>
       </Helmet>
-      <p className="text-center text-white font-heading font-bold text-4xl">
+      <p className="text-center text-white font-extrabold text-4xl">
         We&apos;re building!
         <span role="img" aria-label="building-emoji">
           👷‍♂️

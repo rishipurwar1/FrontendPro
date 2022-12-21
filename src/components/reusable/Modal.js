@@ -16,7 +16,7 @@ const Modal = ({ setShowModal, auth, emoji, title }) => {
             </button>
           </div>
           <div className="p-6 pt-0 flex flex-col items-center">
-            <p className="my-4 text-gray-300 text-lg font-heading font-semibold leading-relaxed text-center">
+            <p className="my-4 text-gray-300 text-lg font-semibold leading-relaxed text-center">
               <span className="block" role="img" aria-label="Emoji">
                 {emoji}
               </span>

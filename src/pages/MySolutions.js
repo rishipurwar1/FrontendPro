@@ -26,6 +26,7 @@ const MySolutions = () => {
         logoTitle="fas fa-arrow-right ml-2"
         route="/challenges"
       />
+      <h2 className="text-5xl text-center text-white font-extrabold">My Solutions</h2>
       {user ? <Tabs userID={user.uid} /> : null}
     </div>
   )

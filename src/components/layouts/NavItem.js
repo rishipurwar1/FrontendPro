@@ -10,7 +10,7 @@ const NavItem = ({ item, icon, setIsOpen }) => {
     item === "github" ? { target: "_blank", rel: "noopener noreferrer" } : {}
   return (
     <NavLink
-      className={`block p-3 mb-3 rounded-lg transition-all duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500 hover:text-white text-base xs:text-left md:text-center xl:text-left relative ${
+      className={`block p-3 mb-3 rounded-lg transition-all duration-200 hover:bg-indigo-600 focus:ring-indigo-800 text-base xs:text-left md:text-center xl:text-left relative ${
         item === "github" && "xl:hidden"
       }`}
       to={toPath}

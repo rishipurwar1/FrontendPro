@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import useOnClickOutside from "../../hooks/useOnClickOutside"
+import ButtonExternalLink from "../reusable/ButtonExternalLink"
 import EmojiIcons from "../SvgIcons/EmojiIcons"
 
 import NavItem from "./NavItem"
@@ -17,11 +18,7 @@ const Sidebar = () => {
   const ref = useRef()
   useOnClickOutside(ref, () => setIsOpen(false))
 
-  const links = user ? (
-    <SignedInLinks profile={user} />
-  ) : (
-    <SignedOutLinks bgColor="bg-gray-900" />
-  )
+  const links = user ? <SignedInLinks profile={user} /> : <SignedOutLinks />
   return (
     <div className="col-start-1 col-end-3 md:col-end-2 row-start-1 row-end-2">
       <div className="relative md:flex">
@@ -50,7 +47,7 @@ const Sidebar = () => {
           <div className="flex justify-between items-center">
             <Link
               to="/"
-              className="text-white flex items-center space-x-1 font-heading uppercase text-center px-3 font-semibold text-xl"
+              className="text-white flex items-center space-x-1 uppercase text-center px-3 font-bold text-xl"
               aria-label="codingspace logo"
               title="This is a link to codingspace homepage"
             >
@@ -82,19 +79,18 @@ const Sidebar = () => {
             <NavItem item="github" icon="fab fa-github" setIsOpen={setIsOpen} />
           </aside>
 
-          {/* <!-- discord buton --> */}
+          {/* <!-- discord button --> */}
           <div className="absolute bottom-10 w-full flex justify-center pr-4">
-            <a
+            <ButtonExternalLink
               href="https://discord.com/invite/FYSQUEw6xP"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center self-center px-5 py-3 text-base font-medium text-center border rounded-lg text-white transition-colors border-gray-700 hover:bg-gray-800"
+              size="large"
+              variant="primary"
             >
               <i className="fab fa-discord text-2xl mr-1 xs:mr-3 md:mr-0 xl:mr-3 xl:text-base text-center"></i>
               <span className="xs:inline-block md:hidden xl:inline-block">
                 Join Discord
               </span>
-            </a>
+            </ButtonExternalLink>
           </div>
         </div>
       </div>

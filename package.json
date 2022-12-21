@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "@typeform/embed-react": "^1.1.1",
     "cloudinary-react": "^1.6.7",
+    "clsx": "^1.2.1",
     "firebase": "^9.6.10",
     "moment": "^2.29.1",
     "react": "^18.2.0",

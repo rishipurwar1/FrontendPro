@@ -4,9 +4,10 @@ import { useAuthContext } from "../../hooks/useAuthContext"
 import { useCollection } from "../../hooks/useCollection"
 import { useFirestore } from "../../hooks/useFirestore"
 
+import Button from "./Button"
 import Modal from "./Modal"
 
-const DownloadButton = ({ color, document }) => {
+const DownloadButton = ({ document, variant }) => {
   const [downloadingModal, setDownloadingModal] = useState(false)
   const { user } = useAuthContext()
   const { addDocument } = useFirestore("solutions")
@@ -47,12 +48,14 @@ const DownloadButton = ({ color, document }) => {
 
   return (
     <>
-      <button
-        className={`${color} text-gray-300 font-semibold shadow-md py-3 px-5 rounded-xl text-base focus:outline-none block w-48`}
+      <Button
+        size="large"
+        variant={variant || "secondary"}
+        className="font-medium"
         onClick={() => downloadAssets()}
       >
         <i className="animate-bounce fas fa-arrow-down mr-2"></i>Download
-      </button>
+      </Button>
       {downloadingModal && (
         <Modal
           auth

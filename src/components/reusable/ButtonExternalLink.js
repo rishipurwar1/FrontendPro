@@ -1,7 +1,7 @@
 import { clsx } from "clsx"
 
 const classes = {
-  base: "rounded-lg inline-flex justify-center items-center focus:outline-none transition",
+  base: "inline-flex justify-center items-center rounded-lg focus:outline-none transition",
   disabled: "opacity-50 cursor-not-allowed",
   pill: "rounded-full",
   size: {
@@ -15,15 +15,15 @@ const classes = {
     secondary:
       "bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:ring-gray-900 text-white",
     outline:
-      "bg-transparent hover:bg-gray-800 focus:ring-4 focus:ring-gray-900 text-white",
+      "bg-transparent border-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-900 text-white",
     danger:
       "bg-red-500 hover:bg-red-800 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 text-white",
   },
 }
 
-const Button = ({
+const ButtonExternalLink = ({
   children,
-  type = "button",
+  href = "",
   className,
   variant = "primary",
   size = "normal",
@@ -31,21 +31,22 @@ const Button = ({
   loading = false,
   ...props
 }) => (
-  <button
-    disabled={loading}
-    type={type}
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     className={clsx([
       classes.base,
       classes.size[size],
       classes.variant[variant],
       pill && classes.pill,
-      loading && classes.disabled,
+      loading && classes.loading,
       className,
     ])}
     {...props}
   >
     {children}
-  </button>
+  </a>
 )
 
-export default Button
+export default ButtonExternalLink

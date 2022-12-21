@@ -19,11 +19,7 @@ const ChallengeHeader = ({ doc, button }) => {
     : "Coder"
 
   const renderButton = () =>
-    user ? (
-      <DownloadButton color="bg-gray-900" document={doc} />
-    ) : (
-      <DownloadButtonNotLogin color="bg-gray-900" />
-    )
+    user ? <DownloadButton document={doc} /> : <DownloadButtonNotLogin />
 
   return (
     <div className="mt-2 mb-8">
@@ -44,7 +40,7 @@ const ChallengeHeader = ({ doc, button }) => {
           😊
         </span>
       </p>
-      <header className="mt-4 flex items-center xs:justify-center sm:justify-between bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl shadow-md xs:px-5 md:px-8 py-4 xs:h-full sm:max-h-96 xs:flex-wrap-reverse sm:flex-nowrap">
+      <header className="mt-4 flex items-center xs:justify-center sm:justify-between bg-indigo-600 rounded-lg shadow-md xs:px-5 md:px-8 py-4 xs:h-full sm:max-h-96 xs:flex-wrap-reverse sm:flex-nowrap">
         <div className="xs:w-full sm:w-1/2">
           <h2 className="leading-snug xs:text-3xl lg:text-5xl text-white font-bold pb-2">
             {doc.title}
@@ -58,7 +54,12 @@ const ChallengeHeader = ({ doc, button }) => {
             {doc.description}
           </p>
           {button ? (
-            <Button bgColor="bg-gray-900" handleClick={() => navigate("/solutions")}>
+            <Button
+              variant="secondary"
+              size="large"
+              className="font-medium"
+              onClick={() => navigate("/solutions")}
+            >
               Explore Solutions <i className="fas fa-arrow-right ml-2"></i>
             </Button>
           ) : (

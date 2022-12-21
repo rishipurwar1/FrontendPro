@@ -3,8 +3,9 @@ import moment from "moment"
 import { Helmet } from "react-helmet"
 import { Link, useLocation, useParams } from "react-router-dom"
 
-import rocketLoader from "../assets/animated_illustrations/loader.json"
+import rocketLoader from "../assets/animated_illustrations/rocketLoader.json"
 import ChallengeHeader from "../components/challenges/ChallengeHeader"
+import Avatar from "../components/reusable/Avatar"
 import ConfettiWrapper from "../components/reusable/ConfettiWrapper"
 import ConfirmationModal from "../components/reusable/ConfirmationModal"
 import LottieAnimation from "../components/reusable/LottieAnimation"
@@ -38,11 +39,7 @@ const SolutionDetail = () => {
       {modal ? <ConfirmationModal setModal={setModal} id={document.id} /> : null}
       <div className="flex justify-between items-center px-2">
         <div className="flex items-center mt-4">
-          <img
-            className="rounded-full mr-1 w-12 border-purple-500 border-2"
-            src={document.photoURL}
-            alt="user profile"
-          />
+          <Avatar photoURL={document.photoURL} className="ring-gray-700" />
           <div className="flex flex-col pl-1">
             <span className="text-navItem text-sm text-gray-300">{document.author}</span>
             <span className="text-navItem text-xs text-gray-400">

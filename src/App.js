@@ -2,7 +2,7 @@ import React, { Suspense } from "react"
 import { Navigate, Route, Routes } from "react-router-dom"
 
 // loader
-import rocketLoader from "./assets/animated_illustrations/loader.json"
+import rocketLoader from "./assets/animated_illustrations/rocketLoader.json"
 // layout
 import Footer from "./components/layouts/Footer"
 import Navbar from "./components/layouts/Navbar"

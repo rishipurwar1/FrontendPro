@@ -7,6 +7,8 @@ import { trimString } from "../../utils/shared"
 import DifficultyBar from "../challenges/DifficultyBar"
 import Badge from "../reusable/Badge"
 
+import Avatar from "./Avatar"
+
 const Card = ({ card, isChallenge, isSolution }) => {
   let href = ""
   if (isChallenge && !isSolution) {
@@ -73,11 +75,7 @@ const Card = ({ card, isChallenge, isSolution }) => {
       {/* Solution card */}
       {!isChallenge && isSolution && (
         <div className="flex items-center">
-          <img
-            className="p-1 ring-1 ring-gray-700 rounded-full w-10 h-10"
-            src={card.photoURL}
-            alt="Profile"
-          />
+          <Avatar photoURL={card.photoURL} className="ring-gray-700" />
           <div className="flex flex-col ml-4">
             <span className="text-base text-white font-medium">{card.author}</span>
             <span className="text-navItem text-sm text-gray-400">

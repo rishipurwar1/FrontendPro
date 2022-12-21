@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 import { useLogout } from "../../hooks/useLogout"
 import useOnClickOutside from "../../hooks/useOnClickOutside"
+import Avatar from "../reusable/Avatar"
 
 const SignedInLinks = ({ profile }) => {
   const { logout } = useLogout()
@@ -27,20 +28,16 @@ const SignedInLinks = ({ profile }) => {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="block h-10 w-10 rounded-full focus:outline-none"
+        className="block focus:outline-none"
         type="button"
       >
         <span className="sr-only">Open user menu</span>
-        <img
-          className="p-1 ring-1 ring-purple-500 rounded-full cursor-pointer"
-          src={profile.photoURL}
-          alt="user avatar"
-        />
+        <Avatar photoURL={profile.photoURL} />
       </button>
       {isOpen && (
         <div
           id="dropdownAvatar"
-          className="absolute right-0 top-14 z-10 w-44 rounded divide-y shadow bg-gray-800 divide-gray-700"
+          className="absolute right-0 top-14 z-10 w-44 rounded-lg divide-y shadow bg-gray-800 divide-gray-700"
         >
           <div className="py-3 px-4 text-sm text-white">
             <div>{profile.displayName || profile.reloadUserInfo.screenName}</div>

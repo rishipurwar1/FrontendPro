@@ -13,16 +13,16 @@ const ShowWebsite = ({ url, title, github }) => {
     console.log("error")
   }
   return (
-    <div className={`pt-4 ${siteView[view]}`}>
-      <div className="h-12 w-full bg-purple-500 flex items-center justify-between rounded-t">
+    <div className={`mt-4 ${siteView[view]}`}>
+      <div className="h-12 w-full border border-gray-700 bg-gray-800 flex items-center justify-between rounded-t-lg px-4 py-6">
         <div className="w-15">
-          <span className="w-3 h-3 rounded-full inline-block bg-red-500 ml-2"></span>
+          <span className="w-3 h-3 rounded-full inline-block bg-red-500"></span>
           <span className="w-3 h-3 rounded-full bg-yellow-400 inline-block mx-2"></span>
           <span className="w-3 h-3 rounded-full inline-block bg-green-500"></span>
         </div>
         <div>
           <i
-            className="fas fa-desktop pr-4 text-white text-3xl cursor-pointer"
+            className="fas fa-desktop mr-4 text-white text-3xl cursor-pointer"
             onClick={() => setView(1)}
           ></i>
           <i
@@ -35,10 +35,11 @@ const ShowWebsite = ({ url, title, github }) => {
             href={github}
             target="_blank"
             rel="noopener noreferrer"
+            className="mr-4"
             aria-label={`${title} solution github repository`}
             title={`Link to ${title} solution github repository`}
           >
-            <i className="fas fa-code text-white pr-4 text-2xl cursor-pointer"></i>
+            <i className="fas fa-code text-white text-2xl cursor-pointer"></i>
           </a>
           <a
             href={url}
@@ -47,11 +48,11 @@ const ShowWebsite = ({ url, title, github }) => {
             aria-label={`${title} website`}
             title={`Link to ${title} website`}
           >
-            <i className="fas fa-external-link-alt pr-2 text-white text-2xl cursor-pointer"></i>
+            <i className="fas fa-external-link-alt text-white text-2xl cursor-pointer"></i>
           </a>
         </div>
       </div>
-      <div className="relative border-solid border-4 border-purple-500 rounded-b">
+      <div className="relative border border-gray-700">
         {loading ? <Spinner /> : null}
         <iframe
           className="w-full h-screen overflow-y-scroll"

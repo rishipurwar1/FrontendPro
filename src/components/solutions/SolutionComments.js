@@ -17,7 +17,7 @@ const SolutionComments = () => {
   return (
     <div className="mt-10 md:mt-0">
       <CommentForm docID={id} />
-      <div>
+      <div className="mt-10">
         {documents &&
           documents.map((comment) => (
             <Comment

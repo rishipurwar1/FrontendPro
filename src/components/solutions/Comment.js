@@ -33,7 +33,7 @@ const Comment = ({
   }
 
   return (
-    <div className="my-4 border border-gray-800 rounded p-4">
+    <div className="my-4 border border-gray-700 rounded-lg p-4">
       <div className="flex">
         <a
           href={`https://github.com/${comment.user.username}`}

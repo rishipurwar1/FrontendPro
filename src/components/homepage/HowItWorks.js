@@ -19,7 +19,7 @@ const features = [
     name: "Share your solution",
     info: "After completing the challenge, you can share your work with the world and get feedback from the community members.",
     image: "fas fa-share-alt",
-    gradient: "bg-gradient-to-br from-purple-500 to-indigo-500",
+    gradient: "bg-gradient-to-br from-indigo-500 to-purple-600",
     color: "text-purple-200",
   },
 ]

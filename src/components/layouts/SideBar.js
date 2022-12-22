@@ -5,7 +5,9 @@ import { Link } from "react-router-dom"
 import { useAuthContext } from "../../hooks/useAuthContext"
 import useOnClickOutside from "../../hooks/useOnClickOutside"
 import ButtonExternalLink from "../reusable/ButtonExternalLink"
+import BrandIcons from "../SvgIcons/BrandIcons"
 import EmojiIcons from "../SvgIcons/EmojiIcons"
+import Icons from "../SvgIcons/Icons"
 
 import NavItem from "./NavItem"
 import SignedInLinks from "./SignedInLinks"
@@ -26,12 +28,12 @@ const Sidebar = () => {
         <div className="bg-gray-800 text-gray-100 flex justify-between items-center md:hidden">
           {/* <!-- mobile menu button --> */}
           <button
-            className="p-4 focus:outline-none focus:bg-gray-700"
+            className="p-4 focus:outline-none"
             onClick={() => {
               setIsOpen(!isOpen)
             }}
           >
-            <i className="fas fa-bars fa-2x"></i>
+            <Icons.Menu />
           </button>
           <div className="p-4">{links}</div>
         </div>
@@ -57,36 +59,63 @@ const Sidebar = () => {
               </span>
             </Link>
             <button
-              className="md:hidden p-4 focus:outline-none focus:bg-gray-700"
+              className="md:hidden p-4 focus:outline-none"
               onClick={() => {
                 setIsOpen(!isOpen)
               }}
             >
-              <i className="fas fa-times fa-2x"></i>
+              <Icons.Cross />
             </button>
           </div>
 
           {/* <!-- nav --> */}
           <aside className="xs:pt-4 md:pt-8 bg-gray-900">
-            <NavItem item="challenges" icon="fas fa-code" setIsOpen={setIsOpen} />
-            <NavItem item="solutions" icon="fas fa-laptop-code" setIsOpen={setIsOpen} />
             <NavItem
-              item="resources"
-              icon="fas fa-chalkboard-teacher "
+              item="challenges"
+              icon={
+                <Icons.Code className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
+              }
               setIsOpen={setIsOpen}
             />
-            <NavItem item="roadmaps" icon="fas fa-map-signs" setIsOpen={setIsOpen} />
-            <NavItem item="github" icon="fab fa-github" setIsOpen={setIsOpen} />
+            <NavItem
+              item="solutions"
+              icon={
+                <Icons.MessageCode className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
+              }
+              setIsOpen={setIsOpen}
+            />
+            <NavItem
+              item="resources"
+              icon={
+                <Icons.BrowserCheck className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
+              }
+              setIsOpen={setIsOpen}
+            />
+            <NavItem
+              item="roadmaps"
+              icon={
+                <Icons.RoadMap className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
+              }
+              setIsOpen={setIsOpen}
+            />
+            <NavItem
+              item="github"
+              icon={
+                <BrandIcons.GitHub className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
+              }
+              setIsOpen={setIsOpen}
+            />
           </aside>
 
           {/* <!-- discord button --> */}
           <div className="absolute bottom-10 w-full flex justify-center pr-4">
             <ButtonExternalLink
               href="https://discord.com/invite/FYSQUEw6xP"
-              size="large"
+              size="normal"
               variant="primary"
+              className="font-medium"
             >
-              <i className="fab fa-discord text-2xl mr-1 xs:mr-3 md:mr-0 xl:mr-3 xl:text-base text-center"></i>
+              <BrandIcons.Discord className="mr-2 -ml-1" size={18} />
               <span className="xs:inline-block md:hidden xl:inline-block">
                 Join Discord
               </span>

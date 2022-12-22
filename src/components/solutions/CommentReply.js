@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useFirestore } from "../../hooks/useFirestore"
+import Icons from "../SvgIcons/Icons"
 
 import ReplyForm from "./ReplyForm"
 
@@ -71,8 +72,8 @@ const CommentReply = ({
                 onClick={() => setActiveComment({ id: comment.id, type: "replying" })}
                 className="text-gray-400"
               >
-                <i className="fas fa-reply"></i>
-                <small className="pl-2 font-semibold">Reply</small>
+                <Icons.Reply size={18} />
+                <small className="pl-1 font-semibold">Reply</small>
               </button>
             )}
             {user?.uid === comment.user.userID && (
@@ -81,12 +82,12 @@ const CommentReply = ({
                   onClick={() => setActiveComment({ id: comment.id, type: "editing" })}
                   className="mx-4 text-gray-400"
                 >
-                  <i className="fas fa-edit"></i>
+                  <Icons.Edit size={18} />
                   <small className="pl-1 font-semibold">Edit</small>
                 </button>
                 <button className="text-gray-400" onClick={handleDelete}>
-                  <i className="fas fa-trash-alt"></i>
-                  <small className="pl-2 font-semibold">Delete</small>
+                  <Icons.Delete size={18} />
+                  <small className="pl-1 font-semibold">Delete</small>
                 </button>
               </>
             )}

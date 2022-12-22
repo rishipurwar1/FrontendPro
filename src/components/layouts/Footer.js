@@ -1,6 +1,8 @@
 import React from "react"
 
+import BrandIcons from "../SvgIcons/BrandIcons"
 import EmojiIcons from "../SvgIcons/EmojiIcons"
+import Icons from "../SvgIcons/Icons"
 
 const Footer = () => {
   return (
@@ -9,8 +11,8 @@ const Footer = () => {
         <EmojiIcons.Rocket size={32} />
         <span>CODINGSPACE</span>
       </h4>
-      <small className="xs:py-4 sm:py-0">
-        <i className="far fa-copyright pr-2"></i>
+      <small className="xs:py-4 sm:py-0 flex items-center">
+        <Icons.CopyRight size={16} className="mr-2 -ml-1" />
         {`${new Date().getFullYear()}`} CODINGSPACE. All right reserved
       </small>
       <div className="social flex items-center justify-center py-3">
@@ -22,7 +24,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i className="fab fa-github"></i>
+          <BrandIcons.GitHub size={18} className="hover:fill-current" />
         </a>
         <a
           href="https://twitter.com/thefierycoder"
@@ -32,7 +34,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i className="fab fa-twitter"></i>
+          <BrandIcons.Twitter size={18} className="hover:fill-current" />
         </a>
       </div>
     </footer>

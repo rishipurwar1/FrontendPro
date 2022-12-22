@@ -29,7 +29,6 @@ const Solutions = () => {
         subTitle="Welcome To Coding Space 😊"
         mainImg={solutionLottie}
         btnTitle="My Solutions "
-        logoTitle="fas fa-arrow-right ml-2"
         route="/mysolutions"
         lottie
       />

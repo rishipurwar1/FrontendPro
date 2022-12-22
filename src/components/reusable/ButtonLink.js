@@ -9,6 +9,7 @@ const classes = {
     small: "px-4 py-2 text-base",
     normal: "px-5 py-2.5 text-base",
     large: "py-3 px-5 text-base",
+    square: "p-2",
   },
   variant: {
     primary:

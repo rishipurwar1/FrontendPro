@@ -4,6 +4,7 @@ import { useAuthContext } from "../../hooks/useAuthContext"
 import { useFirestore } from "../../hooks/useFirestore"
 import Button from "../reusable/Button"
 import Modal from "../reusable/Modal"
+import Icons from "../SvgIcons/Icons"
 
 const CommentForm = ({ docID }) => {
   const [newComment, setNewComment] = useState("")
@@ -48,14 +49,15 @@ const CommentForm = ({ docID }) => {
           Discussion
         </h3>
         {!user && (
-          <button
+          <Button
+            variant="outline"
+            size="medium"
+            className="font-medium"
             onClick={() => setShowModal(true)}
-            type="button"
-            className="px-4 py-2 text-base font-medium leading-6 text-purple-500 whitespace-no-wrap border border-purple-500 rounded-md shadow-sm hover:bg-opacity-5 hover:bg-purple-50 focus:outline-none focus:shadow-none"
           >
-            <i className="fas fa-plus mr-2"></i>
-            <span>Write a comment</span>
-          </button>
+            <Icons.Plus className="mr-2 -ml-1" size={18} />
+            Write a comment
+          </Button>
         )}
       </div>
       {user && (

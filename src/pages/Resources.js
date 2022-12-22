@@ -28,7 +28,6 @@ const Resources = () => {
         subTitle="Welcome To Coding Space 😊"
         mainImg={ResourcesIll}
         btnTitle="Explore Challenges"
-        logoTitle="fas fa-arrow-right ml-2"
         route="/challenges"
       />
       <h2 className="text-5xl text-center text-white font-extrabold">Resources</h2>

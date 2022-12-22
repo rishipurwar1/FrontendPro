@@ -22,7 +22,6 @@ const Challenges = () => {
         subTitle="Today is a great day to start a new challenge 🧑‍💻"
         mainImg={challengeLottie}
         btnTitle="Explore Challenges"
-        logoTitle="fas fa-arrow-right ml-2"
         route="/challenges"
         lottie
       />

@@ -1,26 +1,25 @@
+import Icons from "../SvgIcons/Icons"
+
 import FeatureCard from "./FeatureCard"
 
 const features = [
   {
     name: "Sign up for free in 20 seconds",
     info: "Connect your GitHub account using Sign Up button. You'll instantly gain access to our all the challenges.",
-    image: "fas fa-user-lock",
     gradient: "bg-gradient-to-br from-sky-400 to-indigo-500",
-    color: "text-sky-200",
+    icon: <Icons.ShieldLock size="96" className="text-sky-200" />,
   },
   {
     name: "Find the right challenge",
     info: "Choose the right challenge for you and start turning the design into a live website.",
-    image: "fas fa-code",
     gradient: "bg-gradient-to-br from-yellow-400 to-orange-500",
-    color: "text-yellow-200",
+    icon: <Icons.Code size="96" className="text-yellow-200" />,
   },
   {
     name: "Share your solution",
     info: "After completing the challenge, you can share your work with the world and get feedback from the community members.",
-    image: "fas fa-share-alt",
     gradient: "bg-gradient-to-br from-indigo-500 to-purple-600",
-    color: "text-purple-200",
+    icon: <Icons.Share size="96" className="text-purple-200" />,
   },
 ]
 

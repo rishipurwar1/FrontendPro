@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useLogout } from "../../hooks/useLogout"
 import useOnClickOutside from "../../hooks/useOnClickOutside"
 import Avatar from "../reusable/Avatar"
+import Icons from "../SvgIcons/Icons"
 
 const SignedInLinks = ({ profile }) => {
   const { logout } = useLogout()
@@ -51,20 +52,23 @@ const SignedInLinks = ({ profile }) => {
             <li>
               <Link
                 to="/mysolutions"
-                className="block py-2 px-4 hover:bg-gray-700 hover:text-white"
+                className="flex items-center py-2 px-4 hover:bg-gray-700 hover:text-white"
                 aria-label="my solutions"
               >
-                <i className="fas fa-user mr-2"></i>My Solutions
+                <Icons.User className="mr-2 -ml-1" size={18} />
+                My Solutions
               </Link>
             </li>
+            {/* Add more dropdown items here */}
           </ul>
           <div className="py-1">
             <button
-              className="block w-full text-left py-2 px-4 text-sm hover:bg-gray-700 text-gray-200 hover:text-white"
+              className="flex items-center w-full text-left py-2 px-4 text-sm hover:bg-gray-700 text-gray-200 hover:text-white"
               disabled={loading}
               onClick={signOut}
             >
-              <i className="fas fa-sign-out-alt mr-2"></i>Sign out
+              <Icons.SignOut className="mr-2 -ml-1" size={18} />
+              Sign out
             </button>
           </div>
         </div>

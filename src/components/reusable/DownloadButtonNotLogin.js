@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
+import Icons from "../SvgIcons/Icons"
 
 import Button from "./Button"
 import Modal from "./Modal"
@@ -17,7 +18,8 @@ const DownloadButtonNotLogin = ({ variant }) => {
         className="font-medium"
         onClick={() => setShowModal(true)}
       >
-        <i className="animate-bounce fas fa-arrow-down mr-2"></i>Download
+        <Icons.ArrowDown className="mr-2 -ml-1" />
+        Download
       </Button>
       {showModal && !user ? (
         <Modal

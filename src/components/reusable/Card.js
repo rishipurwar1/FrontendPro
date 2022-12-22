@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 import { trimString } from "../../utils/shared"
 import DifficultyBar from "../challenges/DifficultyBar"
 import Badge from "../reusable/Badge"
+import Icons from "../SvgIcons/Icons"
 
 import Avatar from "./Avatar"
 
@@ -88,10 +89,10 @@ const Card = ({ card, isChallenge, isSolution }) => {
       {isSolution && isChallenge && (
         <Link
           to={href}
-          className="inline-flex items-center font-medium text-blue-600 group"
+          className="inline-flex items-center justify-center font-medium text-blue-600 group"
         >
           Submit Solution
-          <i className="fas fa-arrow-right ml-2 transition group-hover:translate-x-0.5"></i>
+          <Icons.ArrowRight className="ml-2 transition group-hover:translate-x-0.5" />
         </Link>
       )}
     </article>

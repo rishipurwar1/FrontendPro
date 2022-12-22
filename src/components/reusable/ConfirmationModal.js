@@ -2,46 +2,53 @@ import React from "react"
 import { useNavigate } from "react-router-dom"
 
 import { useFirestore } from "../../hooks/useFirestore"
+import Icons from "../SvgIcons/Icons"
 
-const ConfirmationModal = ({ setModal, id }) => {
+import Button from "./Button"
+
+const ConfirmationModal = ({ setIsOpen, id }) => {
   const navigate = useNavigate()
 
-  const { deleteDocument } = useFirestore("solutions")
-  const handleDelete = () => {
-    setModal(false)
-    deleteDocument(id)
+  const { deleteDocument, response } = useFirestore("solutions")
+
+  const handleDelete = async () => {
+    await deleteDocument(id)
+    setIsOpen(false)
     navigate("/")
   }
 
   return (
     <div
-      className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-0 outline-none focus:outline-none bg-gray-200 bg-opacity-10 pl-56"
-      onClick={() => setModal(false)}
+      id="deleteModal"
+      className="overflow-y-auto overflow-x-hidden fixed z-50 flex justify-center items-center w-full inset-0 h-full"
+      onClick={() => setIsOpen(false)}
     >
-      <div className="shadow-lg rounded-2xl p-4 z-50 bg-gray-800 w-auto max-w-sm m-auto">
-        <div className="w-full h-full text-center">
-          <div className="flex h-full flex-col justify-between">
-            <i className="fas fa-trash-alt text-gray-300"></i>
-            <p className="text-gray-300 text-xl font-bold mt-4">Remove solution</p>
-            <p className="text-gray-400 text-lg leading-relaxed text-center py-2 px-6">
-              Are you sure you want to delete this solution ?
-            </p>
-            <div className="flex items-center justify-between gap-4 w-full mt-8">
-              <button
-                type="button"
-                className="py-2 px-4 bg-purple-800 transition-colors duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500 text-white w-full text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
-                onClick={handleDelete}
-              >
-                Delete
-              </button>
-              <button
-                type="button"
-                className="py-2 px-4 bg-white hover:bg-gray-200 text-purple-800 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
-                onClick={() => setModal(false)}
-              >
-                Cancel
-              </button>
-            </div>
+      <div className="relative p-4 w-full max-w-md h-full md:h-auto">
+        <div className="relative p-4 text-center rounded-lg shadow bg-gray-800 sm:p-5">
+          <button
+            type="button"
+            className="text-gray-400 absolute top-2.5 right-2.5 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            data-modal-toggle="deleteModal"
+          >
+            <Icons.Cross size={18} />
+            <span className="sr-only">Close modal</span>
+          </button>
+          <Icons.Delete className="text-gray-500 mb-3.5 mx-auto" size={44} />
+          <p className="mb-4 text-gray-500 dark:text-gray-300">
+            Are you sure you want to delete this solution?
+          </p>
+          <div className="flex justify-center items-center space-x-4">
+            <Button variant="outline" size="medium" onClick={() => setIsOpen(false)}>
+              No, cancel
+            </Button>
+            <Button
+              variant="danger"
+              size="medium"
+              onClick={handleDelete}
+              loading={response.isPending}
+            >
+              Yes, I&apos;m sure
+            </Button>
           </div>
         </div>
       </div>

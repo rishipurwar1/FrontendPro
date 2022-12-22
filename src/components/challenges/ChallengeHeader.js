@@ -7,6 +7,7 @@ import Badge from "../reusable/Badge"
 import Button from "../reusable/Button"
 import DownloadButton from "../reusable/DownloadButton"
 import DownloadButtonNotLogin from "../reusable/DownloadButtonNotLogin"
+import Icons from "../SvgIcons/Icons"
 
 const ChallengeHeader = ({ doc, button }) => {
   const { user } = useAuthContext()
@@ -60,7 +61,8 @@ const ChallengeHeader = ({ doc, button }) => {
               className="font-medium"
               onClick={() => navigate("/solutions")}
             >
-              Explore Solutions <i className="fas fa-arrow-right ml-2"></i>
+              Explore Solutions
+              <Icons.ArrowRight className="ml-2" />
             </Button>
           ) : (
             renderButton()

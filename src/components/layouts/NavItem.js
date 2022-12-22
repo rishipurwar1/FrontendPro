@@ -10,7 +10,7 @@ const NavItem = ({ item, icon, setIsOpen }) => {
     item === "github" ? { target: "_blank", rel: "noopener noreferrer" } : {}
   return (
     <NavLink
-      className={`block p-3 mb-3 rounded-lg transition-all duration-200 hover:bg-indigo-600 focus:ring-indigo-800 text-base xs:text-left md:text-center xl:text-left relative ${
+      className={`flex items-center p-3 mb-3 rounded-lg transition-all duration-200 hover:bg-indigo-600 focus:ring-indigo-800 text-base xs:text-left md:text-center xl:text-left relative group ${
         item === "github" && "xl:hidden"
       }`}
       to={toPath}
@@ -19,9 +19,7 @@ const NavItem = ({ item, icon, setIsOpen }) => {
       onClick={() => setIsOpen(false)}
       {...additionalAttributes}
     >
-      <i
-        className={`xs:mr-3 md:mr-0 xl:mr-3 ${icon} text-xl xl:text-base text-center`}
-      ></i>
+      {icon}
       <span className="xs:inline-block md:hidden xl:inline-block">
         {item.charAt(0).toUpperCase() + item.slice(1)}
       </span>

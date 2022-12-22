@@ -2,7 +2,7 @@ import React from "react"
 
 import { useSignup } from "../../hooks/useSignup"
 import Button from "../reusable/Button"
-import Icons from "../SvgIcons/Icons"
+import BrandIcons from "../SvgIcons/BrandIcons"
 
 const SignedOutLinks = ({ variant = "secondary" }) => {
   const { signup, isPending } = useSignup()
@@ -11,12 +11,14 @@ const SignedOutLinks = ({ variant = "secondary" }) => {
     <Button
       variant={variant}
       size="large"
-      className="font-medium"
+      className="font-medium group"
       onClick={signup}
-      disabled={isPending}
+      loading={isPending}
     >
-      {isPending ? <Icons.Loader /> : <i className="fab fa-github mr-2"></i>}
-      Sign Up with Github
+      {!isPending && (
+        <BrandIcons.GitHub size={18} className="mr-2 -ml-1 group-hover:fill-current" />
+      )}
+      Sign Up with GitHub
     </Button>
   )
 }

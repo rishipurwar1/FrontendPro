@@ -5,7 +5,7 @@ import { useAuthContext } from "../../hooks/useAuthContext"
 import SignedOutLinks from "../layouts/SignedOutLinks"
 import Button from "../reusable/Button"
 
-const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route }) => {
+const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, icon, route }) => {
   const { user } = useAuthContext()
   const displayName = user
     ? !user?.displayName
@@ -60,7 +60,8 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, logoTitle, route }
               className="font-medium"
               onClick={() => navigate(route)}
             >
-              {btnTitle} <i className={logoTitle}></i>
+              {btnTitle}
+              {icon}
             </Button>
           ) : (
             <SignedOutLinks />

@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useCollection } from "../../hooks/useCollection"
 import { useFirestore } from "../../hooks/useFirestore"
+import Icons from "../SvgIcons/Icons"
 
 import Button from "./Button"
 import Modal from "./Modal"
@@ -54,7 +55,8 @@ const DownloadButton = ({ document, variant }) => {
         className="font-medium"
         onClick={() => downloadAssets()}
       >
-        <i className="animate-bounce fas fa-arrow-down mr-2"></i>Download
+        <Icons.ArrowDown className="mr-2 -ml-1" />
+        Download
       </Button>
       {downloadingModal && (
         <Modal

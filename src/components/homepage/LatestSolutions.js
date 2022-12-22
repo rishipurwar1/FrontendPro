@@ -2,6 +2,7 @@ import { useCollection } from "../../hooks/useCollection"
 import ButtonLink from "../reusable/ButtonLink"
 import Card from "../reusable/Card"
 import SkeletonCard from "../skeletons/SkeletonCard"
+import Icons from "../SvgIcons/Icons"
 
 const LatestSolutions = () => {
   const { documents, isLoading } = useCollection(
@@ -23,7 +24,7 @@ const LatestSolutions = () => {
       </div>
       <ButtonLink to="/solutions" size="small" variant="outline" className="self-center">
         View more
-        <i className="fas fa-arrow-right ml-2"></i>
+        <Icons.ArrowRight className="ml-2 -mr-1" />
       </ButtonLink>
     </main>
   )

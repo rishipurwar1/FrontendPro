@@ -1,27 +1,46 @@
 import { useState } from "react"
-import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from "react-router-dom"
 
 import mainImg from "../assets/animated_illustrations/solution_animation.json"
 import Hero from "../components/homepage/Hero"
+import BaseInput from "../components/reusable/BaseInput"
+import Button from "../components/reusable/Button"
 import Modal from "../components/reusable/Modal"
-import Icons from "../components/SvgIcons/Icons"
+import { validators } from "../constants"
 import { useFirestore } from "../hooks/useFirestore"
+import { useForm } from "../hooks/useForm"
+
+const INPUTS = [
+  {
+    label: "Challenge Title",
+    placeholder: "Challenge Title",
+    errorText: "Challenge Title is required",
+    name: "title",
+  },
+  {
+    label: "Github Repository URL",
+    placeholder: "Github Repository URL",
+    errorText: "Github Repository URL is required",
+    name: "repository",
+  },
+  {
+    label: "Live Website URL",
+    placeholder: "Live Website URL",
+    errorText: "Live Website URL is required",
+    name: "website",
+  },
+  {
+    label: "Ask for feedback",
+    placeholder: "Ask for feedback",
+    name: "feedback",
+  },
+]
 
 const SolutionForm = () => {
   const [state, setState] = useState(false)
   const { id } = useParams()
   const navigate = useNavigate()
   const { updateDocument, response } = useFirestore("solutions")
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm()
-
-  // handle form data
   const onSubmit = async (data) => {
     const formData = {
       ...data,
@@ -30,11 +49,13 @@ const SolutionForm = () => {
     await updateDocument(id, formData)
     if (!response.error) {
       navigate(`/solution/${id}`, { state: true })
-      reset("", {
-        keepValues: false,
-      })
     }
   }
+  const { errors, handleInputChange, handleSubmit } = useForm({
+    validations: validators.validations,
+    onSubmit,
+    initialValues: {},
+  })
 
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
@@ -43,96 +64,25 @@ const SolutionForm = () => {
         subTitle="Time to submit your solution and show it to the world 👍"
         mainImg={mainImg}
         btnTitle="Explore Solutions "
-        logoTitle="fas fa-arrow-right"
         route="/solutions"
         lottie
       />
       <h2 className="text-5xl text-center text-white font-extrabold">Submit Solution</h2>
       <div className="p-4 rounded-lg shadow bg-gray-800 sm:p-5 mt-8">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {/* challenge title */}
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-white" htmlFor="title">
-              Challenge Title
-            </label>
-            <input
-              className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-1 focus:ring-gray-500 focus:outline-none focus:border-gray-500"
-              id="title"
-              type="text"
-              placeholder="Enter Title"
-              {...register("title", { required: true })}
+        <form onSubmit={handleSubmit}>
+          {INPUTS.map((input) => (
+            <BaseInput
+              key={input.name}
+              label={input.label}
+              placeholder={input.placeholder}
+              onChange={handleInputChange}
+              error={!!errors[input.name]}
+              {...input}
             />
-            {errors.title?.type === "required" && (
-              <small className="text-red-500 text-xs">Title is required</small>
-            )}
-          </div>
-          {/* challenge github url */}
-          <div className="mb-4">
-            <label
-              className="block mb-2 text-sm font-medium text-white"
-              htmlFor="githubUrl"
-            >
-              Github Repository URL
-            </label>
-            <input
-              className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-1 focus:ring-gray-500 focus:outline-none focus:border-gray-500"
-              id="githubUrl"
-              type="text"
-              placeholder="Github Repository URL"
-              {...register("githubUrl", { required: true })}
-            />
-            {errors.githubUrl?.type === "required" && (
-              <small className="text-red-500 text-xs">
-                Github Repository URL is required
-              </small>
-            )}
-          </div>
-          {/* live website url */}
-          <div className="mb-4">
-            <label
-              className="block mb-2 text-sm font-medium text-white"
-              htmlFor="liveWebsiteUrl"
-            >
-              Live Website URL
-            </label>
-            <input
-              className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-1 focus:ring-gray-500 focus:outline-none focus:border-gray-500"
-              id="liveWebsiteUrl"
-              type="text"
-              placeholder="Live Website URL"
-              {...register("liveWebsiteUrl", { required: true })}
-            />
-            {errors.liveWebsiteUrl?.type === "required" && (
-              <small className="text-red-500 text-xs">Live Website URL is required</small>
-            )}
-          </div>
-          {/* feedback */}
-          <div className="mb-4">
-            <label
-              className="block mb-2 text-sm font-medium text-white"
-              htmlFor="feedback"
-            >
-              Ask for feedback
-            </label>
-            <input
-              className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-1 focus:ring-gray-500 focus:outline-none focus:border-gray-500"
-              id="feedback"
-              type="text"
-              placeholder="Ask for feedback from the community."
-              {...register("feedback")}
-            />
-          </div>
-          {/* submit button */}
-          <button className="text-white inline-flex items-center focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-colors bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-800">
-            {response.isPending ? (
-              <>
-                <Icons.Loader />
-                Submitting...
-              </>
-            ) : (
-              "Submit Solution"
-            )}
-          </button>
+          ))}
+          <Button type="submit" className="font-medium" loading={response.isPending}>
+            Submit Solution
+          </Button>
           {state && (
             <Modal
               setShowModal={setState}

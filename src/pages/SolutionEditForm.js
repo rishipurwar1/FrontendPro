@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 import mainImg from "../assets/animated_illustrations/solution_animation.json"
@@ -5,19 +6,34 @@ import Hero from "../components/homepage/Hero"
 import BaseInput from "../components/reusable/BaseInput"
 import Button from "../components/reusable/Button"
 import Icons from "../components/SvgIcons/Icons"
-import { INPUTS, VALIDATORS } from "../constants"
+import { INPUTS } from "../constants"
 import { useDocument } from "../hooks/useDocument"
 import { useFirestore } from "../hooks/useFirestore"
-import { useForm } from "../hooks/useForm"
+
+const INITIAL_STATE = {
+  title: "",
+  repository: "",
+  website: "",
+  feedback: "",
+}
 
 const SolutionEditForm = () => {
+  const [data, setData] = useState(INITIAL_STATE)
   const { id } = useParams()
   const { document } = useDocument("solutions", id)
   const { updateDocument, response } = useFirestore("solutions")
   const navigate = useNavigate()
 
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    })
+  }
+
   // handle form data
-  const onSubmit = async (data) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
       await updateDocument(id, data)
       if (!response.error) {
@@ -27,12 +43,11 @@ const SolutionEditForm = () => {
       console.log(error)
     }
   }
-
-  const { data, errors, handleInputChange, handleSubmit } = useForm({
-    validations: VALIDATORS.validations,
-    onSubmit,
-    initialValues: document,
-  })
+  useEffect(() => {
+    if (document) {
+      setData(document)
+    }
+  }, [document])
 
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
@@ -54,10 +69,9 @@ const SolutionEditForm = () => {
             <BaseInput
               key={input.name}
               label={input.label}
+              value={data[input.name]}
               placeholder={input.placeholder}
-              onChange={handleInputChange}
-              error={!!errors[input.name]}
-              value={data[input.name] || ""}
+              onChange={handleChange}
               {...input}
             />
           ))}

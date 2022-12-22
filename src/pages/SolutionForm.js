@@ -7,18 +7,33 @@ import BaseInput from "../components/reusable/BaseInput"
 import Button from "../components/reusable/Button"
 import Modal from "../components/reusable/Modal"
 import Icons from "../components/SvgIcons/Icons"
-import { INPUTS, VALIDATORS } from "../constants"
+import { INPUTS } from "../constants"
 import { useFirestore } from "../hooks/useFirestore"
-import { useForm } from "../hooks/useForm"
+
+const INITIAL_STATE = {
+  title: "",
+  repository: "",
+  website: "",
+  feedback: "",
+}
 
 const SolutionForm = () => {
+  const [data, setData] = useState(INITIAL_STATE)
   const [state, setState] = useState(false)
   const { id } = useParams()
   const navigate = useNavigate()
   const { updateDocument, response } = useFirestore("solutions")
 
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    })
+  }
+
   // handle form data
-  const onSubmit = async (data) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     const formData = {
       ...data,
       completed: true,
@@ -32,11 +47,6 @@ const SolutionForm = () => {
       console.log(error)
     }
   }
-  const { data, errors, handleInputChange, handleSubmit } = useForm({
-    validations: VALIDATORS.validations,
-    onSubmit,
-    initialValues: {},
-  })
 
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
@@ -56,10 +66,9 @@ const SolutionForm = () => {
             <BaseInput
               key={input.name}
               label={input.label}
+              value={data[input.name]}
               placeholder={input.placeholder}
-              onChange={handleInputChange}
-              error={!!errors[input.name]}
-              value={data[input.name] || ""}
+              onChange={handleChange}
               {...input}
             />
           ))}

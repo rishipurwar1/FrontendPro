@@ -5,6 +5,7 @@ import solutionLottie from "../assets/animated_illustrations/solution_animation.
 import Hero from "../components/homepage/Hero"
 import Card from "../components/reusable/Card"
 import SkeletonCard from "../components/skeletons/SkeletonCard"
+import Icons from "../components/SvgIcons/Icons"
 import { analytics, logEvent } from "../firebase/config"
 import { useCollection } from "../hooks/useCollection"
 
@@ -30,6 +31,7 @@ const Solutions = () => {
         mainImg={solutionLottie}
         btnTitle="My Solutions "
         route="/mysolutions"
+        icon={<Icons.ArrowRight className="ml-2 -mr-1" />}
         lottie
       />
       <main>

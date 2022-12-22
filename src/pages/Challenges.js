@@ -5,6 +5,7 @@ import challengeLottie from "../assets/animated_illustrations/challenge.json"
 import Hero from "../components/homepage/Hero"
 import Card from "../components/reusable/Card"
 import SkeletonCard from "../components/skeletons/SkeletonCard"
+import Icons from "../components/SvgIcons/Icons"
 import { useCollection } from "../hooks/useCollection"
 
 const Challenges = () => {
@@ -23,6 +24,7 @@ const Challenges = () => {
         mainImg={challengeLottie}
         btnTitle="Explore Challenges"
         route="/challenges"
+        icon={<Icons.ArrowRight className="ml-2 -mr-1" />}
         lottie
       />
       <h2 className="text-5xl text-center text-white font-extrabold">Challenges</h2>

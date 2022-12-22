@@ -6,6 +6,7 @@ import Hero from "../components/homepage/Hero"
 import BaseInput from "../components/reusable/BaseInput"
 import Button from "../components/reusable/Button"
 import Modal from "../components/reusable/Modal"
+import Icons from "../components/SvgIcons/Icons"
 import { INPUTS, VALIDATORS } from "../constants"
 import { useFirestore } from "../hooks/useFirestore"
 import { useForm } from "../hooks/useForm"
@@ -45,6 +46,7 @@ const SolutionForm = () => {
         mainImg={mainImg}
         btnTitle="Explore Solutions "
         route="/solutions"
+        icon={<Icons.ArrowRight className="ml-2 -mr-1" />}
         lottie
       />
       <h2 className="text-5xl text-center text-white font-extrabold">Submit Solution</h2>

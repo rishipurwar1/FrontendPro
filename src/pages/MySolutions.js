@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet"
 import mainImg from "../assets/animated_illustrations/solution_animation.json"
 import Hero from "../components/homepage/Hero"
 import Tabs from "../components/reusable/Tabs"
+import Icons from "../components/SvgIcons/Icons"
 import { analytics, logEvent } from "../firebase/config"
 import { useAuthContext } from "../hooks/useAuthContext"
 
@@ -23,6 +24,7 @@ const MySolutions = () => {
         subTitle="Welcome To Coding Space 😊"
         mainImg={mainImg}
         btnTitle="Explore Challenges"
+        icon={<Icons.ArrowRight className="ml-2 -mr-1" />}
         route="/challenges"
       />
       <h2 className="text-5xl text-center text-white font-extrabold">My Solutions</h2>

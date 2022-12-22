@@ -5,6 +5,7 @@ import ResourcesIll from "../assets/animated_illustrations/resources.json"
 import Hero from "../components/homepage/Hero"
 import Card from "../components/reusable/Card"
 import SkeletonCard from "../components/skeletons/SkeletonCard"
+import Icons from "../components/SvgIcons/Icons"
 import { analytics, logEvent } from "../firebase/config"
 import { useCollection } from "../hooks/useCollection"
 
@@ -28,6 +29,7 @@ const Resources = () => {
         subTitle="Welcome To Coding Space 😊"
         mainImg={ResourcesIll}
         btnTitle="Explore Challenges"
+        icon={<Icons.ArrowRight className="ml-2 -mr-1" />}
         route="/challenges"
       />
       <h2 className="text-5xl text-center text-white font-extrabold">Resources</h2>

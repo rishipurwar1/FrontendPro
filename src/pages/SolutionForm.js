@@ -6,7 +6,7 @@ import Hero from "../components/homepage/Hero"
 import BaseInput from "../components/reusable/BaseInput"
 import Button from "../components/reusable/Button"
 import Modal from "../components/reusable/Modal"
-import { INPUTS, validators } from "../constants"
+import { INPUTS, VALIDATORS } from "../constants"
 import { useFirestore } from "../hooks/useFirestore"
 import { useForm } from "../hooks/useForm"
 
@@ -32,7 +32,7 @@ const SolutionForm = () => {
     }
   }
   const { data, errors, handleInputChange, handleSubmit } = useForm({
-    validations: validators.validations,
+    validations: VALIDATORS.validations,
     onSubmit,
     initialValues: {},
   })

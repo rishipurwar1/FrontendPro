@@ -4,7 +4,7 @@ import mainImg from "../assets/animated_illustrations/solution_animation.json"
 import Hero from "../components/homepage/Hero"
 import BaseInput from "../components/reusable/BaseInput"
 import Button from "../components/reusable/Button"
-import { INPUTS, validators } from "../constants"
+import { INPUTS, VALIDATORS } from "../constants"
 import { useDocument } from "../hooks/useDocument"
 import { useFirestore } from "../hooks/useFirestore"
 import { useForm } from "../hooks/useForm"
@@ -28,7 +28,7 @@ const SolutionEditForm = () => {
   }
 
   const { data, errors, handleInputChange, handleSubmit } = useForm({
-    validations: validators.validations,
+    validations: VALIDATORS.validations,
     onSubmit,
     initialValues: document,
   })

@@ -24,6 +24,7 @@ const BaseInput = (props) => {
   const {
     label,
     type = "text",
+    value = "",
     error = false,
     disabled = false,
     valid = false,
@@ -41,6 +42,7 @@ const BaseInput = (props) => {
       <input
         id={id}
         type={type}
+        value={value}
         className={clsx([
           styles.base,
           rounded && styles.rounded[rounded],

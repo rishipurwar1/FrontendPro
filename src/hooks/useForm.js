@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export const useForm = (options) => {
   const [data, setData] = useState(options?.initialValues || {})
@@ -42,6 +42,12 @@ export const useForm = (options) => {
       }
     }
   }
+
+  useEffect(() => {
+    if (options?.initialValues) {
+      setData(options.initialValues)
+    }
+  }, [options?.initialValues])
 
   return {
     data,

@@ -6,52 +6,32 @@ import Hero from "../components/homepage/Hero"
 import BaseInput from "../components/reusable/BaseInput"
 import Button from "../components/reusable/Button"
 import Modal from "../components/reusable/Modal"
-import { validators } from "../constants"
+import { INPUTS, validators } from "../constants"
 import { useFirestore } from "../hooks/useFirestore"
 import { useForm } from "../hooks/useForm"
-
-const INPUTS = [
-  {
-    label: "Challenge Title",
-    placeholder: "Challenge Title",
-    errorText: "Challenge Title is required",
-    name: "title",
-  },
-  {
-    label: "Github Repository URL",
-    placeholder: "Github Repository URL",
-    errorText: "Github Repository URL is required",
-    name: "repository",
-  },
-  {
-    label: "Live Website URL",
-    placeholder: "Live Website URL",
-    errorText: "Live Website URL is required",
-    name: "website",
-  },
-  {
-    label: "Ask for feedback",
-    placeholder: "Ask for feedback",
-    name: "feedback",
-  },
-]
 
 const SolutionForm = () => {
   const [state, setState] = useState(false)
   const { id } = useParams()
   const navigate = useNavigate()
   const { updateDocument, response } = useFirestore("solutions")
+
+  // handle form data
   const onSubmit = async (data) => {
     const formData = {
       ...data,
       completed: true,
     }
-    await updateDocument(id, formData)
-    if (!response.error) {
-      navigate(`/solution/${id}`, { state: true })
+    try {
+      await updateDocument(id, formData)
+      if (!response.error) {
+        navigate(`/solution/${id}`, { state: true })
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
-  const { errors, handleInputChange, handleSubmit } = useForm({
+  const { data, errors, handleInputChange, handleSubmit } = useForm({
     validations: validators.validations,
     onSubmit,
     initialValues: {},
@@ -77,6 +57,7 @@ const SolutionForm = () => {
               placeholder={input.placeholder}
               onChange={handleInputChange}
               error={!!errors[input.name]}
+              value={data[input.name] || ""}
               {...input}
             />
           ))}

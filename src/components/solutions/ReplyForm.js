@@ -79,7 +79,7 @@ const ReplyForm = ({
       <div className="flex mt-2">
         <Button
           loading={response.isPending}
-          size="normal"
+          size="medium"
           variant="primary"
           className="self-end font-medium mr-4"
         >
@@ -87,7 +87,7 @@ const ReplyForm = ({
         </Button>
         {hasCancelButton && (
           <Button
-            size="normal"
+            size="medium"
             variant="primary"
             className="self-end font-medium"
             onClick={() => setActiveComment(null)}

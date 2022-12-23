@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useFirestore } from "../../hooks/useFirestore"
+import Avatar from "../reusable/Avatar"
 import Icons from "../SvgIcons/Icons"
 
 import CommentReply from "./CommentReply"
@@ -41,14 +42,10 @@ const Comment = ({
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img
-            className="w-12 rounded-full border-2 border-gray-800"
-            src={comment.user.avatarURL}
-            alt="avatar"
-          />
+          <Avatar photoURL={comment.user.avatarURL} className="ring-gray-700" />
         </a>
         <div className="ml-4 flex-1">
-          <p className="text-gray-300 mb-2">
+          <p className="text-white mb-2 text-sm">
             <a
               href={`https://github.com/${comment.user.username}`}
               target="_blank"
@@ -58,11 +55,11 @@ const Comment = ({
                 ? comment.user.displayName
                 : comment.user.username}
             </a>
-            <small className="pl-2 text-gray-400">
+            <small className="text-gray-400 ml-3 text-sm">
               {moment(comment.createdAt.toDate()).fromNow()}
             </small>
           </p>
-          {!isEditing && <p className="text-white">{comment.content}</p>}
+          {!isEditing && <p className="text-gray-400">{comment.content}</p>}
           <div className="mt-2 flex">
             {user && (
               <button

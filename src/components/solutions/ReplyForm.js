@@ -65,7 +65,7 @@ const ReplyForm = ({
     <form className="flex flex-col" onSubmit={handleSubmit}>
       <label htmlFor="reply">
         <textarea
-          className="bg-transparent text-white font-semibold border border-gray-800 rounded w-full p-4 mt-6 outline-none focus:ring-1 focus:ring-purple-500"
+          className="bg-transparent text-white font-semibold border border-gray-700 bg-gray-800 rounded-lg w-full p-4 mt-6 outline-none transition-colors focus:bg-gray-800 mb-4"
           name="reply"
           id="reply"
           cols="30"
@@ -78,6 +78,7 @@ const ReplyForm = ({
       </label>
       <div className="flex mt-2">
         <Button
+          type="submit"
           loading={response.isPending}
           size="medium"
           variant="primary"

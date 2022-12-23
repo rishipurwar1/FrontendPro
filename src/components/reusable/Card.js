@@ -45,7 +45,7 @@ const Card = ({ card, isChallenge, isSolution }) => {
       ) : (
         <Link to={href} className="block overflow-hidden group mb-4 rounded-lg">
           <Image
-            className="rounded-lg h-64 transition duration-500 group-hover:scale-105"
+            className="rounded-lg h-auto transition duration-500 group-hover:scale-105"
             cloudName="di5hmgowi"
             alt={`${card.title} Challenge`}
             loading="lazy"

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react"
-import { Helmet } from "react-helmet"
 
 import solutionLottie from "../assets/animated_illustrations/solution_animation.json"
 import Hero from "../components/homepage/Hero"
@@ -22,9 +21,6 @@ const Solutions = () => {
   }, [])
   return (
     <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
-      <Helmet>
-        <title>All Community Solutions - Learn by Building Web and Mobile Apps</title>
-      </Helmet>
       <Hero
         title="What's stopping you from moving forward? All the solutions you need are right here!"
         subTitle="Welcome To Coding Space 😊"

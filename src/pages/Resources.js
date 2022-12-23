@@ -1,5 +1,4 @@
 import React, { useEffect } from "react"
-import { Helmet } from "react-helmet"
 
 import ResourcesIll from "../assets/animated_illustrations/resources.json"
 import Hero from "../components/homepage/Hero"
@@ -21,9 +20,6 @@ const Resources = () => {
 
   return (
     <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
-      <Helmet>
-        <title>Resources - Learn by Building Web and Mobile Apps</title>
-      </Helmet>
       <Hero
         title="Here you can find all the frontend and backend development resources."
         subTitle="Welcome To Coding Space 😊"

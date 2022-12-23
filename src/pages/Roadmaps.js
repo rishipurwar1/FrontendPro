@@ -1,5 +1,4 @@
 import React, { useEffect } from "react"
-import { Helmet } from "react-helmet"
 import Lottie from "react-lottie"
 
 import comingSoon from "../assets/animated_illustrations/coming_soon.json"
@@ -22,9 +21,6 @@ const Roadmaps = () => {
 
   return (
     <div className="mt-5 row-start-2 row-end-3 col-start-2 col-end-3 self-center	">
-      <Helmet>
-        <title>CODINGSPACE Roadmaps - Learn by Building Web and Mobile Apps</title>
-      </Helmet>
       <p className="text-center text-white font-extrabold text-4xl">
         We&apos;re building!
         <span role="img" aria-label="building-emoji">

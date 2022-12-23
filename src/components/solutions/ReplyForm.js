@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useFirestore } from "../../hooks/useFirestore"
+import Button from "../reusable/Button"
 
 const ReplyForm = ({
   docID,
@@ -64,7 +65,7 @@ const ReplyForm = ({
     <form className="flex flex-col" onSubmit={handleSubmit}>
       <label htmlFor="reply">
         <textarea
-          className="bg-transparent text-white font-semibold border border-gray-800 rounded w-full p-4 mt-6 outline-none focus:ring-1 focus:ring-purple-500"
+          className="bg-transparent text-white font-semibold border border-gray-700 bg-gray-800 rounded-lg w-full p-4 mt-6 outline-none transition-colors focus:bg-gray-800 mb-4"
           name="reply"
           id="reply"
           cols="30"
@@ -75,25 +76,25 @@ const ReplyForm = ({
           value={newComment}
         ></textarea>
       </label>
-      <div className="flex">
-        <button
-          className={`self-end ${
-            response.isPending
-              ? "bg-indigo-500 cursor-not-allowed"
-              : "bg-purple-800 transition-all duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500"
-          } mt-4 p-3 text-white text-base font-heading font-semibold shadow-md rounded focus:outline-none`}
-          disabled={response.isPending}
+      <div className="flex mt-2">
+        <Button
+          type="submit"
+          loading={response.isPending}
+          size="medium"
+          variant="primary"
+          className="self-end font-medium mr-4"
         >
           Reply
-        </button>
+        </Button>
         {hasCancelButton && (
-          <button
+          <Button
+            size="medium"
+            variant="primary"
+            className="self-end font-medium"
             onClick={() => setActiveComment(null)}
-            type="button"
-            className={`self-end bg-purple-800 transition-all duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500 mt-4 ml-4 p-3 text-white text-base font-heading font-semibold shadow-md rounded focus:outline-none`}
           >
             Cancel
-          </button>
+          </Button>
         )}
       </div>
     </form>

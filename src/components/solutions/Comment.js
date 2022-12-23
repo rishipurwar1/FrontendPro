@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useFirestore } from "../../hooks/useFirestore"
+import Avatar from "../reusable/Avatar"
+import Icons from "../SvgIcons/Icons"
 
 import CommentReply from "./CommentReply"
 import ReplyForm from "./ReplyForm"
@@ -33,21 +35,17 @@ const Comment = ({
   }
 
   return (
-    <div className="my-4 border border-gray-800 rounded p-4">
+    <div className="my-4 border border-gray-700 rounded-lg p-4">
       <div className="flex">
         <a
           href={`https://github.com/${comment.user.username}`}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img
-            className="w-12 rounded-full border-2 border-gray-800"
-            src={comment.user.avatarURL}
-            alt="avatar"
-          />
+          <Avatar photoURL={comment.user.avatarURL} className="ring-gray-700" />
         </a>
         <div className="ml-4 flex-1">
-          <p className="text-gray-300 mb-2">
+          <p className="text-white mb-2 text-sm">
             <a
               href={`https://github.com/${comment.user.username}`}
               target="_blank"
@@ -57,33 +55,36 @@ const Comment = ({
                 ? comment.user.displayName
                 : comment.user.username}
             </a>
-            <small className="pl-2 text-gray-400">
+            <small className="text-gray-400 ml-3 text-sm">
               {moment(comment.createdAt.toDate()).fromNow()}
             </small>
           </p>
-          {!isEditing && <p className="text-white">{comment.content}</p>}
+          {!isEditing && <p className="text-gray-400">{comment.content}</p>}
           <div className="mt-2 flex">
             {user && (
               <button
                 onClick={() => setActiveComment({ id: comment.id, type: "replying" })}
-                className="text-gray-400"
+                className="flex items-center text-gray-400"
               >
-                <i className="fas fa-reply"></i>
-                <small className="pl-2 font-semibold">Reply</small>
+                <Icons.Reply size={18} />
+                <small className="pl-1 font-semibold">Reply</small>
               </button>
             )}
             {user?.uid === comment.user.userID && (
               <>
                 <button
                   onClick={() => setActiveComment({ id: comment.id, type: "editing" })}
-                  className="mx-4 text-gray-400"
+                  className="flex items-center mx-4 text-gray-400"
                 >
-                  <i className="fas fa-edit"></i>
+                  <Icons.Edit size={18} />
                   <small className="pl-1 font-semibold">Edit</small>
                 </button>
-                <button className="text-gray-400" onClick={handleDelete}>
-                  <i className="fas fa-trash-alt"></i>
-                  <small className="pl-2 font-semibold">Delete</small>
+                <button
+                  className="flex items-center text-gray-400"
+                  onClick={handleDelete}
+                >
+                  <Icons.Delete size={18} />
+                  <small className="pl-1 font-semibold">Delete</small>
                 </button>
               </>
             )}

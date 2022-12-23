@@ -1,21 +1,26 @@
 import React, { useState } from "react"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
+import Icons from "../SvgIcons/Icons"
 
+import Button from "./Button"
 import Modal from "./Modal"
 
-const DownloadButtonNotLogin = ({ color }) => {
+const DownloadButtonNotLogin = ({ variant }) => {
   const [showModal, setShowModal] = useState(false)
   const { user } = useAuthContext()
 
   return (
     <>
-      <button
-        className={`${color} text-gray-300 font-semibold shadow-md py-3 px-5 rounded-xl text-base focus:outline-none block w-48`}
+      <Button
+        size="large"
+        variant={variant || "secondary"}
+        className="font-medium"
         onClick={() => setShowModal(true)}
       >
-        <i className="animate-bounce fas fa-arrow-down mr-2"></i>Download
-      </button>
+        <Icons.ArrowDown className="mr-2 -ml-1" />
+        Download
+      </Button>
       {showModal && !user ? (
         <Modal
           setShowModal={setShowModal}

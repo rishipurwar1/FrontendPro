@@ -3,9 +3,6 @@ const defaultTheme = require("tailwindcss/defaultTheme")
 module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   theme: {
-    scale: {
-      102: "1.02",
-    },
     screens: {
       xs: "300px",
       xxl: "1536px",
@@ -52,6 +49,9 @@ module.exports = {
       },
       animation: {
         wave: "wave 2.5s ease-in-out infinite",
+      },
+      scale: {
+        102: "1.02",
       },
     },
   },

@@ -1,7 +1,8 @@
 import React from "react"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
-import Button from "../reusable/Button"
+import ButtonExternalLink from "../reusable/ButtonExternalLink"
+import Icons from "../SvgIcons/Icons"
 
 import SignedInLinks from "./SignedInLinks"
 import SignedOutLinks from "./SignedOutLinks"
@@ -9,34 +10,25 @@ import SignedOutLinks from "./SignedOutLinks"
 const Navbar = () => {
   const { user } = useAuthContext()
   const links = user ? (
-    <SignedInLinks profile={user.photoURL} />
+    <SignedInLinks profile={user} />
   ) : (
-    <SignedOutLinks bgColor="bg-purple-800 transition-all duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500" />
+    <SignedOutLinks variant="primary" />
   )
 
-  const handleClick = () => {
-    window.open(
-      "https://github.com/rishipurwar1/coding-space",
-      "_blank",
-      "noopener",
-      "noreferrer"
-    )
-  }
-  const starButton = (
-    <Button
-      bgColor={
-        "bg-purple-800 transition-all duration-200 bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500"
-      }
-      handleClick={handleClick}
-      disabled={false}
-    >
-      <i className="far fa-star mr-2"></i> Star us on Github
-    </Button>
-  )
   return (
     <nav className="p-5 py-8 hidden md:block md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2">
       <ul className="flex justify-end space-x-4 items-center">
-        <li className="xs:invisible xl:visible">{starButton}</li>
+        <li className="xs:invisible xl:visible group">
+          <ButtonExternalLink
+            href="https://github.com/rishipurwar1/coding-space"
+            size="large"
+            variant="primary"
+            className="font-medium"
+          >
+            <Icons.Star size={18} className="mr-2 -ml-1 group-hover:fill-current" />
+            Star us on GitHub
+          </ButtonExternalLink>
+        </li>
         <li>{links}</li>
       </ul>
     </nav>

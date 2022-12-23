@@ -2,9 +2,12 @@ import React, { useEffect } from "react"
 
 import heroImg from "../assets/animated_illustrations/Blogging.json"
 import Newsletter from "../components//newsletter/Newsletter"
-import Challenges from "../components/challenges/Challenges"
 import Hero from "../components/homepage/Hero"
 import HowItWorks from "../components/homepage/HowItWorks"
+import LatestChallenges from "../components/homepage/LatestChallenges"
+import LatestResources from "../components/homepage/LatestResources"
+import LatestSolutions from "../components/homepage/LatestSolutions"
+import Icons from "../components/SvgIcons/Icons"
 import { analytics, logEvent } from "../firebase/config"
 
 const Homepage = () => {
@@ -18,12 +21,14 @@ const Homepage = () => {
         subTitle="Welcome To Coding Space"
         mainImg={heroImg}
         btnTitle="Explore Challenges"
-        logoTitle="fas fa-arrow-right ml-2"
+        icon={<Icons.ArrowRight className="ml-2 -mr-1" />}
         homepage
         route="/challenges"
       />
       <HowItWorks />
-      <Challenges />
+      <LatestChallenges />
+      <LatestSolutions />
+      <LatestResources />
       <Newsletter />
     </div>
   )

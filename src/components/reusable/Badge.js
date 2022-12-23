@@ -1,9 +1,9 @@
 import React from "react"
 
-const Badge = ({ badgeColor, name, challengeDetails, padding = "py-2 px-3" }) => {
+const Badge = ({ badgeColor, name }) => {
   return (
     <span
-      className={`text-xs font-semibold inline-block ${padding} mb-3 uppercase rounded-full ${badgeColor} last:mr-0 mr-2`}
+      className={`text-xs font-medium uppercase inline-flex items-center px-2.5 py-0.5 rounded ${badgeColor} last:mr-0 mr-2`}
     >
       {name}
     </span>

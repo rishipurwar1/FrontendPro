@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom"
 
 import { useLogout } from "../../hooks/useLogout"
 import useOnClickOutside from "../../hooks/useOnClickOutside"
+import Avatar from "../reusable/Avatar"
+import Icons from "../SvgIcons/Icons"
 
 const SignedInLinks = ({ profile }) => {
   const { logout } = useLogout()
@@ -12,54 +14,64 @@ const SignedInLinks = ({ profile }) => {
   const ref = useRef()
   useOnClickOutside(ref, () => setIsOpen(false))
 
-  const signOut = () => {
+  const signOut = async () => {
     try {
       setLoading(true)
-      logout()
+      await logout()
       navigate("/")
     } catch (error) {
       console.log(error.message)
     }
     setLoading(false)
   }
+
   return (
-    <div className="relative block" ref={ref}>
+    <div className="relative" ref={ref}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="block h-10 w-10 rounded-full overflow-hidden border-2 border-purple-500 focus:outline-none"
+        className="block focus:outline-none"
+        type="button"
       >
-        <img
-          className=" h-full w-full object-cover cursor-pointer"
-          src={profile}
-          alt="user profile"
-        />
+        <span className="sr-only">Open user menu</span>
+        <Avatar photoURL={profile.photoURL} />
       </button>
       {isOpen && (
-        <ul
-          className="absolute right-0 z-10 w-56 py-2 mt-4 space-y-2 text-gray-300 bg-gray-800 rounded-md shadow-md"
-          aria-label="sub-menu"
-          onClick={() => setIsOpen(!isOpen)}
+        <div
+          id="dropdownAvatar"
+          className="absolute right-0 top-14 z-10 w-44 rounded-lg divide-y shadow bg-gray-800 divide-gray-700"
         >
-          <li className="rounded hover:text-white transition bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500">
-            <Link
-              to="/mysolutions"
-              className="block px-4 py-2"
-              aria-label="my solutions"
-              title="this is a link to my solutions page"
-            >
-              <i className="fas fa-user mr-2"></i>My Solutions
-            </Link>
-          </li>
-          <li className="rounded hover:text-white transition bg-gradient-to-br hover:from-purple-500 hover:to-indigo-500">
+          <div className="py-3 px-4 text-sm text-white">
+            <div>{profile.displayName || profile.reloadUserInfo.screenName}</div>
+            <div className="font-medium truncate">{profile.email}</div>
+          </div>
+          <ul
+            className="py-1 text-sm text-gray-200"
+            aria-labelledby="dropdownUserAvatarButton"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <li>
+              <Link
+                to="/mysolutions"
+                className="flex items-center py-2 px-4 hover:bg-gray-700 hover:text-white"
+                aria-label="my solutions"
+              >
+                <Icons.User className="mr-2 -ml-1" size={18} />
+                My Solutions
+              </Link>
+            </li>
+            {/* Add more dropdown items here */}
+          </ul>
+          <div className="py-1">
             <button
+              className="flex items-center w-full text-left py-2 px-4 text-sm hover:bg-gray-700 text-gray-200 hover:text-white"
               disabled={loading}
               onClick={signOut}
-              className="w-full text-left block px-4 py-2"
             >
-              <i className="fas fa-sign-out-alt mr-2"></i>Logout
+              <Icons.SignOut className="mr-2 -ml-1" size={18} />
+              Sign out
             </button>
-          </li>
-        </ul>
+          </div>
+        </div>
       )}
     </div>
   )

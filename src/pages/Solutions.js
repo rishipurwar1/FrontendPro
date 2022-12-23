@@ -3,8 +3,9 @@ import { Helmet } from "react-helmet"
 
 import solutionLottie from "../assets/animated_illustrations/solution_animation.json"
 import Hero from "../components/homepage/Hero"
-import SkeletonSolutionSummaryCard from "../components/skeletons/SkeletonSolutionSummaryCard"
-import SolutionSummary from "../components/solutions/SolutionSummary"
+import Card from "../components/reusable/Card"
+import SkeletonCard from "../components/skeletons/SkeletonCard"
+import Icons from "../components/SvgIcons/Icons"
 import { analytics, logEvent } from "../firebase/config"
 import { useCollection } from "../hooks/useCollection"
 
@@ -29,20 +30,20 @@ const Solutions = () => {
         subTitle="Welcome To Coding Space 😊"
         mainImg={solutionLottie}
         btnTitle="My Solutions "
-        logoTitle="fas fa-arrow-right ml-2"
         route="/mysolutions"
+        icon={<Icons.ArrowRight className="ml-2 -mr-1" />}
         lottie
       />
       <main>
-        <h1 className="text-5xl heading text-center p-5 font-heading font-bold text-white pb-7">
+        <h1 className="text-5xl heading text-center font-extrabold text-white">
           Solutions
         </h1>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-8">
           {!isLoading
             ? documents.map((solution) => {
-                return <SolutionSummary key={solution.id} solution={solution} />
+                return <Card key={solution.id} card={solution} isSolution />
               })
-            : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonSolutionSummaryCard key={n} />)}
+            : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard isSolution key={n} />)}
         </div>
       </main>
     </div>

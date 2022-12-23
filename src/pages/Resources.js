@@ -3,8 +3,9 @@ import { Helmet } from "react-helmet"
 
 import ResourcesIll from "../assets/animated_illustrations/resources.json"
 import Hero from "../components/homepage/Hero"
-import ResourceCard from "../components/resources/ResourceCard"
-import SkeletonResourceCard from "../components/skeletons/SkeletonResourceCard"
+import Card from "../components/reusable/Card"
+import SkeletonCard from "../components/skeletons/SkeletonCard"
+import Icons from "../components/SvgIcons/Icons"
 import { analytics, logEvent } from "../firebase/config"
 import { useCollection } from "../hooks/useCollection"
 
@@ -28,18 +29,16 @@ const Resources = () => {
         subTitle="Welcome To Coding Space 😊"
         mainImg={ResourcesIll}
         btnTitle="Explore Challenges"
-        logoTitle="fas fa-arrow-right ml-2"
+        icon={<Icons.ArrowRight className="ml-2 -mr-1" />}
         route="/challenges"
       />
-      <h2 className="text-5xl text-center text-white font-bold  font-heading">
-        Resources
-      </h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center mt-8">
+      <h2 className="text-5xl text-center text-white font-extrabold">Resources</h2>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-8">
         {!isLoading
           ? documents.map((resource) => {
-              return <ResourceCard key={resource.id} resource={resource} />
+              return <Card key={resource.id} card={resource} />
             })
-          : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonResourceCard key={n} />)}
+          : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard key={n} />)}
       </div>
     </div>
   )

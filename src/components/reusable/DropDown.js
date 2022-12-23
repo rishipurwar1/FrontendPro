@@ -1,26 +1,29 @@
 import React, { useState } from "react"
 
+import Icons from "../SvgIcons/Icons"
+
+import Button from "./Button"
+
 const DropDown = ({ setFigmaURL }) => {
   const [isActive, setActive] = useState(false)
   return (
     <div className="absolute top-2 left-2">
       <div className="relative inline-block text-left">
         <div>
-          <button
+          <Button
+            size="normal"
+            variant="secondary"
+            className="font-medium"
             onClick={() => setActive(!isActive)}
-            type="button"
-            className="inline-flex justify-center w-full rounded-md px-4 py-2 bg-gray-800 text-sm font-medium text-gray-300 focus:outline-none"
             id="options-menu"
-            aria-haspopup="true"
-            aria-expanded="true"
           >
             Options
             {isActive ? (
-              <i className="fas fa-chevron-up -mr-1 ml-2 mt-1"></i>
+              <Icons.ChevronUp className="-mr-1 ml-2 mt-1" />
             ) : (
-              <i className="fas fa-chevron-down -mr-1 ml-2 mt-1"></i>
+              <Icons.ChevronDown className="-mr-1 ml-2 mt-1" />
             )}
-          </button>
+          </Button>
         </div>
         {isActive ? (
           <div className="origin-top-right absolute left-0 mt-2 w-36 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5">
@@ -35,10 +38,10 @@ const DropDown = ({ setFigmaURL }) => {
                   setFigmaURL(0)
                   setActive(!isActive)
                 }}
-                className="block text-left pl-3 py-2 text-sm text-gray-300 hover:bg-purple-500 hover:text-white w-full focus:outline-none"
+                className="inline-flex items-center text-left text-sm text-gray-300 py-2 px-4 hover:bg-gray-700 hover:text-white w-full focus:outline-none"
                 role="menuitem"
               >
-                <i className="fas fa-desktop pr-2"></i>
+                <Icons.Desktop className="mr-2" size={18} />
                 Desktop
               </button>
               <button
@@ -46,10 +49,10 @@ const DropDown = ({ setFigmaURL }) => {
                   setFigmaURL(1)
                   setActive(!isActive)
                 }}
-                className="block text-left pl-3 py-2 text-sm text-gray-300 hover:bg-purple-500 hover:text-white w-full focus:outline-none"
+                className="inline-flex items-center text-left text-sm text-gray-300 py-2 px-4 hover:bg-gray-700 hover:text-white w-full focus:outline-none"
                 role="menuitem"
               >
-                <i className="fas fa-mobile-alt pr-2"></i>
+                <Icons.Phone className="mr-2" size={18} />
                 Mobile
               </button>
             </div>

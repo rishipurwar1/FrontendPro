@@ -3,14 +3,18 @@ import moment from "moment"
 import { Helmet } from "react-helmet"
 import { Link, useLocation, useParams } from "react-router-dom"
 
-import rocketLoader from "../assets/animated_illustrations/loader.json"
+import rocketLoader from "../assets/animated_illustrations/rocketLoader.json"
 import ChallengeHeader from "../components/challenges/ChallengeHeader"
+import Avatar from "../components/reusable/Avatar"
+import Button from "../components/reusable/Button"
+import ButtonLink from "../components/reusable/ButtonLink"
 import ConfettiWrapper from "../components/reusable/ConfettiWrapper"
 import ConfirmationModal from "../components/reusable/ConfirmationModal"
 import LottieAnimation from "../components/reusable/LottieAnimation"
 import EmojiSection from "../components/solutions/EmojiSection"
 import ShowWebsite from "../components/solutions/ShowWebsite"
 import SolutionComments from "../components/solutions/SolutionComments"
+import Icons from "../components/SvgIcons/Icons"
 // custom hooks
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useDocument } from "../hooks/useDocument"
@@ -20,7 +24,7 @@ const SolutionDetail = () => {
   const { state } = useLocation()
   const { document } = useDocument("solutions", id)
   const { user } = useAuthContext()
-  const [modal, setModal] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   if (!document)
     return (
@@ -35,39 +39,37 @@ const SolutionDetail = () => {
       </Helmet>
       {state && <ConfettiWrapper />}
       <ChallengeHeader doc={document} button />
-      {modal ? <ConfirmationModal setModal={setModal} id={document.id} /> : null}
-      <div className="flex justify-between items-center px-2">
-        <div className="flex items-center mt-4">
-          <img
-            className="rounded-full mr-1 w-12 border-purple-500 border-2"
-            src={document.photoURL}
-            alt="user profile"
-          />
-          <div className="flex flex-col pl-1">
+      {isOpen ? <ConfirmationModal setIsOpen={setIsOpen} id={document.id} /> : null}
+      <div className="flex justify-between items-center">
+        <div className="flex items-center">
+          <Avatar photoURL={document.photoURL} className="ring-gray-700" />
+          <div className="flex flex-col ml-3">
             <span className="text-navItem text-sm text-gray-300">{document.author}</span>
             <span className="text-navItem text-xs text-gray-400">
               {moment(document.createdAt.toDate()).fromNow()}
             </span>
           </div>
         </div>
-        {user && user.uid === document.userID ? (
-          <div>
-            <Link
+        {user && user.uid === document.userID && (
+          <div className="flex">
+            <ButtonLink
               to={`/solution/${document.id}/edit`}
-              className="text-secondary cursor-pointer pr-3"
-              aria-label={`${document.title} edit`}
-              title={`Link to ${document.title} edit page`}
+              size="square"
+              variant="outline"
+              className="text-gray-400 hover:text-white mr-2"
             >
-              <i className="far fa-edit text-2xl"></i>
-            </Link>
-            <span
-              className="text-red-700 cursor-pointer"
-              onClick={() => setModal(!modal)}
+              <Icons.Edit size={18} />
+            </ButtonLink>
+            <Button
+              size="square"
+              variant="outline"
+              className="text-gray-400 hover:text-white"
+              onClick={() => setIsOpen(!isOpen)}
             >
-              <i className="far fa-trash-alt text-2xl"></i>
-            </span>
+              <Icons.Delete size={18} />
+            </Button>
           </div>
-        ) : null}
+        )}
       </div>
       <ShowWebsite
         url={document.liveWebsiteUrl}

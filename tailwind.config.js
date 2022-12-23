@@ -21,7 +21,6 @@ module.exports = {
         "border-primary": "rgba(228,228,228,0.1)",
       },
       fontFamily: {
-        heading: ["Poppins", "sans serif"],
         body: ["Inter", "sans serif"],
       },
       gridTemplateColumns: {

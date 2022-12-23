@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import moment from "moment"
 import { Helmet } from "react-helmet"
-import { Link, useLocation, useParams } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 
 import rocketLoader from "../assets/animated_illustrations/rocketLoader.json"
 import ChallengeHeader from "../components/challenges/ChallengeHeader"
@@ -33,54 +33,76 @@ const SolutionDetail = () => {
       </div>
     )
   return (
-    <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3 mb-4">
+    <>
       <Helmet>
-        <title>{`${document.title} CODINGSPACE challenge solution by ${document.author}`}</title>
+        <title>CodingSpace Solution - {document.title}</title>
+        <meta content={document.description} name="description" />
+        <meta content={document.title} property="og:title" />
+        <meta content={document.description} property="og:description" />
+        {/* TODO: Add meta image */}
+        {/* <meta content={metaImage} data-react-helmet="true" property="og:image" /> */}
+        <meta
+          content={document.description}
+          data-react-helmet="true"
+          property="og:image:alt"
+        />
+        <meta content={document.title} data-react-helmet="true" name="twitter:title" />
+        <meta
+          content={document.description}
+          data-react-helmet="true"
+          name="twitter:description"
+        />
+        {/* TODO: Add OG TAG image */}
+        {/* <meta content={ogTagImage} data-react-helmet="true" name="twitter:image" /> */}
       </Helmet>
-      {state && <ConfettiWrapper />}
-      <ChallengeHeader doc={document} button />
-      {isOpen ? <ConfirmationModal setIsOpen={setIsOpen} id={document.id} /> : null}
-      <div className="flex justify-between items-center">
-        <div className="flex items-center">
-          <Avatar photoURL={document.photoURL} className="ring-gray-700" />
-          <div className="flex flex-col ml-3">
-            <span className="text-navItem text-sm text-gray-300">{document.author}</span>
-            <span className="text-navItem text-xs text-gray-400">
-              {moment(document.createdAt.toDate()).fromNow()}
-            </span>
+      <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3 mb-4">
+        {state && <ConfettiWrapper />}
+        <ChallengeHeader doc={document} button />
+        {isOpen ? <ConfirmationModal setIsOpen={setIsOpen} id={document.id} /> : null}
+        <div className="flex justify-between items-center">
+          <div className="flex items-center">
+            <Avatar photoURL={document.photoURL} className="ring-gray-700" />
+            <div className="flex flex-col ml-3">
+              <span className="text-navItem text-sm text-gray-300">
+                {document.author}
+              </span>
+              <span className="text-navItem text-xs text-gray-400">
+                {moment(document.createdAt.toDate()).fromNow()}
+              </span>
+            </div>
           </div>
+          {user && user.uid === document.userID && (
+            <div className="flex">
+              <ButtonLink
+                to={`/solution/${document.id}/edit`}
+                size="square"
+                variant="outline"
+                className="text-gray-400 hover:text-white mr-2"
+              >
+                <Icons.Edit size={18} />
+              </ButtonLink>
+              <Button
+                size="square"
+                variant="outline"
+                className="text-gray-400 hover:text-white"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <Icons.Delete size={18} />
+              </Button>
+            </div>
+          )}
         </div>
-        {user && user.uid === document.userID && (
-          <div className="flex">
-            <ButtonLink
-              to={`/solution/${document.id}/edit`}
-              size="square"
-              variant="outline"
-              className="text-gray-400 hover:text-white mr-2"
-            >
-              <Icons.Edit size={18} />
-            </ButtonLink>
-            <Button
-              size="square"
-              variant="outline"
-              className="text-gray-400 hover:text-white"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <Icons.Delete size={18} />
-            </Button>
-          </div>
-        )}
+        <ShowWebsite
+          url={document.liveWebsiteUrl}
+          github={document.githubUrl}
+          title={document.title}
+        />
+        <div className="grid grid-col-1 md:grid-cols-[1fr_160px] items-start gap-x-5 mt-10">
+          <SolutionComments />
+          <EmojiSection />
+        </div>
       </div>
-      <ShowWebsite
-        url={document.liveWebsiteUrl}
-        github={document.githubUrl}
-        title={document.title}
-      />
-      <div className="grid grid-col-1 md:grid-cols-[1fr_160px] items-start gap-x-5 mt-10">
-        <SolutionComments />
-        <EmojiSection />
-      </div>
-    </div>
+    </>
   )
 }
 

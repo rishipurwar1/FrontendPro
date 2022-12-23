@@ -7,6 +7,7 @@ import rocketLoader from "./assets/animated_illustrations/rocketLoader.json"
 import Footer from "./components/layouts/Footer"
 import Navbar from "./components/layouts/Navbar"
 import SideBar from "./components/layouts/SideBar"
+import Meta from "./components/meta/Meta"
 // custom components
 import LottieAnimation from "./components/reusable/LottieAnimation"
 import ScrollToTop from "./components/reusable/ScrollToTop"
@@ -28,10 +29,22 @@ const MySolutions = React.lazy(() => import("./pages/MySolutions"))
 
 const App = () => {
   const { authIsReady, user } = useAuthContext()
+  const routes = [
+    {
+      path: "/",
+      title: "CodingSpace - Learn Web Development by Building Real World Projects",
+    },
+    { path: "/challenges", title: "CodingSpace - Challenges" },
+    { path: "/solutions", title: "CodingSpace - Solutions" },
+    { path: "/resources", title: "CodingSpace - Resources" },
+    { path: "/roadmaps", title: "CodingSpace - Roadmaps" },
+    { path: "/mysolutions", title: "CodingSpace - My Solutions" },
+  ]
   return authIsReady ? (
     <div className="relative grid min-h-screen md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6 xxl:max-w-screen-xxl mx-auto">
       <Navbar />
       <SideBar />
+      <Meta routes={routes} />
       <Suspense
         fallback={
           <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3 place-self-center">

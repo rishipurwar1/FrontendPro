@@ -1,33 +1,47 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
+import fetchSkills from "../api"
 import mainImg from "../assets/animated_illustrations/solution_animation.json"
 import Hero from "../components/homepage/Hero"
 import BaseInput from "../components/reusable/BaseInput"
 import Button from "../components/reusable/Button"
+import MultiSelectSearchInput from "../components/reusable/MultiSelectSearchInput"
 import Icons from "../components/SvgIcons/Icons"
 import { INPUTS } from "../constants"
 import { useDocument } from "../hooks/useDocument"
 import { useFirestore } from "../hooks/useFirestore"
 
+const SKILLS = [
+  { name: "html" },
+  { name: "css" },
+  { name: "javascript" },
+  { name: "bootstrap" },
+  { name: "tailwind-css" },
+  { name: "react" },
+  { name: "vue" },
+  { name: "angular" },
+]
+
 const INITIAL_STATE = {
   title: "",
-  repository: "",
-  website: "",
+  githubUrl: "",
+  liveWebsiteUrl: "",
+  tags: [],
   feedback: "",
 }
 
 const SolutionEditForm = () => {
-  const [data, setData] = useState(INITIAL_STATE)
+  const [formData, setFormData] = useState(INITIAL_STATE)
   const { id } = useParams()
   const { document } = useDocument("solutions", id)
   const { updateDocument, response } = useFirestore("solutions")
   const navigate = useNavigate()
 
   const handleChange = (e) => {
-    setData({
-      ...data,
-      [e.target.name]: e.target.value,
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
     })
   }
 
@@ -35,7 +49,7 @@ const SolutionEditForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await updateDocument(id, data)
+      await updateDocument(id, formData)
       if (!response.error) {
         navigate(`/solution/${id}`)
       }
@@ -45,7 +59,7 @@ const SolutionEditForm = () => {
   }
   useEffect(() => {
     if (document) {
-      setData(document)
+      setFormData(document)
     }
   }, [document])
 
@@ -65,16 +79,27 @@ const SolutionEditForm = () => {
           className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
-          {INPUTS.map((input) => (
-            <BaseInput
-              key={input.name}
-              label={input.label}
-              value={data[input.name]}
-              placeholder={input.placeholder}
-              onChange={handleChange}
-              {...input}
-            />
-          ))}
+          {INPUTS.map((input) =>
+            input.type === "search" ? (
+              <MultiSelectSearchInput
+                key={input.name}
+                onChange={setFormData}
+                fetchOptions={fetchSkills}
+                predefinedOptions={SKILLS}
+                label={input.label}
+                selectedOptions={formData.tags}
+              />
+            ) : (
+              <BaseInput
+                key={input.name}
+                label={input.label}
+                value={formData[input.name]}
+                placeholder={input.placeholder}
+                onChange={handleChange}
+                {...input}
+              />
+            )
+          )}
           {/* update button */}
           <div>
             <Button type="submit" className="font-medium" loading={response.isPending}>

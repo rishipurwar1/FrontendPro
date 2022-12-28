@@ -18,7 +18,7 @@ const Sidebar = () => {
   const { user } = useAuthContext()
 
   const ref = useRef()
-  useOnClickOutside(ref, () => setIsOpen(false))
+  useOnClickOutside(ref, () => setIsOpen(false), isOpen)
 
   const links = user ? <SignedInLinks profile={user} /> : <SignedOutLinks />
   return (
@@ -29,7 +29,8 @@ const Sidebar = () => {
           {/* <!-- mobile menu button --> */}
           <button
             className="p-4 focus:outline-none"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation()
               setIsOpen(!isOpen)
             }}
           >

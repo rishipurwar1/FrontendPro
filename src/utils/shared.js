@@ -16,3 +16,16 @@ export const addValue = (usersObj, newUser) => {
 export const trimString = (string, length) => {
   return string.length > length ? string.substring(0, length) + "..." : string
 }
+
+export function debounce(callback, delay) {
+  let timerID
+
+  return function (...args) {
+    clearTimeout(timerID)
+
+    timerID = setTimeout(() => {
+      callback.apply(this, args)
+      timerID = null
+    }, delay)
+  }
+}

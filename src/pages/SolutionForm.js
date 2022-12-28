@@ -1,45 +1,59 @@
 import { useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
+import fetchSkills from "../api"
 import mainImg from "../assets/animated_illustrations/solution_animation.json"
 import Hero from "../components/homepage/Hero"
 import BaseInput from "../components/reusable/BaseInput"
 import Button from "../components/reusable/Button"
 import Modal from "../components/reusable/Modal"
+import MultiSelectSearchInput from "../components/reusable/MultiSelectSearchInput"
 import Icons from "../components/SvgIcons/Icons"
 import { INPUTS } from "../constants"
 import { useFirestore } from "../hooks/useFirestore"
 
 const INITIAL_STATE = {
   title: "",
-  repository: "",
-  website: "",
+  githubUrl: "",
+  liveWebsiteUrl: "",
+  tags: [],
   feedback: "",
 }
 
+const SKILLS = [
+  { name: "html" },
+  { name: "css" },
+  { name: "javascript" },
+  { name: "bootstrap" },
+  { name: "tailwind-css" },
+  { name: "react" },
+  { name: "vue" },
+  { name: "angular" },
+]
+
 const SolutionForm = () => {
-  const [data, setData] = useState(INITIAL_STATE)
+  const [formData, setFormData] = useState(INITIAL_STATE)
   const [state, setState] = useState(false)
   const { id } = useParams()
   const navigate = useNavigate()
   const { updateDocument, response } = useFirestore("solutions")
 
   const handleChange = (e) => {
-    setData({
-      ...data,
-      [e.target.name]: e.target.value,
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
     })
   }
 
   // handle form data
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const formData = {
-      ...data,
+    const data = {
+      ...formData,
       completed: true,
     }
     try {
-      await updateDocument(id, formData)
+      await updateDocument(id, data)
       if (!response.error) {
         navigate(`/solution/${id}`, { state: true })
       }
@@ -62,16 +76,27 @@ const SolutionForm = () => {
       <h2 className="text-5xl text-center text-white font-extrabold">Submit Solution</h2>
       <div className="p-4 rounded-lg shadow bg-gray-800 sm:p-5 mt-8">
         <form onSubmit={handleSubmit}>
-          {INPUTS.map((input) => (
-            <BaseInput
-              key={input.name}
-              label={input.label}
-              value={data[input.name]}
-              placeholder={input.placeholder}
-              onChange={handleChange}
-              {...input}
-            />
-          ))}
+          {INPUTS.map((input) =>
+            input.type === "search" ? (
+              <MultiSelectSearchInput
+                key={input.name}
+                onChange={setFormData}
+                fetchOptions={fetchSkills}
+                predefinedOptions={SKILLS}
+                label={input.label}
+                selectedOptions={formData.tags}
+              />
+            ) : (
+              <BaseInput
+                key={input.name}
+                label={input.label}
+                placeholder={input.placeholder}
+                onChange={handleChange}
+                type={input.type}
+                {...input}
+              />
+            )
+          )}
           <Button type="submit" className="font-medium" loading={response.isPending}>
             Submit Solution
           </Button>

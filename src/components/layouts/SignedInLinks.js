@@ -12,7 +12,7 @@ const SignedInLinks = ({ profile }) => {
   const [isOpen, setIsOpen] = useState(false)
   const navigate = useNavigate()
   const ref = useRef()
-  useOnClickOutside(ref, () => setIsOpen(false))
+  useOnClickOutside(ref, () => setIsOpen(false), isOpen)
 
   const signOut = async () => {
     try {

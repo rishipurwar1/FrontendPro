@@ -28,7 +28,6 @@ const Icons = {
   Loader: ({ size = 24, ...props }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="animate-spin text-white mr-2 -ml-1"
       width={size}
       height={size}
       viewBox="0 0 24 24"

@@ -10,14 +10,14 @@ const AccordionItem = ({ faq }) => {
   }
 
   return (
-    <article className="border-2 border-gray-700 mb-4 bg-gray-800 rounded-lg">
+    <article className="border border-gray-700 mb-4 bg-gray-800 rounded-lg overflow-hidden">
       <header
         className={`flex justify-between items-center ${
           isActive && "bg-gray-700"
         } hover:bg-gray-700 p-5 md:px-8 cursor-pointer select-none`}
         onClick={handleToggle}
       >
-        <h3 className="font-semibold text-xl text-gray-300">{faq.question}</h3>
+        <h3 className="font-medium text-gray-300">{faq.question}</h3>
         <Icons.ChevronDown
           className={`text-gray-300 flex-shrink-0 ml-2 sm:ml-0 transition-transform ${
             isActive && "rotate-180"
@@ -27,9 +27,9 @@ const AccordionItem = ({ faq }) => {
       <div
         className={`${
           isActive ? "h-auto block" : "h-0 hidden"
-        } transition-[height] text-white border-t-2 py-5 border-gray-700`}
+        } transition-[height] text-gray-400 font-light border-t-2 py-5 border-gray-700`}
       >
-        <p className="pl-8 pr-8">{faq.answer}</p>
+        <p className="px-8">{faq.answer}</p>
       </div>
     </article>
   )

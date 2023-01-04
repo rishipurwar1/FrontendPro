@@ -19,7 +19,7 @@ const LatestResources = () => {
           ? documents.map((resource) => <Card key={resource.id} card={resource} />)
           : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard key={n} />)}
       </div>
-      <ButtonLink to="/resources" size="small" variant="outline" className="self-center">
+      <ButtonLink to="/resources" className="self-center">
         View more
         <Icons.ArrowRight className="ml-2 -mr-1" />
       </ButtonLink>

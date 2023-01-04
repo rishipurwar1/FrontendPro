@@ -22,7 +22,7 @@ const LatestSolutions = () => {
             })
           : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard isSolution key={n} />)}
       </div>
-      <ButtonLink to="/solutions" size="small" variant="outline" className="self-center">
+      <ButtonLink to="/solutions" className="self-center">
         View more
         <Icons.ArrowRight className="ml-2 -mr-1" />
       </ButtonLink>

@@ -3,9 +3,7 @@ import { Helmet } from "react-helmet"
 import { useLocation } from "react-router-dom"
 
 const Meta = ({ routes }) => {
-  const [title, setTitle] = useState(
-    "CodingSpace - Learn Web Development by Building Real World Projects"
-  )
+  const [title, setTitle] = useState("")
   const currentPath = useLocation().pathname
 
   useEffect(() => {

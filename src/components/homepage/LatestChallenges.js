@@ -25,7 +25,7 @@ const Challenges = () => {
             })
           : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard isChallenge key={n} />)}
       </div>
-      <ButtonLink to="/challenges" size="small" variant="outline" className="self-center">
+      <ButtonLink to="/challenges" className="self-center">
         View more
         <Icons.ArrowRight className="ml-2 -mr-1" />
       </ButtonLink>

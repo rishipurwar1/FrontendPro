@@ -114,9 +114,12 @@ const Sidebar = () => {
               href="https://discord.com/invite/FYSQUEw6xP"
               size="normal"
               variant="primary"
-              className="font-medium"
+              className="font-medium group"
             >
-              <BrandIcons.Discord className="mr-2 -ml-1" size={18} />
+              <BrandIcons.Discord
+                className="mr-2 -ml-1 group-hover:animate-rotate"
+                size={18}
+              />
               <span className="xs:inline-block md:hidden xl:inline-block">
                 Join Discord
               </span>

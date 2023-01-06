@@ -36,7 +36,7 @@ module.exports = {
       },
       keyframes: {
         wave: {
-          " 0%": { transform: "rotate(0.0deg)" },
+          "0%": { transform: "rotate(0.0deg)" },
           "10%": { transform: "rotate(14.0deg)" },
           "20%": { transform: " rotate(-8.0deg)" },
           "30%": { transform: "rotate(14.0deg)" },
@@ -45,9 +45,42 @@ module.exports = {
           "60%": { transform: "rotate( 0.0deg)" },
           "100%": { transform: "rotate( 0.0deg)" },
         },
+        rotate: {
+          "0%": {
+            transform: "rotate(0deg) scale(1)",
+          },
+          "50%": {
+            transform: "rotate(180deg) scale(1.3)",
+          },
+
+          "100%": {
+            transform: "rotate(360deg) scale(1)",
+          },
+        },
+
+        move: {
+          "0%": {
+            transform: "translate(0)",
+          },
+          "25%": {
+            transform: "translate(-1px,2px)",
+          },
+          "50%": {
+            transform: "translate(-2px,2px)",
+          },
+
+          "75%": {
+            transform: "translate(2px,2px)",
+          },
+          "100%": {
+            transform: "translate(0)",
+          },
+        },
       },
       animation: {
         wave: "wave 2.5s ease-in-out infinite",
+        rotate: "rotate 0.5s linear 1",
+        move: "move 1s linear infinite",
       },
       scale: {
         102: "1.02",

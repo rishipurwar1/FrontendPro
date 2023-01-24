@@ -5,6 +5,7 @@ import { useAuthContext } from "../../hooks/useAuthContext"
 import { useDocument } from "../../hooks/useDocument"
 import { useFirestore } from "../../hooks/useFirestore"
 import { addValue, removeValue } from "../../utils/shared"
+import SignedOutLinks from "../layouts/SignedOutLinks"
 import Modal from "../reusable/Modal"
 
 const Emoji = ({ emoji }) => {
@@ -60,13 +61,6 @@ const Emoji = ({ emoji }) => {
   }
   return (
     <>
-      {showModal && !user && (
-        <Modal
-          setShowModal={setShowModal}
-          title="Oops! Look like you aren't logged in"
-          emoji="😌"
-        />
-      )}
       <span
         key={emoji.label}
         className={`relative cursor-pointer px-2 py-2 transition-colors ${
@@ -79,6 +73,27 @@ const Emoji = ({ emoji }) => {
           {reaction?.count || 0}
         </span>
       </span>
+      {showModal && !user && (
+        <Modal
+          setIsOpen={setShowModal}
+          body={
+            <>
+              <span role="img" aria-label="rocket" className="text-3xl">
+                🚀
+              </span>
+              <h2 className="mt-4 mb-2 font-medium text-base text-white">
+                Join the Community and Share Your Thoughts!
+              </h2>
+              <p className="mb-4 text-xs text-gray-300">
+                Sign up now to leave your comments and
+                <br />
+                feedback on the solution!
+              </p>
+            </>
+          }
+          footer={<SignedOutLinks variant="primary" size="medium" />}
+        />
+      )}
     </>
   )
 }

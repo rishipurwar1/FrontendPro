@@ -1,17 +1,17 @@
-import React, { useState } from "react"
-
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useCollection } from "../../hooks/useCollection"
 import { useFirestore } from "../../hooks/useFirestore"
-import Icons from "../SvgIcons/Icons"
 
 import Button from "./Button"
-import Modal from "./Modal"
 
-const DownloadButton = ({ document, variant }) => {
-  const [downloadingModal, setDownloadingModal] = useState(false)
+const DownloadButton = ({
+  document,
+  setIsOpen,
+  variant = "outline",
+  size = "medium",
+}) => {
   const { user } = useAuthContext()
-  const { addDocument } = useFirestore("solutions")
+  const { addDocument, response } = useFirestore("solutions")
 
   const solutionDetails = [document].map(({ id, ...r }) => {
     r.challengeID = id
@@ -29,13 +29,10 @@ const DownloadButton = ({ document, variant }) => {
   )
 
   const downloadAssets = async () => {
-    window.open(solutionDetails[0].challengeAssets, "_blank", "noopener,noreferrer")
-
     if (documents.length > 0) {
-      setDownloadingModal(true)
+      // Todo: Replace this with a toast notification
+      console.log("You have already downloaded the starter code for this challenge.")
     } else {
-      setDownloadingModal(true)
-
       await addDocument({
         ...solutionDetails[0],
         author:
@@ -44,29 +41,21 @@ const DownloadButton = ({ document, variant }) => {
         photoURL: user.photoURL,
         completed: false,
       })
+      setIsOpen(false)
     }
+    window.open(solutionDetails[0].challengeAssets, "_blank", "noopener,noreferrer")
   }
 
   return (
-    <>
-      <Button
-        size="large"
-        variant={variant || "secondary"}
-        className="font-medium"
-        onClick={() => downloadAssets()}
-      >
-        <Icons.ArrowDown className="mr-2 -ml-1" />
-        Download
-      </Button>
-      {downloadingModal && (
-        <Modal
-          auth
-          setShowModal={setDownloadingModal}
-          title="Thanks for downloading a Coding Space challenge."
-          emoji="🙏"
-        />
-      )}
-    </>
+    <Button
+      variant={variant}
+      size={size}
+      className="font-medium"
+      onClick={downloadAssets}
+      loading={response.isPending}
+    >
+      Download starter code
+    </Button>
   )
 }
 

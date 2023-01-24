@@ -1,29 +1,40 @@
 import React from "react"
 
-import SignedOutLinks from "../layouts/SignedOutLinks"
+import Icons from "../SvgIcons/Icons"
 
-const Modal = ({ setShowModal, auth, emoji, title }) => {
+const Modal = ({ body, footer, setIsOpen }) => {
+  const handleClick = () => {
+    setIsOpen(false)
+  }
   return (
-    <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-30 ml-56">
-      <div className="relative w-auto my-6 mx-auto max-w-3xl">
-        <div className="rounded-lg shadow-lg relative flex flex-col w-96 max-w-96 bg-gray-800 outline-none focus:outline-none">
-          <div className="flex items-start justify-between rounded-t">
-            <button
-              className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-              onClick={() => setShowModal(false)}
-            >
-              <span className="text-gray-300 h-6 w-6 text-2xl block">×</span>
-            </button>
-          </div>
-          <div className="p-6 pt-0 flex flex-col items-center">
-            <p className="my-4 text-gray-300 text-lg font-semibold leading-relaxed text-center">
-              <span className="block" role="img" aria-label="Emoji">
-                {emoji}
-              </span>
-              {title}
-            </p>
-            {!auth && <SignedOutLinks bgColor="bg-gray-900" />}
-          </div>
+    <div
+      id="deleteModal"
+      tabIndex="-1"
+      aria-hidden="true"
+      className="overflow-y-auto overflow-x-hidden fixed z-50 flex justify-center items-center w-full inset-0 h-full"
+    >
+      <div
+        className="bg-gray-200 bg-opacity-10 absolute inset-0 z-0"
+        onClick={handleClick}
+      ></div>
+      <div
+        className="relative p-4 w-full max-w-md h-full md:h-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="relative p-4 text-center rounded-lg shadow bg-gray-800 sm:p-5">
+          <button
+            type="button"
+            className="text-gray-400 absolute top-2.5 right-2.5 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            data-modal-toggle="deleteModal"
+            onClick={handleClick}
+          >
+            <Icons.Cross size={18} />
+            <span className="sr-only">Close modal</span>
+          </button>
+          {body && body}
+          {footer && (
+            <div className="flex justify-center items-center space-x-4">{footer}</div>
+          )}
         </div>
       </div>
     </div>

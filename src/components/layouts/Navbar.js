@@ -7,7 +7,7 @@ import Icons from "../SvgIcons/Icons"
 import SignedInLinks from "./SignedInLinks"
 import SignedOutLinks from "./SignedOutLinks"
 
-const Navbar = () => {
+const Navbar = ({ classNames }) => {
   const { user } = useAuthContext()
   const links = user ? (
     <SignedInLinks profile={user} />
@@ -16,7 +16,9 @@ const Navbar = () => {
   )
 
   return (
-    <nav className="p-5 py-8 hidden md:block md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2">
+    <nav
+      className={`p-5 py-8 hidden md:block md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2 ${classNames}`}
+    >
       <ul className="flex justify-end space-x-4 items-center">
         <li className="xs:invisible xl:visible group">
           <ButtonExternalLink

@@ -33,6 +33,7 @@ export const useFirestore = (c) => {
         createdAt,
       })
       dispatch({ type: "ADDED_DOCUMENT", payload: addedDocument })
+      return addedDocument
     } catch (error) {
       dispatch({ type: "ERROR", payload: error.message })
     }

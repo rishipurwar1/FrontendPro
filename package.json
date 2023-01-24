@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@codesandbox/sandpack-react": "^1.20.4",
     "@glidejs/glide": "^3.4.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -17,6 +18,7 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-lottie": "^1.2.3",
+    "react-resizable-panels": "^0.0.35",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-use": "^17.3.2",

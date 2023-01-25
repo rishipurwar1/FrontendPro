@@ -56,7 +56,7 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, icon, route }) => 
           {user ? (
             <Button
               size="large"
-              variant="secondary"
+              variant="dark"
               className="font-medium"
               onClick={() => navigate(route)}
             >

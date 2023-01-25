@@ -10,14 +10,10 @@ const classes = {
     large: "py-3 px-5 text-base",
   },
   variant: {
-    primary:
-      "bg-indigo-600 hover:bg-indigo-700 focus:ring focus:ring-indigo-800 text-white",
-    secondary:
-      "bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:ring-gray-900 text-white",
-    outline:
-      "bg-transparent border-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-900 text-white",
-    danger:
-      "bg-red-500 hover:bg-red-800 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 text-white",
+    primary: "bg-indigo-600 hover:bg-indigo-700 text-white",
+    secondary: "bg-gray-900 hover:bg-gray-800 text-white",
+    outline: "bg-transparent border-gray-700 hover:bg-gray-800 text-white",
+    danger: "bg-red-500 hover:bg-red-800 text-white",
   },
 }
 

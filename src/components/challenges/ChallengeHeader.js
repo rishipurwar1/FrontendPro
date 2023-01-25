@@ -57,7 +57,7 @@ const ChallengeHeader = ({ doc, button }) => {
             </p>
             {button ? (
               <Button
-                variant="secondary"
+                variant="dark"
                 size="large"
                 className="font-medium"
                 onClick={() => navigate("/solutions")}
@@ -67,7 +67,7 @@ const ChallengeHeader = ({ doc, button }) => {
               </Button>
             ) : (
               <Button
-                variant="secondary"
+                variant="dark"
                 size="large"
                 className="font-medium group"
                 onClick={() => setIsOpen(true)}

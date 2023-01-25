@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 
+import { FILES } from "../../constants"
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useCollection } from "../../hooks/useCollection"
 import { useFirestore } from "../../hooks/useFirestore"
@@ -40,6 +41,7 @@ const StartCodingButton = ({ document, setIsOpen }) => {
         userID: user.uid,
         photoURL: user.photoURL,
         completed: false,
+        files: FILES.vanilla,
       })
 
       if (addedDocument) {

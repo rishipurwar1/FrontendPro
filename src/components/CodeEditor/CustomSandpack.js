@@ -1,22 +1,26 @@
-import React from "react"
+import { useState } from "react"
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels"
 
 import {
-  SandpackCodeEditor,
   SandpackConsole,
   SandpackLayout,
   SandpackPreview,
   SandpackProvider,
 } from "@codesandbox/sandpack-react"
 
-const CustomSandpack = () => {
+import { FILES } from "../../constants"
+
+import CustomCodeEditor from "./CustomCodeEditor"
+import EditorFooter from "./EditorFooter"
+
+const CustomSandpack = ({ previewRef, consoleRef, challenge }) => {
   return (
     <SandpackProvider
       template="vanilla"
       theme={{
         colors: {
-          surface1: "#000000",
-          surface2: "#0a0a23",
+          surface1: "#1F2937",
+          surface2: "#4B5563",
           surface3: "#3b3b4f",
           clickable: "#dfdfe2",
           base: "#ffffff",
@@ -47,37 +51,27 @@ const CustomSandpack = () => {
           lineHeight: "18px",
         },
       }}
-      files={{
-        "/index.html": {
-          code: '<!DOCTYPE html>\n<html>\n\n<head>\n  <title>Parcel Sandbox</title>\n  <meta charset="UTF-8" />\n</head>\n\n<body>\n  <div id="app">Thanks for choosing CodingSpace</div>\n\n  <script src="src/index.js">\n  </script>\n</body>\n\n</html>',
-          active: true,
-        },
-        "/src/styles.css": {
-          code: "body {\n  font-family: sans-serif;\n}\n",
-        },
-        "/src/index.js": {
-          code: 'import "./styles.css";',
-        },
+      options={{
+        visibleFiles: ["index.html", "src/styles.css", "src/index.js"],
+        activeFile: "index.html",
       }}
+      files={challenge?.files || FILES.vanilla}
     >
-      <SandpackLayout>
-        <div className="h-[calc(100vh-104px)] flex w-full gap-[1px]">
+      <SandpackLayout style={{ borderRadius: 0 }}>
+        <div className="h-[calc(100vh-50px)] flex w-full gap-[1px]">
           <PanelGroup direction="horizontal">
-            <Panel className="h-full w-1/2">
-              <SandpackCodeEditor
-                showTabs
-                showLineNumbers={false}
-                showInlineErrors
-                wrapContent
-                style={{
-                  height: "100%",
-                }}
-              />
+            <Panel className="h-full w-full">
+              <CustomCodeEditor challenge={challenge} />
+              <EditorFooter challenge={challenge} />
             </Panel>
-            <PanelResizeHandle className="w-[0.25rem] bg-gray-800 transition-colors hover:bg-gray-600" />
-            <Panel>
+            <PanelResizeHandle className="w-1 bg-gray-800 transition-colors hover:bg-gray-600" />
+            <Panel
+              className="border-l border-gray-600"
+              collapsible={true}
+              ref={previewRef}
+            >
               <PanelGroup direction="vertical">
-                <Panel defaultSize={70}>
+                <Panel defaultSize={70} className="border-b border-gray-600">
                   <SandpackPreview
                     showNavigator
                     style={{
@@ -86,7 +80,7 @@ const CustomSandpack = () => {
                   />
                 </Panel>
                 <PanelResizeHandle className="h-[0.25rem] bg-gray-800 transition-colors hover:bg-gray-600" />
-                <Panel defaultSize={30} collapsible={true}>
+                <Panel defaultSize={30} collapsible={true} ref={consoleRef}>
                   <SandpackConsole
                     style={{
                       height: "100%",

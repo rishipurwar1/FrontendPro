@@ -12,7 +12,7 @@ const DropDown = ({ setFigmaURL }) => {
         <div>
           <Button
             size="normal"
-            variant="secondary"
+            variant="dark"
             className="font-medium"
             onClick={() => setActive(!isActive)}
             id="options-menu"

@@ -30,9 +30,9 @@ You can do so by following [this guide](https://firebase.google.com/docs/web/set
 
 ## 🛠️ Installation Steps
 
-1. Fork [this](https://github.com/rishipurwar1/coding-space) repository.
+1. Fork [this](https://github.com/rishipurwar1/coding-space) repository
 
-2. Clone your forked copy of the project.
+2. Clone your forked copy of the project
 
 ```bash
 git clone https://github.com/<your-github-username>/coding-space.git

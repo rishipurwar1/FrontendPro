@@ -39,13 +39,13 @@ const SolutionDetail = () => {
   if (!document)
     return (
       <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3 place-self-center">
-        <LottieAnimation animationDataFile={rocketLoader} height={100} width={100} />
+        <LottieAnimation animationDataFile={rocketLoader} />
       </div>
     )
   return (
     <>
       <Helmet>
-        <title>CodingSpace Solution - {document.title}</title>
+        <title>FrontendPro Solution - {document.title}</title>
         <meta content={document.description} name="description" />
         <meta content={document.title} property="og:title" />
         <meta content={document.description} property="og:description" />
@@ -102,9 +102,10 @@ const SolutionDetail = () => {
           )}
         </div>
         <ShowWebsite
-          url={document.liveWebsiteUrl}
-          github={document.githubUrl}
-          title={document.title}
+          url={document?.liveWebsiteUrl}
+          github={document?.githubUrl}
+          title={document?.title}
+          isPlayground={document?.isPlayground}
         />
         <div className="grid grid-col-1 md:grid-cols-[1fr_160px] items-start gap-x-5 mt-10">
           <SolutionComments />

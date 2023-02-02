@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom"
 
-import { FILES } from "../../constants"
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useCollection } from "../../hooks/useCollection"
 import { useFirestore } from "../../hooks/useFirestore"
@@ -32,7 +31,7 @@ const StartCodingButton = ({ document, setIsOpen }) => {
     if (documents.length > 0) {
       // Todo: Replace this with a toast notification
       setIsOpen(false)
-      navigate(`/code/${documents[0].id}`)
+      navigate(`/playground/${documents[0].id}`)
     } else {
       const addedDocument = await addDocument({
         ...solutionDetails[0],
@@ -41,13 +40,14 @@ const StartCodingButton = ({ document, setIsOpen }) => {
         userID: user.uid,
         photoURL: user.photoURL,
         completed: false,
-        files: FILES.vanilla,
+        isPlayground: true,
+        template: ["vanilla"],
       })
 
       if (addedDocument) {
         setIsOpen(false)
         const id = addedDocument.id
-        navigate(`/code/${id}`)
+        navigate(`/playground/${id}`)
       }
     }
   }

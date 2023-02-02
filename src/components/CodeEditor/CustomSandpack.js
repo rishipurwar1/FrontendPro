@@ -1,5 +1,5 @@
-import { useState } from "react"
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels"
+import { useParams } from "react-router-dom"
 
 import {
   SandpackConsole,
@@ -8,12 +8,27 @@ import {
   SandpackProvider,
 } from "@codesandbox/sandpack-react"
 
+import rocketLoader from "../../assets/animated_illustrations/rocketLoader.json"
 import { FILES } from "../../constants"
+import { useDocument } from "../../hooks/useDocument"
+import LottieAnimation from "../reusable/LottieAnimation"
 
 import CustomCodeEditor from "./CustomCodeEditor"
-import EditorFooter from "./EditorFooter"
 
-const CustomSandpack = ({ previewRef, consoleRef, challenge }) => {
+const CustomSandpack = ({ previewRef, consoleRef, solution }) => {
+  const { id } = useParams()
+  const { document: playground, isLoading } = useDocument(
+    `solutions/${id}/playgrounds`,
+    "vanilla"
+  ) // TODO: make this dynamic
+
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <LottieAnimation animationDataFile={rocketLoader} />
+      </div>
+    )
+
   return (
     <SandpackProvider
       template="vanilla"
@@ -22,47 +37,26 @@ const CustomSandpack = ({ previewRef, consoleRef, challenge }) => {
           surface1: "#1F2937",
           surface2: "#4B5563",
           surface3: "#3b3b4f",
-          clickable: "#dfdfe2",
+          accent: "#A855F7",
           base: "#ffffff",
           disabled: "#858591",
-          hover: "#ffffff",
-          accent: "#a26cd6",
           error: "#ffffff",
           errorSurface: "#3b3b4f",
         },
-        syntax: {
-          plain: "#ffffff",
-          comment: {
-            color: "#858591",
-            fontStyle: "italic",
-          },
-          keyword: "#a26cdd",
-          tag: "#f07178",
-          punctuation: "#99c9ff",
-          definition: "#ffffff",
-          property: "#99c9ff",
-          static: "#f78c6c",
-          string: "#57d1b7",
-        },
         font: {
-          body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-          mono: '"Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace',
           size: "14px",
-          lineHeight: "18px",
         },
       }}
       options={{
         visibleFiles: ["index.html", "src/styles.css", "src/index.js"],
-        activeFile: "index.html",
       }}
-      files={challenge?.files || FILES.vanilla}
+      files={playground?.files || FILES.vanilla}
     >
       <SandpackLayout style={{ borderRadius: 0 }}>
         <div className="h-[calc(100vh-50px)] flex w-full gap-[1px]">
           <PanelGroup direction="horizontal">
             <Panel className="h-full w-full">
-              <CustomCodeEditor challenge={challenge} />
-              <EditorFooter challenge={challenge} />
+              <CustomCodeEditor playground={playground} solution={solution} />
             </Panel>
             <PanelResizeHandle className="w-1 bg-gray-800 transition-colors hover:bg-gray-600" />
             <Panel
@@ -74,6 +68,7 @@ const CustomSandpack = ({ previewRef, consoleRef, challenge }) => {
                 <Panel defaultSize={70} className="border-b border-gray-600">
                   <SandpackPreview
                     showNavigator
+                    showOpenInCodeSandbox={false}
                     style={{
                       height: "100%",
                     }}

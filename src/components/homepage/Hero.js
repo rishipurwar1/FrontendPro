@@ -1,9 +1,9 @@
-import Lottie from "react-lottie"
 import { useNavigate } from "react-router-dom"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import SignedOutLinks from "../layouts/SignedOutLinks"
 import Button from "../reusable/Button"
+import LottieAnimation from "../reusable/LottieAnimation"
 
 const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, icon, route }) => {
   const { user } = useAuthContext()
@@ -13,16 +13,6 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, icon, route }) => 
       : user?.displayName.split(" ")[0]
     : "Coder"
   const navigate = useNavigate()
-
-  // Lottie options
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: mainImg,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  }
 
   return (
     <div className="mt-6 md:mt-2 mb-8">
@@ -64,12 +54,13 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, icon, route }) => 
               {icon}
             </Button>
           ) : (
-            <SignedOutLinks />
+            <SignedOutLinks variant="dark" />
           )}
         </div>
-        <div className="xs:h-56 xs:w-72 sm:h-60 sm:w-96 w-96 md:h-72 lg:h-80">
-          <Lottie options={defaultOptions} />
-        </div>
+        <LottieAnimation
+          className="h-1/2 sm:w-3/5 md:w-1/2 sm:-mr-16 md:-mr-14 lg:-mr-20"
+          animationDataFile={mainImg}
+        />
       </header>
     </div>
   )

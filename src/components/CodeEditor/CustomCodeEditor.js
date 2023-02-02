@@ -1,52 +1,83 @@
+import { useEffect, useState } from "react"
 import { emmetCSS, emmetHTML } from "emmet-monaco-es"
 
-import {
-  FileTabs,
-  SandpackStack,
-  useActiveCode,
-  useSandpack,
-} from "@codesandbox/sandpack-react"
+import { SandpackStack, useSandpack } from "@codesandbox/sandpack-react"
 import Editor from "@monaco-editor/react"
 
+import { useAuthContext } from "../../hooks/useAuthContext"
 import { getLanguageOfFile } from "../../utils/shared"
 
-// Using Set because Set "has" has a O(1) complexity for lookups, and Array.prototype.includes() has a O(n) complexity
+import CustomTabs from "./CustomTabs"
+import EditorFooter from "./EditorFooter"
 
-const CustomCodeEditor = ({ challenge }) => {
-  const { code, updateCode } = useActiveCode()
+const CustomCodeEditor = ({ playground, solution }) => {
+  const [isDirty, setIsDirty] = useState(false)
+  const [activeFile, setActiveFile] = useState("/index.html")
   const { sandpack } = useSandpack()
-  console.log(sandpack)
+  const { files, updateFile } = sandpack
+  const { user } = useAuthContext()
+  const language = getLanguageOfFile(activeFile)
 
-  const language = getLanguageOfFile(sandpack.activeFile)
-  const handleEditorDidMount = () => {
-    emmetHTML(window.monaco)
-    emmetCSS(window.monaco)
+  const handleEditorDidMount = (editor, monaco) => {
+    emmetHTML(monaco)
+    emmetCSS(monaco)
   }
 
+  const handleBeforeUnload = (event) => {
+    if (isDirty) {
+      event.preventDefault()
+      event.returnValue = ""
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", handleBeforeUnload)
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload)
+    }
+  }, [isDirty])
+
   return (
-    <SandpackStack
-      style={{
-        height: "calc(100% - 64px)",
-      }}
-    >
-      <FileTabs />
-      <Editor
-        width="100%"
-        height="100%"
-        language={language}
-        theme="vs-dark"
-        onMount={handleEditorDidMount}
-        key={sandpack.activeFile}
-        defaultValue={code}
-        onChange={(value) => updateCode(value || "")}
-        options={{
-          minimap: {
-            enabled: false,
-          },
-          fontSize: 14,
+    <div className="h-full flex flex-col">
+      <SandpackStack
+        style={{
+          height: "100%",
         }}
-      />
-    </SandpackStack>
+      >
+        <CustomTabs activeFile={activeFile} setActiveFile={setActiveFile} />
+        <div className="bg-[#1e1e1e] h-full relative">
+          <Editor
+            width="100%"
+            height="100%"
+            language={language}
+            theme="vs-dark"
+            onMount={handleEditorDidMount}
+            key={activeFile}
+            defaultValue={files[activeFile]?.code || ""}
+            loading={<div className="text-[#1e1e1e]">Loading...</div>}
+            onChange={(value) => {
+              updateFile(activeFile, value || "")
+              setIsDirty(true)
+            }}
+            options={{
+              minimap: {
+                enabled: false,
+              },
+              fontSize: 14,
+              readOnly: user?.uid !== solution?.userID,
+            }}
+          />
+        </div>
+        {user?.uid === solution?.userID && (
+          <EditorFooter
+            isCompleted={solution.completed}
+            playground={playground}
+            isDirty={isDirty}
+            setIsDirty={setIsDirty}
+          />
+        )}
+      </SandpackStack>
+    </div>
   )
 }
 

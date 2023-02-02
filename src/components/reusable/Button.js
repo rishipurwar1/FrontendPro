@@ -1,4 +1,4 @@
-import { clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
 
 import Icons from "../SvgIcons/Icons"
 
@@ -36,7 +36,7 @@ const Button = ({
   <button
     disabled={loading}
     type={type}
-    className={clsx([
+    className={twMerge([
       classes.base,
       classes.size[size],
       classes.variant[variant],

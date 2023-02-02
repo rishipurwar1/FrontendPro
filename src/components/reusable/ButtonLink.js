@@ -1,5 +1,5 @@
-import { clsx } from "clsx"
 import { Link } from "react-router-dom"
+import { twMerge } from "tailwind-merge"
 
 const classes = {
   base: "inline-flex justify-center items-center rounded-lg focus:outline-none transition",
@@ -32,7 +32,7 @@ const ButtonLink = ({
 }) => (
   <Link
     to={to}
-    className={clsx([
+    className={twMerge([
       classes.base,
       classes.size[size],
       classes.variant[variant],

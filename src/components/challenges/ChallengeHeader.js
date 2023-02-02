@@ -24,7 +24,7 @@ const ChallengeHeader = ({ doc, button }) => {
 
   return (
     <>
-      <div className="mt-2 mb-8">
+      <div className="mt-6 md:mt-0 mb-8">
         <h2 className="text-3xl font-extrabold text-white">
           Hello {displayName}{" "}
           <span
@@ -44,7 +44,7 @@ const ChallengeHeader = ({ doc, button }) => {
         </p>
         <header className="mt-4 flex items-center xs:justify-center sm:justify-between bg-indigo-600 rounded-lg shadow-md xs:px-5 md:px-8 py-4 xs:h-full sm:max-h-96 xs:flex-wrap-reverse sm:flex-nowrap">
           <div className="xs:w-full sm:w-1/2">
-            <h2 className="leading-snug xs:text-3xl lg:text-5xl text-white font-bold pb-2">
+            <h2 className="leading-snug xs:text-3xl md:text-4xl lg:text-5xl text-white font-bold pb-2">
               {doc.title}
             </h2>
             <div className="py-2">
@@ -99,7 +99,7 @@ const ChallengeHeader = ({ doc, button }) => {
                 🚀
               </span>
               <h2 className="mt-4 mb-2 font-medium text-base text-white">
-                Join CodingSpace to start this challenge!
+                Join FrontendPro to start this challenge!
               </h2>
               <p className="mb-4 text-xs text-gray-300">
                 Sign up to access all of the challenges and

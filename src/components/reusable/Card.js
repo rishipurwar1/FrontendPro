@@ -19,7 +19,7 @@ const Card = ({ card, isChallenge, isSolution }) => {
   } else if (!isChallenge && !isSolution) {
     href = card.link
   } else {
-    href = `/submit/${card.id}`
+    href = card?.isPlayground ? `/playground/${card.id}` : `/submit/${card.id}`
   }
 
   return (

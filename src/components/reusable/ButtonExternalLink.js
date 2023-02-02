@@ -1,4 +1,4 @@
-import { clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
 
 const classes = {
   base: "inline-flex justify-center items-center rounded-lg focus:outline-none transition",
@@ -31,7 +31,7 @@ const ButtonExternalLink = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className={clsx([
+    className={twMerge([
       classes.base,
       classes.size[size],
       classes.variant[variant],

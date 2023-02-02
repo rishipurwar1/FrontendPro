@@ -6,11 +6,11 @@ import rocketLoader from "./assets/animated_illustrations/rocketLoader.json"
 // layout
 import Layout from "./components/layouts/Layout"
 import Meta from "./components/meta/Meta"
-// custom components
 import LottieAnimation from "./components/reusable/LottieAnimation"
+// custom components
 import ScrollToTop from "./components/reusable/ScrollToTop"
 import { useAuthContext } from "./hooks/useAuthContext"
-import Code from "./pages/Code"
+import Playground from "./pages/Playground"
 
 import "./App.css"
 
@@ -29,13 +29,13 @@ const MySolutions = React.lazy(() => import("./pages/MySolutions"))
 const routes = [
   {
     path: "/",
-    title: "CodingSpace - Learn Web Development by Building Real World Projects",
+    title: "Become a Pro in Frontend Development with FrontendPro.dev",
   },
-  { path: "/challenges", title: "CodingSpace - Challenges" },
-  { path: "/solutions", title: "CodingSpace - Solutions" },
-  { path: "/resources", title: "CodingSpace - Resources" },
-  { path: "/roadmaps", title: "CodingSpace - Roadmaps" },
-  { path: "/mysolutions", title: "CodingSpace - My Solutions" },
+  { path: "/challenges", title: "FrontendPro - Challenges" },
+  { path: "/solutions", title: "FrontendPro - Solutions" },
+  { path: "/resources", title: "FrontendPro - Resources" },
+  { path: "/roadmaps", title: "FrontendPro - Roadmaps" },
+  { path: "/mysolutions", title: "FrontendPro - My Solutions" },
 ]
 
 const App = () => {
@@ -47,12 +47,8 @@ const App = () => {
         <div>
           <Suspense
             fallback={
-              <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3 place-self-center">
-                <LottieAnimation
-                  animationDataFile={rocketLoader}
-                  height={100}
-                  width={100}
-                />
+              <div className="flex justify-center items-center min-h-screen">
+                <LottieAnimation animationDataFile={rocketLoader} />
               </div>
             }
           >
@@ -80,14 +76,14 @@ const App = () => {
                   />
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Route>
-                <Route path="code/:id" element={user ? <Code /> : <Navigate to="/" />} />
+                <Route path="playground/:id" element={<Playground />} />
               </Routes>
             </ScrollToTop>
           </Suspense>
         </div>
       ) : (
         <div className="flex justify-center items-center min-h-screen">
-          <LottieAnimation animationDataFile={rocketLoader} height={100} width={100} />
+          <LottieAnimation animationDataFile={rocketLoader} />
         </div>
       )}
     </>

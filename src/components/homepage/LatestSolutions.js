@@ -13,7 +13,7 @@ const LatestSolutions = () => {
   )
 
   return (
-    <main className="mt-20 flex flex-col">
+    <main className="mt-32 flex flex-col">
       <h2 className="text-5xl text-center text-white font-extrabold">Latest Solutions</h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center my-8">
         {!isLoading

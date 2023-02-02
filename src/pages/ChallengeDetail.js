@@ -38,19 +38,23 @@ const ChallengeDetail = () => {
   if (!document)
     return (
       <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3 place-self-center">
-        <LottieAnimation animationDataFile={rocketLoader} height={100} width={100} />
+        <LottieAnimation animationDataFile={rocketLoader} />
       </div>
     )
 
   return (
     <>
       <Helmet>
-        <title>CodingSpace Challenge - {document.title}</title>
+        <title>FrontendPro Challenge - {document.title}</title>
         <meta content={document.description} name="description" />
         <meta content={document.title} property="og:title" />
         <meta content={document.description} property="og:description" />
-        {/* TODO: Add meta image */}
-        {/* <meta content={metaImage} data-react-helmet="true" property="og:image" /> */}
+        {/* TODO: Add dynamic OG image */}
+        <meta
+          content="https://i.imgur.com/KAe5lAf.png"
+          data-react-helmet="true"
+          property="og:image"
+        />
         <meta
           content={document.description}
           data-react-helmet="true"
@@ -62,10 +66,14 @@ const ChallengeDetail = () => {
           data-react-helmet="true"
           name="twitter:description"
         />
-        {/* TODO: Add OG TAG image */}
-        {/* <meta content={ogTagImage} data-react-helmet="true" name="twitter:image" /> */}
+        {/* TODO: Add dynamic OG image */}
+        <meta
+          content="https://i.imgur.com/KAe5lAf.png"
+          data-react-helmet="true"
+          name="twitter:image"
+        />
       </Helmet>
-      <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
+      <div className="mb-6 md:mb-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
         <ChallengeHeader doc={document} />
         <div className="overflow-hidden relative">
           <iframe
@@ -76,6 +84,7 @@ const ChallengeDetail = () => {
                 : document.figmaURLs.mobile
             }`}
             title={`screen-${figmaURL}`}
+            loading="lazy"
             allowFullScreen
           ></iframe>
           {document.figmaURLs.desktop && (
@@ -257,7 +266,7 @@ const ChallengeDetail = () => {
                 🚀
               </span>
               <h2 className="mt-4 mb-2 font-medium text-base text-white">
-                Join CodingSpace to start this challenge!
+                Join FrontendPro to start this challenge!
               </h2>
               <p className="mb-4 text-xs text-gray-300">
                 Sign up to access all of the challenges and

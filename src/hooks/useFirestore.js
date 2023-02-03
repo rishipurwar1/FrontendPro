@@ -35,6 +35,7 @@ export const useFirestore = (c) => {
       dispatch({ type: "ADDED_DOCUMENT", payload: addedDocument })
       return addedDocument
     } catch (error) {
+      console.log(error)
       dispatch({ type: "ERROR", payload: error.message })
     }
   }

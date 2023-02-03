@@ -20,7 +20,15 @@ const Navbar = ({ classNames }) => {
         <div className="hidden md:block relative bg-indigo-600 px-4 py-3 text-white">
           <p className="text-center text-sm font-medium">
             🎉Exciting News: CodingSpace is now{" "}
-            <b className="underline decoration-wavy underline-offset-2">FrontendPro</b>.
+            <a
+              href="https://www.frontendpro.dev"
+              target="_blank"
+              rel="noreferrer"
+              className="underline decoration-wavy underline-offset-2 transition-colors hover:decoration-slate-200 hover:text-slate-200"
+            >
+              FrontendPro
+            </a>
+            .
           </p>
           <button
             aria-label="Close"

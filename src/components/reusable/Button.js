@@ -1,4 +1,4 @@
-import { clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
 
 import Icons from "../SvgIcons/Icons"
 
@@ -14,12 +14,12 @@ const classes = {
     square: "p-2",
   },
   variant: {
-    primary:
-      "bg-indigo-600 hover:bg-indigo-700 focus:ring focus:ring-indigo-800 text-white",
-    secondary: "bg-gray-900 hover:bg-gray-800 text-white",
+    primary: "bg-indigo-600 hover:bg-indigo-700 text-white",
+    secondary:
+      "text-gray-300 border border-gray-600 bg-gray-700 transition hover:text-white hover:bg-gray-800",
+    dark: "bg-gray-900 hover:bg-gray-800 text-white",
     outline: "bg-transparent border border-gray-700 hover:bg-gray-700 text-white",
-    danger:
-      "bg-red-500 hover:bg-red-800 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 text-white",
+    danger: "bg-red-500 hover:bg-red-800 text-white",
   },
 }
 
@@ -36,7 +36,7 @@ const Button = ({
   <button
     disabled={loading}
     type={type}
-    className={clsx([
+    className={twMerge([
       classes.base,
       classes.size[size],
       classes.variant[variant],

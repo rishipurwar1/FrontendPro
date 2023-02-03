@@ -6,7 +6,6 @@ import mainImg from "../assets/animated_illustrations/solution_animation.json"
 import Hero from "../components/homepage/Hero"
 import BaseInput from "../components/reusable/BaseInput"
 import Button from "../components/reusable/Button"
-import Modal from "../components/reusable/Modal"
 import MultiSelectSearchInput from "../components/reusable/MultiSelectSearchInput"
 import Icons from "../components/SvgIcons/Icons"
 import { INPUTS } from "../constants"
@@ -33,7 +32,6 @@ const SKILLS = [
 
 const SolutionForm = () => {
   const [formData, setFormData] = useState(INITIAL_STATE)
-  const [state, setState] = useState(false)
   const { id } = useParams()
   const navigate = useNavigate()
   const { updateDocument, response } = useFirestore("solutions")
@@ -100,14 +98,6 @@ const SolutionForm = () => {
           <Button type="submit" className="font-medium" loading={response.isPending}>
             Submit Solution
           </Button>
-          {state && (
-            <Modal
-              setShowModal={setState}
-              auth
-              title="Thank You for submitting your solution."
-              emoji="🙏"
-            />
-          )}
         </form>
       </div>
     </div>

@@ -33,7 +33,9 @@ export const useFirestore = (c) => {
         createdAt,
       })
       dispatch({ type: "ADDED_DOCUMENT", payload: addedDocument })
+      return addedDocument
     } catch (error) {
+      console.log(error)
       dispatch({ type: "ERROR", payload: error.message })
     }
   }
@@ -42,8 +44,12 @@ export const useFirestore = (c) => {
   const addSubCollectionDocumentWithCustomID = async (docData, customID) => {
     dispatch({ type: "IS_PENDING" })
     try {
+      const createdAt = Timestamp.now()
       const docRef = doc(db, c, customID)
-      const addedDocument = await setDoc(docRef, docData)
+      const addedDocument = await setDoc(docRef, {
+        ...docData,
+        createdAt,
+      })
       dispatch({ type: "ADDED_DOCUMENT", payload: addedDocument })
     } catch (error) {
       console.log(error)
@@ -56,7 +62,10 @@ export const useFirestore = (c) => {
   const updateDocument = async (id, updates) => {
     dispatch({ type: "IS_PENDING" })
     try {
-      const updatedDocument = await updateDoc(doc(db, c, id), updates)
+      const updatedDocument = await updateDoc(doc(db, c, id), {
+        ...updates,
+        updatedAt: Timestamp.now(),
+      })
       dispatch({ type: "UPDATED_DOCUMENT", payload: updatedDocument })
       return updatedDocument
     } catch (error) {

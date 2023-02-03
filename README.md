@@ -1,16 +1,16 @@
-# 🚀 CODINGSPACE
+# 🚀 FrontendPro
 
-CodingSpace is the platform where we aim to provide lots of different real-world UI-based challenges that can help developers to improve their web and mobile development skills.
+FrontendPro is the platform where we aim to provide lots of different real-world UI-based challenges that can help developers to improve their web and mobile development skills.
 
-![Coding space](https://i.imgur.com/EPPICCO.gif)
+![FrontendPro](https://i.imgur.com/EPPICCO.gif)
 
 ## 👨‍💻 Demo
 
 <a href="https://github.com/rishipurwar1/coding-space" target="blank">
-<img src="https://img.shields.io/website?url=https://coding-space.vercel.app&logo=github&style=flat-square" />
+<img src="https://img.shields.io/website?url=https://www.frontendpro.dev&logo=github&style=flat-square" />
 </a>
 
-Try out the website : [CodingSpace](https://coding-space.vercel.app)
+Try out the website : [FrontendPro](https://www.frontendpro.dev)
 
 ## 👨‍🔧 Tech Stack
 
@@ -98,7 +98,7 @@ Project Link: [https://github.com/rishipurwar1/coding-space](https://github.com/
 
 ## Code of Conduct
 
-We follow the [Code of Conduct](CODE_OF_CONDUCT.md) of the [CodingSpace](https://www.codingspace.codes) Community.
+We follow the [Code of Conduct](CODE_OF_CONDUCT.md) of the [FrontendPro](https://www.frontendpro.dev) Community.
 
 ## License
 

@@ -45,6 +45,7 @@ export const useCollection = (c, q, l, o, userID, openTab, challengeID) => {
 
     const unsubscribe = onSnapshot(ref, (snapshot) => {
       const results = []
+
       snapshot.docs.forEach(
         (doc) => {
           results.push({ ...doc.data(), id: doc.id })

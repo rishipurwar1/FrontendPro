@@ -4,15 +4,18 @@ import { useSignup } from "../../hooks/useSignup"
 import Button from "../reusable/Button"
 import BrandIcons from "../SvgIcons/BrandIcons"
 
-const SignedOutLinks = ({ variant = "secondary" }) => {
+const SignedOutLinks = ({ variant = "secondary", size = "large" }) => {
   const { signup, isPending } = useSignup()
 
   return (
     <Button
       variant={variant}
-      size="large"
+      size={size}
       className="font-medium group"
-      onClick={signup}
+      onClick={(e) => {
+        e.stopPropagation()
+        signup()
+      }}
       loading={isPending}
     >
       {!isPending && (

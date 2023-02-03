@@ -20,15 +20,19 @@ const Sidebar = () => {
   const ref = useRef()
   useOnClickOutside(ref, () => setIsOpen(false), isOpen)
 
-  const links = user ? <SignedInLinks profile={user} /> : <SignedOutLinks />
+  const links = user ? (
+    <SignedInLinks profile={user} />
+  ) : (
+    <SignedOutLinks variant="primary" />
+  )
   return (
     <div className="col-start-1 col-end-3 md:col-end-2 row-start-1 row-end-2">
       <div className="relative md:flex">
         {/* <!-- mobile menu bar --> */}
-        <div className="bg-gray-800 text-gray-100 flex justify-between items-center md:hidden">
+        <div className="px-4 py-3 bg-gray-800 text-gray-100 flex justify-between items-center md:hidden">
           {/* <!-- mobile menu button --> */}
           <button
-            className="p-4 focus:outline-none"
+            className="focus:outline-none"
             onClick={(e) => {
               e.stopPropagation()
               setIsOpen(!isOpen)
@@ -36,7 +40,7 @@ const Sidebar = () => {
           >
             <Icons.Menu />
           </button>
-          <div className="p-4">{links}</div>
+          <div>{links}</div>
         </div>
 
         {/* <!-- sidebar --> */}
@@ -50,13 +54,13 @@ const Sidebar = () => {
           <div className="flex justify-between items-center">
             <Link
               to="/"
-              className="text-white flex items-center space-x-1 uppercase text-center px-3 font-bold text-xl"
-              aria-label="codingspace logo"
-              title="This is a link to codingspace homepage"
+              className="text-white flex items-center space-x-1 text-center px-3 font-bold text-xl"
+              aria-label="FrontendPro logo"
+              title="frontendpro homepage"
             >
               <EmojiIcons.Rocket size={32} />
               <span className="xs:inline-block md:hidden xl:inline-block">
-                CodingSpace
+                FrontendPro
               </span>
             </Link>
             <button

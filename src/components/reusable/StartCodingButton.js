@@ -1,18 +1,17 @@
+import { useNavigate } from "react-router-dom"
+
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useCollection } from "../../hooks/useCollection"
 import { useFirestore } from "../../hooks/useFirestore"
 
 import Button from "./Button"
 
-const DownloadButton = ({
-  document,
-  setIsOpen,
-  variant = "outline",
-  size = "medium",
-}) => {
+const StartCodingButton = ({ document, setIsOpen }) => {
   const { user } = useAuthContext()
   const { addDocument, response } = useFirestore("solutions")
+  const navigate = useNavigate()
 
+  // rename the id property to challengeID
   const solutionDetails = [document].map(({ id, ...r }) => {
     r.challengeID = id
     return r
@@ -28,35 +27,42 @@ const DownloadButton = ({
     solutionDetails[0].challengeID
   )
 
-  const downloadAssets = async () => {
+  const initializeCodeEditor = async () => {
     if (documents.length > 0) {
       // Todo: Replace this with a toast notification
-      console.log("You have already downloaded the starter code for this challenge.")
+      setIsOpen(false)
+      navigate(`/playground/${documents[0].id}`)
     } else {
-      await addDocument({
+      const addedDocument = await addDocument({
         ...solutionDetails[0],
         author:
           user.displayName !== null ? user.displayName : user.reloadUserInfo.screenName,
         userID: user.uid,
         photoURL: user.photoURL,
         completed: false,
+        isPlayground: true,
+        template: ["vanilla"],
       })
-      setIsOpen(false)
+
+      if (addedDocument) {
+        setIsOpen(false)
+        const id = addedDocument.id
+        navigate(`/playground/${id}`)
+      }
     }
-    window.open(solutionDetails[0].challengeAssets, "_blank", "noopener,noreferrer")
   }
 
   return (
     <Button
-      variant={variant}
-      size={size}
       className="font-medium"
-      onClick={downloadAssets}
+      variant="primary"
+      size="medium"
+      onClick={initializeCodeEditor}
       loading={response.isPending}
     >
-      Download starter code
+      Start coding online
     </Button>
   )
 }
 
-export default DownloadButton
+export default StartCodingButton

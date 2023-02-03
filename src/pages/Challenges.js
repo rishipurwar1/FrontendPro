@@ -14,7 +14,7 @@ const Challenges = () => {
   ])
   return (
     <>
-      <main className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
+      <main className="mb-6 md:mb-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
         <Hero
           title="Here are some handcrafted challenges for you. Keep Coding! 👨‍💻"
           subTitle="Today is a great day to start a new challenge 🧑‍💻"

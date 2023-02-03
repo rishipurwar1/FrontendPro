@@ -17,6 +17,7 @@ const firebaseConfig = {
 initializeApp(firebaseConfig)
 
 const db = getFirestore()
+
 const auth = getAuth()
 // Initialize Analytics and get a reference to the service
 const analytics = getAnalytics()

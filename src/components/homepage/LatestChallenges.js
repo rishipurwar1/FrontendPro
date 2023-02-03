@@ -11,7 +11,7 @@ const Challenges = () => {
   ])
 
   return (
-    <main className="mt-20 flex flex-col">
+    <main className="mt-32 flex flex-col">
       <h2 className="text-5xl text-center text-white font-extrabold">
         Latest Challenges
       </h2>

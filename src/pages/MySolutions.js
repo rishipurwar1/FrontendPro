@@ -17,7 +17,7 @@ const MySolutions = () => {
     <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3 text-purple-50 min-h-screen">
       <Hero
         title="Here you can find all the solutions and ongoing challenges details."
-        subTitle="Welcome To Coding Space 😊"
+        subTitle="Welcome To FrontendPro 😊"
         mainImg={mainImg}
         btnTitle="Explore Challenges"
         icon={<Icons.ArrowRight className="ml-2 -mr-1" />}

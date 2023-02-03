@@ -19,10 +19,10 @@ const Resources = () => {
   }, [])
 
   return (
-    <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
+    <div className="mb-6 md:mb-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
       <Hero
         title="Here you can find all the frontend and backend development resources."
-        subTitle="Welcome To Coding Space 😊"
+        subTitle="Welcome To FrontendPro 😊"
         mainImg={ResourcesIll}
         btnTitle="Explore Challenges"
         icon={<Icons.ArrowRight className="ml-2 -mr-1" />}

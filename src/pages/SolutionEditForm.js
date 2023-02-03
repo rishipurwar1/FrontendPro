@@ -8,7 +8,7 @@ import BaseInput from "../components/reusable/BaseInput"
 import Button from "../components/reusable/Button"
 import MultiSelectSearchInput from "../components/reusable/MultiSelectSearchInput"
 import Icons from "../components/SvgIcons/Icons"
-import { INPUTS } from "../constants"
+import { INPUTS, PLAYGROUND_INPUTS } from "../constants"
 import { useDocument } from "../hooks/useDocument"
 import { useFirestore } from "../hooks/useFirestore"
 
@@ -39,6 +39,8 @@ const SolutionEditForm = () => {
   const navigate = useNavigate()
 
   const handleChange = (e) => {
+    if (e.target.id === "playgroundLink") return
+
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
@@ -57,6 +59,34 @@ const SolutionEditForm = () => {
       console.log(error)
     }
   }
+
+  const renderInputs = (inputsArray) =>
+    inputsArray.map((input) =>
+      input.type === "search" ? (
+        <MultiSelectSearchInput
+          key={input.name}
+          onChange={setFormData}
+          fetchOptions={fetchSkills}
+          predefinedOptions={SKILLS}
+          label={input.label}
+          selectedOptions={formData.tags}
+        />
+      ) : (
+        <BaseInput
+          key={input.name}
+          label={input.label}
+          value={
+            input.name === "playgroundLink"
+              ? `${window.location.origin}/playground/${document?.id}`
+              : formData[input.name]
+          }
+          placeholder={input.placeholder}
+          onChange={handleChange}
+          {...input}
+        />
+      )
+    )
+
   useEffect(() => {
     if (document) {
       setFormData(document)
@@ -79,28 +109,9 @@ const SolutionEditForm = () => {
           className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
-          {INPUTS.map((input) =>
-            input.type === "search" ? (
-              <MultiSelectSearchInput
-                key={input.name}
-                onChange={setFormData}
-                fetchOptions={fetchSkills}
-                predefinedOptions={SKILLS}
-                label={input.label}
-                selectedOptions={formData.tags}
-              />
-            ) : (
-              <BaseInput
-                key={input.name}
-                label={input.label}
-                value={formData[input.name]}
-                placeholder={input.placeholder}
-                onChange={handleChange}
-                {...input}
-              />
-            )
-          )}
-          {/* update button */}
+          {document?.isPlayground
+            ? renderInputs(PLAYGROUND_INPUTS)
+            : renderInputs(INPUTS)}
           <div>
             <Button type="submit" className="font-medium" loading={response.isPending}>
               Update Solution

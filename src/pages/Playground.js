@@ -29,32 +29,6 @@ const Playground = () => {
     <>
       <Helmet>
         <title>FrontendPro Playground - {solution.title}</title>
-        <meta content={solution.description} name="description" />
-        <meta content={solution.title} property="og:title" />
-        <meta content={solution.description} property="og:description" />
-        {/* TODO: Add dynamic OG image */}
-        <meta
-          content="https://i.imgur.com/KAe5lAf.png"
-          data-react-helmet="true"
-          property="og:image"
-        />
-        <meta
-          content={solution.description}
-          data-react-helmet="true"
-          property="og:image:alt"
-        />
-        <meta content={solution.title} data-react-helmet="true" name="twitter:title" />
-        <meta
-          content={solution.description}
-          data-react-helmet="true"
-          name="twitter:description"
-        />
-        {/* TODO: Add dynamic OG image */}
-        <meta
-          content="https://i.imgur.com/KAe5lAf.png"
-          data-react-helmet="true"
-          name="twitter:image"
-        />
       </Helmet>
       <div className="relative grid grid-rows-[50px_minmax(0,_1fr)] grid-cols-1 h-screen xxl:max-w-screen-xxl mx-auto">
         <CodeEditorHeader

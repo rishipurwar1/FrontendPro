@@ -5,7 +5,6 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import rocketLoader from "./assets/animated_illustrations/rocketLoader.json"
 // layout
 import Layout from "./components/layouts/Layout"
-import Meta from "./components/meta/Meta"
 import LottieAnimation from "./components/reusable/LottieAnimation"
 // custom components
 import ScrollToTop from "./components/reusable/ScrollToTop"
@@ -30,7 +29,6 @@ const App = () => {
   const { authIsReady, user } = useAuthContext()
   return (
     <>
-      <Meta />
       {authIsReady ? (
         <div>
           <Suspense

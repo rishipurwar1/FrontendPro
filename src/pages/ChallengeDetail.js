@@ -46,32 +46,6 @@ const ChallengeDetail = () => {
     <>
       <Helmet>
         <title>FrontendPro Challenge - {document.title}</title>
-        <meta content={document.description} name="description" />
-        <meta content={document.title} property="og:title" />
-        <meta content={document.description} property="og:description" />
-        {/* TODO: Add dynamic OG image */}
-        <meta
-          content="https://i.imgur.com/KAe5lAf.png"
-          data-react-helmet="true"
-          property="og:image"
-        />
-        <meta
-          content={document.description}
-          data-react-helmet="true"
-          property="og:image:alt"
-        />
-        <meta content={document.title} data-react-helmet="true" name="twitter:title" />
-        <meta
-          content={document.description}
-          data-react-helmet="true"
-          name="twitter:description"
-        />
-        {/* TODO: Add dynamic OG image */}
-        <meta
-          content="https://i.imgur.com/KAe5lAf.png"
-          data-react-helmet="true"
-          name="twitter:image"
-        />
       </Helmet>
       <div className="mb-6 md:mb-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
         <ChallengeHeader doc={document} />

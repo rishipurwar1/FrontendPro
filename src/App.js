@@ -5,7 +5,6 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import rocketLoader from "./assets/animated_illustrations/rocketLoader.json"
 // layout
 import Layout from "./components/layouts/Layout"
-import Meta from "./components/meta/Meta"
 import LottieAnimation from "./components/reusable/LottieAnimation"
 // custom components
 import ScrollToTop from "./components/reusable/ScrollToTop"
@@ -26,23 +25,10 @@ const SolutionForm = React.lazy(() => import("./pages/SolutionForm"))
 const SolutionEditForm = React.lazy(() => import("./pages/SolutionEditForm"))
 const MySolutions = React.lazy(() => import("./pages/MySolutions"))
 
-const routes = [
-  {
-    path: "/",
-    title: "Become a Pro in Frontend Development with FrontendPro.dev",
-  },
-  { path: "/challenges", title: "FrontendPro - Challenges" },
-  { path: "/solutions", title: "FrontendPro - Solutions" },
-  { path: "/resources", title: "FrontendPro - Resources" },
-  { path: "/roadmaps", title: "FrontendPro - Roadmaps" },
-  { path: "/mysolutions", title: "FrontendPro - My Solutions" },
-]
-
 const App = () => {
   const { authIsReady, user } = useAuthContext()
   return (
     <>
-      <Meta routes={routes} />
       {authIsReady ? (
         <div>
           <Suspense

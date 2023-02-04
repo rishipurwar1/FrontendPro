@@ -26,23 +26,11 @@ const SolutionForm = React.lazy(() => import("./pages/SolutionForm"))
 const SolutionEditForm = React.lazy(() => import("./pages/SolutionEditForm"))
 const MySolutions = React.lazy(() => import("./pages/MySolutions"))
 
-const routes = [
-  {
-    path: "/",
-    title: "Become a Pro in Frontend Development with FrontendPro.dev",
-  },
-  { path: "/challenges", title: "FrontendPro - Challenges" },
-  { path: "/solutions", title: "FrontendPro - Solutions" },
-  { path: "/resources", title: "FrontendPro - Resources" },
-  { path: "/roadmaps", title: "FrontendPro - Roadmaps" },
-  { path: "/mysolutions", title: "FrontendPro - My Solutions" },
-]
-
 const App = () => {
   const { authIsReady, user } = useAuthContext()
   return (
     <>
-      <Meta routes={routes} />
+      <Meta />
       {authIsReady ? (
         <div>
           <Suspense

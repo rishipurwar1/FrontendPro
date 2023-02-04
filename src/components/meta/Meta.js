@@ -2,8 +2,22 @@ import { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import { useLocation } from "react-router-dom"
 
-const Meta = ({ routes }) => {
-  const [title, setTitle] = useState("")
+const routes = [
+  {
+    path: "/",
+    title: "Become a Pro in Frontend Development with FrontendPro.dev",
+  },
+  { path: "/challenges", title: "FrontendPro - Challenges" },
+  { path: "/solutions", title: "FrontendPro - Solutions" },
+  { path: "/resources", title: "FrontendPro - Resources" },
+  { path: "/roadmaps", title: "FrontendPro - Roadmaps" },
+  { path: "/mysolutions", title: "FrontendPro - My Solutions" },
+]
+
+const Meta = () => {
+  const [title, setTitle] = useState(
+    "Become a Pro in Frontend Development with FrontendPro.dev"
+  )
   const currentPath = useLocation().pathname
 
   useEffect(() => {
@@ -13,7 +27,6 @@ const Meta = ({ routes }) => {
   return (
     <Helmet>
       <title>{title}</title>
-      <meta content="website" property="og:type" />
       <meta content="FrontendPro" property="og:site_name" />
       <meta content="image/png" property="og:image:type" />
       <meta content="1200" property="og:image:width" />
@@ -31,7 +44,7 @@ const Meta = ({ routes }) => {
       />
       <meta content={title} data-react-helmet="true" property="og:title" />
       <meta
-        content="https://i.imgur.com/KAe5lAf.png"
+        content="https://res.cloudinary.com/di5hmgowi/image/upload/v1675420804/codingspace_assets/frontendpro-og-image.png"
         data-react-helmet="true"
         property="og:image"
       />
@@ -52,11 +65,10 @@ const Meta = ({ routes }) => {
         name="twitter:description"
       />
       <meta
-        content="https://i.imgur.com/KAe5lAf.png"
+        content="https://res.cloudinary.com/di5hmgowi/image/upload/v1675420804/codingspace_assets/frontendpro-og-image.png"
         data-react-helmet="true"
         name="twitter:image"
       />
-      <meta name="twitter:site" content="@FrontendProHQ" />
       <meta property="twitter:domain" content="https://www.frontendpro.dev" />
       <meta property="twitter:url" content="https://www.frontendpro.dev" />
       <meta

@@ -57,6 +57,9 @@ const Sidebar = () => {
               className="text-white flex items-center space-x-1 text-center px-3 font-bold text-xl"
               aria-label="FrontendPro logo"
               title="frontendpro homepage"
+              onClick={() => {
+                setIsOpen(false)
+              }}
             >
               <EmojiIcons.Rocket size={32} />
               <span className="xs:inline-block md:hidden xl:inline-block">

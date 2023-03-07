@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { useParams } from "react-router-dom"
+import { useState } from "react"
+import { useRouter } from "next/router"
 
 import { useCollection } from "../../hooks/useCollection"
 
@@ -8,7 +8,9 @@ import CommentForm from "./CommentForm"
 
 const SolutionComments = () => {
   const [activeComment, setActiveComment] = useState(null)
-  const { id } = useParams()
+  const router = useRouter()
+  const { solutionId: id } = router.query
+
   const { documents } = useCollection(`solutions/${id}/comments`, null, null, [
     "createdAt",
     "desc",

@@ -1,5 +1,3 @@
-import React from "react"
-
 import { useSignup } from "../../hooks/useSignup"
 import Button from "../reusable/Button"
 import BrandIcons from "../SvgIcons/BrandIcons"

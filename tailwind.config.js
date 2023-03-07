@@ -85,6 +85,9 @@ module.exports = {
       scale: {
         102: "1.02",
       },
+      aspectRatio: {
+        "4/3": "4 / 3",
+      },
     },
   },
   variants: {

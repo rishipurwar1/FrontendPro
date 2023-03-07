@@ -1,5 +1,4 @@
-import React from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useRouter } from "next/router"
 
 import { useSandpack } from "@codesandbox/sandpack-react"
 
@@ -18,7 +17,8 @@ const filterVisibleFiles = (visibleFiles, files) => {
 }
 
 const EditorFooter = ({ playground, isCompleted, isDirty, setIsDirty }) => {
-  const { id } = useParams()
+  const router = useRouter()
+  const { id } = router.query
   const { sandpack } = useSandpack()
   const { files, visibleFiles } = sandpack
   const {
@@ -29,7 +29,6 @@ const EditorFooter = ({ playground, isCompleted, isDirty, setIsDirty }) => {
 
   const { updateDocument: updateSolution, response: solutionResponse } =
     useFirestore("solutions")
-  const navigate = useNavigate()
 
   const handleSave = async () => {
     if (!isDirty) return
@@ -57,7 +56,10 @@ const EditorFooter = ({ playground, isCompleted, isDirty, setIsDirty }) => {
       await updateSolution(id, updatedData)
       setIsDirty(false)
       if (!solutionResponse.error && !isCompleted) {
-        navigate(`/solution/${id}`, { state: true })
+        router.push({
+          pathname: `/solution/${id}`,
+          query: { submit: true },
+        })
       }
     } catch (error) {
       console.log(error)

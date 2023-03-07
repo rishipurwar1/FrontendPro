@@ -1,71 +1,73 @@
-import React, { useState } from "react"
+import { useState } from "react"
+import Head from "next/head"
+import { useRouter } from "next/router"
 import moment from "moment"
-import { Helmet } from "react-helmet"
-import { useLocation, useNavigate, useParams } from "react-router-dom"
 
-import rocketLoader from "../assets/animated_illustrations/rocketLoader.json"
-import ChallengeHeader from "../components/challenges/ChallengeHeader"
-import Avatar from "../components/reusable/Avatar"
-import Button from "../components/reusable/Button"
-import ButtonLink from "../components/reusable/ButtonLink"
-import ConfettiWrapper from "../components/reusable/ConfettiWrapper"
-import LottieAnimation from "../components/reusable/LottieAnimation"
-import Modal from "../components/reusable/Modal"
-import EmojiSection from "../components/solutions/EmojiSection"
-import ShowWebsite from "../components/solutions/ShowWebsite"
-import SolutionComments from "../components/solutions/SolutionComments"
-import Icons from "../components/SvgIcons/Icons"
+import ChallengeHeader from "../../../components/challenges/ChallengeHeader"
+import Avatar from "../../../components/reusable/Avatar"
+import Button from "../../../components/reusable/Button"
+import ButtonLink from "../../../components/reusable/ButtonLink"
+import ConfettiWrapper from "../../../components/reusable/ConfettiWrapper"
+import Modal from "../../../components/reusable/Modal"
+import EmojiSection from "../../../components/solutions/EmojiSection"
+import ShowWebsite from "../../../components/solutions/ShowWebsite"
+import SolutionComments from "../../../components/solutions/SolutionComments"
+import Icons from "../../../components/SvgIcons/Icons"
+import { getDocument } from "../../../firebase/firestore"
 // custom hooks
-import { useAuthContext } from "../hooks/useAuthContext"
-import { useDocument } from "../hooks/useDocument"
-import { useFirestore } from "../hooks/useFirestore"
+import { useAuthContext } from "../../../hooks/useAuthContext"
+import { useFirestore } from "../../../hooks/useFirestore"
 
-const SolutionDetail = () => {
+export async function getServerSideProps({ query }) {
+  const { solutionId } = query
+  const solution = await getDocument("solutions", solutionId)
+
+  return {
+    props: {
+      solution,
+    },
+  }
+}
+
+const Solution = ({ solution }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const { id } = useParams()
-  const { state } = useLocation()
-  const navigate = useNavigate()
-  const { document } = useDocument("solutions", id)
+  const router = useRouter()
+  const { solutionId } = router.query
+  const isSubmit = router.query?.submit
   const { user } = useAuthContext()
-
   const { deleteDocument, response } = useFirestore("solutions")
 
   const handleDelete = async () => {
-    await deleteDocument(id)
+    await deleteDocument(solutionId)
     setIsOpen(false)
-    navigate("/")
+    router.push("/")
   }
 
-  if (!document)
-    return (
-      <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3 place-self-center">
-        <LottieAnimation animationDataFile={rocketLoader} />
-      </div>
-    )
+  const title = `FrontendPro Solution - ${solution.title}`
   return (
     <>
-      <Helmet>
-        <title>FrontendPro Solution - {document.title}</title>
-      </Helmet>
+      <Head>
+        <title>{title}</title>
+      </Head>
       <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3 mb-4">
-        {state && <ConfettiWrapper />}
-        <ChallengeHeader doc={document} button />
+        {isSubmit && <ConfettiWrapper />}
+        <ChallengeHeader doc={solution} button />
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Avatar photoURL={document.photoURL} className="ring-gray-700" />
+            <Avatar photoURL={solution.photoURL} className="ring-gray-700" />
             <div className="flex flex-col ml-3">
               <span className="text-navItem text-sm text-gray-300">
-                {document.author}
+                {solution.author}
               </span>
               <span className="text-navItem text-xs text-gray-400">
-                {moment(document.createdAt.toDate()).fromNow()}
+                {moment(solution.createdAt).fromNow()}
               </span>
             </div>
           </div>
-          {user && user.uid === document.userID && (
+          {user && user.uid === solution.userID && (
             <div className="flex">
               <ButtonLink
-                to={`/solution/${document.id}/edit`}
+                to={`/solution/${solution.id}/edit`}
                 size="square"
                 variant="outline"
                 className="text-gray-400 hover:text-white mr-2"
@@ -84,10 +86,10 @@ const SolutionDetail = () => {
           )}
         </div>
         <ShowWebsite
-          url={document?.liveWebsiteUrl}
-          github={document?.githubUrl}
-          title={document?.title}
-          isPlayground={document?.isPlayground}
+          url={solution?.liveWebsiteUrl}
+          github={solution?.githubUrl}
+          title={solution?.title}
+          isPlayground={solution?.isPlayground}
         />
         <div className="grid grid-col-1 md:grid-cols-[1fr_160px] items-start gap-x-5 mt-10">
           <SolutionComments />
@@ -120,11 +122,11 @@ const SolutionDetail = () => {
             </>
           }
           setIsOpen={setIsOpen}
-          id={document.id}
+          id={solution.id}
         />
       )}
     </>
   )
 }
 
-export default SolutionDetail
+export default Solution

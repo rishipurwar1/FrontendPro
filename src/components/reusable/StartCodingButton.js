@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useRouter } from "next/router"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useCollection } from "../../hooks/useCollection"
@@ -9,7 +9,7 @@ import Button from "./Button"
 const StartCodingButton = ({ document, setIsOpen }) => {
   const { user } = useAuthContext()
   const { addDocument, response } = useFirestore("solutions")
-  const navigate = useNavigate()
+  const { push } = useRouter()
 
   // rename the id property to challengeID
   const solutionDetails = [document].map(({ id, ...r }) => {
@@ -31,7 +31,7 @@ const StartCodingButton = ({ document, setIsOpen }) => {
     if (documents.length > 0) {
       // Todo: Replace this with a toast notification
       setIsOpen(false)
-      navigate(`/playground/${documents[0].id}`)
+      push(`/playground/${documents[0].id}`)
     } else {
       const addedDocument = await addDocument({
         ...solutionDetails[0],
@@ -47,7 +47,7 @@ const StartCodingButton = ({ document, setIsOpen }) => {
       if (addedDocument) {
         setIsOpen(false)
         const id = addedDocument.id
-        navigate(`/playground/${id}`)
+        push(`/playground/${id}`)
       }
     }
   }

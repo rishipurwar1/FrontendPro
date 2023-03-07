@@ -1,5 +1,3 @@
-import React from "react"
-
 import Badge from "../reusable/Badge"
 
 const DifficultyBar = ({ difficultyLevel }) => {

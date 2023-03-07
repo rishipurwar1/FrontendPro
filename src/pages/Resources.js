@@ -1,29 +1,17 @@
-import React, { useEffect } from "react"
-import { Helmet } from "react-helmet"
+import Head from "next/head"
 
 import ResourcesIll from "../assets/animated_illustrations/resources.json"
 import Hero from "../components/homepage/Hero"
 import Card from "../components/reusable/Card"
-import SkeletonCard from "../components/skeletons/SkeletonCard"
 import Icons from "../components/SvgIcons/Icons"
-import { analytics, logEvent } from "../firebase/config"
-import { useCollection } from "../hooks/useCollection"
+import { getDocuments } from "../firebase/firestore"
 
-const Resources = () => {
-  const { documents, isLoading } = useCollection("resources", null, null, [
-    "createdAt",
-    "desc",
-  ])
-
-  useEffect(() => {
-    logEvent(analytics, "resources_page_visited")
-  }, [])
-
+const Resources = ({ resources }) => {
   return (
     <>
-      <Helmet>
+      <Head>
         <title>FrontendPro - Resources</title>
-      </Helmet>
+      </Head>
       <div className="mb-6 md:mb-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
         <Hero
           title="Here you can find all the frontend and backend development resources."
@@ -35,11 +23,9 @@ const Resources = () => {
         />
         <h2 className="text-5xl text-center text-white font-extrabold">Resources</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-8">
-          {!isLoading
-            ? documents.map((resource) => {
-                return <Card key={resource.id} card={resource} />
-              })
-            : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard key={n} />)}
+          {resources?.map((resource) => {
+            return <Card key={resource.id} card={resource} />
+          })}
         </div>
       </div>
     </>
@@ -47,3 +33,13 @@ const Resources = () => {
 }
 
 export default Resources
+
+export async function getStaticProps() {
+  const resources = await getDocuments("resources")
+
+  return {
+    props: {
+      resources,
+    },
+  }
+}

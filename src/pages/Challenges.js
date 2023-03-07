@@ -1,23 +1,17 @@
-import React from "react"
-import { Helmet } from "react-helmet"
+import Head from "next/head"
 
 import challengeLottie from "../assets/animated_illustrations/challenge.json"
 import Hero from "../components/homepage/Hero"
 import Card from "../components/reusable/Card"
-import SkeletonCard from "../components/skeletons/SkeletonCard"
 import Icons from "../components/SvgIcons/Icons"
-import { useCollection } from "../hooks/useCollection"
+import { getDocuments } from "../firebase/firestore"
 
-const Challenges = () => {
-  const { documents, isLoading } = useCollection("challenges", null, null, [
-    "createdAt",
-    "desc",
-  ])
+const Challenges = ({ challenges }) => {
   return (
     <>
-      <Helmet>
+      <Head>
         <title>FrontendPro - Challenges</title>
-      </Helmet>
+      </Head>
       <main className="mb-6 md:mb-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
         <Hero
           title="Here are some handcrafted challenges for you. Keep Coding! 👨‍💻"
@@ -30,13 +24,9 @@ const Challenges = () => {
         />
         <h2 className="text-5xl text-center text-white font-extrabold">Challenges</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-8">
-          {!isLoading
-            ? documents.map((challenge) => {
-                return (
-                  <Card key={challenge.id} card={challenge} challengelist isChallenge />
-                )
-              })
-            : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonCard isChallenge key={n} />)}
+          {challenges?.map((challenge) => {
+            return <Card key={challenge.id} card={challenge} challengelist isChallenge />
+          })}
         </div>
       </main>
     </>
@@ -44,3 +34,13 @@ const Challenges = () => {
 }
 
 export default Challenges
+
+export async function getStaticProps() {
+  const challenges = await getDocuments("challenges")
+
+  return {
+    props: {
+      challenges,
+    },
+  }
+}

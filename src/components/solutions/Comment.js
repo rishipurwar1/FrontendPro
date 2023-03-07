@@ -1,6 +1,5 @@
-import React from "react"
+import { useRouter } from "next/router"
 import moment from "moment"
-import { useParams } from "react-router-dom"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useFirestore } from "../../hooks/useFirestore"
@@ -17,7 +16,8 @@ const Comment = ({
   setActiveComment,
   parentId = null,
 }) => {
-  const { id: docID } = useParams()
+  const router = useRouter()
+  const { solutionId: docID } = router.query
   const { deleteDocument } = useFirestore(`solutions/${docID}/comments`)
   const { user } = useAuthContext()
 
@@ -48,6 +48,7 @@ const Comment = ({
           <p className="text-white mb-2 text-sm">
             <a
               href={`https://github.com/${comment.user.username}`}
+              className="no-underline hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >

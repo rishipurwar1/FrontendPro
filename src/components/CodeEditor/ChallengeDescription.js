@@ -1,19 +1,21 @@
-import { Image, Placeholder } from "cloudinary-react"
+import Image from "next/image"
 
 const ChallengeDescription = ({ solution }) => {
   return (
     <div className="bg-gray-800 h-full px-4 py-2 overflow-y-auto no-scrollbar">
       <h1 className="font-bold text-xl text-white mb-2">{solution?.title}</h1>
       <p className="text-sm text-gray-300 mb-4">{solution?.description}</p>
-      <Image
-        className="w-full"
-        cloudName="di5hmgowi"
-        alt={`${solution?.title} Challenge`}
-        loading="lazy"
-        public-id={solution?.images?.desktop || solution?.images?.cover}
-      >
-        <Placeholder type="pixelate" />
-      </Image>
+      <div className="relative aspect-[4/3]">
+        <Image
+          src={`${process.env.NEXT_PUBLIC_CLOUDINARY_ENDPOINT}/${
+            solution?.images?.desktop || solution?.images?.cover
+          }`}
+          width={400}
+          height={300}
+          className="w-full"
+          alt={`${solution?.title} Challenge`}
+        />
+      </div>
       <h2 className="mt-4 mb-2 text-white text-lg font-medium">
         Users should be able to:
       </h2>

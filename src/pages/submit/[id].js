@@ -1,15 +1,15 @@
 import { useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useRouter } from "next/router"
 
-import fetchSkills from "../api"
-import mainImg from "../assets/animated_illustrations/solution_animation.json"
-import Hero from "../components/homepage/Hero"
-import BaseInput from "../components/reusable/BaseInput"
-import Button from "../components/reusable/Button"
-import MultiSelectSearchInput from "../components/reusable/MultiSelectSearchInput"
-import Icons from "../components/SvgIcons/Icons"
-import { INPUTS } from "../constants"
-import { useFirestore } from "../hooks/useFirestore"
+import mainImg from "../../assets/animated_illustrations/solution_animation.json"
+import Hero from "../../components/homepage/Hero"
+import BaseInput from "../../components/reusable/BaseInput"
+import Button from "../../components/reusable/Button"
+import MultiSelectSearchInput from "../../components/reusable/MultiSelectSearchInput"
+import Icons from "../../components/SvgIcons/Icons"
+import { INPUTS } from "../../constants"
+import { useFirestore } from "../../hooks/useFirestore"
+import fetchSkills from "../../services"
 
 const INITIAL_STATE = {
   title: "",
@@ -32,8 +32,8 @@ const SKILLS = [
 
 const SolutionForm = () => {
   const [formData, setFormData] = useState(INITIAL_STATE)
-  const { id } = useParams()
-  const navigate = useNavigate()
+  const router = useRouter()
+  const { id } = router.query
   const { updateDocument, response } = useFirestore("solutions")
 
   const handleChange = (e) => {
@@ -50,10 +50,14 @@ const SolutionForm = () => {
       ...formData,
       completed: true,
     }
+
     try {
       await updateDocument(id, data)
       if (!response.error) {
-        navigate(`/solution/${id}`, { state: true })
+        router.push({
+          pathname: `/solution/${id}`,
+          query: { submit: true },
+        })
       }
     } catch (error) {
       console.log(error)

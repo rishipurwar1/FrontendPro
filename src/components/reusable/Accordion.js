@@ -1,5 +1,3 @@
-import React from "react"
-
 import { faqs } from "../../utils/data"
 
 import AccordionItem from "./AccordionItem"

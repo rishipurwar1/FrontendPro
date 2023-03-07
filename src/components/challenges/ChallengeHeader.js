@@ -1,6 +1,6 @@
-import React, { useState } from "react"
-import { Image, Placeholder, Transformation } from "cloudinary-react"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react"
+import Image from "next/image"
+import { useRouter } from "next/router"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import SignedOutLinks from "../layouts/SignedOutLinks"
@@ -13,7 +13,7 @@ import Icons from "../SvgIcons/Icons"
 
 const ChallengeHeader = ({ doc, button }) => {
   const { user } = useAuthContext()
-  const navigate = useNavigate()
+  const { push } = useRouter()
   const [isOpen, setIsOpen] = useState(false)
 
   const displayName = user
@@ -26,7 +26,7 @@ const ChallengeHeader = ({ doc, button }) => {
     <>
       <div className="mt-6 md:mt-0 mb-8">
         <h2 className="text-3xl font-extrabold text-white">
-          Hello {displayName}{" "}
+          Hello {displayName}
           <span
             className="animate-wave inline-block origin-[70%_70%]"
             role="img"
@@ -37,7 +37,7 @@ const ChallengeHeader = ({ doc, button }) => {
           ,
         </h2>
         <p className="text-lg font-normal text-white">
-          Today is a great day to start this challenge{" "}
+          Today is a great day to start this challenge
           <span role="img" aria-label="welcome">
             😊
           </span>
@@ -48,7 +48,7 @@ const ChallengeHeader = ({ doc, button }) => {
               {doc.title}
             </h2>
             <div className="py-2">
-              {doc.tags.map((tag) => (
+              {doc?.tags?.map((tag) => (
                 <Badge key={tag} name={tag} badgeColor="text-gray-300 bg-gray-900" />
               ))}
             </div>
@@ -60,7 +60,7 @@ const ChallengeHeader = ({ doc, button }) => {
                 variant="dark"
                 size="large"
                 className="font-medium"
-                onClick={() => navigate("/solutions")}
+                onClick={() => push("/solutions")}
               >
                 Explore Solutions
                 <Icons.ArrowRight className="ml-2" />
@@ -77,16 +77,14 @@ const ChallengeHeader = ({ doc, button }) => {
               </Button>
             )}
           </div>
-          <div className="">
+          <div className="relative aspect-[4/3]">
             <Image
-              className="rounded-xl xs:h-auto xs:w-full sm:w-auto sm:h-64 md:h-72 lg:h-80 xs:mb-4 sm:mb-0"
-              alt={`${doc.title} Challenge`}
-              cloudName="di5hmgowi"
-              public-id={doc.images.cover}
-            >
-              <Placeholder type="pixelate" />
-              <Transformation crop="fill" />
-            </Image>
+              src={`${process.env.NEXT_PUBLIC_CLOUDINARY_ENDPOINT}/${doc.images.cover}`}
+              width={400}
+              height={300}
+              className="rounded-xl xs:mb-4 sm:mb-0"
+              alt={`${doc.title} Frontend Challenge`}
+            />
           </div>
         </header>
       </div>

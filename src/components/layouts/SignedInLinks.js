@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useRef, useState } from "react"
+import Link from "next/link"
+import { useRouter } from "next/router"
 
 import { useLogout } from "../../hooks/useLogout"
 import useOnClickOutside from "../../hooks/useOnClickOutside"
@@ -10,7 +11,7 @@ const SignedInLinks = ({ profile }) => {
   const { logout } = useLogout()
   const [loading, setLoading] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-  const navigate = useNavigate()
+  const { push } = useRouter()
   const ref = useRef()
   useOnClickOutside(ref, () => setIsOpen(false), isOpen)
 
@@ -18,7 +19,7 @@ const SignedInLinks = ({ profile }) => {
     try {
       setLoading(true)
       await logout()
-      navigate("/")
+      push("/")
     } catch (error) {
       console.log(error.message)
     }
@@ -51,7 +52,7 @@ const SignedInLinks = ({ profile }) => {
           >
             <li>
               <Link
-                to="/mysolutions"
+                href="/mysolutions"
                 className="flex items-center py-2 px-4 hover:bg-gray-700 hover:text-white"
                 aria-label="my solutions"
               >

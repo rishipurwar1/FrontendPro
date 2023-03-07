@@ -1,6 +1,7 @@
 // library components
-import React, { useRef, useState } from "react"
-import { Link } from "react-router-dom"
+import { useRef, useState } from "react"
+import Link from "next/link"
+import { useRouter } from "next/router"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import useOnClickOutside from "../../hooks/useOnClickOutside"
@@ -13,11 +14,39 @@ import NavItem from "./NavItem"
 import SignedInLinks from "./SignedInLinks"
 import SignedOutLinks from "./SignedOutLinks"
 
+const NAV_ITEMS = [
+  {
+    href: "challenges",
+    icon: (
+      <Icons.Code className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
+    ),
+  },
+  {
+    href: "solutions",
+    icon: (
+      <Icons.MessageCode className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
+    ),
+  },
+  {
+    href: "resources",
+    icon: (
+      <Icons.BrowserCheck className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
+    ),
+  },
+  {
+    href: "roadmaps",
+    icon: (
+      <Icons.RoadMap className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
+    ),
+  },
+]
+
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { user } = useAuthContext()
-
+  const router = useRouter()
   const ref = useRef()
+
   useOnClickOutside(ref, () => setIsOpen(false), isOpen)
 
   const links = user ? (
@@ -53,7 +82,7 @@ const Sidebar = () => {
           {/* <!-- logo --> */}
           <div className="flex justify-between items-center">
             <Link
-              to="/"
+              href="/"
               className="text-white flex items-center space-x-1 text-center px-3 font-bold text-xl"
               aria-label="FrontendPro logo"
               title="frontendpro homepage"
@@ -78,45 +107,31 @@ const Sidebar = () => {
 
           {/* <!-- nav --> */}
           <aside className="xs:pt-4 md:pt-8 bg-gray-900">
-            <NavItem
-              item="challenges"
-              icon={
-                <Icons.Code className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
-              }
-              setIsOpen={setIsOpen}
-            />
-            <NavItem
-              item="solutions"
-              icon={
-                <Icons.MessageCode className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
-              }
-              setIsOpen={setIsOpen}
-            />
-            <NavItem
-              item="resources"
-              icon={
-                <Icons.BrowserCheck className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
-              }
-              setIsOpen={setIsOpen}
-            />
-            <NavItem
-              item="roadmaps"
-              icon={
-                <Icons.RoadMap className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
-              }
-              setIsOpen={setIsOpen}
-            />
-            <NavItem
-              item="github"
-              icon={
-                <BrandIcons.GitHub className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
-              }
-              setIsOpen={setIsOpen}
-            />
+            {NAV_ITEMS.map((item) => (
+              <NavItem
+                key={item.href}
+                item={item.href}
+                icon={item.icon}
+                setIsOpen={setIsOpen}
+                router={router}
+              />
+            ))}
           </aside>
 
-          {/* <!-- discord button --> */}
-          <div className="absolute bottom-10 w-full flex justify-center pr-4">
+          {/* <!-- discord and github button --> */}
+          <div className="absolute bottom-10 w-full flex flex-col space-y-4 justify-center pr-4 xl:pl-4 xl:pr-8">
+            <ButtonExternalLink
+              href="https://github.com/rishipurwar1/coding-space"
+              size="normal"
+              variant="primary"
+              className="font-medium md:hidden group transition duration-300"
+            >
+              <BrandIcons.GitHub
+                className="mr-2 -ml-1 group-hover:fill-current"
+                size={18}
+              />
+              <span>Star us on GitHub</span>
+            </ButtonExternalLink>
             <ButtonExternalLink
               href="https://discord.com/invite/FYSQUEw6xP"
               size="normal"

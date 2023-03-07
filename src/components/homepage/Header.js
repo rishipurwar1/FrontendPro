@@ -1,6 +1,12 @@
+import {
+  SandpackCodeEditor,
+  SandpackLayout,
+  SandpackPreview,
+  SandpackProvider,
+} from "@codesandbox/sandpack-react"
+
 import { FILES } from "../../constants"
 import ButtonLink from "../reusable/ButtonLink"
-import WebsitePreview from "../solutions/WebsitePreview"
 import Icons from "../SvgIcons/Icons"
 
 const Header = () => {
@@ -8,15 +14,13 @@ const Header = () => {
     <>
       <div className="text-white mx-auto max-w-screen-xl py-32 sm:pb-32 sm:pt-24">
         <div className="mx-auto max-w-5xl text-center">
-          <h1 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-transparent font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center">
+          <h1 className="block bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-transparent font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center">
             Become a Pro in Frontend Dev
             <span className="sm:block"> with FrontendPro.dev</span>
           </h1>
           <p className="mx-auto mt-4 max-w-3xl sm:text-xl sm:leading-relaxed">
-            Code your way to success by solving our real-world Frontend Challenges.
-            <br /> Join a community of like-minded developers, share your challenge&apos;s
-            solutions, and receive invaluable feedback to take your skills to the next
-            level 🚀.
+            Code your way to your dream job by solving our real-world Frontend Challenges
+            and Join a community of like-minded developers.
           </p>
           <div className="mt-8 flex justify-center space-x-4">
             <ButtonLink
@@ -46,7 +50,47 @@ const Header = () => {
           </div>
         </div>
         <div className="border border-gray-600 rounded-b-lg overflow-hidden">
-          <WebsitePreview files={FILES.demo} />
+          <SandpackProvider
+            template="vanilla"
+            files={FILES.demo}
+            options={{
+              activeFile: "index.html",
+            }}
+            theme={{
+              colors: {
+                surface1: "#1F2937",
+                surface2: "#4B5563",
+                surface3: "#3b3b4f",
+                accent: "#A855F7",
+              },
+              font: {
+                size: "14px",
+              },
+            }}
+          >
+            <SandpackLayout
+              style={{
+                border: "none",
+                borderRadius: "0",
+              }}
+            >
+              <SandpackCodeEditor
+                style={{
+                  height: "500px",
+                  overflowY: "scroll",
+                }}
+                wrapContent={true}
+              />
+              <SandpackPreview
+                style={{
+                  height: "500px",
+                  overflowY: "scroll",
+                }}
+                showOpenInCodeSandbox={false}
+                showRefreshButton={false}
+              />
+            </SandpackLayout>
+          </SandpackProvider>
         </div>
       </div>
     </>

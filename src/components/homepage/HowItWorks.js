@@ -11,13 +11,13 @@ const features = [
   },
   {
     name: "Find the right challenge",
-    info: "Choose the right challenge for you and start turning the design into a live website.",
+    info: "Choose the right Frontend challenge for you and start turning the design into a live website.",
     gradient: "bg-gradient-to-br from-yellow-400 to-orange-500",
     icon: <Icons.Code size="96" className="text-yellow-200" />,
   },
   {
     name: "Share your solution",
-    info: "After completing the challenge, you can share your work with the world and get feedback from the community members.",
+    info: "After completing the Frontend challenge, you can share your work with the world and get feedback from the community members.",
     gradient: "bg-gradient-to-br from-indigo-500 to-purple-600",
     icon: <Icons.Share size="96" className="text-purple-200" />,
   },

@@ -1,5 +1,7 @@
-import React, { useRef, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useRef, useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { useRouter } from "next/router"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useLogout } from "../../hooks/useLogout"
@@ -16,16 +18,15 @@ const AvatarDropdown = ({ className }) => {
   const [loading, setLoading] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const { user } = useAuthContext()
-  const navigate = useNavigate()
+  const { push } = useRouter()
   const ref = useRef()
-
   useOnClickOutside(ref, () => setIsOpen(false), isOpen)
 
   const signOut = async () => {
     try {
       setLoading(true)
       await logout()
-      navigate("/")
+      push("/")
     } catch (error) {
       console.log(error.message)
     }
@@ -58,7 +59,7 @@ const AvatarDropdown = ({ className }) => {
           >
             <li>
               <Link
-                to="/mysolutions"
+                href={`/${user.reloadUserInfo.screenName}/my-solutions`}
                 className="flex items-center py-2 px-4 hover:bg-gray-700 hover:text-white"
                 aria-label="my solutions"
               >
@@ -86,10 +87,12 @@ const AvatarDropdown = ({ className }) => {
           className="absolute right-0 top-14 z-10 w-56 rounded-lg shadow bg-gray-800"
         >
           <div className="p-4 flex flex-col items-center justify-center">
-            <img
-              className="w-16 h-16 ring-1 ring-indigo-600 rounded-full"
+            <Image
+              className="ring-1 ring-indigo-600 rounded-full"
               src={AVATAR_URL}
-              loading="lazy"
+              width={64}
+              height={64}
+              alt="avatar"
             />
             <h2 className="text-white my-3 font-semibold text-center">
               Sign up or log in using your GitHub account.

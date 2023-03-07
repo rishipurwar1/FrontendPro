@@ -1,7 +1,5 @@
-import React from "react"
-import { Image, Placeholder } from "cloudinary-react"
+import Link from "next/link"
 import moment from "moment"
-import { Link } from "react-router-dom"
 
 import { trimString } from "../../utils/shared"
 import DifficultyBar from "../challenges/DifficultyBar"
@@ -9,6 +7,7 @@ import Badge from "../reusable/Badge"
 import Icons from "../SvgIcons/Icons"
 
 import Avatar from "./Avatar"
+import BlurImage from "./BlurImage"
 
 const Card = ({ card, isChallenge, isSolution }) => {
   let href = ""
@@ -32,27 +31,17 @@ const Card = ({ card, isChallenge, isSolution }) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
-            className="rounded-lg h-64 transition duration-500 group-hover:scale-105"
-            cloudName="di5hmgowi"
-            alt={`${card.title} website`}
-            loading="lazy"
-            public-id={card.images.cover}
-          >
-            <Placeholder type="pixelate" />
-          </Image>
+          <BlurImage
+            imageSrc={`${process.env.NEXT_PUBLIC_CLOUDINARY_ENDPOINT}/${card.images.cover}`}
+            imageAlt={`${card.title} website`}
+          />
         </a>
       ) : (
-        <Link to={href} className="block overflow-hidden group mb-4 rounded-lg">
-          <Image
-            className="rounded-lg h-auto xl:h-64 transition duration-500 group-hover:scale-105"
-            cloudName="di5hmgowi"
-            alt={`${card.title} Challenge`}
-            loading="lazy"
-            public-id={card.images.cover}
-          >
-            <Placeholder type="pixelate" />
-          </Image>
+        <Link href={href} className="block overflow-hidden group mb-4 rounded-lg">
+          <BlurImage
+            imageSrc={`${process.env.NEXT_PUBLIC_CLOUDINARY_ENDPOINT}/${card.images.cover}`}
+            imageAlt={`${card.title} Frontend Challenge`}
+          />
         </Link>
       )}
       <div>
@@ -67,7 +56,7 @@ const Card = ({ card, isChallenge, isSolution }) => {
             {card.title}
           </a>
         ) : (
-          <Link to={href}>{card.title}</Link>
+          <Link href={href}>{card.title}</Link>
         )}
       </h3>
       <p className="font-light text-gray-400 mb-4">{trimString(card.description, 130)}</p>
@@ -80,7 +69,7 @@ const Card = ({ card, isChallenge, isSolution }) => {
           <div className="flex flex-col ml-4">
             <span className="text-base text-white font-medium">{card.author}</span>
             <span className="text-navItem text-sm text-gray-400">
-              {moment(card.createdAt.toDate()).fromNow()}
+              {moment(card.createdAt).fromNow()}
             </span>
           </div>
         </div>
@@ -88,7 +77,7 @@ const Card = ({ card, isChallenge, isSolution }) => {
       {/* Solution submit card */}
       {isSolution && isChallenge && (
         <Link
-          to={href}
+          href={href}
           className="inline-flex items-center justify-center font-medium text-blue-600 group"
         >
           Submit Solution

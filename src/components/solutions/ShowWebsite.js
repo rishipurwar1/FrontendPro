@@ -1,22 +1,17 @@
-import React, { useState } from "react"
-import { useParams } from "react-router-dom"
+import { useState } from "react"
+import { useRouter } from "next/router"
 
-import { useDocument } from "../../hooks/useDocument"
-import Spinner from "../reusable/Spinner"
 import Icons from "../SvgIcons/Icons"
 
 import WebsitePreview from "./WebsitePreview"
 
-const URL = window.location.origin
+const URL = "https://www.frontendpro.dev"
 
 const ShowWebsite = ({ url, title, github, isPlayground }) => {
   const siteView = ["w-96 mx-auto", "w-full"]
   const [view, setView] = useState(1)
-  const { id: solutionId } = useParams()
-  const { document: playground, isLoading } = useDocument(
-    `solutions/${solutionId}/playgrounds`,
-    "vanilla"
-  )
+  const router = useRouter()
+  const { solutionId } = router.query
 
   const onError = () => {
     console.log("error")
@@ -68,8 +63,7 @@ const ShowWebsite = ({ url, title, github, isPlayground }) => {
         </div>
       </div>
       <div className="relative border border-gray-700 h-screen">
-        {isPlayground &&
-          (!isLoading ? <WebsitePreview files={playground?.files} /> : <Spinner />)}
+        {isPlayground && <WebsitePreview />}
         {!isPlayground && (
           <iframe
             className="w-full h-screen overflow-y-scroll"

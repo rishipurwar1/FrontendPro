@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import { twMerge } from "tailwind-merge"
 
 const classes = {
@@ -31,7 +31,7 @@ const ButtonLink = ({
   ...props
 }) => (
   <Link
-    to={to}
+    href={to}
     className={twMerge([
       classes.base,
       classes.size[size],

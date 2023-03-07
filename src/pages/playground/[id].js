@@ -1,17 +1,19 @@
-import React, { useRef } from "react"
-import { Helmet } from "react-helmet"
+import { useRef } from "react"
+import Head from "next/head"
+import { useRouter } from "next/router"
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels"
-import { useParams } from "react-router-dom"
 
-import rocketLoader from "../assets/animated_illustrations/rocketLoader.json"
-import ChallengeDescription from "../components/CodeEditor/ChallengeDescription"
-import CodeEditorHeader from "../components/CodeEditor/CodeEditorHeader"
-import CustomSandpack from "../components/CodeEditor/CustomSandpack"
-import LottieAnimation from "../components/reusable/LottieAnimation"
-import { useDocument } from "../hooks/useDocument"
+import rocketLoader from "../../assets/animated_illustrations/rocketLoader.json"
+import ChallengeDescription from "../../components/CodeEditor/ChallengeDescription"
+import CodeEditorHeader from "../../components/CodeEditor/CodeEditorHeader"
+import CustomSandpack from "../../components/CodeEditor/CustomSandpack"
+import LottieAnimation from "../../components/reusable/LottieAnimation"
+import { useDocument } from "../../hooks/useDocument"
 
 const Playground = () => {
-  const { id } = useParams()
+  const router = useRouter()
+  const { id } = router.query
+
   const { document: solution } = useDocument("solutions", id)
 
   const descriptionRef = useRef(null)
@@ -25,11 +27,12 @@ const Playground = () => {
       </div>
     )
 
+  const title = `FrontendPro Playground - ${solution.title}`
   return (
     <>
-      <Helmet>
-        <title>FrontendPro Playground - {solution.title}</title>
-      </Helmet>
+      <Head>
+        <title>{title}</title>
+      </Head>
       <div className="relative grid grid-rows-[50px_minmax(0,_1fr)] grid-cols-1 h-screen xxl:max-w-screen-xxl mx-auto">
         <CodeEditorHeader
           descriptionRef={descriptionRef}
@@ -63,3 +66,7 @@ const Playground = () => {
 }
 
 export default Playground
+
+Playground.getLayout = function (page) {
+  return <>{page}</>
+}

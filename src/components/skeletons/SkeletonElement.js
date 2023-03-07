@@ -1,5 +1,3 @@
-import React from "react"
-
 const SkeletonElement = ({ type }) => {
   let tailwindClass = ""
   switch (type) {

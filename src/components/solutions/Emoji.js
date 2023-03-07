@@ -1,5 +1,6 @@
-import React, { useState } from "react"
-import { useParams } from "react-router-dom"
+import { useState } from "react"
+import Image from "next/image"
+import { useRouter } from "next/router"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useFirestore } from "../../hooks/useFirestore"
@@ -9,7 +10,9 @@ import Modal from "../reusable/Modal"
 const Emoji = ({ reactions, emoji }) => {
   const [showModal, setShowModal] = useState(false)
   const { user } = useAuthContext()
-  const { id: docID } = useParams()
+  const router = useRouter()
+  const { solutionId: docID } = router.query
+
   const { updateDocument, addSubCollectionDocumentWithCustomID } = useFirestore(
     `solutions/${docID}/reactions`
   )
@@ -56,16 +59,16 @@ const Emoji = ({ reactions, emoji }) => {
       })
     }
   }
+
   return (
     <>
       <span
-        key={emoji.label}
         className={`relative cursor-pointer px-2 py-2 transition-colors ${
           user && isUserClicked(emoji.slug) && "bg-gray-700"
         } hover:bg-gray-700 rounded-lg`}
         onClick={() => handleClick(emoji.slug)}
       >
-        <emoji.emoji width={32} height={32} />
+        <Image src={emoji.emoji} width={32} height={32} alt={emoji.label} />
         <span className="absolute -top-1 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-gray-700 rounded-full z-10">
           {reactions?.[emoji.slug]?.count || 0}
         </span>

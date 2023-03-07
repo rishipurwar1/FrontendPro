@@ -1,16 +1,13 @@
-import React from "react"
-import { Outlet } from "react-router-dom"
-
 import Footer from "./Footer"
 import Navbar from "./Navbar"
-import SideBar from "./SideBar"
+import Sidebar from "./Sidebar"
 
-const Layout = () => {
+const Layout = ({ children }) => {
   return (
     <div className="relative grid min-h-screen md:grid-cols-layout-tablet xl:grid-cols-layout-desktop grid-rows-layout-desktop md:gap-6 xxl:max-w-screen-xxl mx-auto">
       <Navbar />
-      <SideBar />
-      <Outlet />
+      <Sidebar />
+      {children}
       <Footer />
     </div>
   )

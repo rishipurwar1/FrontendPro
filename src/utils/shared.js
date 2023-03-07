@@ -36,3 +36,14 @@ export const getLanguageOfFile = (filePath) => {
       return "javascript"
   }
 }
+
+export function postToJSON(doc) {
+  const data = doc.data()
+
+  return {
+    ...data,
+    id: doc.id,
+    createdAt: data?.createdAt.toMillis() || 0,
+    updatedAt: data?.updatedAt?.toMillis() || 0,
+  }
+}

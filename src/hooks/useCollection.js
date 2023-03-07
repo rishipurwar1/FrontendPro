@@ -48,7 +48,12 @@ export const useCollection = (c, q, l, o, userID, openTab, challengeID) => {
 
       snapshot.docs.forEach(
         (doc) => {
-          results.push({ ...doc.data(), id: doc.id })
+          results.push({
+            ...doc.data(),
+            id: doc.id,
+            createdAt: doc.data()?.createdAt.toMillis() || 0,
+            updatedAt: doc.data()?.updatedAt?.toMillis() || 0,
+          })
         },
         (error) => {
           console.log(error)

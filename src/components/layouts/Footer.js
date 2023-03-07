@@ -1,5 +1,3 @@
-import React from "react"
-
 import BrandIcons from "../SvgIcons/BrandIcons"
 import EmojiIcons from "../SvgIcons/EmojiIcons"
 import Icons from "../SvgIcons/Icons"

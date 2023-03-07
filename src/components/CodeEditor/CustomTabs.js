@@ -17,7 +17,6 @@ const CustomTabs = ({ activeFile, setActiveFile }) => {
           className={` ${name === activeFile ? "text-purple-500" : "text-white"}`}
           onClick={() => setActiveFile(name)}
           data-active={name === activeFile}
-          aria-selected={name === activeFile}
         >
           {getFileName(name)}
         </button>

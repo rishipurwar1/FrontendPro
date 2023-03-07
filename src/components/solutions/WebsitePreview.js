@@ -1,20 +1,35 @@
-import React from "react"
-import { useLocation } from "react-router-dom"
+import { useRouter } from "next/router"
 
 import {
-  SandpackCodeEditor,
   SandpackLayout,
   SandpackPreview,
   SandpackProvider,
 } from "@codesandbox/sandpack-react"
 
-const WebsitePreview = ({ files }) => {
-  const { pathname } = useLocation()
+import { FILES } from "../../constants"
+import { useDocument } from "../../hooks/useDocument"
+import Spinner from "../reusable/Spinner"
+
+const WebsitePreview = () => {
+  const router = useRouter()
+  const { solutionId } = router.query
+  const { document: files, isLoading } = useDocument(
+    `solutions/${solutionId}/playgrounds`,
+    "vanilla"
+  )
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-full">
+        <Spinner />
+      </div>
+    )
+  }
 
   return (
     <SandpackProvider
       template="vanilla"
-      files={files}
+      files={files?.files || FILES.vanilla}
       options={{
         activeFile: "index.html",
       }}
@@ -36,18 +51,9 @@ const WebsitePreview = ({ files }) => {
           borderRadius: "0",
         }}
       >
-        {pathname === "/" && (
-          <SandpackCodeEditor
-            style={{
-              height: "500px",
-              overflowY: "scroll",
-            }}
-            wrapContent={true}
-          />
-        )}
         <SandpackPreview
           style={{
-            height: pathname === "/" ? "500px" : "100vh",
+            height: "100vh",
             overflowY: "scroll",
           }}
           showOpenInCodeSandbox={false}

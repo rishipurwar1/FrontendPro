@@ -1,5 +1,3 @@
-import React from "react"
-
 const Badge = ({ badgeColor, name }) => {
   return (
     <span

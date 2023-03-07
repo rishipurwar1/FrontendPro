@@ -1,5 +1,5 @@
+import { useRouter } from "next/router"
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels"
-import { useParams } from "react-router-dom"
 
 import {
   SandpackConsole,
@@ -16,7 +16,8 @@ import LottieAnimation from "../reusable/LottieAnimation"
 import CustomCodeEditor from "./CustomCodeEditor"
 
 const CustomSandpack = ({ previewRef, consoleRef, solution }) => {
-  const { id } = useParams()
+  const router = useRouter()
+  const { id } = router.query
   const { document: playground, isLoading } = useDocument(
     `solutions/${id}/playgrounds`,
     "vanilla"

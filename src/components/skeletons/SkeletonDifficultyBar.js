@@ -1,5 +1,3 @@
-import React from "react"
-
 import SkeletonBadge from "../skeletons/SkeletonBadge"
 
 const SkeletonDifficultyBar = () => {

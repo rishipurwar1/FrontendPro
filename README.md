@@ -1,8 +1,8 @@
 # 🚀 FrontendPro
 
-FrontendPro is the platform where we aim to provide lots of different real-world UI-based challenges that can help developers to improve their web and mobile development skills.
+FrontendPro offer a diverse range of real-world frontend challenges designed to help developers hone their frontend skills. Whether you're a beginner or an experienced developer, FrontendPro is the perfect platform to take your skills to the next level. Start your frontend development journey today with FrontendPro!
 
-![FrontendPro](https://i.imgur.com/EPPICCO.gif)
+![FrontendPro](https://res.cloudinary.com/di5hmgowi/image/upload/v1675420804/codingspace_assets/frontendpro-og-image.png)
 
 ## 👨‍💻 Demo
 
@@ -53,13 +53,13 @@ touch .env
 5. Enter your Firebase Config in `.env` like this
 
 ```bash
-REACT_APP_API_KEY="YOUR_FIREBASE_API_KEY"
-REACT_APP_AUTH_DOMAIN="YOUR_FIREBASE_AUTH_DOMAIN"
-REACT_APP_PROJECT_ID="YOUR_FIREBASE_PROJECT_ID"
-REACT_APP_STORAGE_BUCKET="YOUR_FIREBASE_STORAGE_BUCKET"
-REACT_APP_MESSAGING_SENDER_ID="YOUR_FIREBASE_MESSAGING_SENDER_ID"
-REACT_APP_APP_ID="YOUR_FIREBASE_APP_ID"
-REACT_APP_MEASUREMENT_ID = "YOUR_FIREBASE_MEASUREMENT_ID"
+NEXT_PUBLIC_API_KEY="YOUR_FIREBASE_API_KEY"
+NEXT_PUBLIC_AUTH_DOMAIN="YOUR_FIREBASE_AUTH_DOMAIN"
+NEXT_PUBLIC_PROJECT_ID="YOUR_FIREBASE_PROJECT_ID"
+NEXT_PUBLIC_STORAGE_BUCKET="YOUR_FIREBASE_STORAGE_BUCKET"
+NEXT_PUBLIC_MESSAGING_SENDER_ID="YOUR_FIREBASE_MESSAGING_SENDER_ID"
+NEXT_PUBLIC_APP_ID="YOUR_FIREBASE_APP_ID"
+NEXT_PUBLIC_MEASUREMENT_ID = "YOUR_FIREBASE_MEASUREMENT_ID"
 ```
 
 6. Install dependencies

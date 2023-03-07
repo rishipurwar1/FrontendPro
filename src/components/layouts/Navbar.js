@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useLocation } from "react-router-dom"
+import { useRouter } from "next/router"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import AvatarDropdown from "../reusable/AvatarDropdown"
@@ -10,13 +10,13 @@ import SignedOutLinks from "./SignedOutLinks"
 
 const Navbar = ({ classNames }) => {
   const [banner, setBanner] = useState(true)
-  const { pathname } = useLocation()
+  const { asPath } = useRouter()
   const { user } = useAuthContext()
   const links = user ? <AvatarDropdown /> : <SignedOutLinks variant="primary" />
 
   return (
     <div>
-      {pathname === "/" && banner && (
+      {asPath === "/" && banner && (
         <div className="hidden md:block relative bg-indigo-600 px-4 py-3 text-white">
           <p className="text-center text-sm font-medium">
             🎉Exciting News: CodingSpace is now{" "}

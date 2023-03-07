@@ -1,5 +1,3 @@
-import React from "react"
-
 import Icons from "../SvgIcons/Icons"
 
 const Modal = ({ body, footer, setIsOpen }) => {
@@ -18,7 +16,7 @@ const Modal = ({ body, footer, setIsOpen }) => {
         onClick={handleClick}
       ></div>
       <div
-        className="relative top-[40%] md:top-auto p-4 w-full max-w-md h-full md:h-auto"
+        className="relative top-[40%] md:top-auto p-4 w-full max-w-[30rem] h-full md:h-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative p-4 text-center rounded-lg shadow bg-gray-800 sm:p-5">

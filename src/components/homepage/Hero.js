@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useRouter } from "next/router"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import SignedOutLinks from "../layouts/SignedOutLinks"
@@ -12,7 +12,7 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, icon, route }) => 
       ? user?.reloadUserInfo.screenName
       : user?.displayName.split(" ")[0]
     : "Coder"
-  const navigate = useNavigate()
+  const { push } = useRouter()
 
   return (
     <div className="mt-6 md:mt-2 mb-8">
@@ -48,7 +48,7 @@ const Hero = ({ homepage, title, subTitle, mainImg, btnTitle, icon, route }) => 
               size="large"
               variant="dark"
               className="font-medium"
-              onClick={() => navigate(route)}
+              onClick={() => push(route)}
             >
               {btnTitle}
               {icon}

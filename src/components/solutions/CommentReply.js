@@ -1,6 +1,5 @@
-import React from "react"
+import { useRouter } from "next/router"
 import moment from "moment"
-import { useParams } from "react-router-dom"
 
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useFirestore } from "../../hooks/useFirestore"
@@ -16,7 +15,8 @@ const CommentReply = ({
   setActiveComment,
   parentId = null,
 }) => {
-  const { id: docID } = useParams()
+  const router = useRouter()
+  const { solutionId: docID } = router.query
   const { updateDocument } = useFirestore(`solutions/${docID}/comments`)
 
   const { user } = useAuthContext()
@@ -51,6 +51,7 @@ const CommentReply = ({
           <p className="text-gray-300 mb-2">
             <a
               href={`https://github.com/${comment.user.username}`}
+              className="no-underline hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -62,7 +63,7 @@ const CommentReply = ({
               {moment(comment.createdAt.toDate()).fromNow()}
             </small>
           </p>
-          {!isEditing && <p className="text-white">{comment.content}</p>}
+          {!isEditing && <p className="text-gray-400">{comment.content}</p>}
           <div className="mt-2 flex">
             {user && (
               <button

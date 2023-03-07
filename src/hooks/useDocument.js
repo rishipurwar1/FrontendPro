@@ -11,6 +11,7 @@ export const useDocument = (c, id) => {
 
   // realtime document data
   useEffect(() => {
+    if (!id) return
     const ref = doc(db, c, id)
     const unsubscribe = onSnapshot(
       ref,

@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.active {
-  @apply bg-indigo-600 focus:ring-indigo-800;
+.iframe-embed {
+  height: 600px;
 }

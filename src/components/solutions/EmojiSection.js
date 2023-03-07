@@ -1,5 +1,4 @@
-import React from "react"
-import { useParams } from "react-router-dom"
+import { useRouter } from "next/router"
 
 import { useDocument } from "../../hooks/useDocument"
 import { DEFAULT_EMOJI_OPTIONS } from "../../utils/emojis"
@@ -7,7 +6,8 @@ import { DEFAULT_EMOJI_OPTIONS } from "../../utils/emojis"
 import Emoji from "./Emoji"
 
 const EmojiSection = () => {
-  const { id: docID } = useParams()
+  const router = useRouter()
+  const { solutionId: docID } = router.query
   const { document: reactions } = useDocument(`solutions/${docID}/reactions`, "emojis")
 
   return (

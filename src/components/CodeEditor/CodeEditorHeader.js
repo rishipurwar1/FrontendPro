@@ -1,5 +1,4 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 
 import AvatarDropdown from "../reusable/AvatarDropdown"
 import Tooltip from "../reusable/Tooltip"
@@ -30,7 +29,7 @@ const CodeEditorHeader = ({ descriptionRef, previewRef, consoleRef }) => {
     <nav className="row-start-1 row-end-2 px-2 py-3 bg-gray-900">
       <ul className="flex justify-between items-center">
         <Link
-          to="/"
+          href="/"
           className="text-white flex items-center space-x-1 uppercase text-center font-bold text-lg"
           aria-label="FrontendPro logo"
           title="FrontendPro homepage"

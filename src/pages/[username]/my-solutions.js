@@ -1,24 +1,25 @@
-import React, { useEffect } from "react"
-import { Helmet } from "react-helmet"
+import { useEffect } from "react"
+import Head from "next/head"
+import { useRouter } from "next/router"
 
-import mainImg from "../assets/animated_illustrations/solution_animation.json"
-import Hero from "../components/homepage/Hero"
-import Tabs from "../components/reusable/Tabs"
-import Icons from "../components/SvgIcons/Icons"
-import { analytics, logEvent } from "../firebase/config"
-import { useAuthContext } from "../hooks/useAuthContext"
+import mainImg from "../../assets/animated_illustrations/solution_animation.json"
+import Hero from "../../components/homepage/Hero"
+import Tabs from "../../components/reusable/Tabs"
+import Icons from "../../components/SvgIcons/Icons"
+import { useAuthContext } from "../../hooks/useAuthContext"
 
 const MySolutions = () => {
-  const { user } = useAuthContext()
+  const { user, authIsReady } = useAuthContext()
+  const router = useRouter()
 
   useEffect(() => {
-    logEvent(analytics, "my_solutions_page_visited")
-  }, [])
+    if (authIsReady && user === null) router.push("/")
+  }, [authIsReady])
   return (
     <>
-      <Helmet>
+      <Head>
         <title>FrontendPro - My Solutions</title>
-      </Helmet>
+      </Head>
       <div className="sm:ml-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3 text-purple-50 min-h-screen">
         <Hero
           title="Here you can find all the solutions and ongoing challenges details."

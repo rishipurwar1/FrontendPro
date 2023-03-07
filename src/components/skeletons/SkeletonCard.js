@@ -1,5 +1,3 @@
-import React from "react"
-
 import Icons from "../SvgIcons/Icons"
 
 import SkeletonBadge from "./SkeletonBadge"

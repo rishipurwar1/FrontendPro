@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 
 import { useCollection } from "../../hooks/useCollection"
 import SkeletonCard from "../skeletons/SkeletonCard"

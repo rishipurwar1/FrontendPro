@@ -29,10 +29,7 @@ const DownloadButton = ({
   )
 
   const downloadAssets = async () => {
-    if (documents.length > 0) {
-      // Todo: Replace this with a toast notification
-      console.log("You have already downloaded the starter code for this challenge.")
-    } else {
+    if (documents.length === 0) {
       await addDocument({
         ...solutionDetails[0],
         author:

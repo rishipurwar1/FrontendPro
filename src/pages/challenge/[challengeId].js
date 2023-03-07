@@ -1,67 +1,47 @@
-import React, { useEffect, useState } from "react"
-import { Helmet } from "react-helmet"
-import { useParams } from "react-router-dom"
+import { useState } from "react"
+import Head from "next/head"
 
-import rocketLoader from "../assets/animated_illustrations/rocketLoader.json"
 // Components
-import ChallengeHeader from "../components/challenges/ChallengeHeader"
-import SignedOutLinks from "../components/layouts/SignedOutLinks"
-import Accordion from "../components/reusable/Accordion"
-import Button from "../components/reusable/Button"
-import ContributorProfile from "../components/reusable/ContributorProfile"
-import DownloadButton from "../components/reusable/DownloadButton"
-import DropDown from "../components/reusable/DropDown"
-import LottieAnimation from "../components/reusable/LottieAnimation"
-import Modal from "../components/reusable/Modal"
-import StartCodingButton from "../components/reusable/StartCodingButton"
-import Icons from "../components/SvgIcons/Icons"
-import { analytics, logEvent } from "../firebase/config"
-import { useAuthContext } from "../hooks/useAuthContext"
-import { useDocument } from "../hooks/useDocument"
+import ChallengeHeader from "../../components/challenges/ChallengeHeader"
+import SignedOutLinks from "../../components/layouts/SignedOutLinks"
+import Accordion from "../../components/reusable/Accordion"
+import Button from "../../components/reusable/Button"
+import ContributorProfile from "../../components/reusable/ContributorProfile"
+import DownloadButton from "../../components/reusable/DownloadButton"
+import DropDown from "../../components/reusable/DropDown"
+import Modal from "../../components/reusable/Modal"
+import StartCodingButton from "../../components/reusable/StartCodingButton"
+import Icons from "../../components/SvgIcons/Icons"
+import { getDocument, getDocuments } from "../../firebase/firestore"
+import { useAuthContext } from "../../hooks/useAuthContext"
 
-const ChallengeDetail = () => {
-  const { id } = useParams()
-  const { document } = useDocument("challenges", id)
+const Challenge = ({ challenge }) => {
   const { user } = useAuthContext()
   const [figmaURL, setFigmaURL] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
 
-  useEffect(() => {
-    if (document) {
-      logEvent(
-        analytics,
-        `${document?.title?.replaceAll(" ", "_")}_challenge_details_page_visited`
-      )
-    }
-  }, [document])
-
-  if (!document)
-    return (
-      <div className="sm:ml-0 pr-5 py-52 row-start-2 row-end-3 col-start-1 md:col-start-2 col-end-3 place-self-center">
-        <LottieAnimation animationDataFile={rocketLoader} />
-      </div>
-    )
+  const title = `FrontendPro Challenge - ${challenge.title}`
 
   return (
     <>
-      <Helmet>
-        <title>FrontendPro Challenge - {document.title}</title>
-      </Helmet>
+      <Head>
+        <title>{title}</title>
+      </Head>
       <div className="mb-6 md:mb-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
-        <ChallengeHeader doc={document} />
+        <ChallengeHeader doc={challenge} />
         <div className="overflow-hidden relative">
           <iframe
             className="iframe-embed border-gray-50 w-full -mb-12"
             src={`https://www.figma.com/embed?embed_host=share&url=${
               figmaURL === 0
-                ? document.figmaURLs.desktop || document.figmaURLs.mobile
-                : document.figmaURLs.mobile
+                ? challenge.figmaURLs.desktop || challenge.figmaURLs.mobile
+                : challenge.figmaURLs.mobile
             }`}
             title={`screen-${figmaURL}`}
             loading="lazy"
             allowFullScreen
           ></iframe>
-          {document.figmaURLs.desktop && (
+          {challenge.figmaURLs.desktop && (
             <DropDown setFigmaURL={(index) => setFigmaURL(index)} />
           )}
         </div>
@@ -71,7 +51,7 @@ const ChallengeDetail = () => {
               <h2 className="text-3xl md:text-4xl font-extrabold pb-2 text-indigo-600">
                 About the Challenge
               </h2>
-              <p className="text-gray-300">{document.description}</p>
+              <p className="text-gray-300">{challenge.description}</p>
               <p className="text-gray-300 pt-4">
                 You can use as many (or as few) tools, libraries, and frameworks as
                 you&apos;d like. If you&apos;re trying to learn something new, this might
@@ -81,7 +61,7 @@ const ChallengeDetail = () => {
                 Users should be able to:
               </h3>
               <ul className="text-gray-300 list-disc pl-5">
-                {document.requirements.map((requirement, index) => (
+                {challenge.requirements.map((requirement, index) => (
                   <li key={index} className="mb-2">
                     {requirement}
                   </li>
@@ -93,8 +73,8 @@ const ChallengeDetail = () => {
                 Taking your Project to the Next Level
               </h2>
               <ul className="text-gray-300 list-disc pl-5">
-                {document?.bonus &&
-                  document?.bonus.map((bonus, index) => (
+                {challenge?.bonus &&
+                  challenge?.bonus.map((bonus, index) => (
                     <li key={index} className="mb-2">
                       {bonus}
                     </li>
@@ -105,13 +85,13 @@ const ChallengeDetail = () => {
                 </li>
               </ul>
             </div>
-            {document?.resources && (
+            {challenge?.resources && (
               <div className="mt-10">
                 <h2 className="text-3xl md:text-4xl font-extrabold pb-2 text-indigo-600">
                   Resources
                 </h2>
                 <ul className="text-gray-300 list-disc pl-5">
-                  {document?.resources.map((resource, index) => (
+                  {challenge?.resources.map((resource, index) => (
                     <li key={index}>
                       {" "}
                       <a
@@ -132,7 +112,7 @@ const ChallengeDetail = () => {
             <h2 className="text-3xl md:text-4xl font-extrabold pb-1 text-indigo-600">
               What you&apos;ll Learn?
             </h2>
-            <p className="text-gray-300 pb-2">{`${document.learning} So what are you waiting for?`}</p>
+            <p className="text-gray-300 pb-2">{`${challenge.learning} So what are you waiting for?`}</p>
             <div className="mt-10">
               <h2 className="text-3xl md:text-4xl font-bold pb-2 text-indigo-600">
                 Getting Started
@@ -180,7 +160,7 @@ const ChallengeDetail = () => {
                     👍
                   </span>
                 </li>
-                {/* {document.requirements.map((requirement, index) => (
+                {/* {challenge.requirements.map((requirement, index) => (
               <li key={index}>{requirement}</li>
             ))} */}
               </ul>
@@ -219,12 +199,12 @@ const ChallengeDetail = () => {
               Start Challenge
               <Icons.Rocket size={18} className="ml-2 -mr-1 group-hover:animate-move" />
             </Button>
-            {document.contributor && (
+            {challenge.contributor && (
               <div className="mt-10">
                 <h2 className="text-3xl md:text-4xl font-bold pb-2 text-indigo-600">
                   Contributed By:
                 </h2>
-                <ContributorProfile contributor={document.contributor} />
+                <ContributorProfile contributor={challenge.contributor} />
               </div>
             )}
           </div>
@@ -272,8 +252,8 @@ const ChallengeDetail = () => {
           }
           footer={
             <>
-              <StartCodingButton document={document} setIsOpen={setIsOpen} />
-              <DownloadButton document={document} setIsOpen={setIsOpen} />
+              <StartCodingButton challenge={challenge} setIsOpen={setIsOpen} />
+              <DownloadButton challenge={challenge} setIsOpen={setIsOpen} />
             </>
           }
         />
@@ -282,4 +262,28 @@ const ChallengeDetail = () => {
   )
 }
 
-export default ChallengeDetail
+export default Challenge
+
+export async function getStaticPaths() {
+  const challenges = await getDocuments("challenges")
+
+  const paths = challenges.map((doc) => {
+    return {
+      params: { challengeId: doc.id },
+    }
+  })
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
+export async function getStaticProps(context) {
+  const id = context.params.challengeId
+  const challenge = await getDocument("challenges", id)
+
+  return {
+    props: { challenge },
+  }
+}

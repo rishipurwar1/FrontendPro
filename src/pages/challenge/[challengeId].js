@@ -252,8 +252,8 @@ const Challenge = ({ challenge }) => {
           }
           footer={
             <>
-              <StartCodingButton challenge={challenge} setIsOpen={setIsOpen} />
-              <DownloadButton challenge={challenge} setIsOpen={setIsOpen} />
+              <StartCodingButton document={challenge} setIsOpen={setIsOpen} />
+              <DownloadButton document={challenge} setIsOpen={setIsOpen} />
             </>
           }
         />

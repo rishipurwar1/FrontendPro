@@ -4,15 +4,11 @@ import solutionLottie from "../assets/animated_illustrations/solution_animation.
 import Hero from "../components/homepage/Hero"
 import Card from "../components/reusable/Card"
 import Icons from "../components/SvgIcons/Icons"
-// import { analytics, logEvent } from "../firebase/config"
 import { getDocuments } from "../firebase/firestore"
 import { useAuthContext } from "../hooks/useAuthContext"
 
 const Solutions = ({ solutions }) => {
   const { user } = useAuthContext()
-  // useEffect(() => {
-  //   logEvent(analytics, "solutions_page_visited")
-  // }, [])
   return (
     <>
       <Head>

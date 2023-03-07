@@ -90,6 +90,10 @@ Contributions are what make the open source community such an amazing place to l
 
 You can join our Discord Community, here is the [invite link](https://discord.gg/FYSQUEw6xP).
 
+## 🤝 Sponsors & support
+
+If you like the project, you can become a sponsor at [GitHub Sponsors](https://github.com/sponsors/rishipurwar1).
+
 ## 📇 Contact
 
 Rishi Purwar - [@thefierycoder](https://twitter.com/thefierycoder)

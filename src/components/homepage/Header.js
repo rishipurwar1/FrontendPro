@@ -15,8 +15,8 @@ const Header = () => {
       <div className="text-white mx-auto max-w-screen-xl py-32 sm:pb-32 sm:pt-24">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="block bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-transparent font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center">
-            Become a Pro in Frontend Dev
-            <span className="sm:block"> with FrontendPro.dev</span>
+            Become a Pro in Frontend Dev <br className="hidden sm:block" /> with
+            FrontendPro.dev
           </h1>
           <p className="mx-auto mt-4 max-w-3xl sm:text-xl sm:leading-relaxed">
             Code your way to your dream job by solving our real-world Frontend Challenges

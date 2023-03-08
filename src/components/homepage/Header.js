@@ -18,19 +18,19 @@ const Header = () => {
             Become a Pro in Frontend Dev <br className="hidden sm:block" /> with
             FrontendPro.dev
           </h1>
-          <p className="mx-auto mt-4 max-w-3xl sm:text-xl sm:leading-relaxed">
-            Code your way to your dream job by solving our real-world Frontend Challenges
-            and Join a community of like-minded developers.
-          </p>
+          <h2 className="mx-auto mt-4 max-w-3xl sm:text-xl sm:leading-relaxed">
+            Code your way to your dream job with our Frontend Coding Challenges and build
+            real-world Frontend Projects to take your skills to the next level.
+          </h2>
           <div className="mt-8 flex justify-center space-x-4">
             <ButtonLink
               variant="primary"
               size="large"
-              className="font-semibold flex items-center group"
+              className="font-medium flex items-center px-6 py-4 text-lg"
               to="/challenges"
             >
-              <span>Get started building</span>
-              <Icons.Rocket size={20} className="ml-2 -mr-1 group-hover:animate-move" />
+              <span>Start Building Now</span>
+              <Icons.Rocket size={20} className="ml-2 -mr-1 animate-move" />
             </ButtonLink>
           </div>
         </div>

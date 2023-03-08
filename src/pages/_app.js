@@ -17,19 +17,22 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="twitter:site" content="@FrontendProHQ" />
         <meta
           name="keywords"
-          content="FRONTEND CHALLENGES, FRONTEND DEVELOPMENT CHALLENGES, CODING CHALLENGES, FRONTEND PROJECTS, WEB DEVELOPMENT, FRONTEND DEVELOPMENT PROJECTS IDEA, FRONTEND INTERVIEW QUESTIONS, WEB DEVELOPMENT CHALLENGES"
+          content="FRONTEND CHALLENGES, FRONTEND DEVELOPMENT CHALLENGES, FRONTEND CODING CHALLENGES, FRONTEND PROJECTS, WEB DEVELOPMENT, FRONTEND DEVELOPMENT PROJECTS IDEA, FRONTEND INTERVIEW QUESTIONS, WEB DEVELOPMENT CHALLENGES, HTML CSS AND JAVASCRIPT PROJECTS, FRONTEND PORTFOLIO PROJECTS, BEST FRONTEND PROJECTS FOR RESUME"
         />
         <meta content="FrontendPro" property="og:site_name" />
         <meta content="image/png" property="og:image:type" />
         <meta content="1200" property="og:image:width" />
         <meta content="628" property="og:image:height" />
         <meta content="summary_large_image" name="twitter:card" />
+        <title>
+          FrontendPro - Become a Pro in Frontend Dev with our Frontend Challenges
+        </title>
         <meta
-          content="Code your way to your dream job by solving our real-world Frontend Challenges and Join a community of like-minded developers to take your skills to the next level."
+          content="Code your way to your dream job with our Frontend Coding Challenges and build real-world Frontend Projects to take your skills to the next level."
           name="description"
         />
         <meta
-          content="Code your way to your dream job by solving our real-world Frontend Challenges and Join a community of like-minded developers to take your skills to the next level."
+          content="Code your way to your dream job with our Frontend Coding Challenges and build real-world Frontend Projects to take your skills to the next level."
           property="og:description"
         />
         <meta
@@ -50,7 +53,7 @@ export default function MyApp({ Component, pageProps }) {
           name="twitter:title"
         />
         <meta
-          content="Code your way to your dream job by solving our real-world Frontend Challenges and Join a community of like-minded developers to take your skills to the next level."
+          content="Code your way to your dream job with our Frontend Coding Challenges and build real-world Frontend Projects to take your skills to the next level."
           name="twitter:description"
         />
         <meta
@@ -63,9 +66,6 @@ export default function MyApp({ Component, pageProps }) {
           name="twitter:image:alt"
           content="FrontendPro - Become a Pro in Frontend Dev with our Frontend Challenges"
         />
-        <title>
-          FrontendPro - Become a Pro in Frontend Dev with our Frontend Challenges
-        </title>
       </Head>
       <AuthContextProvider>
         {renderWithLayout(<Component {...pageProps} />)}

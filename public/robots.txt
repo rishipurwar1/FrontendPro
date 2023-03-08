@@ -1,3 +1,14 @@
-# https://www.robotstxt.org/robotstxt.html
+# *
 User-agent: *
-Disallow:
+Disallow: /*/my-solutions
+
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.frontendpro.dev
+
+# Sitemaps
+Sitemap: https://www.frontendpro.dev/sitemap.xml
+Sitemap: https://www.frontendpro.dev/server-sitemap.xml

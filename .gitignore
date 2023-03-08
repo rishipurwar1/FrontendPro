@@ -25,3 +25,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .eslintcache
+
+/public/robots.txt
+/public/sitemap.xml
+/public/sitemap-0.xml

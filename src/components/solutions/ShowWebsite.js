@@ -25,7 +25,7 @@ const ShowWebsite = ({ url, title, github, isPlayground }) => {
           <span className="w-3 h-3 rounded-full bg-yellow-400 inline-block mx-2"></span>
           <span className="w-3 h-3 rounded-full inline-block bg-green-500"></span>
         </div>
-        <div className="flex">
+        <div className="hidden md:flex">
           <button
             className="flex items-center text-gray-400 border border-gray-600 bg-gray-700 transition hover:text-white hover:bg-gray-800 focus:outline-none p-2 mr-2 rounded-lg"
             onClick={() => setView(1)}

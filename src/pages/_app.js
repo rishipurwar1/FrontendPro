@@ -4,6 +4,7 @@ import Layout from "../components/layouts/Layout"
 import { AuthContextProvider } from "../context/AuthContext"
 
 import "../styles/globals.css"
+import { Analytics } from "@vercel/analytics/react"
 
 export default function MyApp({ Component, pageProps }) {
   const renderWithLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>)
@@ -70,6 +71,7 @@ export default function MyApp({ Component, pageProps }) {
       <AuthContextProvider>
         {renderWithLayout(<Component {...pageProps} />)}
       </AuthContextProvider>
+      <Analytics />
     </>
   )
 }

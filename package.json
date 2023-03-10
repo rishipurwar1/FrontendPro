@@ -9,6 +9,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "@typeform/embed-react": "^1.1.1",
+    "@vercel/analytics": "^0.1.11",
     "cloudinary-react": "^1.6.7",
     "emmet-monaco-es": "^5.1.2",
     "firebase": "^9.6.10",

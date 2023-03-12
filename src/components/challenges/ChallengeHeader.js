@@ -42,7 +42,7 @@ const ChallengeHeader = ({ doc, button }) => {
             😊
           </span>
         </p>
-        <header className="mt-4 flex items-center xs:justify-center sm:justify-between bg-indigo-600 rounded-lg shadow-md xs:px-5 md:px-8 py-4 xs:h-full sm:max-h-96 xs:flex-wrap-reverse sm:flex-nowrap">
+        <header className="mt-4 flex items-center xs:justify-center sm:justify-between bg-indigo-600 rounded-lg shadow-md xs:px-5 md:px-8 py-6 h-auto xs:flex-wrap-reverse sm:flex-nowrap">
           <div className="xs:w-full sm:w-1/2">
             <h2 className="leading-snug xs:text-3xl md:text-4xl lg:text-5xl text-white font-bold pb-2">
               {doc.title}
@@ -52,7 +52,7 @@ const ChallengeHeader = ({ doc, button }) => {
                 <Badge key={tag} name={tag} badgeColor="text-gray-300 bg-gray-900" />
               ))}
             </div>
-            <p className="text-base mb-4 xs:w-full sm:w-4/5 lg:w-3/5 text-gray-200">
+            <p className="text-base mb-4 xs:w-full sm:w-4/5 lg:w-4/5 text-gray-200">
               {doc.description}
             </p>
             {button ? (

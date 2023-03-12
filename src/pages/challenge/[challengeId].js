@@ -60,7 +60,7 @@ const Challenge = ({ challenge }) => {
             </div>
             <div className="mt-10">
               <h3 className="text-3xl md:text-4xl font-extrabold pb-2 text-indigo-600">
-                Challenge Requirements:
+                Challenge Requirements
               </h3>
               <ul className="text-gray-300 list-disc pl-5">
                 {challenge.requirements.map((requirement, index) => (

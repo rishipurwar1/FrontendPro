@@ -12,9 +12,7 @@ const Homepage = ({ challenges, solutions, resources }) => {
   return (
     <>
       <Head>
-        <title>
-          FrontendPro - Become a Pro in Frontend Dev with our Frontend Challenges
-        </title>
+        <title>Become a Pro in Frontend Dev with our Frontend Challenges</title>
       </Head>
       <div className="mb-6 md:mb-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
         <Header />

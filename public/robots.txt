@@ -1,6 +1,7 @@
 # *
 User-agent: *
 Disallow: /*/my-solutions
+Disallow: /playground/*
 
 # *
 User-agent: *

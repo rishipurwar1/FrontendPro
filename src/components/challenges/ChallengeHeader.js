@@ -69,11 +69,11 @@ const ChallengeHeader = ({ doc, button }) => {
               <Button
                 variant="dark"
                 size="large"
-                className="font-medium group"
+                className="font-medium"
                 onClick={() => setIsOpen(true)}
               >
                 Start Challenge
-                <Icons.Rocket size={18} className="ml-2 -mr-1 group-hover:animate-move" />
+                <Icons.Rocket size={18} className="ml-2 -mr-1 animate-move" />
               </Button>
             )}
           </div>

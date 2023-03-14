@@ -71,9 +71,9 @@ const Challenge = ({ challenge }) => {
                 <li>Show the hover state of all the elements.</li>
                 <li>
                   The component should be responsive and display correctly on different
-                  screen sizes
+                  screen sizes.
                 </li>
-                <li>Make this landing page look as close to the design as possible..</li>
+                <li>Make this landing page look as close to the design as possible.</li>
               </ul>
             </div>
             <div className="mt-10">

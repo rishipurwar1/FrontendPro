@@ -63,11 +63,12 @@ const Challenge = ({ challenge }) => {
                 Challenge Requirements
               </h3>
               <ul className="text-gray-300 list-disc pl-5">
-                {challenge.requirements.map((requirement, index) => (
-                  <li key={index} className="mb-2">
-                    {requirement}
-                  </li>
-                ))}
+                {challenge?.requirements &&
+                  challenge.requirements.map((requirement, index) => (
+                    <li key={index} className="mb-2">
+                      {requirement}
+                    </li>
+                  ))}
                 <li>Show the hover state of all the elements.</li>
                 <li>
                   The component should be responsive and display correctly on different

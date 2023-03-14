@@ -57,7 +57,7 @@ const Comment = ({
                 : comment.user.username}
             </a>
             <small className="text-gray-400 ml-3 text-sm">
-              {moment(comment.createdAt.toDate()).fromNow()}
+              {moment(comment.createdAt).fromNow()}
             </small>
           </p>
           {!isEditing && <p className="text-gray-400">{comment.content}</p>}

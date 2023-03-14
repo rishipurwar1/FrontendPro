@@ -8,7 +8,7 @@ module.exports = {
     policies: [
       {
         userAgent: "*",
-        disallow: "/*/my-solutions",
+        disallow: ["/*/my-solutions", "/playground/*"],
       },
       {
         userAgent: "*",

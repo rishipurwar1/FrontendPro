@@ -25,7 +25,6 @@ export default function MyApp({ Component, pageProps }) {
         <meta content="1200" property="og:image:width" />
         <meta content="628" property="og:image:height" />
         <meta content="summary_large_image" name="twitter:card" />
-        <title>Become a Pro in Frontend Dev with our Frontend Challenges</title>
         <meta
           content="Code your way to your dream job with our Frontend Coding Challenges and build real-world Frontend Projects to take your skills to the next level."
           name="description"
@@ -48,7 +47,7 @@ export default function MyApp({ Component, pageProps }) {
         />
         <meta content="https://www.frontendpro.dev" property="og:url" />
         <meta
-          content="FrontendPro - Become a Pro in Frontend Dev with our Frontend Challenges"
+          content="Become a Pro in Frontend Dev with our Frontend Challenges"
           name="twitter:title"
         />
         <meta
@@ -65,6 +64,7 @@ export default function MyApp({ Component, pageProps }) {
           name="twitter:image:alt"
           content="FrontendPro - Become a Pro in Frontend Dev with our Frontend Challenges"
         />
+        <title>Become a Pro in Frontend Dev with our Frontend Challenges</title>
       </Head>
       <AuthContextProvider>
         {renderWithLayout(<Component {...pageProps} />)}

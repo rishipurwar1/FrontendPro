@@ -5,8 +5,14 @@ import { AuthContextProvider } from "../context/AuthContext"
 
 import "../styles/globals.css"
 import { Analytics } from "@vercel/analytics/react"
+import { useRouter } from "next/router"
 
 export default function MyApp({ Component, pageProps }) {
+  const router = useRouter()
+  const canonicalUrl = (
+    `https://www.frontendpro.dev` + (router.asPath === "/" ? "" : router.asPath)
+  ).split("?")[0]
+
   const renderWithLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>)
   return (
     <>
@@ -18,7 +24,7 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="twitter:site" content="@FrontendProHQ" />
         <meta
           name="keywords"
-          content="FRONTEND CHALLENGES, FRONTEND DEVELOPMENT CHALLENGES, FRONTEND CODING CHALLENGES, FRONTEND PROJECTS, WEB DEVELOPMENT, FRONTEND DEVELOPMENT PROJECTS IDEA, FRONTEND INTERVIEW QUESTIONS, WEB DEVELOPMENT CHALLENGES, HTML CSS AND JAVASCRIPT PROJECTS, FRONTEND PORTFOLIO PROJECTS, BEST FRONTEND PROJECTS FOR RESUME"
+          content="FRONTEND CHALLENGES, FRONTEND PRACTICE PROJECTS, FRONTEND DEVELOPMENT CHALLENGES, FRONTEND CODING CHALLENGES, FRONTEND PROJECTS, WEB DEVELOPMENT, FRONTEND DEVELOPMENT PROJECTS IDEA, FRONTEND INTERVIEW QUESTIONS, WEB DEVELOPMENT CHALLENGES, HTML CSS AND JAVASCRIPT PROJECTS, FRONTEND PORTFOLIO PROJECTS, BEST FRONTEND PROJECTS FOR RESUME"
         />
         <meta content="FrontendPro" property="og:site_name" />
         <meta content="image/png" property="og:image:type" />
@@ -64,6 +70,7 @@ export default function MyApp({ Component, pageProps }) {
           name="twitter:image:alt"
           content="FrontendPro - Become a Pro in Frontend Dev with our Frontend Challenges"
         />
+        <link rel="canonical" href={canonicalUrl} />
         <title>Become a Pro in Frontend Dev with our Frontend Challenges</title>
       </Head>
       <AuthContextProvider>

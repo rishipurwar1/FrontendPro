@@ -9,7 +9,8 @@ import Button from "./Button"
 const StartCodingButton = ({ document, setIsOpen }) => {
   const { user } = useAuthContext()
   const { addDocument, response } = useFirestore("solutions")
-  const { push } = useRouter()
+  const router = useRouter()
+  const { slug } = router.query
 
   // rename the id property to challengeID
   const solutionDetails = [document].map(({ id, ...r }) => {
@@ -31,7 +32,7 @@ const StartCodingButton = ({ document, setIsOpen }) => {
     if (documents.length > 0) {
       // Todo: Replace this with a toast notification
       setIsOpen(false)
-      push(`/playground/${documents[0].id}`)
+      router.push(`/frontend-coding-challenges/${slug}/playground/${documents[0].id}`)
     } else {
       const addedDocument = await addDocument({
         ...solutionDetails[0],
@@ -47,7 +48,7 @@ const StartCodingButton = ({ document, setIsOpen }) => {
       if (addedDocument) {
         setIsOpen(false)
         const id = addedDocument.id
-        push(`/playground/${id}`)
+        router.push(`/frontend-coding-challenges/${slug}/playground/${id}`)
       }
     }
   }

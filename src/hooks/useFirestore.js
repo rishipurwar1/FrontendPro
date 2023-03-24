@@ -31,6 +31,7 @@ export const useFirestore = (c) => {
       const addedDocument = await addDoc(collection(db, c), {
         ...doc,
         createdAt,
+        updatedAt: createdAt,
       })
       dispatch({ type: "ADDED_DOCUMENT", payload: addedDocument })
       return addedDocument

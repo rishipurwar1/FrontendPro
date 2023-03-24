@@ -4,7 +4,7 @@ import Icons from "../SvgIcons/Icons"
 
 const LatestSolutions = ({ solutions }) => {
   return (
-    <main className="mt-32 flex flex-col">
+    <section className="mt-32 flex flex-col">
       <h2 className="text-5xl text-center text-white font-extrabold">
         Featured Solutions
       </h2>
@@ -17,7 +17,7 @@ const LatestSolutions = ({ solutions }) => {
         View more
         <Icons.ArrowRight className="ml-2 -mr-1" />
       </ButtonLink>
-    </main>
+    </section>
   )
 }
 

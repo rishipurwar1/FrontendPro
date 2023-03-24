@@ -1,7 +1,7 @@
 import Link from "next/link"
 import moment from "moment"
 
-import { trimString } from "../../utils/shared"
+import { createSlug, trimString } from "../../utils/shared"
 import DifficultyBar from "../challenges/DifficultyBar"
 import Badge from "../reusable/Badge"
 import Icons from "../SvgIcons/Icons"
@@ -11,14 +11,25 @@ import BlurImage from "./BlurImage"
 
 const Card = ({ card, isChallenge, isSolution }) => {
   let href = ""
+
   if (isChallenge && !isSolution) {
-    href = `/challenge/${card.id}`
+    href = `/frontend-coding-challenges/${card.slug}`
   } else if (!isChallenge && isSolution) {
-    href = `/solution/${card.id}`
+    href = `/frontend-coding-challenges/${createSlug(
+      card.title,
+      card.challengeID
+    )}/solutions/${card.id}`
   } else if (!isChallenge && !isSolution) {
     href = card.link
   } else {
-    href = card?.isPlayground ? `/playground/${card.id}` : `/submit/${card.id}`
+    href = card?.isPlayground
+      ? `/frontend-coding-challenges/${createSlug(
+          card.title,
+          card.challengeID
+        )}/playground/${card.id}`
+      : `/frontend-coding-challenges/${createSlug(card.title, card.challengeID)}/submit/${
+          card.id
+        }`
   }
 
   return (

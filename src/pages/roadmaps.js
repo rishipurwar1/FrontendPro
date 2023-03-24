@@ -1,7 +1,8 @@
 import Head from "next/head"
 
-import comingSoon from "../assets/animated_illustrations/coming_soon.json"
-import LottieAnimation from "../components/reusable/LottieAnimation"
+import Header from "../components/reusable/Header"
+import Image from "next/image"
+import comingSoon from "../assets/illustrations/coming-soon.png"
 
 const Roadmaps = () => {
   return (
@@ -9,15 +10,24 @@ const Roadmaps = () => {
       <Head>
         <title>FrontendPro - Roadmaps</title>
       </Head>
-      <div className="mt-5 mb-6 md:mb-0 row-start-2 row-end-3 col-start-2 col-end-3 self-center	">
-        <p className="text-center text-white font-extrabold text-4xl">
-          We&apos;re building!
-          <span role="img" aria-label="building-emoji">
-            👷‍♂️
-          </span>
-        </p>
-        <LottieAnimation className="w-96" animationDataFile={comingSoon} />
-      </div>
+      <Header
+        title="Explore Roadmaps"
+        description="Explore our comprehensive frontend development roadmaps designed to guide you through the learning process, improve your skills, and achieve your career goals.
+        "
+        gradientClasses="bg-gradient-to-r from-fuchsia-600 to-pink-600"
+      />
+      <section className="rounded-lg bg-gray-900 border border-gray-700 p-6 flex flex-col items-center">
+        <h2 className="text-white font-extrabold text-3xl sm:text-4xl lg:text-5xl">
+          Coming Soon
+        </h2>
+        <Image
+          src={comingSoon}
+          width={500}
+          height={500}
+          alt="roadmaps coming soon"
+          className="-mt-14"
+        />
+      </section>
     </>
   )
 }

@@ -10,6 +10,7 @@ export const useCollection = (c, q, l, o, userID, openTab, challengeID) => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
+    setIsLoading(true)
     let ref = collection(db, c)
     if (q) {
       ref = query(ref, where(...q))

@@ -16,78 +16,53 @@ const ChallengeHeader = ({ doc, button }) => {
   const { push } = useRouter()
   const [isOpen, setIsOpen] = useState(false)
 
-  const displayName = user
-    ? !user?.displayName
-      ? user?.reloadUserInfo.screenName
-      : user?.displayName.split(" ")[0]
-    : "Coder"
-
   return (
     <>
-      <div className="mt-6 md:mt-0 mb-8">
-        <h2 className="text-3xl font-extrabold text-white">
-          Hello {displayName}
-          <span
-            className="animate-wave inline-block origin-[70%_70%]"
-            role="img"
-            aria-label="Hello"
-          >
-            👋
-          </span>
-          ,
-        </h2>
-        <p className="text-lg font-normal text-white">
-          Today is a great day to start this challenge
-          <span role="img" aria-label="welcome">
-            😊
-          </span>
-        </p>
-        <header className="mt-4 flex items-center xs:justify-center sm:justify-between bg-indigo-600 rounded-lg shadow-md xs:px-5 md:px-8 py-6 h-auto xs:flex-wrap-reverse sm:flex-nowrap">
-          <div className="xs:w-full sm:w-1/2">
-            <h2 className="leading-snug xs:text-3xl md:text-4xl lg:text-5xl text-white font-bold pb-2">
-              {doc.title}
-            </h2>
-            <div className="py-2">
-              {doc?.tags?.map((tag) => (
-                <Badge key={tag} name={tag} badgeColor="text-gray-300 bg-gray-900" />
-              ))}
-            </div>
-            <p className="text-base mb-4 xs:w-full sm:w-4/5 lg:w-4/5 text-gray-200">
-              {doc.description}
-            </p>
-            {button ? (
-              <Button
-                variant="dark"
-                size="large"
-                className="font-medium"
-                onClick={() => push("/solutions")}
-              >
-                Explore Solutions
-                <Icons.ArrowRight className="ml-2" />
-              </Button>
-            ) : (
-              <Button
-                variant="dark"
-                size="large"
-                className="font-medium"
-                onClick={() => setIsOpen(true)}
-              >
-                Start Challenge
-                <Icons.Rocket size={18} className="ml-2 -mr-1 animate-move" />
-              </Button>
-            )}
+      <header className="flex items-center justify-start sm:justify-between rounded-lg space-x-0 sm:space-x-4 bg-gray-900 border border-gray-700 p-6 mb-5 flex-wrap-reverse sm:flex-nowrap">
+        <div className="xs:w-full sm:w-1/2">
+          <h1 className="leading-snug text-3xl sm:text-4xl lg:text-5xl text-white font-bold mb-4">
+            {doc.title}
+          </h1>
+          <div className="mb-4">
+            {doc?.tags?.map((tag) => (
+              <Badge key={tag} name={tag} badgeColor="bg-indigo-600 text-white" />
+            ))}
           </div>
-          <div className="relative aspect-[4/3]">
-            <Image
-              src={`${process.env.NEXT_PUBLIC_CLOUDINARY_ENDPOINT}/${doc.images.cover}`}
-              width={400}
-              height={300}
-              className="rounded-xl xs:mb-4 sm:mb-0"
-              alt={`${doc.title} Frontend Challenge`}
-            />
-          </div>
-        </header>
-      </div>
+          <p className="text-base mb-4 xs:w-full sm:w-4/5 lg:w-4/5 text-gray-200">
+            {doc.description}
+          </p>
+          {button ? (
+            <Button
+              variant="primary"
+              size="large"
+              className="font-medium"
+              onClick={() => push("/solutions")}
+            >
+              Explore Solutions
+              <Icons.ArrowRight className="ml-2" />
+            </Button>
+          ) : (
+            <Button
+              variant="primary"
+              size="large"
+              className="font-medium"
+              onClick={() => setIsOpen(true)}
+            >
+              Start Challenge
+              <Icons.Rocket size={18} className="ml-2 -mr-1 animate-move" />
+            </Button>
+          )}
+        </div>
+        <div className="relative aspect-[4/3]">
+          <Image
+            src={`${process.env.NEXT_PUBLIC_CLOUDINARY_ENDPOINT}/${doc.images.cover}`}
+            width={450}
+            height={300}
+            className="rounded-xl xs:mb-4 sm:mb-0"
+            alt={`${doc.title} Frontend Challenge`}
+          />
+        </div>
+      </header>
       {!user && isOpen && (
         <Modal
           setIsOpen={setIsOpen}

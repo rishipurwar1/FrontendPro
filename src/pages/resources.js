@@ -1,10 +1,8 @@
 import Head from "next/head"
 
-import ResourcesIll from "../assets/animated_illustrations/resources.json"
-import Hero from "../components/homepage/Hero"
 import Card from "../components/reusable/Card"
-import Icons from "../components/SvgIcons/Icons"
 import { getDocuments } from "../firebase/firestore"
+import Header from "../components/reusable/Header"
 
 const Resources = ({ resources }) => {
   return (
@@ -12,22 +10,20 @@ const Resources = ({ resources }) => {
       <Head>
         <title>FrontendPro - Resources</title>
       </Head>
-      <div className="mb-6 md:mb-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
-        <Hero
-          title="Here you can find all the frontend and backend development resources."
-          subTitle="Welcome To FrontendPro 😊"
-          mainImg={ResourcesIll}
-          btnTitle="Explore Challenges"
-          icon={<Icons.ArrowRight className="ml-2 -mr-1" />}
-          route="/challenges"
+      <main>
+        <Header
+          title="Explore Resources"
+          description="Find the best resources and developer tools for frontend development here. Whether you're a beginner or a pro, we've got you covered. Start learning today!"
+          gradientClasses="bg-gradient-to-r from-green-200 via-green-300 to-blue-500"
         />
-        <h2 className="text-5xl text-center text-white font-extrabold">Resources</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-8">
-          {resources?.map((resource) => {
-            return <Card key={resource.id} card={resource} />
-          })}
-        </div>
-      </div>
+        <section className="rounded-lg bg-gray-900 border border-gray-700 p-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+            {resources?.map((resource) => {
+              return <Card key={resource.id} card={resource} />
+            })}
+          </div>
+        </section>
+      </main>
     </>
   )
 }

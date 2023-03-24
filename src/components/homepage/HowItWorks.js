@@ -25,7 +25,7 @@ const features = [
 
 const HowItWorks = () => {
   return (
-    <div className="mt-32">
+    <section className="mt-32">
       <h2 className="pb-2 text-5xl text-center text-white font-extrabold">
         How it works?
       </h2>
@@ -34,7 +34,7 @@ const HowItWorks = () => {
           <FeatureCard key={feature.name} feature={feature} />
         ))}
       </div>
-    </div>
+    </section>
   )
 }
 

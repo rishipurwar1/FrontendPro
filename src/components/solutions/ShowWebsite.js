@@ -62,7 +62,7 @@ const ShowWebsite = ({ url, title, github, isPlayground }) => {
           </a>
         </div>
       </div>
-      <div className="relative border border-gray-700 h-screen">
+      <div className="relative border border-gray-700 rounded-b-lg h-screen overflow-hidden">
         {isPlayground && <WebsitePreview />}
         {!isPlayground && (
           <iframe

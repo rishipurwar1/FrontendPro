@@ -1,12 +1,12 @@
 import Head from "next/head"
 
 import Newsletter from "../components//newsletter/Newsletter"
-import Header from "../components/homepage/Header"
 import HowItWorks from "../components/homepage/HowItWorks"
 import LatestChallenges from "../components/homepage/LatestChallenges"
 import LatestResources from "../components/homepage/LatestResources"
 import LatestSolutions from "../components/homepage/LatestSolutions"
 import { getDocuments } from "../firebase/firestore"
+import Hero from "../components/homepage/Hero"
 
 const Homepage = ({ challenges, solutions, resources }) => {
   return (
@@ -14,14 +14,14 @@ const Homepage = ({ challenges, solutions, resources }) => {
       <Head>
         <title>Become a Pro in Frontend Dev with our Frontend Challenges</title>
       </Head>
-      <div className="mb-6 md:mb-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
-        <Header />
+      <main className="px-6 pb-6 rounded-lg bg-gray-900 border border-gray-700">
+        <Hero />
         <HowItWorks />
         <LatestChallenges challenges={challenges} />
         <LatestSolutions solutions={solutions} />
         <LatestResources resources={resources} />
         <Newsletter />
-      </div>
+      </main>
     </>
   )
 }

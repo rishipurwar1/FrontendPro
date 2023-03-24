@@ -4,21 +4,21 @@ import Icons from "../SvgIcons/Icons"
 
 const Challenges = ({ challenges }) => {
   return (
-    <main className="mt-32 flex flex-col">
+    <section className="mt-32 flex flex-col">
       <h2 className="text-5xl text-center text-white font-extrabold">
         Featured Challenges
       </h2>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center my-8">
         {challenges?.map((challenge) => {
-          return <Card key={challenge.id} card={challenge} challengelist isChallenge />
+          return <Card key={challenge.id} card={challenge} isChallenge />
         })}
       </div>
-      <ButtonLink to="/challenges" className="self-center">
+      <ButtonLink to="/frontend-coding-challenges" className="self-center">
         View more
         <Icons.ArrowRight className="ml-2 -mr-1" />
       </ButtonLink>
-    </main>
+    </section>
   )
 }
 

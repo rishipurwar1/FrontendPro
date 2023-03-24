@@ -37,7 +37,7 @@ const AvatarDropdown = ({ className }) => {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="block focus:outline-none"
+        className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-600"
         type="button"
       >
         <span className="sr-only">Open user menu</span>
@@ -46,11 +46,11 @@ const AvatarDropdown = ({ className }) => {
       {isOpen && user && (
         <div
           id="dropdownAvatar"
-          className="absolute right-0 top-14 z-10 w-44 rounded-lg divide-y shadow bg-gray-800 divide-gray-700"
+          className="absolute right-0 top-10 z-10 w-44 rounded-lg divide-y shadow bg-gray-800 divide-gray-700 border border-gray-700"
         >
           <div className="py-3 px-4 text-sm text-white">
-            <div>{user.displayName || user.reloadUserInfo.screenName}</div>
-            <div className="font-medium truncate">{user.email}</div>
+            <p>{user.displayName || user.reloadUserInfo.screenName}</p>
+            <p className="font-medium truncate">{user.email}</p>
           </div>
           <ul
             className="py-1 text-sm text-gray-200"

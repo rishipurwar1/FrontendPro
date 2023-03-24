@@ -6,7 +6,7 @@ import SkeletonElement from "./SkeletonElement"
 
 const SkeletonCard = ({ isSolution, isChallenge }) => {
   return (
-    <div role="status" className="animate-pulse bg-gray-800 p-4 rounded-lg w-[376px]">
+    <div role="status" className="animate-pulse bg-gray-800 p-4 rounded-lg w-[360px]">
       <div className="flex justify-center items-center w-full h-64 rounded-lg bg-gray-700 mb-4">
         <Icons.PlaceholderThumbnail />
       </div>

@@ -1,15 +1,13 @@
 import { useState } from "react"
 import { useRouter } from "next/router"
 
-import mainImg from "../../assets/animated_illustrations/solution_animation.json"
-import Hero from "../../components/homepage/Hero"
-import BaseInput from "../../components/reusable/BaseInput"
-import Button from "../../components/reusable/Button"
-import MultiSelectSearchInput from "../../components/reusable/MultiSelectSearchInput"
-import Icons from "../../components/SvgIcons/Icons"
-import { INPUTS } from "../../constants"
-import { useFirestore } from "../../hooks/useFirestore"
-import fetchSkills from "../../services"
+import BaseInput from "../../../../components/reusable/BaseInput"
+import Button from "../../../../components/reusable/Button"
+import MultiSelectSearchInput from "../../../../components/reusable/MultiSelectSearchInput"
+import { INPUTS } from "../../../../constants"
+import { useFirestore } from "../../../../hooks/useFirestore"
+import fetchSkills from "../../../../services"
+import Header from "../../../../components/reusable/Header"
 
 const INITIAL_STATE = {
   title: "",
@@ -33,7 +31,7 @@ const SKILLS = [
 const SolutionForm = () => {
   const [formData, setFormData] = useState(INITIAL_STATE)
   const router = useRouter()
-  const { id } = router.query
+  const { id, slug } = router.query
   const { updateDocument, response } = useFirestore("solutions")
 
   const handleChange = (e) => {
@@ -55,7 +53,7 @@ const SolutionForm = () => {
       await updateDocument(id, data)
       if (!response.error) {
         router.push({
-          pathname: `/solution/${id}`,
+          pathname: `/frontend-coding-challenges/${slug}/solutions/${id}`,
           query: { submit: true },
         })
       }
@@ -65,18 +63,12 @@ const SolutionForm = () => {
   }
 
   return (
-    <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
-      <Hero
-        title="Master Web and Mobile Development by building real world projects"
-        subTitle="Time to submit your solution and show it to the world 👍"
-        mainImg={mainImg}
-        btnTitle="Explore Solutions "
-        route="/solutions"
-        icon={<Icons.ArrowRight className="ml-2 -mr-1" />}
-        lottie
+    <main>
+      <Header
+        title="Submit Your Solution"
+        description="Submit your solution and showcase your skills to the world. Get feedback, improve your skills, and take your career to the next level!"
       />
-      <h2 className="text-5xl text-center text-white font-extrabold">Submit Solution</h2>
-      <div className="p-4 rounded-lg shadow bg-gray-800 sm:p-5 mt-8">
+      <section className="rounded-lg bg-gray-900 border border-gray-700 p-6">
         <form onSubmit={handleSubmit}>
           {INPUTS.map((input) =>
             input.type === "search" ? (
@@ -103,8 +95,8 @@ const SolutionForm = () => {
             Submit Solution
           </Button>
         </form>
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }
 

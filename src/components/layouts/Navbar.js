@@ -1,63 +1,60 @@
-import { useState } from "react"
-import { useRouter } from "next/router"
-
-import { useAuthContext } from "../../hooks/useAuthContext"
-import AvatarDropdown from "../reusable/AvatarDropdown"
-import ButtonExternalLink from "../reusable/ButtonExternalLink"
+import Link from "next/link"
+import React from "react"
+import EmojiIcons from "../SvgIcons/EmojiIcons"
 import Icons from "../SvgIcons/Icons"
-
+import AvatarDropdown from "../reusable/AvatarDropdown"
 import SignedOutLinks from "./SignedOutLinks"
+import { useAuthContext } from "../../hooks/useAuthContext"
+import ButtonExternalLink from "../reusable/ButtonExternalLink"
+import { useSidebarContext } from "../../hooks/useSidebarContext"
 
-const Navbar = ({ classNames }) => {
-  const [banner, setBanner] = useState(true)
-  const { asPath } = useRouter()
+const Navbar = () => {
   const { user } = useAuthContext()
-  const links = user ? <AvatarDropdown /> : <SignedOutLinks variant="primary" />
-
+  const { sidebarOpen, setSidebarOpen } = useSidebarContext()
   return (
-    <div>
-      {asPath === "/" && banner && (
-        <div className="hidden md:block relative bg-indigo-600 px-4 py-3 text-white">
-          <p className="text-center text-sm font-medium">
-            🎉Exciting News: CodingSpace is now{" "}
-            <a
-              href="https://www.frontendpro.dev"
-              target="_blank"
-              rel="noreferrer"
-              className="underline decoration-wavy underline-offset-2 transition-colors hover:decoration-slate-200 hover:text-slate-200"
+    <nav className="z-50 w-full border-b bg-gray-900 border-gray-700">
+      <div className="px-3 py-3 lg:px-5 lg:pl-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center justify-start">
+            <button
+              type="button"
+              className="inline-flex items-center p-2 text-sm rounded-lg xl:hidden focus:outline-none focus:ring-2 text-gray-400 hover:bg-gray-700 focus:ring-gray-600"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
             >
-              FrontendPro
-            </a>
-            .
-          </p>
-          <button
-            aria-label="Close"
-            className="absolute top-1/2 right-4 -translate-y-1/2 rounded-lg bg-black/10 p-1 transition hover:bg-black/20"
-            onClick={() => setBanner(false)}
-          >
-            <Icons.Cross size={20} />
-          </button>
-        </div>
-      )}
-      <nav
-        className={`p-5 hidden md:block md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2 ${classNames}`}
-      >
-        <ul className="flex justify-end space-x-4 items-center">
-          <li className="xs:invisible xl:visible group">
+              <span className="sr-only">Open sidebar</span>
+              <Icons.Menu className="w-6 h-6" />
+            </button>
+            <Link
+              href="/"
+              className="flex ml-2 md:mr-24"
+              aria-label="FrontendPro logo"
+              title="frontendpro homepage"
+            >
+              <EmojiIcons.Rocket size={32} />
+              <span className="hidden sm:inline self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white ml-3">
+                FrontendPro
+              </span>
+            </Link>
+          </div>
+          <div className="flex items-center space-x-4">
             <ButtonExternalLink
               href="https://github.com/rishipurwar1/coding-space"
-              size="large"
+              size="normal"
               variant="primary"
-              className="font-medium"
+              className="font-medium hidden md:flex"
             >
               <Icons.Star size={18} className="mr-2 -ml-1 group-hover:fill-current" />
               Star us on GitHub
             </ButtonExternalLink>
-          </li>
-          <li>{links}</li>
-        </ul>
-      </nav>
-    </div>
+            {user ? (
+              <AvatarDropdown />
+            ) : (
+              <SignedOutLinks variant="primary" size="medium" />
+            )}
+          </div>
+        </div>
+      </div>
+    </nav>
   )
 }
 

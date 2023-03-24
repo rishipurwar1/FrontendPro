@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 
-import mainImg from "../../../assets/animated_illustrations/solution_animation.json"
-import Hero from "../../../components/homepage/Hero"
-import BaseInput from "../../../components/reusable/BaseInput"
-import Button from "../../../components/reusable/Button"
-import MultiSelectSearchInput from "../../../components/reusable/MultiSelectSearchInput"
-import Icons from "../../../components/SvgIcons/Icons"
-import { INPUTS, PLAYGROUND_INPUTS } from "../../../constants"
-import { useAuthContext } from "../../../hooks/useAuthContext"
-import { useDocument } from "../../../hooks/useDocument"
-import { useFirestore } from "../../../hooks/useFirestore"
-import fetchSkills from "../../../services"
+import BaseInput from "../../../../components/reusable/BaseInput"
+import Button from "../../../../components/reusable/Button"
+import MultiSelectSearchInput from "../../../../components/reusable/MultiSelectSearchInput"
+import { INPUTS, PLAYGROUND_INPUTS } from "../../../../constants"
+import { useAuthContext } from "../../../../hooks/useAuthContext"
+import { useDocument } from "../../../../hooks/useDocument"
+import { useFirestore } from "../../../../hooks/useFirestore"
+import fetchSkills from "../../../../services"
+import Header from "../../../../components/reusable/Header"
 
 const SKILLS = [
   { name: "html" },
@@ -36,9 +34,9 @@ const SolutionEditForm = () => {
   const [formData, setFormData] = useState(INITIAL_STATE)
   const { user, authIsReady } = useAuthContext()
   const router = useRouter()
-  const { solutionId } = router.query
+  const { id, slug } = router.query
 
-  const { document } = useDocument("solutions", solutionId)
+  const { document } = useDocument("solutions", id)
   const { updateDocument, response } = useFirestore("solutions")
 
   const handleChange = (e) => {
@@ -53,9 +51,9 @@ const SolutionEditForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await updateDocument(solutionId, formData)
+      await updateDocument(id, formData)
       if (!response.error) {
-        router.push(`/solution/${solutionId}`)
+        router.push(`/frontend-coding-challenges/${slug}/solutions/${id}`)
       }
     } catch (error) {
       console.log(error)
@@ -97,32 +95,22 @@ const SolutionEditForm = () => {
   }, [document, authIsReady])
 
   return (
-    <div className="px-5 row-start-2 row-end-3 col-start-2 col-end-3">
-      <Hero
-        title="Master Web and Mobile Development by building real world projects"
-        subTitle="Time to submit your solution and show it to the world 👍"
-        mainImg={mainImg}
-        btnTitle="Explore Solutions "
-        route="/solutions"
-        icon={<Icons.ArrowRight className="ml-2 -mr-1" />}
-        lottie
+    <main>
+      <Header
+        title="Edit Your Solution"
+        description="Easily edit and update the details of your submitted solution and showcase your best work to the world!"
       />
-      <div className="w-full mx-auto mt-8">
-        <form
-          className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4"
-          onSubmit={handleSubmit}
-        >
+      <section className="rounded-lg bg-gray-900 border border-gray-700 p-6">
+        <form onSubmit={handleSubmit}>
           {document?.isPlayground
             ? renderInputs(PLAYGROUND_INPUTS)
             : renderInputs(INPUTS)}
-          <div>
-            <Button type="submit" className="font-medium" loading={response.isPending}>
-              Update Solution
-            </Button>
-          </div>
+          <Button type="submit" className="font-medium" loading={response.isPending}>
+            Update Solution
+          </Button>
         </form>
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }
 

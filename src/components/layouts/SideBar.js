@@ -1,155 +1,104 @@
-// library components
-import { useRef, useState } from "react"
-import Link from "next/link"
-import { useRouter } from "next/router"
-
-import { useAuthContext } from "../../hooks/useAuthContext"
-import useOnClickOutside from "../../hooks/useOnClickOutside"
-import ButtonExternalLink from "../reusable/ButtonExternalLink"
-import BrandIcons from "../SvgIcons/BrandIcons"
-import EmojiIcons from "../SvgIcons/EmojiIcons"
 import Icons from "../SvgIcons/Icons"
-
 import NavItem from "./NavItem"
-import SignedInLinks from "./SignedInLinks"
-import SignedOutLinks from "./SignedOutLinks"
+import NavItemButton from "./NavItemButton"
+import { useRouter } from "next/router"
+import BrandIcons from "../SvgIcons/BrandIcons"
+import ButtonExternalLink from "../reusable/ButtonExternalLink"
+import { useSidebarContext } from "../../hooks/useSidebarContext"
 
 const NAV_ITEMS = [
   {
-    href: "challenges",
+    href: "/challenges",
+    title: "Challenges",
+    submenu: true,
+    submenuItems: [
+      {
+        href: "/frontend-coding-challenges",
+        title: "Frontend Coding Challenges",
+      },
+      {
+        href: "/javascript-coding-challenges",
+        title: "JavaScript Coding Challenges",
+      },
+    ],
     icon: (
-      <Icons.Code className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
+      <Icons.Code className="w-6 h-6 transition duration-75 text-gray-300 group-hover:text-white" />
     ),
   },
   {
-    href: "solutions",
+    href: "/solutions",
+    title: "Solutions",
     icon: (
-      <Icons.MessageCode className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
+      <Icons.MessageCode className="w-6 h-6 transition duration-75 text-gray-300 group-hover:text-white" />
     ),
   },
   {
-    href: "resources",
+    href: "/resources",
+    title: "Resources",
     icon: (
-      <Icons.BrowserCheck className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
+      <Icons.BrowserCheck className="w-6 h-6 transition duration-75 text-gray-300 group-hover:text-white" />
     ),
   },
   {
-    href: "roadmaps",
+    href: "/roadmaps",
+    title: "Roadmaps",
     icon: (
-      <Icons.RoadMap className="xs:mr-3 md:mr-0 xl:mr-3 text-xl xl:text-base text-center" />
+      <Icons.RoadMap className="w-6 h-6 transition duration-75 text-gray-300 group-hover:text-white" />
     ),
   },
 ]
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const { user } = useAuthContext()
   const router = useRouter()
-  const ref = useRef()
+  const { sidebarOpen } = useSidebarContext()
 
-  useOnClickOutside(ref, () => setIsOpen(false), isOpen)
-
-  const links = user ? (
-    <SignedInLinks profile={user} />
-  ) : (
-    <SignedOutLinks variant="primary" />
-  )
   return (
-    <div className="col-start-1 col-end-3 md:col-end-2 row-start-1 row-end-2">
-      <div className="relative md:flex">
-        {/* <!-- mobile menu bar --> */}
-        <div className="px-4 py-3 bg-gray-800 text-gray-100 flex justify-between items-center md:hidden">
-          {/* <!-- mobile menu button --> */}
-          <button
-            className="focus:outline-none"
-            onClick={(e) => {
-              e.stopPropagation()
-              setIsOpen(!isOpen)
-            }}
-          >
-            <Icons.Menu />
-          </button>
-          <div>{links}</div>
-        </div>
-
-        {/* <!-- sidebar --> */}
-        <div
-          ref={ref}
-          className={`${
-            isOpen ? null : "-translate-x-full"
-          } bg-gray-900 text-white xs:w-full md:w-20 xl:w-56 space-y-6 xs:py-4 md:py-8 px-2 absolute inset-y-0 left-0 xxl:left-auto transform md:fixed md:translate-x-0 transition duration-200 ease-in-out border-r border-gray-800 z-50 min-h-screen`}
-        >
-          {/* <!-- logo --> */}
-          <div className="flex justify-between items-center">
-            <Link
-              href="/"
-              className="text-white flex items-center space-x-1 text-center px-3 font-bold text-xl"
-              aria-label="FrontendPro logo"
-              title="frontendpro homepage"
-              onClick={() => {
-                setIsOpen(false)
-              }}
-            >
-              <EmojiIcons.Rocket size={32} />
-              <span className="xs:inline-block md:hidden xl:inline-block">
-                FrontendPro
-              </span>
-            </Link>
-            <button
-              className="md:hidden p-4 focus:outline-none"
-              onClick={() => {
-                setIsOpen(!isOpen)
-              }}
-            >
-              <Icons.Cross />
-            </button>
-          </div>
-
-          {/* <!-- nav --> */}
-          <aside className="xs:pt-4 md:pt-8 bg-gray-900">
-            {NAV_ITEMS.map((item) => (
-              <NavItem
-                key={item.href}
-                item={item.href}
-                icon={item.icon}
-                setIsOpen={setIsOpen}
-                router={router}
-              />
-            ))}
-          </aside>
-
-          {/* <!-- discord and github button --> */}
-          <div className="absolute bottom-10 w-full flex flex-col space-y-4 justify-center pr-4 xl:pl-4 xl:pr-8">
-            <ButtonExternalLink
-              href="https://github.com/rishipurwar1/coding-space"
-              size="normal"
-              variant="primary"
-              className="font-medium md:hidden group transition duration-300"
-            >
-              <BrandIcons.GitHub
-                className="mr-2 -ml-1 group-hover:fill-current"
-                size={18}
-              />
-              <span>Star us on GitHub</span>
-            </ButtonExternalLink>
+    <aside
+      id="sidebar"
+      className={`block xl:col-span-2 fixed xl:sticky left-0 xl:left-auto top-16 xl:top-3 w-full xl:w-auto z-40 h-[calc(100vh_-_64px)] xl:h-[calc(100vh_-_24px)] transition-transform border-t xl:border border-gray-700 xl:translate-x-0 bg-gray-900 rounded-none xl:rounded-lg overflow-hidden ${
+        sidebarOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+      aria-label="Sidebar"
+    >
+      <div className="flex flex-col justify-between h-full px-3 py-8 overflow-y-auto bg-gray-900">
+        <ul className="space-y-4">
+          {NAV_ITEMS.map((item, index) => {
+            return item?.submenu ? (
+              <NavItemButton key={index} item={item} router={router} />
+            ) : (
+              <NavItem key={index} item={item} router={router} />
+            )
+          })}
+        </ul>
+        <ul className="self-center flex flex-col items-center space-y-4 w-full xl:w-auto">
+          <li className="w-full xl:w-auto">
             <ButtonExternalLink
               href="https://discord.com/invite/FYSQUEw6xP"
               size="normal"
               variant="primary"
-              className="font-medium group"
+              className="font-medium group w-full"
             >
               <BrandIcons.Discord
-                className="mr-2 -ml-1 group-hover:animate-rotate"
                 size={18}
+                className="mr-2 -ml-1 group-hover:animate-rotate"
               />
-              <span className="xs:inline-block md:hidden xl:inline-block">
-                Join Discord
-              </span>
+              <span>Join Discord</span>
             </ButtonExternalLink>
-          </div>
-        </div>
+          </li>
+          <li className="block md:hidden w-full">
+            <ButtonExternalLink
+              href="https://github.com/rishipurwar1/coding-space"
+              size="normal"
+              variant="primary"
+              className="font-medium group w-full"
+            >
+              <Icons.Star size={18} className="mr-2 -ml-1 group-hover:animate-rotate" />
+              <span>Star Us On GitHub</span>
+            </ButtonExternalLink>
+          </li>
+        </ul>
       </div>
-    </div>
+    </aside>
   )
 }
 

@@ -43,7 +43,18 @@ export function postToJSON(doc) {
   return {
     ...data,
     id: doc.id,
-    createdAt: data?.createdAt.toMillis() || 0,
+    createdAt: data?.createdAt?.toMillis() || 0,
     updatedAt: data?.updatedAt?.toMillis() || 0,
   }
+}
+
+export function createSlug(title, id) {
+  const trimmedTitle = title.trim().toLowerCase()
+  const trimmedId = id.trim()
+
+  const titleSlug = trimmedTitle.replace(/ /g, "-")
+
+  const finalSlug = `${titleSlug}-${trimmedId}`
+
+  return finalSlug
 }

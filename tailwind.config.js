@@ -76,11 +76,22 @@ module.exports = {
             transform: "translate(0)",
           },
         },
+        text: {
+          "0%, 100%": {
+            "background-size": "200% 200%",
+            "background-position": "left center",
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "right center",
+          },
+        },
       },
       animation: {
         wave: "wave 2.5s ease-in-out infinite",
         rotate: "rotate 0.5s linear 1",
         move: "move 1s linear infinite",
+        text: "text 5s ease infinite",
       },
       scale: {
         102: "1.02",

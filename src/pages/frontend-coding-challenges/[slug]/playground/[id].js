@@ -3,12 +3,12 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels"
 
-import rocketLoader from "../../assets/animated_illustrations/rocketLoader.json"
-import ChallengeDescription from "../../components/CodeEditor/ChallengeDescription"
-import CodeEditorHeader from "../../components/CodeEditor/CodeEditorHeader"
-import CustomSandpack from "../../components/CodeEditor/CustomSandpack"
-import LottieAnimation from "../../components/reusable/LottieAnimation"
-import { useDocument } from "../../hooks/useDocument"
+import rocketLoader from "../../../../assets/animated_illustrations/rocketLoader.json"
+import ChallengeDescription from "../../../../components/CodeEditor/ChallengeDescription"
+import CodeEditorHeader from "../../../../components/CodeEditor/CodeEditorHeader"
+import CustomSandpack from "../../../../components/CodeEditor/CustomSandpack"
+import LottieAnimation from "../../../../components/reusable/LottieAnimation"
+import { useDocument } from "../../../../hooks/useDocument"
 
 const Playground = () => {
   const router = useRouter()

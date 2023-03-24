@@ -4,16 +4,16 @@ import Icons from "../SvgIcons/Icons"
 
 const Footer = () => {
   return (
-    <footer className="col-start-2 col-end-3 row-start-3 row-end-4 flex xs:flex-col sm:flex-row items-center justify-between py-3 px-4  bg-gray-900 border-t border-gray-800 shadow-lg text-gray-300 h-20">
-      <h4 className="flex items-center space-x-1">
+    <footer className="xl:col-start-3 col-span-full flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0 p-4 rounded-lg bg-gray-900 border border-gray-700 text-gray-300">
+      <h4 className="flex items-center">
         <EmojiIcons.Rocket size={32} />
         <span>FrontendPro</span>
       </h4>
-      <small className="xs:py-4 sm:py-0 flex items-center">
+      <small className="flex items-center">
         <Icons.CopyRight size={16} className="mr-2 -ml-1" />
         {`${new Date().getFullYear()}`} FrontendPro. All right reserved
       </small>
-      <div className="social flex items-center justify-center py-3">
+      <div className="social flex items-center justify-center">
         <a
           href="https://github.com/rishipurwar1/coding-space"
           className="px-2"

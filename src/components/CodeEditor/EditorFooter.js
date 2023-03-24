@@ -18,7 +18,7 @@ const filterVisibleFiles = (visibleFiles, files) => {
 
 const EditorFooter = ({ playground, isCompleted, isDirty, setIsDirty }) => {
   const router = useRouter()
-  const { id } = router.query
+  const { id, slug } = router.query
   const { sandpack } = useSandpack()
   const { files, visibleFiles } = sandpack
   const {
@@ -57,7 +57,7 @@ const EditorFooter = ({ playground, isCompleted, isDirty, setIsDirty }) => {
       setIsDirty(false)
       if (!solutionResponse.error && !isCompleted) {
         router.push({
-          pathname: `/solution/${id}`,
+          pathname: `/frontend-coding-challenges/${slug}/solutions/${id}`,
           query: { submit: true },
         })
       }

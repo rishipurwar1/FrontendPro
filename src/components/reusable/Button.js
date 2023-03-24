@@ -10,7 +10,7 @@ const classes = {
     small: "px-2 py-1 text-sm",
     normal: "px-3 py-2 font-medium text-sm",
     medium: "px-5 py-2.5 text-sm",
-    large: "py-3 px-5 text-base",
+    large: "px-5 py-3 text-base",
     square: "p-2",
   },
   variant: {

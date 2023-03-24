@@ -1,40 +1,28 @@
 import Head from "next/head"
 
-import solutionLottie from "../assets/animated_illustrations/solution_animation.json"
-import Hero from "../components/homepage/Hero"
 import Card from "../components/reusable/Card"
-import Icons from "../components/SvgIcons/Icons"
 import { getDocuments } from "../firebase/firestore"
-import { useAuthContext } from "../hooks/useAuthContext"
+import Header from "../components/reusable/Header"
 
 const Solutions = ({ solutions }) => {
-  const { user } = useAuthContext()
   return (
     <>
       <Head>
         <title>FrontendPro - Solutions</title>
       </Head>
-      <div className="mb-6 md:mb-0 px-5 row-start-2 row-end-3 col-start-2 col-end-3">
-        <Hero
-          title="What's stopping you from moving forward? All the solutions you need are right here!"
-          subTitle="Welcome To FrontendPro 😊"
-          mainImg={solutionLottie}
-          btnTitle="My Solutions "
-          route={`${user?.reloadUserInfo.screenName}/my-solutions`}
-          icon={<Icons.ArrowRight className="ml-2 -mr-1" />}
-          lottie
+      <main>
+        <Header
+          title="Explore Solutions"
+          description="Find solutions to frontend coding challenges submitted by fellow developers. Get inspired, learn new techniques and improve your skills. 🚀"
         />
-        <main>
-          <h1 className="text-5xl heading text-center font-extrabold text-white">
-            Solutions
-          </h1>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center mt-8">
+        <section className="rounded-lg bg-gray-900 border border-gray-700 p-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center ">
             {solutions?.map((solution) => {
               return <Card key={solution.id} card={solution} isSolution />
             })}
           </div>
-        </main>
-      </div>
+        </section>
+      </main>
     </>
   )
 }

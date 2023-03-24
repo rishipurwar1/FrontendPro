@@ -13,7 +13,7 @@ export default function Document() {
           rel="stylesheet"
         />
       </Head>
-      <body className="bg-gray-900 font-body max-w-screen-2xl 2xl:mx-auto">
+      <body className="bg-gray-800 font-body max-w-screen-2xl 2xl:mx-auto">
         <Main />
         <NextScript />
       </body>

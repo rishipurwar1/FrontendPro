@@ -11,7 +11,7 @@ const ShowWebsite = ({ url, title, github, isPlayground }) => {
   const siteView = ["w-96 mx-auto", "w-full"]
   const [view, setView] = useState(1)
   const router = useRouter()
-  const { solutionId } = router.query
+  const { solutionId, slug } = router.query
 
   const onError = () => {
     console.log("error")
@@ -41,7 +41,10 @@ const ShowWebsite = ({ url, title, github, isPlayground }) => {
         </div>
         <div className="flex">
           <a
-            href={github || `${URL}/playground/${solutionId}`}
+            href={
+              github ||
+              `${URL}/frontend-coding-challenges/${slug}/playground/${solutionId}`
+            }
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center text-gray-400 border border-gray-600 bg-gray-700 transition hover:text-white hover:bg-gray-800 focus:outline-none p-2 mr-2 rounded-lg"
@@ -51,7 +54,9 @@ const ShowWebsite = ({ url, title, github, isPlayground }) => {
             <Icons.Code size={18} />
           </a>
           <a
-            href={url || `${URL}/playground/${solutionId}`}
+            href={
+              url || `${URL}/frontend-coding-challenges/${slug}/playground/${solutionId}`
+            }
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center text-gray-400 border border-gray-600 bg-gray-700 transition hover:text-white hover:bg-gray-800 focus:outline-none p-2 rounded-lg"

@@ -7,6 +7,7 @@ import "../styles/globals.css"
 import { Analytics } from "@vercel/analytics/react"
 import { useRouter } from "next/router"
 import { SidebarProvider } from "../context/SidebarContext"
+import Loader from "../components/reusable/Loader"
 
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter()
@@ -76,6 +77,7 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
       <AuthContextProvider>
         <SidebarProvider>
+          <Loader />
           {renderWithLayout(<Component {...pageProps} />)}
         </SidebarProvider>
       </AuthContextProvider>

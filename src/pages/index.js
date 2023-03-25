@@ -7,6 +7,7 @@ import LatestResources from "../components/homepage/LatestResources"
 import LatestSolutions from "../components/homepage/LatestSolutions"
 import { getDocuments } from "../firebase/firestore"
 import Hero from "../components/homepage/Hero"
+import Testimonial from "../components/reusable/Testimonial"
 
 const Homepage = ({ challenges, solutions, resources }) => {
   return (
@@ -16,6 +17,7 @@ const Homepage = ({ challenges, solutions, resources }) => {
       </Head>
       <main className="px-6 pb-6 rounded-lg bg-gray-900 border border-gray-700">
         <Hero />
+        <Testimonial />
         <HowItWorks />
         <LatestChallenges challenges={challenges} />
         <LatestSolutions solutions={solutions} />

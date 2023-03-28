@@ -27,7 +27,7 @@ const AccordionItem = ({ faq }) => {
       <div
         className={`${
           isActive ? "h-auto block" : "h-0 hidden"
-        } transition-[height] text-gray-400 font-light border-t-2 py-5 border-gray-700`}
+        } transition-[height] text-gray-300 font-light border-t-2 py-5 border-gray-700`}
       >
         <p className="px-8">{faq.answer}</p>
       </div>

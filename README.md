@@ -1,6 +1,6 @@
 # 🚀 FrontendPro
 
-FrontendPro offer a diverse range of real-world frontend challenges designed to help developers hone their frontend skills. Whether you're a beginner or an experienced developer, FrontendPro is the perfect platform to take your skills to the next level. Start your frontend development journey today with FrontendPro!
+FrontendPro(FKA CodingSpace) offer a diverse range of real-world frontend challenges designed to help developers hone their frontend skills. Whether you're a beginner or an experienced developer, FrontendPro is the perfect platform to take your skills to the next level. Start your frontend development journey today with FrontendPro!
 
 ![FrontendPro](https://res.cloudinary.com/di5hmgowi/image/upload/v1675420804/codingspace_assets/frontendpro-og-image.png)
 

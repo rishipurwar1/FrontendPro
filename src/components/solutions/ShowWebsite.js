@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import Icons from "../SvgIcons/Icons"
 
 import WebsitePreview from "./WebsitePreview"
+import Tooltip from "../reusable/Tooltip"
 
 const URL = "https://www.frontendpro.dev"
 
@@ -26,45 +27,54 @@ const ShowWebsite = ({ url, title, github, isPlayground }) => {
           <span className="w-3 h-3 rounded-full inline-block bg-green-500"></span>
         </div>
         <div className="hidden md:flex">
-          <button
-            className="flex items-center text-gray-400 border border-gray-600 bg-gray-700 transition hover:text-white hover:bg-gray-800 focus:outline-none p-2 mr-2 rounded-lg"
-            onClick={() => setView(1)}
-          >
-            <Icons.Desktop size={18} />
-          </button>
-          <button
-            className="flex items-center text-gray-400 border border-gray-600 bg-gray-700 transition hover:text-white hover:bg-gray-800 focus:outline-none p-2 mr-2 rounded-lg"
-            onClick={() => setView(0)}
-          >
-            <Icons.Phone size={18} />
-          </button>
+          <Tooltip message={"Desktop Preview"}>
+            <button
+              className="flex items-center text-gray-400 border border-gray-600 bg-gray-700 transition hover:text-white hover:bg-gray-800 focus:outline-none p-2 mr-2 rounded-lg"
+              onClick={() => setView(1)}
+            >
+              <Icons.Desktop size={18} />
+            </button>
+          </Tooltip>
+          <Tooltip message={"Mobile Preview"}>
+            <button
+              className="flex items-center text-gray-400 border border-gray-600 bg-gray-700 transition hover:text-white hover:bg-gray-800 focus:outline-none p-2 mr-2 rounded-lg"
+              onClick={() => setView(0)}
+            >
+              <Icons.Phone size={18} />
+            </button>
+          </Tooltip>
         </div>
         <div className="flex">
-          <a
-            href={
-              github ||
-              `${URL}/frontend-coding-challenges/${slug}/playground/${solutionId}`
-            }
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-gray-400 border border-gray-600 bg-gray-700 transition hover:text-white hover:bg-gray-800 focus:outline-none p-2 mr-2 rounded-lg"
-            aria-label={`${title} solution github repository`}
-            title={`Link to ${title} solution github repository`}
-          >
-            <Icons.Code size={18} />
-          </a>
-          <a
-            href={
-              url || `${URL}/frontend-coding-challenges/${slug}/playground/${solutionId}`
-            }
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-gray-400 border border-gray-600 bg-gray-700 transition hover:text-white hover:bg-gray-800 focus:outline-none p-2 rounded-lg"
-            aria-label={`${title} website`}
-            title={`Link to ${title} website`}
-          >
-            <Icons.ExternalLink size={18} />
-          </a>
+          <Tooltip message={"Code"}>
+            <a
+              href={
+                github ||
+                `${URL}/frontend-coding-challenges/${slug}/playground/${solutionId}`
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-gray-400 border border-gray-600 bg-gray-700 transition hover:text-white hover:bg-gray-800 focus:outline-none p-2 mr-2 rounded-lg"
+              aria-label={`${title} solution github repository`}
+              title={`Link to ${title} solution github repository`}
+            >
+              <Icons.Code size={18} />
+            </a>
+          </Tooltip>
+          <Tooltip message={"Website"}>
+            <a
+              href={
+                url ||
+                `${URL}/frontend-coding-challenges/${slug}/playground/${solutionId}`
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-gray-400 border border-gray-600 bg-gray-700 transition hover:text-white hover:bg-gray-800 focus:outline-none p-2 rounded-lg"
+              aria-label={`${title} website`}
+              title={`Link to ${title} website`}
+            >
+              <Icons.ExternalLink size={18} />
+            </a>
+          </Tooltip>
         </div>
       </div>
       <div className="relative border border-gray-700 rounded-b-lg h-screen overflow-hidden">

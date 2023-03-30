@@ -17,6 +17,7 @@ import { getDocument } from "../../../../firebase/firestore"
 // custom hooks
 import { useAuthContext } from "../../../../hooks/useAuthContext"
 import { useFirestore } from "../../../../hooks/useFirestore"
+import Tooltip from "../../../../components/reusable/Tooltip"
 
 export async function getServerSideProps({ query }) {
   const { solutionId } = query
@@ -67,22 +68,26 @@ const Solution = ({ solution }) => {
             </div>
             {user && user.uid === solution.userID && (
               <div className="flex">
-                <ButtonLink
-                  to={`/frontend-coding-challenges/${slug}/edit/${solution.id}`}
-                  size="square"
-                  variant="outline"
-                  className="text-gray-400 hover:text-white mr-2"
-                >
-                  <Icons.Edit size={18} />
-                </ButtonLink>
-                <Button
-                  size="square"
-                  variant="outline"
-                  className="text-gray-400 hover:text-white"
-                  onClick={() => setIsOpen(!isOpen)}
-                >
-                  <Icons.Delete size={18} />
-                </Button>
+                <Tooltip message="Edit Solution">
+                  <ButtonLink
+                    to={`/frontend-coding-challenges/${slug}/edit/${solution.id}`}
+                    size="square"
+                    variant="outline"
+                    className="text-gray-400 hover:text-white mr-2"
+                  >
+                    <Icons.Edit size={18} />
+                  </ButtonLink>
+                </Tooltip>
+                <Tooltip message="Delete Solution">
+                  <Button
+                    size="square"
+                    variant="outline"
+                    className="text-gray-400 hover:text-white"
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    <Icons.Delete size={18} />
+                  </Button>
+                </Tooltip>
               </div>
             )}
           </div>

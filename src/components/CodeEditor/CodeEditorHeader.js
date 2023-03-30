@@ -39,7 +39,7 @@ const CodeEditorHeader = ({ descriptionRef, previewRef, consoleRef }) => {
         </Link>
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-1">
-            <Tooltip message={"Toggle description"}>
+            <Tooltip message={"Toggle Description"}>
               <button
                 className="text-gray-500 hover:text-white transition-colors"
                 onClick={() => collapsePanel(descriptionRef)}
@@ -47,7 +47,7 @@ const CodeEditorHeader = ({ descriptionRef, previewRef, consoleRef }) => {
                 <Icons.LayoutSidebar />
               </button>
             </Tooltip>
-            <Tooltip message={"Toggle preview"}>
+            <Tooltip message={"Toggle Preview"}>
               <button
                 className="text-gray-500 hover:text-white transition-colors rotate-180"
                 onClick={() => collapsePanel(previewRef)}
@@ -55,7 +55,7 @@ const CodeEditorHeader = ({ descriptionRef, previewRef, consoleRef }) => {
                 <Icons.LayoutSidebar />
               </button>
             </Tooltip>
-            <Tooltip message={"Toggle console"}>
+            <Tooltip message={"Toggle Console"}>
               <button
                 className="text-gray-500 hover:text-white transition-colors -rotate-90"
                 onClick={() => collapsePanel(consoleRef)}

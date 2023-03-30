@@ -16,10 +16,11 @@ const Tooltip = ({ message, position = "bottom", children }) => {
   }
 
   return (
-    <div className="group relative flex justify-center">
+    <div className="group relative flex justify-center" aria-label={message}>
       {children}
       <span
-        className={`absolute scale-0 transition-all rounded bg-gray-900 p-2 text-xs text-white group-hover:scale-100 z-10 whitespace-nowrap ${positionClass}`}
+        className={`absolute scale-0 transition-all rounded bg-gray-950 p-2 text-xs text-white group-hover:scale-100 z-10 whitespace-nowrap ${positionClass}`}
+        role="tooltip"
       >
         {message}
       </span>

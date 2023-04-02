@@ -78,9 +78,9 @@ const Tabs = ({ userID }) => {
       )}
       <div className="relative flex flex-col min-w-0 break-words w-full shadow-lg rounded">
         <div className="flex-auto p-6">
-          <div className="tab-content tab-space">
+          <div>
             <div className={openTab === 1 ? "block" : "hidden"} id="link1">
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center items-center">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
                 {documents.length > 0 ? (
                   documents.map((challenge) => {
                     return (

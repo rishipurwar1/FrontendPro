@@ -16,8 +16,8 @@ const ChallengeDescription = ({ solution }) => {
           alt={`${solution?.title} Challenge`}
         />
       </div>
-      <h2 className="mt-4 mb-2 text-white text-lg font-medium">
-        Users should be able to:
+      <h2 className="mt-4 mb-2 text-white text-lg font-semibold">
+        Challenge Requirements
       </h2>
       <ul className="text-sm text-gray-300 list-disc pl-4">
         {solution.requirements.map((requirement, index) => (
@@ -34,7 +34,7 @@ const ChallengeDescription = ({ solution }) => {
       </ul>
       {solution?.bonus && (
         <>
-          <h2 className="mt-4 mb-2 text-white text-lg font-medium">Brownie Points</h2>
+          <h2 className="mt-4 mb-2 text-white text-lg font-semibold">Brownie Points</h2>
           <ul className="text-sm text-gray-300 list-disc pl-4">
             {solution?.bonus?.map((bonus, index) => (
               <li key={index} className="mb-1">
@@ -46,7 +46,7 @@ const ChallengeDescription = ({ solution }) => {
       )}
       {solution?.resources && (
         <>
-          <h2 className="mt-4 mb-2 text-white text-lg font-medium">Resources</h2>
+          <h2 className="mt-4 mb-2 text-white text-lg font-semibold">Resources</h2>
           <ul className="text-sm text-gray-300 list-disc pl-4">
             {solution.resources.map((resource, index) => (
               <li key={index} className="mb-1">

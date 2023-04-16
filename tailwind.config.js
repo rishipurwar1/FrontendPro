@@ -1,4 +1,4 @@
-const defaultTheme = require("tailwindcss/defaultTheme")
+const { screens, fontFamily } = require("tailwindcss/defaultTheme")
 
 module.exports = {
   content: ["./src/**/*.{js,jsx}"],
@@ -6,7 +6,7 @@ module.exports = {
     screens: {
       xs: "300px",
       xxl: "1536px",
-      ...defaultTheme.screens,
+      ...screens,
     },
     extend: {
       colors: {
@@ -21,7 +21,7 @@ module.exports = {
         "border-primary": "rgba(228,228,228,0.1)",
       },
       fontFamily: {
-        body: ["Inter", "sans serif"],
+        sans: ["var(--font-inter)", ...fontFamily.sans],
       },
       gridTemplateColumns: {
         "layout-desktop": "200px 1fr",

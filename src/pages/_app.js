@@ -4,7 +4,6 @@ import Layout from "../components/layouts/Layout"
 import { AuthContextProvider } from "../context/AuthContext"
 
 import "../styles/globals.css"
-import { Analytics } from "@vercel/analytics/react"
 import { useRouter } from "next/router"
 import { SidebarProvider } from "../context/SidebarContext"
 import Loader from "../components/reusable/Loader"
@@ -89,7 +88,6 @@ export default function MyApp({ Component, pageProps }) {
           </div>
         </SidebarProvider>
       </AuthContextProvider>
-      <Analytics />
     </>
   )
 }

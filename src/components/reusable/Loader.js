@@ -46,7 +46,7 @@ const Loader = () => {
 
   return (
     <div
-      className={`absolute top-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-sm transition-width duration-100 ease-in-out ${
+      className={`fixed top-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-sm transition-width duration-100 ease-in-out ${
         loading ? "w-1/2" : "w-full"
       }`}
       style={{ width: `${width}%` }}

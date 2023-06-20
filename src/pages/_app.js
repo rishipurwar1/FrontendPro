@@ -8,6 +8,7 @@ import { useRouter } from "next/router"
 import { SidebarProvider } from "../context/SidebarContext"
 import Loader from "../components/reusable/Loader"
 import { Inter } from "next/font/google"
+import Script from "next/script"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -88,6 +89,15 @@ export default function MyApp({ Component, pageProps }) {
           </div>
         </SidebarProvider>
       </AuthContextProvider>
+      <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
+      <noscript>
+        {/* eslint-disable @next/next/no-img-element */}
+        <img
+          src="https://queue.simpleanalyticscdn.com/noscript.gif"
+          alt=""
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </noscript>
     </>
   )
 }

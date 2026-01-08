@@ -13,11 +13,21 @@ import { postToJSON } from "../utils/shared"
 
 import { db } from "./config"
 
-export const getDocuments = async (c, q = null, l) => {
+// Generic helper to fetch documents from a collection, ordered by "createdAt" (newest first).
+// - c: collection name
+// - q: optional Firestore "where" tuple, e.g. ["completed", "==", true]
+// - l: optional numeric limit
+export const getDocuments = async (c, q = null, l = null) => {
   const queryConstraints = []
 
-  if (q !== null) queryConstraints.push(where(...q))
-  if (l !== null) queryConstraints.push(limit(l))
+  if (q !== null) {
+    queryConstraints.push(where(...q))
+  }
+
+  // Only apply limit when a valid number is provided.
+  if (typeof l === "number") {
+    queryConstraints.push(limit(l))
+  }
 
   const ref = collection(db, c)
   const docsRef = query(ref, orderBy("createdAt", "desc"), ...queryConstraints)

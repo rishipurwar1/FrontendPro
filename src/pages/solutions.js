@@ -1,10 +1,14 @@
 import Head from "next/head"
 
 import Card from "../components/reusable/Card"
-import { getDocuments } from "../firebase/firestore"
 import Header from "../components/reusable/Header"
+import ButtonLink from "../components/reusable/ButtonLink"
+import { getDocuments } from "../firebase/firestore"
+import Icons from "../components/SvgIcons/Icons"
 
-const Solutions = ({ solutions }) => {
+const Solutions = ({ solutions, pagination }) => {
+  const { currentPage, hasNextPage, hasPrevPage } = pagination || {}
+
   return (
     <>
       <Head>
@@ -21,6 +25,44 @@ const Solutions = ({ solutions }) => {
               return <Card key={solution.id} card={solution} isSolution />
             })}
           </div>
+
+          <div className="mt-8 flex items-center justify-center space-x-4">
+            {/* Previous button */}
+            {hasPrevPage ? (
+              <ButtonLink
+                to={
+                  currentPage === 2 ? "/solutions" : `/solutions?page=${currentPage - 1}`
+                }
+                variant="outline"
+                size="normal"
+              >
+                <Icons.ArrowLeft className="mr-2" />
+                Previous
+              </ButtonLink>
+            ) : (
+              <span className="inline-flex justify-center items-center rounded-lg px-3 py-2 font-medium text-sm border border-gray-700 text-gray-400 opacity-50 cursor-not-allowed">
+                <Icons.ArrowLeft className="mr-2" />
+                Previous
+              </span>
+            )}
+
+            {/* Next button */}
+            {hasNextPage ? (
+              <ButtonLink
+                to={`/solutions?page=${(currentPage || 1) + 1}`}
+                variant="outline"
+                size="normal"
+              >
+                Next
+                <Icons.ArrowRight className="ml-2" />
+              </ButtonLink>
+            ) : (
+              <span className="inline-flex justify-center items-center rounded-lg px-3 py-2 font-medium text-sm border border-gray-700 text-gray-400 opacity-50 cursor-not-allowed">
+                Next
+                <Icons.ArrowRight className="ml-2" />
+              </span>
+            )}
+          </div>
         </section>
       </main>
     </>
@@ -29,12 +71,37 @@ const Solutions = ({ solutions }) => {
 
 export default Solutions
 
-export async function getServerSideProps() {
-  const solutions = await getDocuments("solutions", ["completed", "==", true])
+export async function getServerSideProps(context) {
+  const PAGE_SIZE = 9
+
+  const pageParam = context.query?.page || "1"
+
+  let currentPage = +pageParam
+
+  const endIndex = currentPage * PAGE_SIZE
+  // Fetch just enough documents to determine if there is a next page.
+  const limit = endIndex + 1
+
+  const allSolutionsUpToPage = await getDocuments(
+    "solutions",
+    ["completed", "==", true],
+    limit
+  )
+
+  const startIndex = (currentPage - 1) * PAGE_SIZE
+  const solutions = allSolutionsUpToPage.slice(startIndex, endIndex)
+
+  const hasNextPage = allSolutionsUpToPage.length > endIndex
+  const hasPrevPage = currentPage > 1
 
   return {
     props: {
       solutions,
+      pagination: {
+        currentPage,
+        hasNextPage,
+        hasPrevPage,
+      },
     },
   }
 }
